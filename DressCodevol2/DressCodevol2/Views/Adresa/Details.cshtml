@@ -1,0 +1,42 @@
+﻿@model DressCode.Models.Adresa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Adresa</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ulica)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ulica)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Broj)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Broj)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Grad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Grad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Drzava)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Drzava)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

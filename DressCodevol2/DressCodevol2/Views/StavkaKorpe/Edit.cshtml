@@ -1,0 +1,44 @@
+﻿@model DressCode.Models.StavkaKorpe
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>StavkaKorpe</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Velicina" class="control-label"></label>
+                <select asp-for="Velicina" class="form-control"></select>
+                <span asp-validation-for="Velicina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kolicina" class="control-label"></label>
+                <input asp-for="Kolicina" class="form-control" />
+                <span asp-validation-for="Kolicina" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CijenaPoKomadu" class="control-label"></label>
+                <input asp-for="CijenaPoKomadu" class="form-control" />
+                <span asp-validation-for="CijenaPoKomadu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

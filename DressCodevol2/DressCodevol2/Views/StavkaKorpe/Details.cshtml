@@ -1,0 +1,36 @@
+﻿@model DressCode.Models.StavkaKorpe
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>StavkaKorpe</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Velicina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Velicina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kolicina)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kolicina)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CijenaPoKomadu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CijenaPoKomadu)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
