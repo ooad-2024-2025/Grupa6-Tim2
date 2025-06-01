@@ -1,0 +1,49 @@
+﻿@model DressCode.Models.Adresa
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Adresa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Ulica" class="control-label"></label>
+                <input asp-for="Ulica" class="form-control" />
+                <span asp-validation-for="Ulica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Broj" class="control-label"></label>
+                <input asp-for="Broj" class="form-control" />
+                <span asp-validation-for="Broj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grad" class="control-label"></label>
+                <input asp-for="Grad" class="form-control" />
+                <span asp-validation-for="Grad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drzava" class="control-label"></label>
+                <input asp-for="Drzava" class="form-control" />
+                <span asp-validation-for="Drzava" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
