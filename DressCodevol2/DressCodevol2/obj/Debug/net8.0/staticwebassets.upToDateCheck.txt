@@ -1,5 +1,10 @@
+wwwroot\css\registracija.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\v10_120.png
+wwwroot\images\v40_24.png
+wwwroot\images\v42_198.png
+wwwroot\images\v42_200.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
