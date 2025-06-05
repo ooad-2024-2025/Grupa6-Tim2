@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace DressCode.Models
 {
     public class Korisnik : IdentityUser
     {
-        public String Id { get; set; }
+        [Required]
         public String Ime { get; set; }
+        [Required]
         public String Prezime { get; set; }
-        public String Username { get; set; }
-        public DateTime DatumRodjenja { get; set; }
-        public String JMBG { get; set; }
+        public DateTime? DatumRodjenja { get; set; }
+        public String? JMBG { get; set; }
         public Boolean IsLoyal {  get; set; }   
-        public int KarticaId { get; set; }  
+        public int? KarticaId { get; set; }  
     }
 }
