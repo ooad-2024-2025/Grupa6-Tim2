@@ -219,7 +219,7 @@ namespace DressCode.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("Korisnik", (string)null);
                 });
 
             modelBuilder.Entity("DressCode.Models.Korpa", b =>

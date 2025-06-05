@@ -23,9 +23,13 @@ namespace DressCode.Data
         public DbSet<Racun> Racuni { get; set; }
         public DbSet<StavkaKorpe> StavkeKorpe { get; set; }
         public DbSet<TipOdjece> TipoviOdjece { get; set; }
+        public DbSet<Korisnik> Korisnik { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Adresa>().ToTable("Adresa");
             modelBuilder.Entity<Artikal>().ToTable("Artikal");
             modelBuilder.Entity<ArtikalNarudzba>().ToTable("ArtikalNarudzbe");
@@ -40,7 +44,9 @@ namespace DressCode.Data
             modelBuilder.Entity<StavkaKorpe>().ToTable("StavkaKorpe"); 
             modelBuilder.Entity<TipOdjece>().ToTable("TipOdjece");
             modelBuilder.Entity<ArtikalNarudzba>().ToTable("ArtikalNarudzba");
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Korisnik>().ToTable("Korisnik");
+
+            
         }
 
     }

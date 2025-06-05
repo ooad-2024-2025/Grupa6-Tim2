@@ -5,12 +5,32 @@
       "PackagePath": "staticwebassets\\DressCode.88wavwvt0b.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\registracija.css",
+      "PackagePath": "staticwebassets\\css\\registracija.css"
+    },
+    {
       "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\v10_120.png",
+      "PackagePath": "staticwebassets\\images\\v10_120.png"
+    },
+    {
+      "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\v40_24.png",
+      "PackagePath": "staticwebassets\\images\\v40_24.png"
+    },
+    {
+      "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\v42_198.png",
+      "PackagePath": "staticwebassets\\images\\v42_198.png"
+    },
+    {
+      "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\v42_200.png",
+      "PackagePath": "staticwebassets\\images\\v42_200.png"
     },
     {
       "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\js\\site.js",
