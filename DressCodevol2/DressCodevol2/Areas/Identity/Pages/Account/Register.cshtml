@@ -1,66 +1,97 @@
 ﻿@page
 @model RegisterModel
 @{
+    Layout = null;
     ViewData["Title"] = "Registracija";
 }
 
-<h1>@ViewData["Title"]</h1>
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Kreiraj novi račun.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                <label asp-for="Input.Email">Email</label>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+
+    <!-- Vaš vlastiti CSS iz wwwroot/css/main.css -->
+    <link href="~/css/registracija.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+    <div class="v10_119">
+        <!-- Pozadinska slika ili boja -->
+        <div class="v10_120"></div>
+        <!-- Glavni “card” s inputima -->
+        <div class="v10_122">
+            <!-- Polje: Ime -->
+            <div class="v10_123">
+                <span class="v10_124">Ime</span>
+                <input asp-for="Input.Ime" type="text" class="v31_341" placeholder="Ime"></input>
+
             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.Password">Password</label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+
+            <!-- Polje: Prezime -->
+            <div class="v10_127">
+                <span class="v10_128">Prezime</span>
+                <input asp-for="Input.Prezime" type="text" class="v31_341" placeholder="Prezime"></input>
+
             </div>
-            <div class="form-floating mb-3">
-                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+
+            <!-- Polje: Email adresa -->
+            <div class="v10_131">
+                <span class="v10_132">Email adresa</span>
+                    <input asp-for="Input.Email" type="email" class="v31_341" placeholder="me@mail.com"></input>
             </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
+
+            <!-- Polje: Password -->
+            <div class="v10_135">
+                <span class="v10_136">Lozinka</span>
+                <input asp-for="Input.Password" type="password" class="v31_341" placeholder="******"></input>
+            </div>
+        </div>
+
+        <!-- Gumb “Registruj se” -->
+        <button id="registerSubmit" class="v10_139" type="submit">
+            <span class="v10_140">Registruj se</span>
+        </button>
+
+
+        <!-- Nevidljivi ili dekorativni div -->
+        <div class="v10_141"></div>
+
+        <!-- Naslov stranice -->
+        <span class="v10_142">Registrujte se</span>
+
+        <!-- Tekst “Već imate korisnički profil?” i gumb “Prijava” -->
+        <span class="v10_168">Već imate korisnički profil? </span>
+        <div class="v10_170"></div>
+        <div class="v10_174">
+            <span class="v10_175">Prijava</span>
+        </div>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
-</div>
+
+    <!-- Polje “Ponovite password” -->
+    <div class="v31_339" , style="position: absolute; top: 515px; left: 86px">
+        <span class="v31_340">Ponovite lozinku</span>
+        <input asp-for="Input.ConfirmPassword" type="password" class="v31_341" placeholder="******"></input>
+        </div>
+
+    <!-- Dekorativna slika ili grafika -->
+    <div class="v42_200"></div>
+
+    <!-- Loyality program sekcija -->
+    <span class="v44_346", style="position: absolute; top:630px; left: 86px">
+        Želite li postati dio našeg Loyalty programa? Šta je loyalty program?
+    </span>
+    <span class="v44_348", style="position: absolute; top:670px; left:86px">
+        Da, želim da postanem dio loyalty programa i primam ekskluzivne pondue!
+    </span>
+    <div class="name"></div>
+    </form>
+</body>
+</html>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
