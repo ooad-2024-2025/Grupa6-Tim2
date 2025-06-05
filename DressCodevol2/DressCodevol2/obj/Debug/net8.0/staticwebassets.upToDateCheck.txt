@@ -1,5 +1,12 @@
+wwwroot\css\login.css
+wwwroot\css\registracija.css
 wwwroot\css\site.css
 wwwroot\favicon.ico
+wwwroot\images\login.png
+wwwroot\images\v10_120.png
+wwwroot\images\v40_24.png
+wwwroot\images\v42_198.png
+wwwroot\images\v42_200.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -58,8 +65,3 @@ wwwroot\lib\jquery\dist\jquery.js
 wwwroot\lib\jquery\dist\jquery.min.js
 wwwroot\lib\jquery\dist\jquery.min.map
 wwwroot\lib\jquery\LICENSE.txt
-wwwroot\css\registracija.css
-wwwroot\images\v10_120.png
-wwwroot\images\v40_24.png
-wwwroot\images\v42_198.png
-wwwroot\images\v42_200.png
