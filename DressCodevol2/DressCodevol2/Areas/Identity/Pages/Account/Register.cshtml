@@ -1,101 +1,121 @@
 ﻿@page
 @model RegisterModel
 @{
-    Layout = null;
     ViewData["Title"] = "Registracija";
 }
 
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"]</title>
+<div class="container-fluid px-0">
+    <div class="row justify-content-start ml-0">
+        <div class="col-md-6 pl-4">
+            <div class="card registration-card">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">@ViewData["Title"]</h2>
 
-    <!-- Google Font Inter -->
-    <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <!-- Vaš vlastiti CSS iz wwwroot/css/main.css -->
-    <link href="~/css/registracija.css" rel="stylesheet" />
-</head>
-<body>
-    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-        <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="v10_119">
-        <!-- Pozadinska slika ili boja -->
-        <div class="v10_120"></div>
-        <!-- Glavni “card” s inputima -->
-        <div class="v10_122">
-            <!-- Polje: Ime -->
-            <div class="v10_123">
-                <span class="v10_124">Ime</span>
-                <input asp-for="Input.Ime" type="text" class="v31_341" placeholder="Ime"/>
-                <span asp-validation-for="Input.Ime" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Input.Ime" class="form-label"></label>
+                                    <input asp-for="Input.Ime" class="form-control" placeholder="Ime" />
+                                    <span asp-validation-for="Input.Ime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-3">
+                                    <label asp-for="Input.Prezime" class="form-label"></label>
+                                    <input asp-for="Input.Prezime" class="form-control" placeholder="Prezime" />
+                                    <span asp-validation-for="Input.Prezime" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Input.Email" class="form-label"></label>
+                            <input asp-for="Input.Email" class="form-control" placeholder="me@mail.com" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Input.Password" class="form-label"></label>
+                            <input asp-for="Input.Password" class="form-control" placeholder="Lozinka" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Input.ConfirmPassword" class="form-label"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Ponovite lozinku" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="loyalty-section mb-4">
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" id="loyaltyAgreement">
+                                <label class="form-check-label" for="loyaltyAgreement">
+                                    Želim da postanem dio loyalty programa i primam ekskluzivne ponude
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label" for="loyaltyProgram">
+                                    Šta je Loyalty program?
+                                </label>
+                            </div>
+                        </div>
+
+                        <button id="registerSubmit" type="submit" class="w-100 btn btn-primary">Registruj se</button>
+
+                        <div class="text-center mt-3">
+                            <span>Već imate korisnički profil? </span>
+                            <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Prijava</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <!-- Polje: Prezime -->
-            <div class="v10_127">
-                <span class="v10_128">Prezime</span>
-                <input asp-for="Input.Prezime" type="text" class="v31_341" placeholder="Prezime"/>
-                <span asp-validation-for="Input.Prezime" class="text-danger"></span>
-            </div>
-
-            <!-- Polje: Email adresa -->
-            <div class="v10_131">
-                <span class="v10_132">Email adresa</span>
-                <input asp-for="Input.Email" type="email" class="v31_341" placeholder="me@mail.com"/>
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-
-            <!-- Polje: Password -->
-            <div class="v10_135">
-                <span class="v10_136">Lozinka</span>
-                <input asp-for="Input.Password" type="password" class="v31_341" placeholder="******"/>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-        </div>
-
-        <!-- Gumb “Registruj se” -->
-        <button id="registerSubmit" class="v10_139" type="submit">
-            <span class="v10_140">Registruj se</span>
-        </button>
-
-
-        <!-- Nevidljivi ili dekorativni div -->
-        <div class="v10_141"></div>
-
-        <!-- Naslov stranice -->
-        <span class="v10_142">Registrujte se</span>
-
-        <!-- Tekst “Već imate korisnički profil?” i gumb “Prijava” -->
-        <span class="v10_168">Već imate korisnički profil? </span>
-        <div class="v10_170"></div>
-        <div class="v10_174">
-            <span class="v10_175">Prijava</span>
         </div>
     </div>
+</div>
 
-    <!-- Polje “Ponovite password” -->
-    <div class="v31_339" , style="position: absolute; top: 515px; left: 86px">
-        <span class="v31_340">Ponovite lozinku</span>
-        <input asp-for="Input.ConfirmPassword" type="password" class="v31_341" placeholder="******"/>
-        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-        </div>
+@section Styles {
+    <style>
+        .registration-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: none;
+            padding: 2rem;
+            marigin-left: 20px;
+        }
 
-    <!-- Dekorativna slika ili grafika -->
-    <div class="v42_200"></div>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
 
-    <!-- Loyality program sekcija -->
-    <span class="v44_346", style="position: absolute; top:630px; left: 86px">
-        Želite li postati dio našeg Loyalty programa? Šta je loyalty program?
-    </span>
-    <span class="v44_348", style="position: absolute; top:670px; left:86px">
-        Da, želim da postanem dio loyalty programa i primam ekskluzivne pondue!
-    </span>
-    <div class="name"></div>
-    </form>
-</body>
-</html>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-label {
+            font-weight: 500;
+        }
+
+        .loyalty-section {
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .container-fluid {
+            padding-left: 0;
+        }
+
+        .row {
+            justify-content: flex-start; 
+            margin-left: 0;
+        }
+    </style>
+}
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
