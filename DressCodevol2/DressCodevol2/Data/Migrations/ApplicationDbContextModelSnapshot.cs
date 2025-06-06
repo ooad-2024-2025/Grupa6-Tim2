@@ -144,7 +144,7 @@ namespace DressCode.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DatumRodjenja")
+                    b.Property<DateTime?>("DatumRodjenja")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -162,10 +162,9 @@ namespace DressCode.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("JMBG")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("KarticaId")
+                    b.Property<int?>("KarticaId")
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")
@@ -204,10 +203,6 @@ namespace DressCode.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -134,13 +134,14 @@ namespace DressCode.Areas.Identity.Pages.Account
             {
                 var user = new Korisnik
                 {
-                    Username = Input.Email,
+                    UserName = Input.Email,
                     Email = Input.Email,
                     Ime = Input.Ime,
                     Prezime = Input.Prezime,
                     JMBG = null,
                     DatumRodjenja = new DateTime(),
-                    IsLoyal = false
+                    IsLoyal = false,
+                    KarticaId = null
                 };
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);

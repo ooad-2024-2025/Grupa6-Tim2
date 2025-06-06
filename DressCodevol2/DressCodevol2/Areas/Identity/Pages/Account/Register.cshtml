@@ -20,6 +20,7 @@
 </head>
 <body>
     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
     <div class="v10_119">
         <!-- Pozadinska slika ili boja -->
         <div class="v10_120"></div>
@@ -28,27 +29,29 @@
             <!-- Polje: Ime -->
             <div class="v10_123">
                 <span class="v10_124">Ime</span>
-                <input asp-for="Input.Ime" type="text" class="v31_341" placeholder="Ime"></input>
-
+                <input asp-for="Input.Ime" type="text" class="v31_341" placeholder="Ime"/>
+                <span asp-validation-for="Input.Ime" class="text-danger"></span>
             </div>
 
             <!-- Polje: Prezime -->
             <div class="v10_127">
                 <span class="v10_128">Prezime</span>
-                <input asp-for="Input.Prezime" type="text" class="v31_341" placeholder="Prezime"></input>
-
+                <input asp-for="Input.Prezime" type="text" class="v31_341" placeholder="Prezime"/>
+                <span asp-validation-for="Input.Prezime" class="text-danger"></span>
             </div>
 
             <!-- Polje: Email adresa -->
             <div class="v10_131">
                 <span class="v10_132">Email adresa</span>
-                    <input asp-for="Input.Email" type="email" class="v31_341" placeholder="me@mail.com"></input>
+                <input asp-for="Input.Email" type="email" class="v31_341" placeholder="me@mail.com"/>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
 
             <!-- Polje: Password -->
             <div class="v10_135">
                 <span class="v10_136">Lozinka</span>
-                <input asp-for="Input.Password" type="password" class="v31_341" placeholder="******"></input>
+                <input asp-for="Input.Password" type="password" class="v31_341" placeholder="******"/>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
         </div>
 
@@ -75,7 +78,8 @@
     <!-- Polje “Ponovite password” -->
     <div class="v31_339" , style="position: absolute; top: 515px; left: 86px">
         <span class="v31_340">Ponovite lozinku</span>
-        <input asp-for="Input.ConfirmPassword" type="password" class="v31_341" placeholder="******"></input>
+        <input asp-for="Input.ConfirmPassword" type="password" class="v31_341" placeholder="******"/>
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
         </div>
 
     <!-- Dekorativna slika ili grafika -->
