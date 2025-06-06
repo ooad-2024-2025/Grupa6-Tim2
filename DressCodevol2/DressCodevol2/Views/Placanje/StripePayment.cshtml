@@ -1,0 +1,104 @@
+@{
+    ViewData["Title"] = "Placanje - Stripe Payment";
+}
+
+<h2>Unesite podatke za kartično plaćanje</h2>
+
+<form action="/Placanje/ProcessPayment" method="post" id="payment-form">
+    <div class="form-group">
+        <label for="amount">Iznos (BAM):</label>
+        <input type="number" name="amount" id="amount" value="10.00" step="0.01" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="card-element">Kreditna ili debitna kartica</label>
+        <div id="card-element" class="form-control" style="height: 40px; padding: 10px;">
+            <!-- Stripe Elements will create form elements here -->
+        </div>
+        <div id="card-errors" role="alert" class="text-danger"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="submit-button">
+        <span id="button-text">Plati</span>
+    </button>
+</form>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    var stripe = Stripe('@ViewBag.PublishableKey');
+    var elements = stripe.elements();
+
+    var cardElement = elements.create('card', {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#424770',
+                '::placeholder': {
+                    color: '#aab7c4',
+                },
+            },
+        },
+    });
+    cardElement.mount('#card-element');
+
+    // Custom error messages for card validation
+    cardElement.on('change', ({error}) => {
+        const displayError = document.getElementById('card-errors');
+        if (error) {
+            let customMessage = getCustomCardError(error.code);
+            displayError.textContent = customMessage;
+        } else {
+            displayError.textContent = '';
+        }
+    });
+    function getCustomCardError(errorCode) {
+        switch(errorCode) {
+            case 'incomplete_number':
+                return 'Broj kartice je nepotpun.';
+            case 'incomplete_expiry':
+                return 'Datum isteka je nepotpun.';
+            case 'incomplete_cvc':
+                return 'CVC kod je nepotpun.';
+            case 'invalid_number':
+                return 'Broj kartice nije valjan.';
+            case 'invalid_expiry':
+                return 'Datum isteka nije valjan.';
+            case 'invalid_expiry_year_past':  // Add this line
+                return 'Kartica je istekla.';
+            case 'invalid_cvc':
+                return 'CVC kod nije valjan.';
+            case 'card_declined':
+                return 'Kartica je odbijena.';
+            default:
+                return 'Došlo je do greške sa karticom.';
+        }
+    }
+
+    var form = document.getElementById('payment-form');
+    var submitButton = document.getElementById('submit-button');
+    var buttonText = document.getElementById('button-text');
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+        // Disable button and show loading
+        submitButton.disabled = true;
+        buttonText.textContent = 'Obrađuje se...';
+
+        const {token, error} = await stripe.createToken(cardElement);
+
+        if (error) {
+            document.getElementById('card-errors').textContent = getCustomCardError(error.code);
+            // Re-enable button
+            submitButton.disabled = false;
+            buttonText.textContent = 'Plati Sada';
+        } else {
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            form.submit();
+        }
+    });
+</script>

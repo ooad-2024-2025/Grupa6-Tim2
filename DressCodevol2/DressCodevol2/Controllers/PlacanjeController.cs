@@ -7,22 +7,86 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
+using Stripe;
 
 namespace DressCode.Controllers
 {
     public class PlacanjeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration; 
 
-        public PlacanjeController(ApplicationDbContext context)
+        public PlacanjeController(ApplicationDbContext context,  IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         // GET: Placanje
         public async Task<IActionResult> Index()
         {
             return View(await _context.Placanja.ToListAsync());
+        }
+        
+        public IActionResult StripePayment()
+        {
+            ViewBag.PublishableKey = _configuration["Stripe:PublishableKey"];
+            return View();
+        }
+        
+        [HttpPost]
+        public async Task<IActionResult> ProcessPayment( string stripeToken, decimal amount)
+        {
+            StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
+
+            var options = new ChargeCreateOptions
+            {
+                Amount = (long)(amount * 100), 
+                Currency = "bam",
+                Description = "DressCode Payment",
+                Source = stripeToken
+            };
+
+            var service = new ChargeService();
+            try
+            {
+                var charge = await service.CreateAsync(options);
+              
+                // Save payment to database
+                var placanje = new Placanje
+                {
+                    Cijena =(double) amount
+                };
+                _context.Add(placanje);
+                await _context.SaveChangesAsync();
+                
+                placanje.NarudzbaId = placanje.Id;
+                _context.Update(placanje);
+                await _context.SaveChangesAsync();
+                
+                ViewBag.Amount = amount;
+                ViewBag.SuccessMessage = "Plaćanje je uspešno izvršeno!";
+                ViewBag.NarudzbaId = placanje.Id; // Use the auto-generated Id
+                return View("Success", charge);
+            }
+            catch (StripeException ex)
+            {
+                string customErrorMessage = GetCustomErrorMessage(ex.StripeError?.Code);
+                ViewBag.ErrorMessage = customErrorMessage;
+                ViewBag.OriginalError = ex.Message;
+                return View("Error", ex);
+            }
+        }
+        
+        private string GetCustomErrorMessage(string errorCode)
+        {
+            return errorCode switch
+            {
+                "card_declined" => "Kartica je odbijena. Pokušajte sa drugom karticom.",
+                "insufficient_funds" => "Nemate dovoljno sredstava.",
+                "expired_card" => "Kartica je istekla.",
+                _ => "Došlo je do greške. Pokušajte ponovo."
+            };
         }
 
         // GET: Placanje/Details/5
@@ -147,6 +211,8 @@ namespace DressCode.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+            
+            
         }
 
         private bool PlacanjeExists(int id)

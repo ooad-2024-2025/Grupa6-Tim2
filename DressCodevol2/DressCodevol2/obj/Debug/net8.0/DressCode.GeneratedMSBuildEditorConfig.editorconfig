@@ -17,401 +17,413 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DressCode
 build_property.RootNamespace = DressCode
-build_property.ProjectDir = C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\
+build_property.ProjectDir = /Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2
+build_property.MSBuildProjectDirectory = /Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/AccessDenied.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9BY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWwuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Db25maXJtRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxDb25maXJtRW1haWxDaGFuZ2UuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Db25maXJtRW1haWxDaGFuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxFeHRlcm5hbExvZ2luLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ExternalLogin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9FeHRlcm5hbExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxGb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Lockout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Lockout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGgyZmEuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/LoginWith2fa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbldpdGgyZmEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbldpdGhSZWNvdmVyeUNvZGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Logout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRGVsZXRlUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRGlzYWJsZTJmYS5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRGlzYWJsZTJmYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRG93bmxvYWRQZXJzb25hbERhdGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/Email.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRW5hYmxlQXV0aGVudGljYXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRXh0ZXJuYWxMb2dpbnMuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvRXh0ZXJuYWxMb2dpbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvR2VuZXJhdGVSZWNvdmVyeUNvZGVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvUmVzZXRBdXRoZW50aWNhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2V0UGFzc3dvcmQuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvU2V0UGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvU2hvd1JlY292ZXJ5Q29kZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvVHdvRmFjdG9yQXV0aGVudGljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1N0YXR1c01lc3NhZ2UuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX1N0YXR1c01lc3NhZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9NYW5hZ2UvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Register.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZWdpc3RlckNvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZXNlbmRFbWFpbENvbmZpcm1hdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ResetPassword.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9SZXNldFBhc3N3b3JkQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRyZXNhXENyZWF0ZS5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRyZXNhL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRyZXNhXERlbGV0ZS5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRyZXNhL0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRyZXNhXERldGFpbHMuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRyZXNhL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRyZXNhXEVkaXQuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRyZXNhL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRyZXNhXEluZGV4LmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Adresa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRyZXNhL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJ0aWthbHMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJ0aWthbHMvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJ0aWthbHMvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJ0aWthbHMvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXJ0aWthbHMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FydGljYVxDcmVhdGUuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2FydGljYS9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FydGljYVxEZWxldGUuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2FydGljYS9EZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FydGljYVxEZXRhaWxzLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2FydGljYS9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FydGljYVxFZGl0LmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2FydGljYS9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FydGljYVxJbmRleC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS2FydGljYS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS29ycGFcQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29ycGEvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS29ycGFcRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29ycGEvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS29ycGFcRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29ycGEvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS29ycGFcRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29ycGEvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS29ycGFcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvS29ycGEvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmFydWR6YmFcQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmFydWR6YmEvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmFydWR6YmFcRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmFydWR6YmEvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmFydWR6YmFcRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmFydWR6YmEvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmFydWR6YmFcRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmFydWR6YmEvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmFydWR6YmFcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Narudzba/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTmFydWR6YmEvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2FuamVcQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2FuamVcRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2FuamVcRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2FuamVcRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2FuamVcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XENyZWF0ZS5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XERlbGV0ZS5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/StripePayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvU3RyaXBlUGF5bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XERldGFpbHMuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Placanje/Success.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGxhY2FuamUvU3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XEVkaXQuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9wdXN0L0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XEluZGV4LmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9wdXN0L0RlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJLb2RcQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9wdXN0L0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJLb2RcRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9wdXN0L0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJLb2RcRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9wdXN0L0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJLb2RcRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUVJLb2QvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUVJLb2RcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUVJLb2QvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFjdW5cQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUVJLb2QvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFjdW5cRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUVJLb2QvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFjdW5cRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/QRKod/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUVJLb2QvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFjdW5cRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmFjdW4vQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFjdW5cSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmFjdW4vRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmFjdW4vRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmFjdW4vRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Racun/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUmFjdW4vSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdmthS29ycGVcQ3JlYXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdmthS29ycGVcRGVsZXRlLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdmthS29ycGVcRGV0YWlscy5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdmthS29ycGVcRWRpdC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhdmthS29ycGUvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhdmthS29ycGVcSW5kZXguY3NodG1s
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhdmthS29ycGUvRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhdmthS29ycGUvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhdmthS29ycGUvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-at1ibfy25o
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/StavkaKorpe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3RhdmthS29ycGUvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/naidakaljanac/Desktop/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-2qg5zrpsmm
