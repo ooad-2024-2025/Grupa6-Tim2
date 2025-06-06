@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Ao3yX+LyZtzN3YjRiiAc+69zcGTkA/WE8e0nLjVg1PM=",
+  "Hash": "8AaL0aGeWb5ho0qy1VN66OtZj2Fn4Vw0GPmrgQEz3tQ=",
   "Source": "DressCode",
   "BasePath": "_content/DressCode",
   "Mode": "Default",
@@ -1317,6 +1317,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DressCode.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\home.css",
+      "SourceId": "DressCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\",
+      "BasePath": "_content/DressCode",
+      "RelativePath": "css/home#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ra56g9tvls",
+      "Integrity": "U8ShemXy4gZaEgiLsyRIDjTzGrcOcjYyysOGDsDjceg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
       "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\login.css",
@@ -2727,6 +2748,88 @@
     }
   ],
   "Endpoints": [
+    {
+      "Route": "css/home.css",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\home.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21755"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U8ShemXy4gZaEgiLsyRIDjTzGrcOcjYyysOGDsDjceg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 11:12:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-U8ShemXy4gZaEgiLsyRIDjTzGrcOcjYyysOGDsDjceg="
+        }
+      ]
+    },
+    {
+      "Route": "css/home.ra56g9tvls.css",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\home.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21755"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U8ShemXy4gZaEgiLsyRIDjTzGrcOcjYyysOGDsDjceg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 06 Jun 2025 11:12:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ra56g9tvls"
+        },
+        {
+          "Name": "label",
+          "Value": "css/home.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-U8ShemXy4gZaEgiLsyRIDjTzGrcOcjYyysOGDsDjceg="
+        }
+      ]
+    },
     {
       "Route": "css/login.css",
       "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\css\\login.css",

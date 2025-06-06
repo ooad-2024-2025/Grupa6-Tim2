@@ -78,23 +78,38 @@
 
 @section Styles {
     <style>
+
+        body {
+            background-image: url('/images/v10_120.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
         .registration-card {
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             border: none;
             padding: 2rem;
-            marigin-left: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Prozirna bijela pozadina za bolju čitljivost */
+        }
+        .registration-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: none;
+            padding: 2rem;
+            marigin-left: 10px;
         }
 
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Inter', sans-serif;
         }
 
         .form-label {

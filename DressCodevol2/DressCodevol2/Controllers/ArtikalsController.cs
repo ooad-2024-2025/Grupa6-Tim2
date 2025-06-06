@@ -19,6 +19,14 @@ namespace DressCode.Controllers
             _context = context;
         }
 
+        // GET: Artikals/Create
+        public IActionResult Create()
+        {
+            // Dohvaćanje svih tipova odjeće iz baze
+            ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
+            return View();
+        }
+
         // GET: Artikals
         public async Task<IActionResult> Index()
         {
@@ -44,14 +52,18 @@ namespace DressCode.Controllers
         }
 
         // GET: Artikals/Create
+        /*
         public IActionResult Create()
         {
             return View();
         }
+        */
+
 
         // POST: Artikals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
@@ -62,6 +74,24 @@ namespace DressCode.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            return View(artikal);
+        }
+        */
+
+        // POST: Artikals/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Kategorija,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(artikal);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Ponovno popunjavanje ViewBag-a ako forma nije validna
+            ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
             return View(artikal);
         }
 
