@@ -5,7 +5,7 @@
 }
 
 <h1>Create</h1>
-
+@Html.AntiForgeryToken()
 <h4>Artikal</h4>
 <hr />
 <div class="row">
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label asp-for="KategorijaId" class="control-label"></label>
                 <select asp-for="KategorijaId" class="form-control" asp-items="@(ViewData["Kategorija"] as SelectList)">
-                    <option value="">-- Odaberite tip odjeće --</option>
+                    <option value="0">-- Odaberite tip odjeće --</option>
                 </select>
                 <span asp-validation-for="KategorijaId" class="text-danger"></span>
             </div>

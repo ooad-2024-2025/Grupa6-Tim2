@@ -79,7 +79,7 @@ namespace DressCode.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
+        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
         {
             // DEBUGGING - dodajte ove linije
             Console.WriteLine($"KategorijaId vrednost: {artikal.KategorijaId}");
