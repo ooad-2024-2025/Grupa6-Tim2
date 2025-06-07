@@ -3,6 +3,8 @@
     public class TipOdjece
     {
         public int Id { get; set; }
+        public string Naziv { get; set; }
+        /*
         public string Majica { get; set; }
         public string Kosulja { get; set; }
         public string Bluza { get; set; }
@@ -18,5 +20,6 @@
         public string PlaznaOdjeca { get; set; }
         public string Carape {  get; set; }
         public string ModniDodaci { get; set; }
+        */
     }
 }

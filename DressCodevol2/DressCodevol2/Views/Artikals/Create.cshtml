@@ -15,9 +15,8 @@
 
             <div class="form-group">
                 <label asp-for="Kategorija" class="control-label"></label>
-                <select asp-for="Kategorija.Id" class="form-control"
-                        asp-items="@(new SelectList(ViewBag.TipoviOdjece, "Id", "Naziv"))">
-                    <option value="">-- Odaberite kategoriju --</option>
+                <select asp-for="Kategorija.Id" class="form-control" asp-items="@(new SelectList(ViewBag.TipoviOdjece, "Id", "Naziv"))">
+                    <option value="">-- Odaberite tip odjeće --</option>
                 </select>
                 <span asp-validation-for="Kategorija.Id" class="text-danger"></span>
             </div>

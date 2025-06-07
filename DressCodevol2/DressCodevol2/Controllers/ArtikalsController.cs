@@ -30,7 +30,7 @@ namespace DressCode.Controllers
         // GET: Artikals
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Artikli.ToListAsync());
+            return View(await _context.Artikli.Include(a => a.Kategorija).ToListAsync());
         }
 
         // GET: Artikals/Details/5
@@ -42,6 +42,7 @@ namespace DressCode.Controllers
             }
 
             var artikal = await _context.Artikli
+                .Include(a => a.Kategorija)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (artikal == null)
             {
@@ -81,10 +82,11 @@ namespace DressCode.Controllers
         // POST: Artikals/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Kategorija,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
+        public async Task<IActionResult> Create([Bind("Id,Kategorija,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal, int tipOdjeceId)
         {
             if (ModelState.IsValid)
             {
+                artikal.Kategorija = await _context.TipoviOdjece.FindAsync(tipOdjeceId);
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -116,7 +118,7 @@ namespace DressCode.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal, int tipOdjeceId)
         {
             if (id != artikal.Id)
             {
@@ -127,6 +129,7 @@ namespace DressCode.Controllers
             {
                 try
                 {
+                    artikal.Kategorija = await _context.TipoviOdjece.FindAsync(tipOdjeceId);
                     _context.Update(artikal);
                     await _context.SaveChangesAsync();
                 }
@@ -143,6 +146,7 @@ namespace DressCode.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
             return View(artikal);
         }
 
