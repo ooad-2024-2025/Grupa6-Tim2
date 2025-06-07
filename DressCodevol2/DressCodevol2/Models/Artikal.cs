@@ -3,6 +3,7 @@
     public class Artikal
     {
         public int Id { get; set; }
+        public int KategorijaId { get; set; } 
         public TipOdjece Kategorija { get; set; }
         public double Cijena { get; set; }
         public string Materijal {  get; set; }
@@ -11,4 +12,4 @@
         public string Opis { get; set; }
 
     }
-}
+}   

@@ -23,7 +23,12 @@ namespace DressCode.Controllers
         public IActionResult Create()
         {
             // Dohvaćanje svih tipova odjeće iz baze
-            ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
+            Console.WriteLine("GET Create metoda pozvana");
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
+            //ViewBag.Kategorija = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>());
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>());
+            Console.WriteLine("GET Create metoda zavrsena");
             return View();
         }
 
@@ -52,22 +57,11 @@ namespace DressCode.Controllers
             return View(artikal);
         }
 
-        // GET: Artikals/Create
         /*
-        public IActionResult Create()
-        {
-            return View();
-        }
-        */
-
-
         // POST: Artikals/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
+        public async Task<IActionResult> Create([Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
         {
             if (ModelState.IsValid)
             {
@@ -75,25 +69,38 @@ namespace DressCode.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            //ViewBag.Kategorija = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            Console.WriteLine("KategorijaId: " + artikal.KategorijaId);
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
             return View(artikal);
-        }
-        */
+        }*/
 
-        // POST: Artikals/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Kategorija,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal, int tipOdjeceId)
+        public async Task<IActionResult> Create([Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
         {
+            // DEBUGGING - dodajte ove linije
+            Console.WriteLine($"KategorijaId vrednost: {artikal.KategorijaId}");
+            Console.WriteLine($"ModelState.IsValid: {ModelState.IsValid}");
+
+            foreach (var modelError in ModelState)
+            {
+                Console.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
+            }
+
             if (ModelState.IsValid)
             {
-                artikal.Kategorija = await _context.TipoviOdjece.FindAsync(tipOdjeceId);
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
 
-            // Ponovno popunjavanje ViewBag-a ako forma nije validna
-            ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            //ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
             return View(artikal);
         }
 
@@ -110,6 +117,9 @@ namespace DressCode.Controllers
             {
                 return NotFound();
             }
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
             return View(artikal);
         }
 
@@ -118,7 +128,7 @@ namespace DressCode.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal, int tipOdjeceId)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal, int KategorijaId)
         {
             if (id != artikal.Id)
             {
@@ -129,7 +139,6 @@ namespace DressCode.Controllers
             {
                 try
                 {
-                    artikal.Kategorija = await _context.TipoviOdjece.FindAsync(tipOdjeceId);
                     _context.Update(artikal);
                     await _context.SaveChangesAsync();
                 }
@@ -146,7 +155,10 @@ namespace DressCode.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
+            //ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
             return View(artikal);
         }
 
