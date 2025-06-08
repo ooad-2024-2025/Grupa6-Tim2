@@ -1,3 +1,4 @@
+using System.Globalization;
 using DressCode.Data;
 using DressCode.Models;
 using Microsoft.AspNetCore.Identity;
@@ -21,6 +22,21 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(60);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
+});
+
+// Configure localization for Bosnia and Herzegovina
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var supportedCultures = new[]
+    {
+        new CultureInfo("bs-BA"), // Bosnian (Bosnia and Herzegovina)
+        new CultureInfo("hr-BA"), // Croatian (Bosnia and Herzegovina)
+        new CultureInfo("sr-Latn-BA") // Serbian Latin (Bosnia and Herzegovina)
+    };
+    
+    options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("bs-BA");
+    options.SupportedCultures = supportedCultures;
+    options.SupportedUICultures = supportedCultures;
 });
 
 builder.Services.AddHttpContextAccessor();

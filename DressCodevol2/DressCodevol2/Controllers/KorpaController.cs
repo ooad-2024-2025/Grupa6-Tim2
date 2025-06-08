@@ -206,43 +206,137 @@ namespace DressCode.Controllers
         }
 
         // GET: Korpa/Edit/5
-        public async Task<IActionResult> IzbaciElement(int? id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> IzbaciElement(int stavkaKorpeId)
         {
-            if (id == null)
-                return NotFound();
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
 
-            var korpa = await _context.Korpe.FindAsync(id);
+            // Find the cart item to remove
+            var stavkaKorpe = await _context.StavkeKorpe.FindAsync(stavkaKorpeId);
+            if (stavkaKorpe == null)
+                return NotFound("Stavka korpe nije pronađena.");
+
+            // Find the link between cart and cart item
+            var link = await _context.KorpaStavkeKorpe
+                .FirstOrDefaultAsync(x => x.StavkaKorpeId == stavkaKorpeId);
+    
+            if (link == null)
+                return NotFound("Veza između korpe i stavke nije pronađena.");
+
+            // Get the cart to update total price
+            var korpa = await _context.Korpe.FindAsync(link.KorpaId);
             if (korpa == null)
-                return NotFound();
+                return NotFound("Korpa nije pronađena.");
 
-            var links = await _context.KorpaStavkeKorpe
-                .Where(x => x.KorpaId == korpa.Id)
-                .ToListAsync();
+            // Check if this cart belongs to the current user
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (korpa.KorisnikID != userId)
+                return Unauthorized();
 
-            var stavkeDto = new List<KorpaStavkaDto>();
-            foreach (var link in links)
-            {
-                var stavka = await _context.StavkeKorpe.FindAsync(link.StavkaKorpeId);
-                var artikal = await _context.Artikli.FindAsync(stavka.ArtikalId);
-                stavkeDto.Add(new KorpaStavkaDto
-                {
-                    StavkaKorpeId = stavka.Id,
-                    ArtikalNaziv = artikal?.Opis ?? "(nepoznato)",
-                    Kolicina = stavka.Kolicina,
-                    CijenaPoKomadu = stavka.CijenaPoKomadu
-                });
-            }
+            // Calculate the amount to subtract from total
+            double amountToSubtract = stavkaKorpe.Kolicina * stavkaKorpe.CijenaPoKomadu;
 
-            var vm = new KorpaViewModel
-            {
-                KorpaId = korpa.Id,
-                UkupnaCijena = korpa.UkupnaCijena,
-                IsAktivna = korpa.IsAktivna,
-                Stavke = stavkeDto
-            };
+            // Remove the link and the cart item
+            _context.KorpaStavkeKorpe.Remove(link);
+            _context.StavkeKorpe.Remove(stavkaKorpe);
 
-            return View(vm);
+            // Update cart total price
+            korpa.UkupnaCijena -= amountToSubtract;
+            if (korpa.UkupnaCijena < 0) korpa.UkupnaCijena = 0; // Ensure it doesn't go negative
+
+            _context.Update(korpa);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
+       
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> Naruci()
+{
+    if (!User.Identity.IsAuthenticated)
+        return RedirectToAction("Login", "Account");
+
+    var korpa = await GetOrCreateKorpaAsync();
+    if (korpa == null || !korpa.IsAktivna)
+        return NotFound("Korpa nije pronađena ili nije aktivna.");
+
+    // Check if cart has items
+    var links = await _context.KorpaStavkeKorpe
+        .Where(x => x.KorpaId == korpa.Id)
+        .ToListAsync();
+
+    if (!links.Any())
+        return BadRequest("Korpa je prazna.");
+
+    // Redirect to address form instead of creating order immediately
+    var addressViewModel = new AdresaViewModel
+    {
+        KorpaId = korpa.Id,
+        UkupnaCijena = korpa.UkupnaCijena
+    };
+
+    return View("Adresa", addressViewModel);
+}
+
+// Add new method to handle address form submission
+[HttpPost]
+[ValidateAntiForgeryToken]
+public async Task<IActionResult> KreirajNarudzbu(AdresaViewModel model)
+{
+    if (!ModelState.IsValid)
+    {
+        return View("Adresa", model);
+    }
+
+    if (!User.Identity.IsAuthenticated)
+        return RedirectToAction("Login", "Account");
+
+    var korpa = await _context.Korpe.FindAsync(model.KorpaId);
+    if (korpa == null || !korpa.IsAktivna)
+        return NotFound("Korpa nije pronađena ili nije aktivna.");
+
+    // Create address first
+    var adresa = new Adresa
+    {
+        Ulica = model.Ulica,
+        Grad = model.Grad,
+        Drzava = model.Drzava
+    };
+
+    _context.Adrese.Add(adresa);
+    await _context.SaveChangesAsync();
+
+    // Create order with address
+    var narudzba = new Narudzba
+    {
+        KorisnikId = korpa.KorisnikID,
+        UkupnaCijena = korpa.UkupnaCijena,
+        DatumKreiranja = DateTime.Now,
+        NacinPlacanja = NacinPlacanja.KARTICNO,
+        Adresa = adresa
+    };
+
+    _context.Narudzbe.Add(narudzba);
+    await _context.SaveChangesAsync();
+
+    // Store order ID in TempData to pass to payment
+    TempData["NarudzbaId"] = narudzba.Id;
+    TempData["Amount"] = narudzba.UkupnaCijena.ToString();
+
+    // Deactivate the cart
+    korpa.IsAktivna = false;
+    _context.Update(korpa);
+    await _context.SaveChangesAsync();
+
+    // Redirect to Stripe payment
+    return RedirectToAction("StripePayment", "Placanje");
+}
 
     }
+    
+    
 }
