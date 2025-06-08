@@ -92,6 +92,7 @@ namespace DressCode.Controllers
 
             if (ModelState.IsValid)
             {
+                artikal.Kategorija = await _context.TipoviOdjece.FirstOrDefaultAsync(t => t.Id == artikal.KategorijaId);
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
