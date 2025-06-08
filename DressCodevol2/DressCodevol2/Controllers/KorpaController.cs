@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
+using System.Security.Claims;
 
 namespace DressCode.Controllers
 {
@@ -19,10 +20,60 @@ namespace DressCode.Controllers
             _context = context;
         }
 
+        private async Task<Korpa?> GetOrCreateKorpaAsync()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return null;
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var korpa = await _context.Korpe
+                .FirstOrDefaultAsync(c => c.KorisnikID == userId && c.IsAktivna);
+
+            if (korpa == null)
+            {
+                korpa = new Korpa
+                {
+                    KorisnikID = userId,
+                    IsAktivna = true,
+                    UkupnaCijena = 0
+                };
+                _context.Korpe.Add(korpa);
+                await _context.SaveChangesAsync();
+            }
+            return korpa;
+        }
+
+
         // GET: Korpa
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Korpe.ToListAsync());
+            var korpa = await GetOrCreateKorpaAsync();
+            var links = await _context.KorpaStavkeKorpe
+                .Where(x => x.KorpaId == korpa.Id)
+                .ToListAsync();
+            var stavkeDto = new List<KorpaStavkaDto>();
+            foreach (var link in links)
+            {
+                var stavka = await _context.StavkeKorpe.FindAsync(link.StavkaKorpeId);
+                var artikal = await _context.Artikli.FindAsync(stavka.ArtikalId);
+                stavkeDto.Add(new KorpaStavkaDto
+                {
+                    StavkaKorpeId = stavka.Id,
+                    ArtikalNaziv = artikal?.Opis ?? "(nepoznato)",
+                    Kolicina = stavka.Kolicina,
+                    CijenaPoKomadu = stavka.CijenaPoKomadu
+                });
+            }
+            var vm = new KorpaViewModel
+            {
+                KorpaId = korpa.Id,
+                UkupnaCijena = korpa.UkupnaCijena,
+                IsAktivna = korpa.IsAktivna,
+                Stavke = stavkeDto
+            };
+
+            return View(vm);
         }
 
         // GET: Korpa/Details/5
@@ -153,5 +204,45 @@ namespace DressCode.Controllers
         {
             return _context.Korpe.Any(e => e.Id == id);
         }
+
+        // GET: Korpa/Edit/5
+        public async Task<IActionResult> IzbaciElement(int? id)
+        {
+            if (id == null)
+                return NotFound();
+
+            var korpa = await _context.Korpe.FindAsync(id);
+            if (korpa == null)
+                return NotFound();
+
+            var links = await _context.KorpaStavkeKorpe
+                .Where(x => x.KorpaId == korpa.Id)
+                .ToListAsync();
+
+            var stavkeDto = new List<KorpaStavkaDto>();
+            foreach (var link in links)
+            {
+                var stavka = await _context.StavkeKorpe.FindAsync(link.StavkaKorpeId);
+                var artikal = await _context.Artikli.FindAsync(stavka.ArtikalId);
+                stavkeDto.Add(new KorpaStavkaDto
+                {
+                    StavkaKorpeId = stavka.Id,
+                    ArtikalNaziv = artikal?.Opis ?? "(nepoznato)",
+                    Kolicina = stavka.Kolicina,
+                    CijenaPoKomadu = stavka.CijenaPoKomadu
+                });
+            }
+
+            var vm = new KorpaViewModel
+            {
+                KorpaId = korpa.Id,
+                UkupnaCijena = korpa.UkupnaCijena,
+                IsAktivna = korpa.IsAktivna,
+                Stavke = stavkeDto
+            };
+
+            return View(vm);
+        }
+
     }
 }

@@ -26,7 +26,7 @@ namespace DressCode.Controllers
         }
 
         // GET: StavkaKorpe/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int id)
         {
             if (id == null)
             {
@@ -86,7 +86,7 @@ namespace DressCode.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Velicina,Kolicina,CijenaPoKomadu")] StavkaKorpe stavkaKorpe)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Velicina,Kolicina,CijenaPoKomadu")] StavkaKorpe stavkaKorpe)
         {
             if (id != stavkaKorpe.Id)
             {
@@ -117,7 +117,7 @@ namespace DressCode.Controllers
         }
 
         // GET: StavkaKorpe/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
@@ -137,7 +137,7 @@ namespace DressCode.Controllers
         // POST: StavkaKorpe/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var stavkaKorpe = await _context.StavkeKorpe.FindAsync(id);
             if (stavkaKorpe != null)
@@ -149,7 +149,7 @@ namespace DressCode.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StavkaKorpeExists(string id)
+        private bool StavkaKorpeExists(int id)
         {
             return _context.StavkeKorpe.Any(e => e.Id == id);
         }

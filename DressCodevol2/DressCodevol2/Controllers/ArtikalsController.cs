@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DressCode.Data;
+using DressCode.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DressCode.Data;
-using DressCode.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace DressCode.Controllers
 {
@@ -17,6 +19,34 @@ namespace DressCode.Controllers
         public ArtikalsController(ApplicationDbContext context)
         {
             _context = context;
+        }
+        // ******************************************
+
+        // DUPLIRANJE KODA, TREBALO BI IZDVOJITI U ODVOJEN INTERFEJS KASNIJE
+
+        // ******************************************
+        private async Task<Korpa?> GetOrCreateKorpaAsync()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return null;
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var korpa = await _context.Korpe
+                .FirstOrDefaultAsync(c => c.KorisnikID == userId && c.IsAktivna);
+
+            if (korpa == null)
+            {
+                korpa = new Korpa
+                {
+                    KorisnikID = userId,
+                    IsAktivna = true,
+                    UkupnaCijena = 0
+                };
+                _context.Korpe.Add(korpa);
+                await _context.SaveChangesAsync();
+            }
+            return korpa;
         }
 
         // GET: Artikals/Create
@@ -199,6 +229,37 @@ namespace DressCode.Controllers
         private bool ArtikalExists(int id)
         {
             return _context.Artikli.Any(e => e.Id == id);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DodajUKorpu(int id)
+        {
+            var artikal = await _context.Artikli.FindAsync(id);
+            if (artikal == null) return NotFound();
+
+            var korpa = await GetOrCreateKorpaAsync();
+
+            var stavka = new StavkaKorpe
+            {
+                ArtikalId = artikal.Id,
+                Velicina = artikal.Velicina,
+                Kolicina = 1,
+                CijenaPoKomadu = artikal.Cijena
+            };
+            _context.StavkeKorpe.Add(stavka);
+            await _context.SaveChangesAsync();
+            var link = new KorpaStavkaKorpe
+            {
+                KorpaId = korpa.Id,
+                StavkaKorpeId = stavka.Id
+            };
+            _context.KorpaStavkeKorpe.Add(link);
+            korpa.UkupnaCijena += stavka.Kolicina * stavka.CijenaPoKomadu;
+            _context.Korpe.Update(korpa);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
