@@ -270,9 +270,6 @@ namespace DressCode.Data.Migrations
                     b.Property<int>("AdresaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ArtikalId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("DatumKreiranja")
                         .HasColumnType("datetime2");
 
@@ -384,8 +381,14 @@ namespace DressCode.Data.Migrations
 
             modelBuilder.Entity("DressCode.Models.StavkaKorpe", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ArtikalId")
+                        .HasColumnType("int");
 
                     b.Property<double>("CijenaPoKomadu")
                         .HasColumnType("float");

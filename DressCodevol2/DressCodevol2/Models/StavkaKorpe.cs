@@ -2,7 +2,8 @@
 {
     public class StavkaKorpe
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
+        public int ArtikalId { get; set; }
         public Velicina Velicina { get; set; }
         public int Kolicina {  get; set; }
         public double CijenaPoKomadu { get; set; }

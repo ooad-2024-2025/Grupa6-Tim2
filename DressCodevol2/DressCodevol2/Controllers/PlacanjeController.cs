@@ -31,17 +31,44 @@ namespace DressCode.Controllers
         public IActionResult StripePayment()
         {
             ViewBag.PublishableKey = _configuration["Stripe:PublishableKey"];
+    
+            // Get order info from TempData
+            if (TempData["NarudzbaId"] != null)
+            {
+                ViewBag.NarudzbaId = TempData["NarudzbaId"];
+        
+                // Convert string back to double
+                if (TempData["Amount"] != null && double.TryParse(TempData["Amount"].ToString(), out double amount))
+                {
+                    ViewBag.Amount = amount;
+                }
+                else
+                {
+                    ViewBag.Amount = 0.0;
+                }
+        
+                // Keep TempData for the next request (ProcessPayment)
+                TempData.Keep("NarudzbaId");
+                TempData.Keep("Amount");
+            }
+            else
+            {
+                // Default values if accessed directly
+                ViewBag.Amount = 0.0;
+                ViewBag.NarudzbaId = 0;
+            }
+    
             return View();
         }
         
         [HttpPost]
-        public async Task<IActionResult> ProcessPayment( string stripeToken, decimal amount)
+        public async Task<IActionResult> ProcessPayment(string stripeToken, decimal amount)
         {
             StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
-
+    
             var options = new ChargeCreateOptions
             {
-                Amount = (long)(amount * 100), 
+                Amount = (long)(amount * 100),
                 Currency = "bam",
                 Description = "DressCode Payment",
                 Source = stripeToken
@@ -51,22 +78,40 @@ namespace DressCode.Controllers
             try
             {
                 var charge = await service.CreateAsync(options);
-              
+
+                // Get the order ID from TempData
+                int narudzbaId = 0;
+                if (TempData["NarudzbaId"] != null)
+                {
+                    narudzbaId = Convert.ToInt32(TempData["NarudzbaId"]);
+                }
+
                 // Save payment to database
                 var placanje = new Placanje
                 {
-                    Cijena =(double) amount
+                    NarudzbaId = narudzbaId,
+                    Cijena = (double)amount
                 };
+        
                 _context.Add(placanje);
                 await _context.SaveChangesAsync();
-                
-                placanje.NarudzbaId = placanje.Id;
-                _context.Update(placanje);
-                await _context.SaveChangesAsync();
-                
+
+                // Update order payment method if needed
+                if (narudzbaId > 0)
+                {
+                    var narudzba = await _context.Narudzbe.FindAsync(narudzbaId);
+                    if (narudzba != null)
+                    {
+                        narudzba.NacinPlacanja = NacinPlacanja.KARTICNO;
+                        _context.Update(narudzba);
+                        await _context.SaveChangesAsync();
+                    }
+                }
+
                 ViewBag.Amount = amount;
                 ViewBag.SuccessMessage = "Plaćanje je uspešno izvršeno!";
-                ViewBag.NarudzbaId = placanje.Id; // Use the auto-generated Id
+                ViewBag.NarudzbaId = narudzbaId;
+        
                 return View("Success", charge);
             }
             catch (StripeException ex)

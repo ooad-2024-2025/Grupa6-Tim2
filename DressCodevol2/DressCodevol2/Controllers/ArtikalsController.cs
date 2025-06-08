@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DressCode.Data;
+using DressCode.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DressCode.Data;
-using DressCode.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace DressCode.Controllers
 {
@@ -17,6 +19,34 @@ namespace DressCode.Controllers
         public ArtikalsController(ApplicationDbContext context)
         {
             _context = context;
+        }
+        // ******************************************
+
+        // DUPLIRANJE KODA, TREBALO BI IZDVOJITI U ODVOJEN INTERFEJS KASNIJE
+
+        // ******************************************
+        private async Task<Korpa?> GetOrCreateKorpaAsync()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return null;
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            var korpa = await _context.Korpe
+                .FirstOrDefaultAsync(c => c.KorisnikID == userId && c.IsAktivna);
+
+            if (korpa == null)
+            {
+                korpa = new Korpa
+                {
+                    KorisnikID = userId,
+                    IsAktivna = true,
+                    UkupnaCijena = 0
+                };
+                _context.Korpe.Add(korpa);
+                await _context.SaveChangesAsync();
+            }
+            return korpa;
         }
 
         // GET: Artikals/Create
@@ -33,9 +63,83 @@ namespace DressCode.Controllers
         }
 
         // GET: Artikals
+        /*
         public async Task<IActionResult> Index()
         {
             return View(await _context.Artikli.Include(a => a.Kategorija).ToListAsync());
+        }*/
+
+        // GET: Artikals
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            int? kategorijaFilter,
+            Spol? spolFilter,
+            Velicina? velicinaFilter,
+            string materijal)
+        {
+            // Čuvanje trenutnih filter vrijednosti za view
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["CurrentKategorija"] = kategorijaFilter;
+            ViewData["CurrentSpol"] = spolFilter;
+            ViewData["CurrentVelicina"] = velicinaFilter;
+            ViewData["CurrentMaterijal"] = materijal;
+
+            // Sortiranje parametri
+            ViewData["CijenaSortParm"] = String.IsNullOrEmpty(sortOrder) ? "cijena_desc" : "";
+            ViewData["CijenaAscSortParm"] = sortOrder == "cijena_desc" ? "cijena_asc" : "cijena_desc";
+
+            // Dohvatiti sve artikle sa kategorijama
+            var artikli = _context.Artikli.Include(a => a.Kategorija).AsQueryable();
+
+            // Filtriranje
+            if (kategorijaFilter.HasValue)
+            {
+                artikli = artikli.Where(a => a.KategorijaId == kategorijaFilter);
+            }
+
+            if (spolFilter.HasValue)
+            {
+                artikli = artikli.Where(a => a.Spol == spolFilter);
+            }
+
+            if (velicinaFilter.HasValue)
+            {
+                artikli = artikli.Where(a => a.Velicina == velicinaFilter);
+            }
+
+            if (!String.IsNullOrEmpty(materijal))
+            {
+                artikli = artikli.Where(a => a.Materijal.Contains(materijal));
+            }
+
+            // Sortiranje
+            switch (sortOrder)
+            {
+                case "cijena_desc":
+                    artikli = artikli.OrderByDescending(a => a.Cijena);
+                    break;
+                case "cijena_asc":
+                    artikli = artikli.OrderBy(a => a.Cijena);
+                    break;
+                default:
+                    artikli = artikli.OrderBy(a => a.Id);
+                    break;
+            }
+
+            // Priprema podataka za dropdown liste
+            ViewData["Kategorije"] = new SelectList(
+                await _context.TipoviOdjece.ToListAsync(),
+                "Id",
+                "Naziv",
+                kategorijaFilter);
+            ViewData["Spolovi"] = new SelectList(
+                Enum.GetValues(typeof(Spol)).Cast<Spol>(),
+                spolFilter);
+            ViewData["Velicine"] = new SelectList(
+                Enum.GetValues(typeof(Velicina)).Cast<Velicina>(),
+                velicinaFilter);
+
+            return View(await artikli.ToListAsync());
         }
 
         // GET: Artikals/Details/5
@@ -57,26 +161,6 @@ namespace DressCode.Controllers
             return View(artikal);
         }
 
-        /*
-        // POST: Artikals/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(artikal);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
-            //ViewBag.Kategorija = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
-            Console.WriteLine("KategorijaId: " + artikal.KategorijaId);
-            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
-            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return View(artikal);
-        }*/
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
@@ -92,6 +176,7 @@ namespace DressCode.Controllers
 
             if (ModelState.IsValid)
             {
+                artikal.Kategorija = await _context.TipoviOdjece.FirstOrDefaultAsync(t => t.Id == artikal.KategorijaId);
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -198,6 +283,37 @@ namespace DressCode.Controllers
         private bool ArtikalExists(int id)
         {
             return _context.Artikli.Any(e => e.Id == id);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DodajUKorpu(int id)
+        {
+            var artikal = await _context.Artikli.FindAsync(id);
+            if (artikal == null) return NotFound();
+
+            var korpa = await GetOrCreateKorpaAsync();
+
+            var stavka = new StavkaKorpe
+            {
+                ArtikalId = artikal.Id,
+                Velicina = artikal.Velicina,
+                Kolicina = 1,
+                CijenaPoKomadu = artikal.Cijena
+            };
+            _context.StavkeKorpe.Add(stavka);
+            await _context.SaveChangesAsync();
+            var link = new KorpaStavkaKorpe
+            {
+                KorpaId = korpa.Id,
+                StavkaKorpeId = stavka.Id
+            };
+            _context.KorpaStavkeKorpe.Add(link);
+            korpa.UkupnaCijena += stavka.Kolicina * stavka.CijenaPoKomadu;
+            _context.Korpe.Update(korpa);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

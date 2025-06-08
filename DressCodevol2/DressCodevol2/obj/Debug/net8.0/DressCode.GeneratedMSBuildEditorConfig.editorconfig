@@ -224,6 +224,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Email/Send.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1haWxcU2VuZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -250,6 +254,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Kartica/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS2FydGljYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Adresa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcS29ycGFcQWRyZXNhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Korpa/Create.cshtml]

@@ -1,0 +1,96 @@
+@model DressCode.Models.AdresaViewModel
+
+@{
+    ViewData["Title"] = "Adresa za dostavu";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center mb-0">Adresa za dostavu</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Order Summary -->
+                    <div class="alert alert-info mb-4">
+                        <h5><i class="fas fa-shopping-cart"></i> Pregled narudžbe</h5>
+                        <p class="mb-1"><strong>Ukupna cijena:</strong> @Model.UkupnaCijena.ToString("C")</p>
+                        <p class="mb-0"><small class="text-muted">Molimo unesite adresu za dostavu da biste završili narudžbu.</small></p>
+                    </div>
+
+                    <!-- Address Form -->
+                    <form asp-action="KreirajNarudzbu" method="post">
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.KorpaId)
+                        @Html.HiddenFor(m => m.UkupnaCijena)
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="Ulica" class="form-label"></label>
+                                <input asp-for="Ulica" class="form-control" placeholder="npr. Zmaja od Bosne 8" />
+                                <span asp-validation-for="Ulica" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label asp-for="Grad" class="form-label"></label>
+                                <input asp-for="Grad" class="form-control" placeholder="npr. Sarajevo" />
+                                <span asp-validation-for="Grad" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label asp-for="PostanskiBroj" class="form-label"></label>
+                                <input asp-for="PostanskiBroj" class="form-control" placeholder="npr. 71000" />
+                                <span asp-validation-for="PostanskiBroj" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="Drzava" class="form-label"></label>
+                                <select asp-for="Drzava" class="form-control">
+                                    <option value="Bosna i Hercegovina">Bosna i Hercegovina</option>
+                                    <option value="Hrvatska">Hrvatska</option>
+                                    <option value="Srbija">Srbija</option>
+                                    <option value="Crna Gora">Crna Gora</option>
+                                    <option value="Slovenija">Slovenija</option>
+                                    <option value="Makedonija">Makedonija</option>
+                                </select>
+                                <span asp-validation-for="Drzava" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <label asp-for="Napomene" class="form-label"></label>
+                                <textarea asp-for="Napomene" class="form-control" rows="3" 
+                                          placeholder="Dodatne napomene za dostavu (opciono)"></textarea>
+                                <span asp-validation-for="Napomene" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-success btn-lg w-100">
+                                    <i class="fas fa-credit-card"></i> Nastavi na plaćanje
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Back to Cart Link -->
+            <div class="text-center mt-3">
+                <a asp-action="Index" class="btn btn-link">
+                    <i class="fas fa-arrow-left"></i> Nazad na korpu
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

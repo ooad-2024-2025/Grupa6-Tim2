@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public int KategorijaId { get; set; } 
-        public TipOdjece Kategorija { get; set; }
+        public TipOdjece? Kategorija { get; set; }
         public double Cijena { get; set; }
         public string Materijal {  get; set; }
         public Velicina Velicina { get; set; }

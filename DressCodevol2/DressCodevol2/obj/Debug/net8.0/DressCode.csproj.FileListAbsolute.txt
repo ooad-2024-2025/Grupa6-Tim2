@@ -567,10 +567,15 @@ C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\De
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.DressCode.props
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DressCode.props
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\staticwebassets.pack.json
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\DressCode.csproj.Up2Date
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\DressCode.dll
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\refint\DressCode.dll
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\DressCode.pdb
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\DressCode.genruntimeconfig.cache
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\ref\DressCode.dll
-C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\MailKit.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\MimeKit.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
