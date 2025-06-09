@@ -4,7 +4,6 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using DressCode.Models;
 using Microsoft.AspNetCore.Identity;
@@ -26,39 +25,29 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
             _signInManager = signInManager;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string Username { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Phone]
-            [Display(Name = "Phone number")]
+            [Display(Name = "Broj telefona")]
             public string PhoneNumber { get; set; }
+
+            [DataType(DataType.Date)]
+            [Display(Name = "Datum rođenja")]
+            public DateTime? DatumRodjenja { get; set; }
+
+            [Display(Name = "JMBG")]
+            public string JMBG { get; set; }
+
+            [Display(Name = "Želim i dalje biti član Loyalty kluba")]
+            public bool IsLoyal { get; set; }
         }
 
         private async Task LoadAsync(Korisnik user)
@@ -70,7 +59,10 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                DatumRodjenja = user.DatumRodjenja,
+                JMBG = user.JMBG,
+                IsLoyal = user.IsLoyal
             };
         }
 
@@ -100,19 +92,32 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
+            // Ažuriraj broj telefona samo ako se promijenio
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
                 var setPhoneResult = await _userManager.SetPhoneNumberAsync(user, Input.PhoneNumber);
                 if (!setPhoneResult.Succeeded)
                 {
-                    StatusMessage = "Unexpected error when trying to set phone number.";
+                    StatusMessage = "Greška prilikom ažuriranja broja telefona.";
                     return RedirectToPage();
                 }
             }
 
+            // Ažuriraj dodatna polja
+            user.DatumRodjenja = Input.DatumRodjenja;
+            user.JMBG = Input.JMBG;
+            user.IsLoyal = Input.IsLoyal;
+
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded)
+            {
+                StatusMessage = "Greška prilikom ažuriranja profila.";
+                return RedirectToPage();
+            }
+
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Your profile has been updated";
+            StatusMessage = "Profil je uspješno ažuriran.";
             return RedirectToPage();
         }
     }

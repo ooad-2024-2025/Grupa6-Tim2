@@ -28,7 +28,7 @@
                         <div class="row g-4">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 position-relative">
-                                    <input asp-for="Username" class="form-control form-control-lg border-2 rounded-3"
+                                    <input asp-for="Username" class="form-control form-control-lg border-2 rounded-3 small-text"
                                            placeholder="Molimo odaberite username." disabled />
                                     <label asp-for="Username" class="form-label text-muted">
                                         <i class="fas fa-user me-2"></i>Korisničko ime
@@ -50,6 +50,37 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.DatumRodjenja" type="date" class="form-control form-control-lg border-2 rounded-3" />
+                                <label asp-for="Input.DatumRodjenja" class="form-label text-muted">
+                                    <i class="fas fa-calendar-alt me-2"></i>Datum rođenja
+                                </label>
+                                <span asp-validation-for="Input.DatumRodjenja" class="text-danger small mt-1"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating mb-3">
+                                <input asp-for="Input.JMBG" class="form-control form-control-lg border-2 rounded-3"
+                                       placeholder="Unesite JMBG." />
+                                <label asp-for="Input.JMBG" class="form-label text-muted">
+                                    <i class="fas fa-id-card me-2"></i>JMBG
+                                </label>
+                                <span asp-validation-for="Input.JMBG" class="text-danger small mt-1"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check mb-3 ps-2">
+                                <input asp-for="Input.IsLoyal" class="form-check-input" />
+                                <label asp-for="Input.IsLoyal" class="form-check-label text-muted">
+                                    Želim biti član Loyalty kluba
+                                </label>
+                            </div>
+                        </div>
+
 
                         <div class="d-grid gap-2 mt-4">
                             <button id="update-profile-button" type="submit"
@@ -88,6 +119,11 @@
     .card {
         transition: all 0.3s ease;
     }
+
+    .small-text {
+        font-size: 0.85rem;
+    }
+
 </style>
 
 @section Scripts {

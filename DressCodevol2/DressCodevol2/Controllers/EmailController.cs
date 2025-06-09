@@ -20,9 +20,9 @@ namespace DressCode.Controllers
 
         // POST: Pošalji email
         [HttpPost]
-        public async Task<IActionResult> Send(string email, string subject, string message)
+        public async Task<IActionResult> Send(string email, string subject, string message, bool? confirm = false)
         {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(subject) || string.IsNullOrEmpty(message))
+            if (string.IsNullOrWhiteSpace(subject) || string.IsNullOrWhiteSpace(message))
             {
                 ViewBag.Error = "Sva polja su obavezna!";
                 return View();
@@ -30,8 +30,22 @@ namespace DressCode.Controllers
 
             try
             {
-                await _emailService.SendEmailAsync(email, subject, message);
-                ViewBag.Success = "Email je uspješno poslat!";
+                if (confirm == true)
+                {
+                    await _emailService.SendEmailToLoyalUsersAsync(subject, message);
+                    ViewBag.Success = "Email je poslan svim Loyalty korisnicima!";
+                }
+                else
+                {
+                    if (string.IsNullOrWhiteSpace(email))
+                    {
+                        ViewBag.Error = "Email adresa je obavezna ako ne šalješ svima!";
+                        return View();
+                    }
+
+                    await _emailService.SendEmailAsync(email, subject, message);
+                    ViewBag.Success = "Email je uspješno poslan!";
+                }
             }
             catch (Exception ex)
             {
@@ -40,5 +54,7 @@ namespace DressCode.Controllers
 
             return View();
         }
+
+
     }
 }

@@ -313,6 +313,8 @@ namespace DressCode.Controllers
             korpa.UkupnaCijena += stavka.Kolicina * stavka.CijenaPoKomadu;
             _context.Korpe.Update(korpa);
             await _context.SaveChangesAsync();
+
+            TempData["Dodano"] = "Artikal je dodan u korpu!";
             return RedirectToAction(nameof(Index));
         }
     }

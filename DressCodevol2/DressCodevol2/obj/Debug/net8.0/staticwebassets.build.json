@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XMmS1xoQ65k7bppv88f6Bjr62aWwTBbShiBk7Gsd2o0=",
+  "Hash": "ziM99s3sDEyc0V4UMgYPCv3UE76/lDozd1+zKAlLuAk=",
   "Source": "DressCode",
   "BasePath": "_content/DressCode",
   "Mode": "Default",
@@ -1424,6 +1424,48 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\back.jpg",
+      "SourceId": "DressCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\",
+      "BasePath": "_content/DressCode",
+      "RelativePath": "images/back#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vicepgvp71",
+      "Integrity": "GaA41cFIwUaqUF7Gliu9ACLMD862eCVdey7+xODdWEQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\back.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\dodaci.jpg",
+      "SourceId": "DressCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\",
+      "BasePath": "_content/DressCode",
+      "RelativePath": "images/dodaci#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0wwjizl29e",
+      "Integrity": "QLvZPZFILChwdjqJsBzmQN7giD2bTG+nyBCfUHjYbsg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\dodaci.jpg"
+    },
+    {
       "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\login.png",
       "SourceId": "DressCode",
       "SourceType": "Discovered",
@@ -1443,6 +1485,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\login.png"
+    },
+    {
+      "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\musko.jpg",
+      "SourceId": "DressCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\",
+      "BasePath": "_content/DressCode",
+      "RelativePath": "images/musko#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6j56kmqaj9",
+      "Integrity": "ftKDPPbACz6Cvd4frUpEx1acg+0M1Ov5fcb7L5Adb1I=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\musko.jpg"
     },
     {
       "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\radnici\\2fbb1c56-4867-4250-b62a-28e91b377b67.jpg",
@@ -1590,6 +1653,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\v42_200.png"
+    },
+    {
+      "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\zensko.jpg",
+      "SourceId": "DressCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\",
+      "BasePath": "_content/DressCode",
+      "RelativePath": "images/zensko#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "wkuig5ehib",
+      "Integrity": "UM/P15dwkp4xJrUjCktvizZjBJDw5gRdnXcSy++Vkhc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\zensko.jpg"
     },
     {
       "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\js\\site.js",
@@ -5606,6 +5690,170 @@
       ]
     },
     {
+      "Route": "images/back.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\back.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "105007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GaA41cFIwUaqUF7Gliu9ACLMD862eCVdey7+xODdWEQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GaA41cFIwUaqUF7Gliu9ACLMD862eCVdey7+xODdWEQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/back.vicepgvp71.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\back.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "105007"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GaA41cFIwUaqUF7Gliu9ACLMD862eCVdey7+xODdWEQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vicepgvp71"
+        },
+        {
+          "Name": "label",
+          "Value": "images/back.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GaA41cFIwUaqUF7Gliu9ACLMD862eCVdey7+xODdWEQ="
+        }
+      ]
+    },
+    {
+      "Route": "images/dodaci.0wwjizl29e.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\dodaci.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27919"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QLvZPZFILChwdjqJsBzmQN7giD2bTG+nyBCfUHjYbsg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0wwjizl29e"
+        },
+        {
+          "Name": "label",
+          "Value": "images/dodaci.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QLvZPZFILChwdjqJsBzmQN7giD2bTG+nyBCfUHjYbsg="
+        }
+      ]
+    },
+    {
+      "Route": "images/dodaci.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\dodaci.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "27919"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QLvZPZFILChwdjqJsBzmQN7giD2bTG+nyBCfUHjYbsg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QLvZPZFILChwdjqJsBzmQN7giD2bTG+nyBCfUHjYbsg="
+        }
+      ]
+    },
+    {
       "Route": "images/login.7hwll2g77a.png",
       "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\login.png",
       "Selectors": [],
@@ -5684,6 +5932,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-VSv9YDJD3D+APKNIvTDLIrKd6ulJbAUCJBx8OB0ZXL0="
+        }
+      ]
+    },
+    {
+      "Route": "images/musko.6j56kmqaj9.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\musko.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93711"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ftKDPPbACz6Cvd4frUpEx1acg+0M1Ov5fcb7L5Adb1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6j56kmqaj9"
+        },
+        {
+          "Name": "label",
+          "Value": "images/musko.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ftKDPPbACz6Cvd4frUpEx1acg+0M1Ov5fcb7L5Adb1I="
+        }
+      ]
+    },
+    {
+      "Route": "images/musko.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\musko.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "93711"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ftKDPPbACz6Cvd4frUpEx1acg+0M1Ov5fcb7L5Adb1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ftKDPPbACz6Cvd4frUpEx1acg+0M1Ov5fcb7L5Adb1I="
         }
       ]
     },
@@ -6258,6 +6588,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-mKX0iz6d9QzFygBFYgmuMgpi7ckhL4Elk4Xmat2duhI="
+        }
+      ]
+    },
+    {
+      "Route": "images/zensko.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\zensko.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UM/P15dwkp4xJrUjCktvizZjBJDw5gRdnXcSy++Vkhc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UM/P15dwkp4xJrUjCktvizZjBJDw5gRdnXcSy++Vkhc="
+        }
+      ]
+    },
+    {
+      "Route": "images/zensko.wkuig5ehib.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\zensko.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "34058"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UM/P15dwkp4xJrUjCktvizZjBJDw5gRdnXcSy++Vkhc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "wkuig5ehib"
+        },
+        {
+          "Name": "label",
+          "Value": "images/zensko.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UM/P15dwkp4xJrUjCktvizZjBJDw5gRdnXcSy++Vkhc="
         }
       ]
     },

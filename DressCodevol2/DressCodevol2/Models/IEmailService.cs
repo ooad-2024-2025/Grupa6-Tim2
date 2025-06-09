@@ -3,19 +3,23 @@
     using MailKit.Net.Smtp;
     using MimeKit;
     using Microsoft.Extensions.Options;
+    using Microsoft.AspNetCore.Identity;
 
     public interface IEmailService
     {
         Task SendEmailAsync(string toEmail, string subject, string body);
+        Task SendEmailToLoyalUsersAsync(string subject, string body);
     }
 
     public class EmailService : IEmailService
     {
         private readonly EmailSettings _emailSettings;
+        private readonly UserManager<Korisnik> _userManager;
 
-        public EmailService(IOptions<EmailSettings> emailSettings)
+        public EmailService(IOptions<EmailSettings> emailSettings, UserManager<Korisnik> userManager)
         {
             _emailSettings = emailSettings.Value;
+            _userManager = userManager;
         }
 
         public async Task SendEmailAsync(string toEmail, string subject, string body)
@@ -34,5 +38,21 @@
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
         }
+
+        public async Task SendEmailToLoyalUsersAsync(string subject, string body)
+        {
+            var loyalUsers = _userManager.Users
+                .Where(u => u.IsLoyal && !string.IsNullOrEmpty(u.Email))
+                .ToList();
+
+            foreach (var user in loyalUsers)
+            {
+                await SendEmailAsync(user.Email, subject, body);
+                // await Task.Delay(200); // ako želiš throttling zbog SMTP limita
+            }
+        }
     }
+
 }
+
+

@@ -1,7 +1,208 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<div class="text-center">
-    <h1 class="display-4">DressCode</h1>
+    .hero-section {
+        height: 70vh;
+        width: 100vw;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("/images/back.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 4rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+
+    .btn-register {
+        background-color: rgba(255,255,255,0.2);
+        border: 2px solid white;
+        color: white;
+        padding: 12px 30px;
+        font-size: 1rem;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        display: inline-block;
+    }
+
+        .btn-register:hover {
+            background-color: white;
+            color: #333;
+            text-decoration: none;
+        }
+
+    .section {
+        padding: 80px 0;
+    }
+
+        .section:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+    .section-content {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        gap: 60px;
+    }
+
+    .section-text {
+        flex: 1;
+    }
+
+        .section-text h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-text p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+    .section-image {
+        flex: 1;
+    }
+
+        .section-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+    .btn-shop {
+        background-color: #6c757d;
+        color: white;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-shop:hover {
+            background-color: #5a6268;
+            color: white;
+            text-decoration: none;
+        }
+
+    .bestsellers-section {
+        padding: 80px 0;
+        text-align: center;
+    }
+
+        .bestsellers-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+    @@media (max-width: 768px) {
+        .hero-content h1
+
+    {
+        font-size: 2.5rem;
+    }
+
+    .section-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-text h2 {
+        font-size: 2rem;
+    }
+
+    }
+</style>
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>DressCode</h1>
+        <p>Sve što vam treba na jednom mjestu</p>
+        <a href="#" class="btn-register">Registracija</a>
+    </div>
 </div>
+
+<!-- Muško Section -->
+<div class="section">
+    <div class="section-content">
+        <div class="section-text">
+            <h2>Muško</h2>
+            <p>Budite svoji, ali u stilu sa jedinstvenom odabranom kolekcijom koja se privet u modi.</p>
+            <a class="btn-shop" asp-area="" asp-controller="Artikals" asp-action="Index">Shop</a>
+        </div>
+        <div class="section-image">
+            <img src="/images/musko.jpg" alt="Muška moda">
+        </div>
+    </div>
+</div>
+
+<!-- Žensko Section -->
+<div class="section">
+    <div class="section-content">
+        <div class="section-image">
+            <img src="/images/zensko.jpg" alt="Ženska moda">
+        </div>
+        <div class="section-text">
+            <h2>Žensko</h2>
+            <p>A subheading for this section, as long or as short as you like.</p>
+            <a class="btn-shop" asp-area="" asp-controller="Artikals" asp-action="Index">Shop</a>
+        </div>
+    </div>
+</div>
+
+<!-- Dodaci Section -->
+<div class="section">
+    <div class="section-content">
+        <div class="section-text">
+            <h2>Dodaci</h2>
+            <p>A subheading for this section, as long or as short as you like.</p>
+            <a class="btn-shop" asp-area="" asp-controller="Artikals" asp-action="Index">Shop</a>
+        </div>
+        <div class="section-image">
+            <img src="/images/dodaci.jpg" alt="Dodaci">
+        </div>
+    </div>
+</div>
+
+<!-- Najprodavaniji proizvodi Section -->
+<div class="bestsellers-section">
+    <div class="container">
+        <h2>Najprodavaniji proizvodi</h2>
+        <a class="btn-shop" asp-area="" asp-controller="Artikals" asp-action="Index">Pogledaj sve</a>
+    </div>
+</div>
+

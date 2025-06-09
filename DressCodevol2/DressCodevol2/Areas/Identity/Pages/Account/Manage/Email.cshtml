@@ -62,19 +62,14 @@
 
                         <!-- New Email Section -->
                         <div class="mb-4">
-                            <h6 class="text-muted mb-3">Change Email Address</h6>
+                            <h6 class="text-muted mb-3">Promijeni email adresu</h6>
                             <div class="form-floating mb-3">
                                 <input asp-for="Input.NewEmail" class="form-control"
                                        autocomplete="email"
                                        aria-required="true"
-                                       placeholder="Enter your new email address" />
-                                <label asp-for="Input.NewEmail" class="form-label">New Email Address</label>
+                                       placeholder="Unesite novu email adresu" />
+                                <label asp-for="Input.NewEmail" class="form-label">Nova email adresa</label>
                                 <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
-                            </div>
-
-                            <div class="alert alert-info" role="alert">
-                                <i class="fas fa-info-circle me-2"></i>
-                                <strong>Note:</strong> You will need to verify your new email address before the change takes effect.
                             </div>
                         </div>
 
@@ -83,7 +78,7 @@
                             <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail"
                                     class="btn btn-primary btn-lg">
                                 <i class="fas fa-envelope me-2"></i>
-                                Change Email Address
+                                Promijeni
                             </button>
                         </div>
                     </form>
