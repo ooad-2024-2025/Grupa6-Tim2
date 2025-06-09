@@ -1,0 +1,33 @@
+﻿@model RadnikEditViewModel
+@{
+	ViewData["Title"] = "Detalji Radnika";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="@(
+             string.IsNullOrEmpty(Model.PostojeciSlikaUrl)
+                 ? Url.Content("~/images/UserImageDefault.jpg")
+                 : Model.PostojeciSlikaUrl.StartsWith("/")
+                     ? Model.PostojeciSlikaUrl
+                     : Url.Content("~/" + Model.PostojeciSlikaUrl.TrimStart('~', '/'))
+)" class="img-fluid rounded" />
+
+    </div>
+    <div class="col-md-8">
+        <h2>@Model.Ime @Model.Prezime</h2>
+        <dl class="row">
+            <dt class="col-sm-3">Datum rođenja</dt>
+            <dd class="col-sm-9">@Model.DatumRodjenja?.ToString("dd.MM.yyyy")</dd>
+            <dt class="col-sm-3">JMBG</dt>
+            <dd class="col-sm-9">@Model.JMBG</dd>
+            <dt class="col-sm-3">Loyal</dt>
+            <dd class="col-sm-9">@Model.IsLoyal</dd>
+            <dt class="col-sm-3">Kartica ID</dt>
+            <dd class="col-sm-9">@Model.KarticaId</dd>
+        </dl>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+    </div>
+</div>

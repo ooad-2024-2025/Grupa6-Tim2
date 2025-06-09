@@ -1,0 +1,43 @@
+﻿@model RadnikEditViewModel
+@{
+    ViewData["Title"] = "Kreiraj Radnika";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="@ViewContext.RouteData.Values["action"]" method="post" enctype="multipart/form-data">
+    <div class="form-group mb-2">
+        <label asp-for="Ime"></label>
+        <input asp-for="Ime" class="form-control" />
+        <span asp-validation-for="Ime" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-2">
+        <label asp-for="Prezime"></label>
+        <input asp-for="Prezime" class="form-control" />
+        <span asp-validation-for="Prezime" class="text-danger"></span>
+    </div>
+    <div class="form-group mb-2">
+        <label asp-for="DatumRodjenja"></label>
+        <input asp-for="DatumRodjenja" class="form-control" type="date" />
+    </div>
+    <div class="form-group mb-2">
+        <label asp-for="JMBG"></label>
+        <input asp-for="JMBG" class="form-control" />
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="Slika">Slika (jpg/png):</label>
+        <input asp-for="Slika" type="file" class="form-control" />
+            <img src="~/images/UserImageDefault.jpg" style="height:100px; margin-top:10px;"/>
+        
+    </div>
+    <button type="submit" class="btn btn-success">
+        @(ViewContext.RouteData.Values["action"].ToString() == "Create"
+                ? "Kreiraj"
+                : "Spasi")
+    </button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

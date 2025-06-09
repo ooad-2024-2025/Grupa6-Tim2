@@ -1,0 +1,22 @@
+﻿@model List<RadnikListItemViewModel>
+@{
+	ViewData["Title"] = "Radnici";
+}
+
+<h1>Radnici</h1>
+<a asp-action="Create" class="btn btn-primary">Dodaj Novog Radnika</a>
+
+<div class="row">
+	@foreach(var r in Model)
+	{
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <img src="@r.SlikaUrl" class="card-img-top" style="height:200px; object-fit:cover;" />
+                <div class="card-body">
+                    <h5 class="card-title">@r.ImePrezime</h5>
+                    <a asp-action="Details" asp-route-id="@r.Id" class="btn btn-sm btn-outline-primary">Pogledaj</a>
+                </div>
+            </div>
+        </div>
+	}
+</div>

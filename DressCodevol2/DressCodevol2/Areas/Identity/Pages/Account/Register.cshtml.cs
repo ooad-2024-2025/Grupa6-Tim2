@@ -141,7 +141,8 @@ namespace DressCode.Areas.Identity.Pages.Account
                     JMBG = null,
                     DatumRodjenja = new DateTime(),
                     IsLoyal = false,
-                    KarticaId = null
+                    KarticaId = null,
+                    SlikaUrl = null
                 };
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
