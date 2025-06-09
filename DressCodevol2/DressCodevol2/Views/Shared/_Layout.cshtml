@@ -33,12 +33,12 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Korpa" asp-action="Index">Korpa</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Email" asp-action="Send">Pošalji Email</a>
-                            </li>
                         }
                         @if (User.IsInRole("Administrator"))
                         {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Email" asp-action="Send">Pošalji Email</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Radnik" asp-action="Index">Radnici</a>
                             </li>

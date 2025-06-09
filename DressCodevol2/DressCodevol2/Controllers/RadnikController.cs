@@ -73,8 +73,9 @@ namespace DressCode.Controllers
 
             var user = new Korisnik
             {
-                UserName = Guid.NewGuid().ToString(),
-                Email = $"{vm.Ime}.{vm.Prezime}@dresscode.com",
+                Email = $"{vm.Ime}_{vm.Prezime}@dresscode.com",
+                UserName = $"{vm.Ime}_{vm.Prezime}@dresscode.com", 
+                EmailConfirmed = true,
                 Ime = vm.Ime,
                 Prezime = vm.Prezime,
                 DatumRodjenja = vm.DatumRodjenja,
