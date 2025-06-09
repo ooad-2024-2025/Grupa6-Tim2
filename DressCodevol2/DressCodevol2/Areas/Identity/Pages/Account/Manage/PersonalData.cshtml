@@ -1,26 +1,121 @@
 ﻿@page
 @model PersonalDataModel
 @{
-    ViewData["Title"] = "Personal Data";
+    ViewData["Title"] = "Podaci o korisniku";
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<h3>@ViewData["Title"]</h3>
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-gradient-warning text-dark py-4 rounded-top-4">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-shield-alt fa-2x me-3"></i>
+                        <div>
+                            <h3 class="mb-0 fw-bold">@ViewData["Title"]</h3>
+                            <p class="mb-0 opacity-75">Upravljanje vašim ličnim podacima</p>
+                        </div>
+                    </div>
+                </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <p>Your account contains personal data that you have given us. This page allows you to download or delete that data.</p>
-        <p>
-            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
-        </p>
-        <form id="download-data" asp-page="DownloadPersonalData" method="post">
-            <button class="btn btn-primary" type="submit">Download</button>
-        </form>
-        <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
-        </p>
+                <div class="card-body p-5">
+                    <div class="row g-4">
+                        <!-- Download sekcija -->
+                        <div class="col-md-6">
+                            <div class="card border-info border-2 h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-download fa-3x text-info"></i>
+                                    </div>
+                                    <h5 class="card-title text-info fw-bold">Preuzmi podatke</h5>
+                                    <p class="card-text text-muted mb-4">
+                                        Preuzmite kopiju svih vaših podataka pohranjenih u našem sistemu.
+                                    </p>
+                                    <form id="download-data" asp-page="DownloadPersonalData" method="post">
+                                        <button class="btn btn-info btn-lg rounded-3 px-4 py-2 fw-bold" type="submit">
+                                            <i class="fas fa-download me-2"></i>Preuzmi podatke
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delete sekcija -->
+                        <div class="col-md-6">
+                            <div class="card border-danger border-2 h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="mb-3">
+                                        <i class="fas fa-trash-alt fa-3x text-danger"></i>
+                                    </div>
+                                    <h5 class="card-title text-danger fw-bold">Obriši račun</h5>
+                                    <p class="card-text text-muted mb-3">
+                                        <strong class="text-danger">UPOZORENJE:</strong> Brisanje ovog računa će trajno ukloniti sve vaše podatke i ne može se poništiti.
+                                    </p>
+                                    <a id="delete" asp-page="DeletePersonalData"
+                                       class="btn btn-outline-danger btn-lg rounded-3 px-4 py-2 fw-bold"
+                                       onclick="return confirm('Da li ste sigurni da želite obrisati račun? Ova akcija se ne može poništiti.')">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>Obriši račun
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Informacijski panel -->
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <div class="alert alert-light border-2 rounded-3">
+                                <div class="d-flex align-items-start">
+                                    <i class="fas fa-info-circle fa-2x text-primary me-3 mt-1"></i>
+                                    <div>
+                                        <h6 class="fw-bold text-primary mb-2">Važne informacije</h6>
+                                        <ul class="mb-0 text-muted">
+                                            <li>Preuzimanje podataka uključuje sve informacije povezane s vašim računom</li>
+                                            <li>Podaci će biti dostavljeni u JSON formatu</li>
+                                            <li>Brisanje računa je nepovratna akcija koja uklanja sve podatke</li>
+                                            <li>Nakon brisanja, nećete moći pristupiti aplikaciji s istim podacima</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<style>
+    .bg-gradient-warning {
+        background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+    }
+
+    .btn-info {
+        background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+        border: none;
+        transition: all 0.3s ease;
+    }
+
+        .btn-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(116, 185, 255, 0.3);
+        }
+
+    .btn-outline-danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+    }
+
+    .card {
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+</style>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

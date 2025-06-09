@@ -1,48 +1,122 @@
 ﻿@model DressCode.Models.Artikal
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji artikla";
 }
 
-<h1>Details</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-info-circle"></i> Detalji artikla
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <h5>Osnove informacije</h5>
+                            <hr>
 
-<div>
-    <h4>Artikal</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cijena)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cijena)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Materijal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Materijal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Velicina)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Velicina)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Spol)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Spol)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-    </dl>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted">Kategorija:</label>
+                                <div>
+                                    <span class="badge bg-secondary fs-6">
+                                        @(Model.Kategorija?.Naziv ?? "N/A")
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted">Cijena:</label>
+                                <div>
+                                    <span class="fs-4 fw-bold text-success">
+                                        @Model.Cijena.ToString("0.00") KM
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted">Spol:</label>
+                                <div>
+                                    @if (Model.Spol.ToString() == "Muski")
+                                    {
+                                        <span class="badge bg-primary fs-6">@Model.Spol</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-pink fs-6">@Model.Spol</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h5>Specifikacije</h5>
+                            <hr>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted">Materijal:</label>
+                                <div>
+                                    <span class="badge bg-info fs-6">@Model.Materijal</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label fw-bold text-muted">Veličina:</label>
+                                <div>
+                                    <span class="badge bg-warning text-dark fs-6">@Model.Velicina</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.Opis))
+                    {
+                        <div class="mb-3">
+                            <h5>Opis</h5>
+                            <hr>
+                            <div class="card bg-light">
+                                <div class="card-body">
+                                    <p class="mb-0">@Model.Opis</p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">
+                                <i class="fas fa-edit"></i> Uredi
+                            </a>
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Nazad na listu
+                            </a>
+                        </div>
+                        <div>
+                            <form asp-action="DodajUKorpu" asp-route-id="@Model.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-shopping-cart"></i> Dodaj u korpu
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+<style>
+    .bg-pink {
+        background-color: #e83e8c !important;
+        color: white;
+    }
+
+    .fs-6 {
+        font-size: 1rem !important;
+    }
+</style>
