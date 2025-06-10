@@ -3,134 +3,136 @@
     ViewData["Title"] = "Detalji artikla";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">
-                        <i class="fas fa-info-circle"></i> Detalji artikla
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <dt class="col-sm-2">Slika</dt>
-                        <dd class="col-sm-10">
-                            @if (!string.IsNullOrEmpty(Model.SlikaUrl))
-                            {
-                                <img src="@Url.Content(Model.SlikaUrl)" style="height:150px;" />
-                            }
-                            else
-                            {
-                                <img src="~/images/ArtikalDefault.png" style="height:150px;" />
-                            }
-                        </dd>
-                        <div class="col-md-6">
-                            <h5>Osnove informacije</h5>
-                            <hr>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-bold text-muted">Kategorija:</label>
-                                <div>
-                                    <span class="badge bg-secondary fs-6">
-                                        @(Model.Kategorija?.Naziv ?? "N/A")
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-bold text-muted">Cijena:</label>
-                                <div>
-                                    <span class="fs-4 fw-bold text-success">
-                                        @Model.Cijena.ToString("0.00") KM
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-bold text-muted">Spol:</label>
-                                <div>
-                                    @if (Model.Spol.ToString() == "Muski")
-                                    {
-                                        <span class="badge bg-primary fs-6">@Model.Spol</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="badge bg-pink fs-6">@Model.Spol</span>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h5>Specifikacije</h5>
-                            <hr>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-bold text-muted">Materijal:</label>
-                                <div>
-                                    <span class="badge bg-info fs-6">@Model.Materijal</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label fw-bold text-muted">Veličina:</label>
-                                <div>
-                                    <span class="badge bg-warning text-dark fs-6">@Model.Velicina</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @if (!string.IsNullOrEmpty(Model.Opis))
+<div class="container py-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header" style="background-color: #f5f0e6; color: #5b4636; border: none;">
+            <h4 class="mb-0">
+                <i class="fas fa-info-circle"></i> Detalji artikla
+            </h4>
+        </div>
+        <div class="card-body">
+            <div class="row g-4">
+                <!-- Slika lijevo -->
+                <div class="col-md-4 d-flex align-items-center justify-content-center">
+                    @if (!string.IsNullOrEmpty(Model.SlikaUrl))
                     {
-                        <div class="mb-3">
-                            <h5>Opis</h5>
-                            <hr>
-                            <div class="card bg-light">
-                                <div class="card-body">
-                                    <p class="mb-0">@Model.Opis</p>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="@Url.Content(Model.SlikaUrl)" alt="Slika artikla" class="img-fluid rounded" style="max-height: 280px; object-fit: contain; box-shadow: 0 0 10px rgba(91, 70, 54, 0.15);" />
+                    }
+                    else
+                    {
+                        <img src="~/images/ArtikalDefault.png" alt="Nema slike" class="img-fluid rounded" style="max-height: 280px; object-fit: contain; box-shadow: 0 0 10px rgba(91, 70, 54, 0.15);" />
                     }
                 </div>
 
-                <div class="card-footer">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
-                            {
-                            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">
-                                <i class="fas fa-edit"></i> Uredi
-                            </a>
-                             }
-                            <a asp-action="Index" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Nazad na listu
-                            </a>
+                <!-- Tekst desno -->
+                <div class="col-md-8 d-flex flex-column">
+                    <!-- Opis veći na vrhu -->
+                    @if (!string.IsNullOrEmpty(Model.Opis))
+                    {
+                        <h3 class="mb-3 fw-semibold" style="color: #5b4636;">@Model.Opis</h3>
+                    }
+                    else
+                    {
+                        <h3 class="mb-3 fw-semibold fst-italic" style="color: #a1887f;">Nema opisa artikla</h3>
+                    }
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="mb-3" style="color: #8d715b;">Osnovne informacije</h5>
+                            <ul class="list-unstyled" style="color: #6f5846;">
+                                <li class="mb-2">
+                                    <strong>Kategorija:</strong>
+                                    <span class="ms-2">
+                                        @(Model.Kategorija?.Naziv ?? "N/A")
+                                    </span>
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Cijena:</strong>
+                                    <span class="fw-semibold text-success ms-2" style="color: #4a7729;">
+                                        @Model.Cijena.ToString("0.00") KM
+                                    </span>
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Spol:</strong>
+                                    <span class="badge @((Model.Spol.ToString() == "Muski") ? "bg-beige" : "bg-beige") ms-2" style="font-weight: 500; color: #5b4636; border-radius: 0.25rem; padding: 0.25em 0.5em;">
+                                        @Model.Spol
+                                    </span>
+                                </li>
+                            </ul>
                         </div>
-                        <div>
-                            <form asp-action="DodajUKorpu" asp-route-id="@Model.Id" method="post" class="d-inline">
-                                @Html.AntiForgeryToken()
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Dodaj u korpu
-                                </button>
-                            </form>
+
+                        <div class="col-md-6">
+                            <h5 class="mb-3" style="color: #8d715b;">Specifikacije</h5>
+                            <ul class="list-unstyled" style="color: #6f5846;">
+                                <li class="mb-2">
+                                    <strong>Materijal:</strong>
+                                    <span class="ms-2">@Model.Materijal</span>
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Veličina:</strong>
+                                    <span class="ms-2">@Model.Velicina</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-between align-items-center" style="background-color: #f5f0e6; border: none;">
+            <div>
+                @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">
+                        <i class="fas fa-edit"></i> Uredi
+                    </a>
+                }
+                <a asp-action="Index" class="btn btn-outline-brown">
+                    <i class="fas fa-arrow-left"></i> Nazad na listu
+                </a>
+            </div>
+            <div>
+                <form asp-action="DodajUKorpu" asp-route-id="@Model.Id" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-brown">
+                        <i class="fas fa-shopping-cart"></i> Dodaj u korpu
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 <style>
-    .bg-pink {
-        background-color: #e83e8c !important;
-        color: white;
+    /* Topli neutralni tonovi */
+    .bg-beige {
+        background-color: #d6c6b8 !important;
+        color: #5b4636 !important;
     }
 
-    .fs-6 {
-        font-size: 1rem !important;
+    .btn-outline-brown {
+        color: #7a5c40;
+        border-color: #7a5c40;
+    }
+
+        .btn-outline-brown:hover {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border-color: #7a5c40;
+        }
+
+    .btn-brown {
+        background-color: #7a5c40;
+        color: #f5f0e6;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #5b4636;
+            color: #f5f0e6;
+        }
+
+    body {
+        background: #fff1e6;
     }
 </style>
