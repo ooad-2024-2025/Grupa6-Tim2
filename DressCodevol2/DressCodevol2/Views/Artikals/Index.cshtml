@@ -37,7 +37,7 @@
     </script>
 }
 
-@if (User.IsInRole("Administrator") && User.IsInRole("Radnik"))
+@if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
 {
 <p>
     <a asp-action="Create" class="btn btn-success">Dodaj novi artikal</a>
@@ -186,7 +186,7 @@
                             </td>
                             <td>
                                 <div class="btn-group-vertical btn-group-sm" role="group">
-                                @if (User.IsInRole("Administrator") && User.IsInRole("Radnik")) {
+                                @if (User.IsInRole("Administrator") || User.IsInRole("Radnik")) {
                                
                                     <a asp-action="Edit" asp-route-id="@item.Id"
                                        class="btn btn-outline-warning btn-sm">

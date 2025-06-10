@@ -55,7 +55,7 @@
                 <i class="fas fa-shopping-cart"></i> Naruči
             </button>
         </form>
-        @if (User.IsInRole("Administrator"))
+        @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
         {
         <a asp-action="Edit" asp-route-id="@Model.KorpaId" class="btn btn-secondary">Uredi korpu</a>
         }
