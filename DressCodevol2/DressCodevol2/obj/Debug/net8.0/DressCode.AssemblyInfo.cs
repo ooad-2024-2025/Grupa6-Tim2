@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DressCode")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8d2318f54093c19051fbf57a1b266f41133d306")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55722cac08528a9953ce4ef4f9a905196ebe2602")]
 [assembly: System.Reflection.AssemblyProductAttribute("DressCode")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DressCode")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
