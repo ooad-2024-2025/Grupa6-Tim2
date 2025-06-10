@@ -164,7 +164,7 @@ namespace DressCode.Controllers
 
             var url = Url.Action(
                     action: "Details",
-                    controller: "Artikal",
+                    controller: "Artikals",
                     values: new { id = id },
                     protocol: Request.Scheme
                 );
