@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddTransient<DressCode.Models.IQRCodeService, DressCode.Models.QRCodeService>();
+
 
 
 // Add services to the container.

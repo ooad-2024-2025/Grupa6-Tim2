@@ -15,6 +15,7 @@ namespace DressCode.Controllers
     public class ArtikalsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IQRCodeService _qrService;
 
         public ArtikalsController(ApplicationDbContext context)
         {
@@ -157,6 +158,8 @@ namespace DressCode.Controllers
             {
                 return NotFound();
             }
+
+           
 
             return View(artikal);
         }
