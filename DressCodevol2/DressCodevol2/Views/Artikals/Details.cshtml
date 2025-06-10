@@ -88,9 +88,12 @@
                 <div class="card-footer">
                     <div class="d-flex justify-content-between">
                         <div>
+                            @if (User.IsInRole("Administrator") && User.IsInRole("Radnik"))
+                            {
                             <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">
                                 <i class="fas fa-edit"></i> Uredi
                             </a>
+                             }
                             <a asp-action="Index" class="btn btn-secondary">
                                 <i class="fas fa-arrow-left"></i> Nazad na listu
                             </a>

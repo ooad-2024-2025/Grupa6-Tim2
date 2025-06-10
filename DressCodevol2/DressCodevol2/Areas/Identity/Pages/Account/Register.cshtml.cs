@@ -76,14 +76,16 @@ namespace DressCode.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             /// 
-
-            [Required]
-            [Display(Name ="Ime")]
+            [Required(ErrorMessage = "Polje za ime je obavezno.")]
+            [MinLength(3, ErrorMessage = "Ime mora imati najmanje 3 znaka.")]
+            [Display(Name = "Ime")]
             public string Ime { get; set; }
 
-            [Required]
-            [Display(Name ="Prezime")]
-            public string Prezime {  get; set; }
+            [Required(ErrorMessage = "Polje za prezime je obavezno.")]
+            [MinLength(3, ErrorMessage = "Prezime mora imati najmanje 3 znaka.")]
+            [Display(Name = "Prezime")]
+            public string Prezime { get; set; }
+
 
             [Display(Name ="JMBG")]
             public string JMBG {  get; set; }
@@ -94,8 +96,8 @@ namespace DressCode.Areas.Identity.Pages.Account
 
 
 
-            [Required]
-            [EmailAddress]
+            [Required(ErrorMessage = "Polje za email je obavezno.")]
+            [EmailAddress(ErrorMessage = "Email adresa nije validna.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -103,20 +105,26 @@ namespace DressCode.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Polje za lozinku je obavezno.")]
+            [StringLength(15, ErrorMessage = "Lozinka mora imati najmanje {2}, a najviše {1} znakova.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
+            [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,15}$",  ErrorMessage = "Lozinka mora imati barem jedno veliko slovo, jedan broj i jedan specijalni znak.")]
             public string Password { get; set; }
+
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Potvrdi lozinku")]
+            [Compare("Password", ErrorMessage = "Unesene lozinke se ne slažu.")]
             public string ConfirmPassword { get; set; }
+
+
+            [Display(Name = "Loyalty program")]
+            public bool IsLoyal { get; set; }
         }
 
 
@@ -140,7 +148,7 @@ namespace DressCode.Areas.Identity.Pages.Account
                     Prezime = Input.Prezime,
                     JMBG = null,
                     DatumRodjenja = new DateTime(),
-                    IsLoyal = false,
+                    IsLoyal = Input.IsLoyal,
                     KarticaId = null,
                     SlikaUrl = null
                 };

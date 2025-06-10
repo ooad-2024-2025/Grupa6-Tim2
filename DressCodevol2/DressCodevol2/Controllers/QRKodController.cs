@@ -10,7 +10,7 @@ using DressCode.Models;
 
 namespace DressCode.Controllers
 {
-    public class QRKodController : Controller
+    public class QRKodController : Controller 
     {
         private readonly ApplicationDbContext _context;
         private readonly IQRCodeService _qrService;

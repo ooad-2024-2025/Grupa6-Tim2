@@ -591,3 +591,7 @@ C:\Users\Korisnik\Desktop\OOAD\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug
 C:\Users\Korisnik\Desktop\OOAD\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\System.Drawing.Common.dll
 C:\Users\Korisnik\Desktop\OOAD\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\System.Private.Windows.Core.dll
 C:\Users\Korisnik\Desktop\OOAD\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\System.Private.Windows.Core.dll
+C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll

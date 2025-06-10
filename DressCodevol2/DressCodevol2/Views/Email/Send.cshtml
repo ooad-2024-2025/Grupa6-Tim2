@@ -3,75 +3,244 @@
     ViewData["Title"] = "Pošalji Email";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 class="mb-4">@ViewData["Title"]</h2>
 
+<!-- Poruke o rezultatu -->
 @if (ViewBag.Success != null)
 {
-    <div class="alert alert-success">@ViewBag.Success</div>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>@ViewBag.Success
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 }
 
-<form asp-action="Send" method="post" id="emailForm" novalidate>
-    <!-- dodano novalidate zbog ostalih polja -->
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+@if (ViewBag.Warning != null)
+{
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <i class="fas fa-exclamation-triangle me-2"></i>@ViewBag.Warning
+        @if (ViewBag.FailedEmails != null)
+        {
+            <hr class="my-2" />
+            <small><strong>Neuspešni emailovi:</strong> @ViewBag.FailedEmails</small>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="fas fa-times-circle me-2"></i>@ViewBag.Error
+        @if (ViewBag.FailedEmails != null)
+        {
+            <hr class="my-2" />
+            <small><strong>Neuspešni emailovi:</strong> @ViewBag.FailedEmails</small>
+        }
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div id="email-form-container"
+<form asp-action="Send" method="post" id="emailForm" novalidate class="needs-validation">
+    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
     <div class="mb-3" id="email-group">
         <label for="Email" class="form-label">Email adresa</label>
         <input type="email"
                name="Email"
                id="Email"
-               class="form-control" />
+               class="form-control"
+               placeholder="Unesite email adresu"
+               value="@Model.Email" />
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
-    <div class="form-check mb-3">
+    <div class="form-check mb-4">
         <input type="hidden" name="SendToAll" value="false" />
         <input type="checkbox"
                name="SendToAll"
                id="SendToAll"
                value="true"
                class="form-check-input"
-               @(Model.SendToAll ? "checked" : "") />
-        <label for="SendToAll" class="form-check-label">
+        @(Model.SendToAll ? "checked" : "") />
+        <label for="SendToAll" class="form-check-label fw-bold">
             Pošalji svim Loyalty korisnicima
         </label>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Subject" class="form-label"></label>
-        <input asp-for="Subject" class="form-control" />
+        <label asp-for="Subject" class="form-label">Naslov poruke</label>
+        <input asp-for="Subject" class="form-control" placeholder="Unesite naslov" />
         <span asp-validation-for="Subject" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Message" class="form-label"></label>
-        <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+    <div class="mb-4">
+        <label asp-for="Message" class="form-label">Tekst poruke</label>
+        <textarea asp-for="Message" class="form-control" rows="5" placeholder="Unesite tekst poruke..."></textarea>
         <span asp-validation-for="Message" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Pošalji Email</button>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-paper-plane me-2"></i>Pošalji Email
+    </button>
 </form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script>
         $(function () {
-            function toggle() {
+            function toggleEmailInput() {
                 if ($("#SendToAll").prop("checked")) {
-                    $("#email-group").remove(); // potpuno uklanja email input
+                    $("#email-group").hide();
+                    $("#Email").val("dummy@example.com");
                 } else {
-                    if ($("#email-group").length === 0) {
-                        $("#emailForm .form-check").before(`
-                            <div class="mb-3" id="email-group">
-                                <label for="Email" class="form-label">Email adresa</label>
-                                <input type="email" name="Email" id="Email" class="form-control" />
-                                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-                            </div>
-                        `);
-                    }
+                    $("#email-group").show();
+                    $("#Email").val("");
                 }
             }
-            toggle();
-            $("#SendToAll").change(toggle);
+
+            toggleEmailInput();
+            $("#SendToAll").change(toggleEmailInput);
         });
     </script>
 }
+
+<style>
+    /* Glavni stilovi za formu */
+    #email-form-container {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        #email-form-container h2 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+            #email-form-container h2:after {
+                content: '';
+                display: block;
+                width: 60px;
+                height: 4px;
+                background: #3498db;
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 2px;
+            }
+
+        #email-form-container form {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+            border: 1px solid #e0e0e0;
+        }
+
+        /* Stilovi za input polja */
+        #email-form-container .form-label {
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 0.5rem;
+        }
+
+        #email-form-container .form-control {
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #ecf0f1;
+            background-color: #f9f9f9;
+        }
+
+            #email-form-container .form-control:focus {
+                border-color: #3498db;
+                box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+                background-color: #fff;
+            }
+
+        /* Stil za checkbox */
+        #email-form-container .form-check-input {
+            width: 1.2em;
+            height: 1.2em;
+            margin-top: 0.2em;
+        }
+
+        #email-form-container .form-check-label {
+            font-weight: 600;
+            color: #34495e;
+            margin-left: 0.5rem;
+        }
+
+        /* Stil za dugme */
+        #email-form-container .btn-primary {
+            background-color: #3498db;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+            #email-form-container .btn-primary:hover {
+                background-color: #2980b9;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+            }
+
+        /* Stilovi za alert poruke */
+        #email-form-container .alert {
+            max-width: 700px;
+            margin: 1.5rem auto;
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            border: none;
+        }
+
+        #email-form-container .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        #email-form-container .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        #email-form-container .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        #email-form-container .alert small {
+            display: block;
+            margin-top: 0.5rem;
+            color: inherit;
+            opacity: 0.8;
+        }
+
+        /* Animacija za email grupu */
+        #email-form-container #email-group {
+            transition: all 0.4s ease-in-out;
+        }
+
+    /* Responsive prilagodbe */
+    @@media (max-width: 768px) {
+        #email-form-container form {
+            padding: 1.5rem;
+        }
+
+        #email-form-container h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
