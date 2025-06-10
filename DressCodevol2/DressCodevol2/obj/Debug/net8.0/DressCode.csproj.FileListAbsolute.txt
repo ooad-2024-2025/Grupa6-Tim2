@@ -586,3 +586,4 @@ C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\De
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\DressCode.genruntimeconfig.cache
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\obj\Debug\net8.0\ref\DressCode.dll
 C:\Users\DT User\Documents\GitHub\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\QRCoder.dll
+C:\Users\Korisnik\Desktop\OOAD\Grupa6-Tim2\DressCodevol2\DressCodevol2\bin\Debug\net8.0\QRCoder.dll

@@ -1,41 +1,77 @@
-﻿@{
+﻿@model DressCode.Models.SendEmailViewModel
+@{
     ViewData["Title"] = "Pošalji Email";
 }
 
-<h2>Pošalji Email</h2>
+<h2>@ViewData["Title"]</h2>
 
-@if (!string.IsNullOrEmpty(ViewBag.Success))
+@if (ViewBag.Success != null)
 {
     <div class="alert alert-success">@ViewBag.Success</div>
 }
 
-@if (!string.IsNullOrEmpty(ViewBag.Error))
-{
-    <div class="alert alert-danger">@ViewBag.Error</div>
-}
+<form asp-action="Send" method="post" id="emailForm" novalidate>
+    <!-- dodano novalidate zbog ostalih polja -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<form method="post">
-    <div class="form-group">
-        <label>Email adresa (ako šaljete samo jednom korisniku):</label>
-        <input type="email" name="email" class="form-control" />
+    <div class="mb-3" id="email-group">
+        <label for="Email" class="form-label">Email adresa</label>
+        <input type="email"
+               name="Email"
+               id="Email"
+               class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="form-check mb-3">
-        <input type="checkbox" name="confirm" class="form-check-input" id="confirm" />
-        <label class="form-check-label" for="confirm">
-            Pošalji email svim korisnicima koji su članovi Loyalty kluba
+        <input type="hidden" name="SendToAll" value="false" />
+        <input type="checkbox"
+               name="SendToAll"
+               id="SendToAll"
+               value="true"
+               class="form-check-input"
+               @(Model.SendToAll ? "checked" : "") />
+        <label for="SendToAll" class="form-check-label">
+            Pošalji svim Loyalty korisnicima
         </label>
     </div>
 
-    <div class="form-group">
-        <label>Predmet:</label>
-        <input type="text" name="subject" class="form-control" required />
+    <div class="mb-3">
+        <label asp-for="Subject" class="form-label"></label>
+        <input asp-for="Subject" class="form-control" />
+        <span asp-validation-for="Subject" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label>Poruka:</label>
-        <textarea name="message" class="form-control" rows="5" required></textarea>
+    <div class="mb-3">
+        <label asp-for="Message" class="form-label"></label>
+        <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Message" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-primary">Pošalji Email</button>
 </form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            function toggle() {
+                if ($("#SendToAll").prop("checked")) {
+                    $("#email-group").remove(); // potpuno uklanja email input
+                } else {
+                    if ($("#email-group").length === 0) {
+                        $("#emailForm .form-check").before(`
+                            <div class="mb-3" id="email-group">
+                                <label for="Email" class="form-label">Email adresa</label>
+                                <input type="email" name="Email" id="Email" class="form-control" />
+                                <span class="text-danger field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
+                        `);
+                    }
+                }
+            }
+            toggle();
+            $("#SendToAll").change(toggle);
+        });
+    </script>
+}
