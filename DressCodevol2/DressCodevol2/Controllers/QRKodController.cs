@@ -13,10 +13,12 @@ namespace DressCode.Controllers
     public class QRKodController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IQRCodeService _qrService;
 
-        public QRKodController(ApplicationDbContext context)
+        public QRKodController(ApplicationDbContext context, IQRCodeService qrService)
         {
             _context = context;
+            _qrService = qrService;
         }
 
         // GET: QRKod
@@ -152,6 +154,30 @@ namespace DressCode.Controllers
         private bool QRKodExists(int id)
         {
             return _context.QRKodovi.Any(e => e.Id == id);
+        }
+
+        // GET: QRKod/Preview/5
+        public async Task<IActionResult> Preview(int id)
+        {
+            var artikal = await _context.Artikli.FindAsync(id);
+            if (artikal == null) return NotFound();
+
+            var url = Url.Action(
+                    action: "Details",
+                    controller: "Artikal",
+                    values: new { id = id },
+                    protocol: Request.Scheme
+                );
+            string qrDataUri = _qrService.GenerateQrCodeBase64(url);
+            var vm = new ArtikalQrViewModel
+            {
+                Artikal = artikal,
+                Opis = artikal.Opis,
+                QrImageData = qrDataUri,
+                QrKodId = id
+            };
+
+            return View(vm);
         }
     }
 }
