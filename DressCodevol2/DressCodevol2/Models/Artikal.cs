@@ -10,6 +10,8 @@
         public Velicina Velicina { get; set; }
         public Spol Spol { get; set; }
         public string Opis { get; set; }
+        public int Kolicina {  get; set; }  
+        public string? SlikaUrl { get; set; }
 
     }
 }   

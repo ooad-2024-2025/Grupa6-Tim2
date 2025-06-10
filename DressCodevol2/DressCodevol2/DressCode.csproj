@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\images\artikli\" />
     <Folder Include="wwwroot\images\radnici\" />
   </ItemGroup>
 

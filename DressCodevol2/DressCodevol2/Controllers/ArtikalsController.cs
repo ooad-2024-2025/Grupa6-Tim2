@@ -15,11 +15,12 @@ namespace DressCode.Controllers
     public class ArtikalsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IQRCodeService _qrService;
+        private readonly IWebHostEnvironment _env;
 
-        public ArtikalsController(ApplicationDbContext context)
+        public ArtikalsController(ApplicationDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
         // ******************************************
 
@@ -54,12 +55,10 @@ namespace DressCode.Controllers
         public IActionResult Create()
         {
             // Dohvaćanje svih tipova odjeće iz baze
-            Console.WriteLine("GET Create metoda pozvana");
             ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
-            //ViewBag.Kategorija = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>());
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>());
-            Console.WriteLine("GET Create metoda zavrsena");
+
             return View();
         }
 
@@ -166,11 +165,8 @@ namespace DressCode.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal)
+        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina")] Artikal artikal, IFormFile? Slika)
         {
-            // DEBUGGING - dodajte ove linije
-            Console.WriteLine($"KategorijaId vrednost: {artikal.KategorijaId}");
-            Console.WriteLine($"ModelState.IsValid: {ModelState.IsValid}");
 
             foreach (var modelError in ModelState)
             {
@@ -180,6 +176,21 @@ namespace DressCode.Controllers
             if (ModelState.IsValid)
             {
                 artikal.Kategorija = await _context.TipoviOdjece.FirstOrDefaultAsync(t => t.Id == artikal.KategorijaId);
+                artikal.SlikaUrl = "/images/ArtikalDefault.png";
+
+                if(Slika != null && Slika.Length > 0)
+                {
+                    var uploads = Path.Combine(_env.WebRootPath, "images", "artikli");
+                    Directory.CreateDirectory(uploads);
+                    var filename = $"{Guid.NewGuid()}{Path.GetExtension(Slika.FileName)}";
+                    var filepath = Path.Combine(uploads, filename);
+
+                    using var stream = new FileStream(filepath, FileMode.Create);
+                    await Slika.CopyToAsync(stream);
+
+                    artikal.SlikaUrl = $"/images/artikli/{filename}";
+                }
+                
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -216,7 +227,7 @@ namespace DressCode.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis")] Artikal artikal, int KategorijaId)
+        /*public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina")] Artikal artikal, int KategorijaId, IFormFile? Slika)
         {
             if (id != artikal.Id)
             {
@@ -244,6 +255,49 @@ namespace DressCode.Controllers
                 return RedirectToAction(nameof(Index));
             }
             //ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
+            return View(artikal);
+        }*/
+
+        public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina")] Artikal artikal, int KategorijaId, IFormFile? Slika)
+        {
+            if (id != artikal.Id)
+                return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                var existing = await _context.Artikli.FindAsync(id);
+                if (existing == null)
+                    return NotFound();
+
+                existing.KategorijaId = artikal.KategorijaId;
+                existing.Cijena = artikal.Cijena;
+                existing.Materijal = artikal.Materijal;
+                existing.Velicina = artikal.Velicina;
+                existing.Spol = artikal.Spol;
+                existing.Opis = artikal.Opis;
+                existing.Kolicina = artikal.Kolicina;
+
+                if (Slika != null && Slika.Length > 0)
+                {
+                    var uploads = Path.Combine(_env.WebRootPath, "images", "artikli");
+                    Directory.CreateDirectory(uploads);
+                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(Slika.FileName)}";
+                    var filePath = Path.Combine(uploads, fileName);
+
+                    using var stream = new FileStream(filePath, FileMode.Create);
+                    await Slika.CopyToAsync(stream);
+
+                    existing.SlikaUrl = $"/images/artikli/{fileName}";
+                }
+
+                _context.Update(existing);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
             ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
