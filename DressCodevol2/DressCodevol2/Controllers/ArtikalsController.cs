@@ -1,4 +1,5 @@
-﻿using DressCode.Data;
+﻿using AspNetCoreGeneratedDocument;
+using DressCode.Data;
 using DressCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,13 @@ namespace DressCode.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
+        private readonly IQRCodeService _qrService;
 
-        public ArtikalsController(ApplicationDbContext context, IWebHostEnvironment env)
+        public ArtikalsController(ApplicationDbContext context, IWebHostEnvironment env, IQRCodeService qrService)
         {
             _context = context;
             _env = env;
+            _qrService = qrService;
         }
         // ******************************************
 
@@ -202,7 +205,23 @@ namespace DressCode.Controllers
                 }
                 
                 _context.Add(artikal);
+                await _context.SaveChangesAsync();          
+
+                var url = Url.Action("Details", "Artikals", new { id = artikal.Id }, Request.Scheme);
+                string dataUri = _qrService.GenerateQrCodeBase64(url);
+                var q = new QRKod
+                {
+                    ArtikalId = artikal.Id,
+                    TipKoda = QRKodTip.OPISARTIKLA,
+                    DatumKreiranja = DateTime.UtcNow,
+                    DatumIsteka = DateTime.UtcNow.AddYears(1),
+                    IsAktivan = true,
+                    DataPayload = dataUri
+                };
+
+                _context.QRKodovi.Add(q);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
 

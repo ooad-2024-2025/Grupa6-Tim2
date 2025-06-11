@@ -22,10 +22,82 @@ namespace DressCode.Controllers
         }
 
         // GET: QRKod
-        public async Task<IActionResult> Index()
+        // Controllers/QRKodController.cs
+
+        public async Task<IActionResult> Index(string show = "promotions")
         {
-            return View(await _context.QRKodovi.ToListAsync());
+            var vm = new QRKodIndexViewModel
+            {
+                Show = (show ?? "promotions").ToLower()
+            };
+
+            if (vm.Show == "articles")
+            {
+                // 1) Dohvati sve artikle
+                var artikli = await _context.Artikli.ToListAsync();
+
+                // 2) Generiraj ili dohvatite postojeći OPISARTIKLA QR
+                foreach (var a in artikli)
+                {
+                    var qr = await _context.QRKodovi
+                        .FirstOrDefaultAsync(q => q.ArtikalId == a.Id
+                                               && q.TipKoda == QRKodTip.OPISARTIKLA);
+
+                    if (qr == null)
+                    {
+                        var url = Url.Action("Details", "Artikals", new { id = a.Id }, Request.Scheme);
+                        qr = new QRKod
+                        {
+                            ArtikalId = a.Id,
+                            TipKoda = QRKodTip.OPISARTIKLA,
+                            DatumKreiranja = DateTime.UtcNow,
+                            DatumIsteka = DateTime.UtcNow.AddYears(1),
+                            IsAktivan = true,
+                            DataPayload = _qrService.GenerateQrCodeBase64(url)
+                        };
+                        _context.QRKodovi.Add(qr);
+                    }
+
+                    // Napuni viewmodel redom
+                    vm.Artikli.Add(new ArtikalQrViewModel
+                    {
+                        Id = qr.Id,
+                        ArtikalId = a.Id,
+                        Opis = a.Opis,
+                        Cijena = (decimal)a.Cijena,
+                        Velicina = a.Velicina.ToString(),
+                        QrImageData = qr.DataPayload
+                    });
+                }
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                // 1) Dohvati samo POPUST promocije
+                var promo = await _context.QRKodovi
+                    .Where(q => q.TipKoda == QRKodTip.POPUST)
+                    .ToListAsync();
+
+                // 2) Mapiraj u VM
+                foreach (var q in promo)
+                {
+                    var artikal = await _context.Artikli.FindAsync(q.ArtikalId);
+                    vm.Promocije.Add(new QRKodCardViewModel
+                    {
+                        Id = q.Id,
+                        ArtikalId = q.ArtikalId,
+                        ArtikalNaziv = artikal?.Opis ?? "(bez artikla)",
+                        DatumIsteka = q.DatumIsteka,
+                        IsAktivan = q.IsAktivan,
+                        QrImageData = q.DataPayload
+                    });
+                }
+            }
+
+            return View(vm);
         }
+
+
 
         // GET: QRKod/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -157,7 +229,7 @@ namespace DressCode.Controllers
         }
 
         // GET: QRKod/Preview/5
-        public async Task<IActionResult> Preview(int id)
+       /* public async Task<IActionResult> Preview(int id)
         {
             var artikal = await _context.Artikli.FindAsync(id);
             if (artikal == null) return NotFound();
@@ -178,6 +250,6 @@ namespace DressCode.Controllers
             };
 
             return View(vm);
-        }
+        }*/
     }
 }

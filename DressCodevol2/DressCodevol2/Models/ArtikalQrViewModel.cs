@@ -2,9 +2,11 @@
 {
     public class ArtikalQrViewModel
     {
-        public Artikal Artikal { get; set; }  
-        public string Opis { get; set; }    
+        public int Id { get; set; } 
+        public int ArtikalId { get; set; }  
+        public string Opis { get; set; }  
+        public decimal Cijena { get; set; }
+        public string Velicina { get; set; }
         public string QrImageData { get; set; }
-        public int QrKodId { get; set; }    
     }
 }
