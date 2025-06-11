@@ -4,74 +4,149 @@
     ViewData["Title"] = "Dodavanje artikla";
 }
 
-<h1>Create</h1>
-@Html.AntiForgeryToken()
-<h4>Artikal</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
+<h1 class="mb-4">Dodaj artikal</h1>
 
-            <div class="form-group">
-                <label asp-for="KategorijaId" class="control-label"></label>
-                <select asp-for="KategorijaId" class="form-control" asp-items="@(ViewData["Kategorija"] as SelectList)">
+@Html.AntiForgeryToken()
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-4">Informacije o artiklu</h4>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="KategorijaId" class="form-label"></label>
+                <select asp-for="KategorijaId" class="form-select" asp-items="@(ViewData["Kategorija"] as SelectList)">
                     <option value="0">-- Odaberite tip odjeće --</option>
                 </select>
                 <span asp-validation-for="KategorijaId" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Cijena" class="control-label"></label>
+            <div class="mb-3">
+                <label asp-for="Cijena" class="form-label"></label>
                 <input asp-for="Cijena" class="form-control" />
                 <span asp-validation-for="Cijena" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Materijal" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Materijal" class="form-label"></label>
                 <input asp-for="Materijal" class="form-control" />
                 <span asp-validation-for="Materijal" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Velicina" class="control-label"></label>
-                <select asp-for="Velicina" class="form-control" asp-items="@(ViewData["Velicine"] as SelectList)">
+
+            <div class="mb-3">
+                <label asp-for="Velicina" class="form-label"></label>
+                <select asp-for="Velicina" class="form-select" asp-items="@(ViewData["Velicine"] as SelectList)">
                     <option value="">-- Odaberite veličinu --</option>
                 </select>
                 <span asp-validation-for="Velicina" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Spol" class="control-label"></label>
-                <select asp-for="Spol" class="form-control" asp-items="@(ViewData["Spolovi"] as SelectList)">
+            <div class="mb-3">
+                <label asp-for="Spol" class="form-label"></label>
+                <select asp-for="Spol" class="form-select" asp-items="@(ViewData["Spolovi"] as SelectList)">
                     <option value="">-- Odaberite spol --</option>
                 </select>
                 <span asp-validation-for="Spol" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Opis" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Opis" class="form-label"></label>
                 <input asp-for="Opis" class="form-control" />
                 <span asp-validation-for="Opis" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Kolicina" class="control-label"></label>
+
+            <div class="mb-3">
+                <label asp-for="Kolicina" class="form-label"></label>
                 <input asp-for="Kolicina" class="form-control" />
                 <span asp-validation-for="Kolicina" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
-                <label>Slika (jpg/png)</label>
-                <input type="file" name="Slika" class="form-control" ></input>
-                <img src="~/images/ArtikalDefault.png" style="height:100px; margin-top:10px;">
+
+            <div class="mb-4">
+                <label class="form-label">Slika (jpg/png)</label>
+                <input type="file" name="Slika" class="form-control" />
+                <img src="~/images/ArtikalDefault.png" alt="Pregled slike" class="img-thumbnail mt-2" style="height: 100px;">
             </div>
-            <div class="form-group">
+
+            <div class="d-grid mb-3">
                 <input type="submit" value="Dodaj" class="btn btn-primary" />
             </div>
         </form>
+
+        <div>
+            <a asp-action="Index" class="btn btn-secondary">Nazad na listu artikala</a>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Nazad na listu artikala</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
+<style> 
+    /* Custom stil za formu dodavanja artikla */
+    .card {
+        border-radius: 12px;
+        border: 1px solid #dee2e6;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        background-color: #ffffff;
+        padding: 20px;
+    }
+
+    h1, h4 {
+        font-weight: 600;
+        color: #333;
+    }
+
+    label {
+        font-weight: 500;
+        color: #444;
+    }
+
+    input.form-control,
+    select.form-select {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 10px;
+    }
+
+        input.form-control:focus,
+        select.form-select:focus {
+            border-color: #86b7fe;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        padding: 10px;
+        font-weight: 500;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        padding: 10px;
+        font-weight: 500;
+        border-radius: 8px;
+        margin-top: 10px;
+    }
+
+    img.img-thumbnail {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+    }
+
+    .text-danger {
+        font-size: 0.9rem;
+    }
+
+</style>
