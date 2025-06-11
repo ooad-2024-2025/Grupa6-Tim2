@@ -49,9 +49,18 @@ namespace DressCode.Controllers
         public async Task<IActionResult> Index()
         {
             var korpa = await GetOrCreateKorpaAsync();
+            if (korpa == null)
+                return RedirectToAction("Login", "Account");
+
+            // Include popust u query
+            korpa = await _context.Korpe
+                .Include(k => k.Popust)
+                .FirstOrDefaultAsync(k => k.Id == korpa.Id);
+
             var links = await _context.KorpaStavkeKorpe
                 .Where(x => x.KorpaId == korpa.Id)
                 .ToListAsync();
+
             var stavkeDto = new List<KorpaStavkaDto>();
             foreach (var link in links)
             {
@@ -65,12 +74,28 @@ namespace DressCode.Controllers
                     CijenaPoKomadu = stavka.CijenaPoKomadu
                 });
             }
+
+            // Izračunajte finalne cijene
+            double ukupnaCijena = korpa.UkupnaCijena;
+            double? iznosPopusta = null;
+            double finalnaUkupnaCijena = ukupnaCijena;
+
+            if (korpa.Popust != null)
+            {
+                iznosPopusta = ukupnaCijena * (korpa.Popust.VrijednostPopusta / 100);
+                finalnaUkupnaCijena = ukupnaCijena - iznosPopusta.Value;
+            }
+
             var vm = new KorpaViewModel
             {
                 KorpaId = korpa.Id,
                 UkupnaCijena = korpa.UkupnaCijena,
                 IsAktivna = korpa.IsAktivna,
-                Stavke = stavkeDto
+                Stavke = stavkeDto,
+                KodPopusta = korpa.Popust?.KodPopust,
+                VrijednostPopusta = korpa.Popust?.VrijednostPopusta,
+                IznosPopusta = iznosPopusta,
+                FinalnaUkupnaCijena = finalnaUkupnaCijena
             };
 
             return View(vm);
@@ -252,91 +277,181 @@ namespace DressCode.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-       
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Naruci()
-{
-    if (!User.Identity.IsAuthenticated)
-        return RedirectToAction("Login", "Account");
 
-    var korpa = await GetOrCreateKorpaAsync();
-    if (korpa == null || !korpa.IsAktivna)
-        return NotFound("Korpa nije pronađena ili nije aktivna.");
+            [HttpPost]
+            [ValidateAntiForgeryToken]
+            public async Task<IActionResult> Naruci()
+            {
+                if (!User.Identity.IsAuthenticated)
+                    return RedirectToAction("Login", "Account");
 
-    // Check if cart has items
-    var links = await _context.KorpaStavkeKorpe
-        .Where(x => x.KorpaId == korpa.Id)
-        .ToListAsync();
+                var korpa = await GetOrCreateKorpaAsync();
+                if (korpa == null || !korpa.IsAktivna)
+                    return NotFound("Korpa nije pronađena ili nije aktivna.");
 
-    if (!links.Any())
-        return BadRequest("Korpa je prazna.");
+                korpa = await _context.Korpe
+                .Include(k => k.Popust)
+                .FirstOrDefaultAsync(k => k.Id == korpa.Id);
 
-    // Redirect to address form instead of creating order immediately
-    var addressViewModel = new AdresaViewModel
-    {
-        KorpaId = korpa.Id,
-        UkupnaCijena = korpa.UkupnaCijena
-    };
+            // Check if cart has items
+            var links = await _context.KorpaStavkeKorpe
+                    .Where(x => x.KorpaId == korpa.Id)
+                    .ToListAsync();
 
-    return View("Adresa", addressViewModel);
-}
+                if (!links.Any())
+                    return BadRequest("Korpa je prazna.");
 
-// Add new method to handle address form submission
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> KreirajNarudzbu(AdresaViewModel model)
-{
-    if (!ModelState.IsValid)
-    {
-        return View("Adresa", model);
+                // Redirect to address form instead of creating order immediately
+                double finalnaCijena = korpa.UkupnaCijena;
+                if (korpa.Popust != null)
+                {
+                    double iznosPopusta = korpa.UkupnaCijena * (korpa.Popust.VrijednostPopusta / 100);
+                    finalnaCijena -= iznosPopusta;
+                }
+
+                var addressViewModel = new AdresaViewModel
+                {
+                    KorpaId = korpa.Id,
+                    UkupnaCijena = finalnaCijena // <- već postojeći property koristiš za finalnu cijenu
+                };
+
+
+                return View("Adresa", addressViewModel);
+            }
+
+   
+    [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> PrimijeniPopust(string kodPopusta)
+        {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+
+            if (string.IsNullOrWhiteSpace(kodPopusta))
+            {
+                TempData["ErrorMessage"] = "Molimo unesite kod popusta.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            var korpa = await GetOrCreateKorpaAsync();
+            if (korpa == null)
+            {
+                TempData["ErrorMessage"] = "Korpa nije pronađena.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Pronađi popust po kodu
+            var popust = await _context.Popusti
+                .FirstOrDefaultAsync(p => p.KodPopust == kodPopusta.ToUpper());
+
+            if (popust == null)
+            {
+                TempData["ErrorMessage"] = "Kod popusta nije valjan.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Provjeri da li je popust već primijenjen
+            if (korpa.PopustId == popust.Id)
+            {
+                TempData["ErrorMessage"] = "Ovaj popust je već primijenjen.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Primijeni popust
+            korpa.PopustId = popust.Id;
+            _context.Update(korpa);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = $"Popust od {popust.VrijednostPopusta}% je uspješno primijenjen!";
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UkloniPopust()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+
+            var korpa = await GetOrCreateKorpaAsync();
+            if (korpa == null)
+            {
+                TempData["ErrorMessage"] = "Korpa nije pronađena.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            korpa.PopustId = null;
+            _context.Update(korpa);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Popust je uklonjen.";
+            return RedirectToAction(nameof(Index));
+        }
+
+        // Modificirajte KreirajNarudzbu metodu da koristi finalnu cijenu
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> KreirajNarudzbu(AdresaViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Adresa", model);
+            }
+
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+
+            var korpa = await _context.Korpe
+                .Include(k => k.Popust)
+                .FirstOrDefaultAsync(k => k.Id == model.KorpaId);
+
+            if (korpa == null || !korpa.IsAktivna)
+                return NotFound("Korpa nije pronađena ili nije aktivna.");
+
+            // Izračunaj finalnu cijenu sa popustom
+            double finalnaCijena = korpa.UkupnaCijena;
+            if (korpa.Popust != null)
+            {
+                double iznosPopusta = korpa.UkupnaCijena * (korpa.Popust.VrijednostPopusta / 100);
+                finalnaCijena = korpa.UkupnaCijena - iznosPopusta;
+            }
+
+            // Create address first
+            var adresa = new Adresa
+            {
+                Ulica = model.Ulica,
+                Grad = model.Grad,
+                Drzava = model.Drzava
+            };
+
+            _context.Adrese.Add(adresa);
+            await _context.SaveChangesAsync();
+
+            // Create order with discounted price
+            var narudzba = new Narudzba
+            {
+                KorisnikId = korpa.KorisnikID,
+                UkupnaCijena = finalnaCijena, // Koristi finalnu cijenu
+                DatumKreiranja = DateTime.Now,
+                NacinPlacanja = NacinPlacanja.KARTICNO,
+                Adresa = adresa
+            };
+
+            _context.Narudzbe.Add(narudzba);
+            await _context.SaveChangesAsync();
+
+            // Store order ID in TempData to pass to payment
+            TempData["NarudzbaId"] = narudzba.Id;
+            TempData["Amount"] = narudzba.UkupnaCijena.ToString();
+
+            // Deactivate the cart
+            korpa.IsAktivna = false;
+            _context.Update(korpa);
+            await _context.SaveChangesAsync();
+
+            // Redirect to Stripe payment
+            return RedirectToAction("StripePayment", "Placanje");
+        }
     }
 
-    if (!User.Identity.IsAuthenticated)
-        return RedirectToAction("Login", "Account");
-
-    var korpa = await _context.Korpe.FindAsync(model.KorpaId);
-    if (korpa == null || !korpa.IsAktivna)
-        return NotFound("Korpa nije pronađena ili nije aktivna.");
-
-    // Create address first
-    var adresa = new Adresa
-    {
-        Ulica = model.Ulica,
-        Grad = model.Grad,
-        Drzava = model.Drzava
-    };
-
-    _context.Adrese.Add(adresa);
-    await _context.SaveChangesAsync();
-
-    // Create order with address
-    var narudzba = new Narudzba
-    {
-        KorisnikId = korpa.KorisnikID,
-        UkupnaCijena = korpa.UkupnaCijena,
-        DatumKreiranja = DateTime.Now,
-        NacinPlacanja = NacinPlacanja.KARTICNO,
-        Adresa = adresa
-    };
-
-    _context.Narudzbe.Add(narudzba);
-    await _context.SaveChangesAsync();
-
-    // Store order ID in TempData to pass to payment
-    TempData["NarudzbaId"] = narudzba.Id;
-    TempData["Amount"] = narudzba.UkupnaCijena.ToString();
-
-    // Deactivate the cart
-    korpa.IsAktivna = false;
-    _context.Update(korpa);
-    await _context.SaveChangesAsync();
-
-    // Redirect to Stripe payment
-    return RedirectToAction("StripePayment", "Placanje");
-}
-
-    }
-    
-    
 }

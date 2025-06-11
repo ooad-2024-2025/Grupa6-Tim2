@@ -34,7 +34,11 @@ namespace DressCode.Data
             modelBuilder.Entity<Artikal>().ToTable("Artikal");
             modelBuilder.Entity<ArtikalNarudzba>().ToTable("ArtikalNarudzbe");
             modelBuilder.Entity<Kartica>().ToTable("Kartica");
-            modelBuilder.Entity<Korpa>().ToTable("Korpa");
+            modelBuilder.Entity<Korpa>()
+            .HasOne(k => k.Popust)
+            .WithMany()
+            .HasForeignKey(k => k.PopustId)
+            .OnDelete(DeleteBehavior.SetNull);
             modelBuilder.Entity<KorpaStavkaKorpe>().ToTable("KorpaStavkaKorpe");
             modelBuilder.Entity<Narudzba>().ToTable("Narudzba");
             modelBuilder.Entity<Placanje>().ToTable("Placanje");

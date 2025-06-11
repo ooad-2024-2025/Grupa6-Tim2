@@ -6,6 +6,11 @@
         public double UkupnaCijena { get; set; }    
         public bool IsAktivna { get; set; }
         public List<KorpaStavkaDto> Stavke { get; set; } = new();
+
+        public string? KodPopusta { get; set; }
+        public double? VrijednostPopusta { get; set; }
+        public double? IznosPopusta { get; set; }
+        public double FinalnaUkupnaCijena { get; set; }
     }
 }
 
