@@ -29,10 +29,20 @@ namespace DressCode.Controllers
         // ******************************************
         private async Task<Korpa?> GetOrCreateKorpaAsync()
         {
-            if (!User.Identity.IsAuthenticated)
-                return null;
-
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string? userId;
+            if(User.Identity?.IsAuthenticated ?? false)
+            {
+                userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            else
+            {
+                userId = HttpContext.Session.GetString("GuestUserId");
+                if(userId == null)
+                {
+                    userId = Guid.NewGuid().ToString();
+                    HttpContext.Session.SetString("GuestUserId", userId);
+                }
+            }
 
             var korpa = await _context.Korpe
                 .FirstOrDefaultAsync(c => c.KorisnikID == userId && c.IsAktivna);
@@ -342,7 +352,6 @@ namespace DressCode.Controllers
             return _context.Artikli.Any(e => e.Id == id);
         }
 
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DodajUKorpu(int id)

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DressCode.Controllers
 {
@@ -22,9 +23,6 @@ namespace DressCode.Controllers
 
         private async Task<Korpa?> GetOrCreateKorpaAsync()
         {
-            if (!User.Identity.IsAuthenticated)
-                return null;
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
             var korpa = await _context.Korpe
@@ -278,14 +276,15 @@ namespace DressCode.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+            [Authorize]
             [HttpPost]
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> Naruci()
             {
-                if (!User.Identity.IsAuthenticated)
-                    return RedirectToAction("Login", "Account");
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
 
-                var korpa = await GetOrCreateKorpaAsync();
+            var korpa = await GetOrCreateKorpaAsync();
                 if (korpa == null || !korpa.IsAktivna)
                     return NotFound("Korpa nije pronađena ili nije aktivna.");
 
