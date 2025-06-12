@@ -8,5 +8,6 @@
         public decimal Cijena { get; set; }
         public string Velicina { get; set; }
         public string QrImageData { get; set; }
+        public string GrupaId { get; set; }
     }
 }

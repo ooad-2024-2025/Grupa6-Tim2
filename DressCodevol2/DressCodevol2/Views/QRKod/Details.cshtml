@@ -16,6 +16,7 @@
                     <div class="label-logo">
                         <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="DressCode Logo" />
                     </div>
+                    <div class="label-size">ARTIKAL: @Model.Artikal.GrupaId</div>
                     <div class="label-size">VELIČINA: @Model.Artikal.Velicina</div>
                     <div class="label-price">@Model.Artikal.Cijena.ToString("0.00") KM</div>
 
@@ -54,6 +55,8 @@
                     </div>
 
                     <p><strong>ID artikla:</strong> @Model.Artikal.Id</p>
+                    <p><strong>ID grupe:</strong> @Model.Artikal.GrupaId</p>
+
 
                     @if (!string.IsNullOrEmpty(Model.Artikal.Opis))
                     {
@@ -76,7 +79,7 @@
 @section Scripts {
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script>
-        const artikalId = '@Model.Artikal.Id';
+        const artikalId = '@Model.Artikal.GrupaId';
         const velicina = '@Model.Artikal.Velicina';
 
         function downloadCardAsImage() {

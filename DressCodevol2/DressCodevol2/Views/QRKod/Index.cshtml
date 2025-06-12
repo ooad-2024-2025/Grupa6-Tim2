@@ -16,34 +16,39 @@
 
 @if (show == "articles")
 {
-    <div class="cards">
-        @foreach (var item in Model.Artikli)
-        {
-            <a asp-action="Details" asp-route-id="@item.Id" class="label-card-link">
-                <div class="label-card">
-                    <div class="label-hanger"></div>
-                    <div class="label-hole"></div>
-
-                    <div class="label-body">
-                        <div class="label-logo">
-                            <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="DressCode Logo" />
+        @foreach (var grupa in Model.Grupe)
+    {
+        <section class="mb-5">
+            <h2 class="group-title">@grupa.Opis (@grupa.GrupaId)</h2>
+            <div style="height:20px;"></div>
+            <div class="cards">
+                @foreach (var etiketa in grupa.Etikete)
+                {
+                    <a asp-action="Details" asp-route-id="@etiketa.Id" class="label-card-link">
+                        <div class="label-card">
+                            <!-- kopirano iz postojećeg label-card HTML-a -->
+                            <div class="label-hanger"></div>
+                            <div class="label-hole"></div>
+                            <div class="label-body">
+                                <div class="label-logo">
+                                    <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="Logo" />
+                                </div>
+                                <div class="label-size">ARTIKAL: @etiketa.GrupaId</div>
+                                <div class="label-size">VELIČINA: @etiketa.Velicina</div>
+                                <div class="label-price">@etiketa.Cijena.ToString("C")</div>
+                                <div class="label-qr">
+                                    <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" />
+                                    <img class="qr-code" src="@etiketa.QrImageData" />
+                                </div>
+                                <div class="label-url">www.dresscode.com</div>
+                            </div>
                         </div>
-                        <div class="label-size">VELIČINA: @item.Velicina</div>
-                        <div class="label-price">@item.Cijena.ToString("C")</div>
-
-                        <div class="label-qr">
-                            <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" alt="Dekorativni okvir" />
-                            <img class="qr-code" src="@item.QrImageData" alt="QR kod" />
-                        </div>
-
-                        <div class="label-url">www.dresscode.com</div>
-                    </div>
-                </div>
-            </a>
-        }
+                    </a>
+                }
 
     </div>
-}
+    </section>
+}}
 else
 {
     <p style="text-align:center;">
@@ -90,6 +95,15 @@ else
                 background: #4a90e2;
                 color: #fff;
             }
+
+        .group-title {
+            font-size: 1.25rem;
+            color: #5b4636;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+     
 
         .cards {
             display: flex;

@@ -14,6 +14,8 @@ namespace DressCode.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IQRCodeService _qrService;
+        private static readonly string[] SizeOrder = { "XS", "S", "M", "L", "XL", "XXL", "XXXL" };
+
 
         public QRKodController(ApplicationDbContext context, IQRCodeService qrService)
         {
@@ -35,6 +37,7 @@ namespace DressCode.Controllers
             {
                 // 1) Dohvati sve artikle
                 var artikli = await _context.Artikli.ToListAsync();
+                var etikete = new List<ArtikalQrViewModel>();
 
                 // 2) Generiraj ili dohvatite postojeći OPISARTIKLA QR
                 foreach (var a in artikli)
@@ -53,23 +56,37 @@ namespace DressCode.Controllers
                             DatumKreiranja = DateTime.UtcNow,
                             DatumIsteka = DateTime.UtcNow.AddYears(1),
                             IsAktivan = true,
-                            DataPayload = _qrService.GenerateQrCodeBase64(url)
+                            DataPayload = _qrService.GenerateQrCodeBase64(url),
+                            PromocijaId = null
                         };
                         _context.QRKodovi.Add(qr);
                     }
 
-                    // Napuni viewmodel redom
-                    vm.Artikli.Add(new ArtikalQrViewModel
+                    etikete.Add(new ArtikalQrViewModel
                     {
                         Id = qr.Id,
                         ArtikalId = a.Id,
+                        GrupaId = a.GrupaId,
                         Opis = a.Opis,
                         Cijena = (decimal)a.Cijena,
                         Velicina = a.Velicina.ToString(),
                         QrImageData = qr.DataPayload
                     });
+
+                    await _context.SaveChangesAsync();
+
+                    vm.Grupe = etikete
+                        .GroupBy(e => e.GrupaId)
+                        .Select(g => new ArtikalGroupViewModel
+                        {
+                            GrupaId = g.Key,
+                            Opis = g.First().Opis,
+                            Etikete = g
+                                .OrderBy(e => Array.IndexOf(SizeOrder, e.Velicina))
+                                .ToList()
+                        })
+           .            ToList();
                 }
-                await _context.SaveChangesAsync();
             }
             else
             {
@@ -85,11 +102,11 @@ namespace DressCode.Controllers
                     vm.Promocije.Add(new QRKodCardViewModel
                     {
                         Id = q.Id,
-                        ArtikalId = q.ArtikalId,
+                        ArtikalId = (int)q.ArtikalId,
                         ArtikalNaziv = artikal?.Opis ?? "(bez artikla)",
                         DatumIsteka = q.DatumIsteka,
                         IsAktivan = q.IsAktivan,
-                        QrImageData = q.DataPayload
+                        QrImageData = q.DataPayload,
                     });
                 }
             }
