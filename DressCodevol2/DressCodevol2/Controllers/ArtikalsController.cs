@@ -71,16 +71,10 @@ namespace DressCode.Controllers
             ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>());
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>());
+            ViewData["GrupaId"] = "";
 
             return View();
         }
-
-        // GET: Artikals
-        /*
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.Artikli.Include(a => a.Kategorija).ToListAsync());
-        }*/
 
         // GET: Artikals
         public async Task<IActionResult> Index(
@@ -125,17 +119,22 @@ namespace DressCode.Controllers
                 artikli = artikli.Where(a => a.Materijal.Contains(materijal));
             }
 
+            var grupirani = await artikli
+            .GroupBy(a => a.GrupaId)
+            .Select(g => g.OrderBy(a => a.Id).First()) 
+            .ToListAsync();
+
             // Sortiranje
             switch (sortOrder)
             {
                 case "cijena_desc":
-                    artikli = artikli.OrderByDescending(a => a.Cijena);
+                    grupirani = grupirani.OrderByDescending(a => a.Cijena).ToList();
                     break;
                 case "cijena_asc":
-                    artikli = artikli.OrderBy(a => a.Cijena);
+                    grupirani = grupirani.OrderBy(a => a.Cijena).ToList();
                     break;
                 default:
-                    artikli = artikli.OrderBy(a => a.Id);
+                    grupirani = grupirani.OrderBy(a => a.Id).ToList();
                     break;
             }
 
@@ -144,7 +143,7 @@ namespace DressCode.Controllers
                 await _context.TipoviOdjece.ToListAsync(),
                 "Id",
                 "Naziv",
-                kategorijaFilter);
+                kategorijaFilter); 
             ViewData["Spolovi"] = new SelectList(
                 Enum.GetValues(typeof(Spol)).Cast<Spol>(),
                 spolFilter);
@@ -152,33 +151,38 @@ namespace DressCode.Controllers
                 Enum.GetValues(typeof(Velicina)).Cast<Velicina>(),
                 velicinaFilter);
 
-            return View(await artikli.ToListAsync());
+            return View(grupirani);
         }
 
         // GET: Artikals/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(string grupaId)
         {
-            if (id == null)
+            if (string.IsNullOrEmpty(grupaId))
             {
                 return NotFound();
             }
 
-            var artikal = await _context.Artikli
-                .Include(a => a.Kategorija)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (artikal == null)
-            {
-                return NotFound();
-            }
+            var artikli = await _context.Artikli
+            .Include(a => a.Kategorija)
+            .Where(a => a.GrupaId == grupaId)
+            .ToListAsync();
 
-           
+                if (!artikli.Any())
+                {
+                    return NotFound();
+                }
 
-            return View(artikal);
+            var glavniArtikal = artikli.First();
+
+            ViewBag.DostupneVelicine = artikli.Select(a => a.Velicina).Distinct().ToList();
+            ViewBag.SviArtikli = artikli; 
+
+            return View(glavniArtikal);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina")] Artikal artikal, IFormFile? Slika)
+        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina, GrupaId")] Artikal artikal, IFormFile? Slika)
         {
 
             foreach (var modelError in ModelState)
@@ -207,7 +211,7 @@ namespace DressCode.Controllers
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();          
 
-                var url = Url.Action("Details", "Artikals", new { id = artikal.Id }, Request.Scheme);
+                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
                 string dataUri = _qrService.GenerateQrCodeBase64(url);
                 var q = new QRKod
                 {
@@ -252,45 +256,9 @@ namespace DressCode.Controllers
         }
 
         // POST: Artikals/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        /*public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina")] Artikal artikal, int KategorijaId, IFormFile? Slika)
-        {
-            if (id != artikal.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(artikal);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ArtikalExists(artikal.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            //ViewBag.TipoviOdjece = _context.TipoviOdjece.ToList();
-            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
-            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
-            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return View(artikal);
-        }*/
-
-        public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina")] Artikal artikal, int KategorijaId, IFormFile? Slika)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina, GrupaId")] Artikal artikal, int KategorijaId, IFormFile? Slika)
         {
             if (id != artikal.Id)
                 return NotFound();
@@ -308,6 +276,7 @@ namespace DressCode.Controllers
                 existing.Spol = artikal.Spol;
                 existing.Opis = artikal.Opis;
                 existing.Kolicina = artikal.Kolicina;
+                existing.GrupaId = artikal.GrupaId;
 
                 if (Slika != null && Slika.Length > 0)
                 {
@@ -378,9 +347,9 @@ namespace DressCode.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DodajUKorpu(int id)
+        public async Task<IActionResult> DodajUKorpu(string grupaId, Velicina velicina)
         {
-            var artikal = await _context.Artikli.FindAsync(id);
+            var artikal = await _context.Artikli.FirstOrDefaultAsync(a => a.GrupaId == grupaId && a.Velicina == velicina);
             if (artikal == null) return NotFound();
 
             var korpa = await GetOrCreateKorpaAsync();
@@ -405,7 +374,7 @@ namespace DressCode.Controllers
             await _context.SaveChangesAsync();
 
             TempData["Dodano"] = "Artikal je dodan u korpu!";
-            return RedirectToAction(nameof(Index));
-        }
+            return RedirectToAction("Details", new { grupaId = grupaId }); //RedirectToAction(nameof(Index));
+    }
     }
 }

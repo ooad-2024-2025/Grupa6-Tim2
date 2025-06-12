@@ -1,9 +1,14 @@
 ﻿@model DressCode.Models.Artikal
 @{
     ViewData["Title"] = "Detalji artikla";
+    var dostupneVelicine = ViewBag.DostupneVelicine as List<Velicina>;
+    var sviArtikli = ViewBag.SviArtikli as List<Artikal>;
 }
 
 <div class="container py-4">
+
+            <!-- ostatak tvoje card strukture -->
+
     <div class="card shadow-sm border-0">
         <div class="card-header" style="background-color: #f5f0e6; color: #5b4636; border: none;">
             <h4 class="mb-0">
@@ -58,6 +63,10 @@
                                         @Model.Spol
                                     </span>
                                 </li>
+                                <li class="mb-2">
+                                    <strong>Grupa ID:</strong>
+                                    <span class="ms-2 badge bg-secondary">@Model.GrupaId</span>
+                                </li>
                             </ul>
                         </div>
 
@@ -69,39 +78,135 @@
                                     <span class="ms-2">@Model.Materijal</span>
                                 </li>
                                 <li class="mb-2">
-                                    <strong>Veličina:</strong>
-                                    <span class="ms-2">@Model.Velicina</span>
+                                    <strong>Dostupne veličine:</strong>
+                                    <div class="ms-2 mt-1">
+                                        @if (dostupneVelicine != null && dostupneVelicine.Any())
+                                        {
+                                            @foreach (var velicina in dostupneVelicine)
+                                            {
+                                                var artikalZaVelicinu = sviArtikli?.FirstOrDefault(a => a.Velicina == velicina);
+                                                var dostupno = artikalZaVelicinu?.Kolicina ?? 0;
+                                                var badgeClass = dostupno > 0 ? "bg-success" : "bg-danger";
+                                                
+                                                <span class="badge @badgeClass me-1 mb-1" style="font-size: 0.8rem;">
+                                                    @velicina (@dostupno kom)
+                                                </span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">Nema dostupnih veličina</span>
+                                        }
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Ukupno na skladištu:</strong>
+                                    <span class="ms-2 fw-bold">
+                                        @if (sviArtikli != null)
+                                        {
+                                            @sviArtikli.Sum(a => a.Kolicina)
+                                        }
+                                        else
+                                        {
+                                            @Model.Kolicina
+                                        } kom
+                                    </span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Sekcija za dodavanje u korpu -->
+            @if (dostupneVelicine != null && dostupneVelicine.Any())
+            {
+                <hr class="my-4" style="border-color: #d6c6b8;">
+                <div class="row">
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card" style="background-color: #faf8f5; border: 1px solid #e6ddd4;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title mb-3" style="color: #5b4636;">
+                                    <i class="fas fa-shopping-cart"></i> Dodaj u korpu
+                                </h5>
+                                <form asp-action="DodajUKorpu" method="post">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="grupaId" value="@Model.GrupaId" />
+                                    
+                                    <div class="mb-3">
+                                        <label for="velicina" class="form-label fw-semibold" style="color: #5b4636;">Odaberi veličinu:</label>
+
+                                        <select name="velicina" id="velicina" class="form-select" required style="border-color: #d6c6b8;">
+                                            <option value="">-- Odaberi veličinu --</option>
+                                            @foreach (var velicina in dostupneVelicine)
+                                            {
+                                                var artikalZaVelicinu = sviArtikli?.FirstOrDefault(a => a.Velicina == velicina);
+                                                var dostupno = artikalZaVelicinu?.Kolicina ?? 0;
+
+                                                <option value="@velicina" data-kolicina="@dostupno" class="@(dostupno == 0 ? "text-muted" : "")">
+                                                    @velicina - @dostupno kom dostupno
+                                                </option>
+                                            }
+                                        </select>
+
+
+                                    </div>
+                                    
+                                    <button type="submit" id="dodajUKorpuBtn" class="btn btn-brown" disabled>
+                                        <i class="fas fa-shopping-cart"></i> Dodaj u korpu
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <hr class="my-4" style="border-color: #d6c6b8;">
+                <div class="alert alert-warning text-center">
+                    <i class="fas fa-exclamation-triangle"></i> 
+                    Trenutno nema dostupnih veličina za ovaj artikal.
+                </div>
+            }
         </div>
 
         <div class="card-footer d-flex justify-content-between align-items-center" style="background-color: #f5f0e6; border: none;">
             <div>
                 @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
                 {
-                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">
-                        <i class="fas fa-edit"></i> Uredi
-                    </a>
+                    @if (sviArtikli != null && sviArtikli.Any())
+                    {
+                        <a asp-action="Edit" asp-route-id="@sviArtikli.First().Id" class="btn btn-outline-brown me-2">
+                            <i class="fas fa-edit"></i> Uredi
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">
+                            <i class="fas fa-edit"></i> Uredi
+                        </a>
+                    }
                 }
                 <a asp-action="Index" class="btn btn-outline-brown">
                     <i class="fas fa-arrow-left"></i> Nazad na listu
                 </a>
             </div>
-            <div>
-                <form asp-action="DodajUKorpu" asp-route-id="@Model.Id" method="post" class="d-inline">
-                    @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-brown">
-                        <i class="fas fa-shopping-cart"></i> Dodaj u korpu
-                    </button>
-                </form>
-            </div>
         </div>
     </div>
 </div>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055;">
+    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="fas fa-check-circle"></i> @TempData["Dodano"]
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
 
 <style>
     /* Topli neutralni tonovi */
@@ -135,4 +240,68 @@
     body {
         background: #fff1e6;
     }
+
+    .form-select:focus {
+        border-color: #7a5c40;
+        box-shadow: 0 0 0 0.2rem rgba(122, 92, 64, 0.25);
+    }
+
+    .badge.bg-success {
+        background-color: #28a745 !important;
+    }
+
+    .badge.bg-danger {
+        background-color: #dc3545 !important;
+    }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const velicinaSelect = document.getElementById('velicina');
+        const submitButton = document.getElementById('dodajUKorpuBtn');
+
+        velicinaSelect.addEventListener('invalid', function(event) {
+            event.target.setCustomValidity('Molimo odaberite veličinu iz liste.');
+        });
+
+        velicinaSelect.addEventListener('input', function(event) {
+            event.target.setCustomValidity('');
+        });
+
+        if (velicinaSelect && submitButton) {
+            velicinaSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const kolicina = selectedOption.getAttribute('data-kolicina');
+
+                if (this.value === '' || kolicina === '0') {
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="fas fa-times"></i> ' +
+                        (this.value === '' ? 'Odaberi veličinu' : 'Rasprodano');
+                    submitButton.classList.remove('btn-brown');
+                    submitButton.classList.add('btn-secondary');
+                } else {
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = '<i class="fas fa-shopping-cart"></i> Dodaj u korpu';
+                    submitButton.classList.remove('btn-secondary');
+                    submitButton.classList.add('btn-brown');
+                }
+            });
+        }
+
+        // Toast
+        const toastEl = document.getElementById('liveToast');
+        if (toastEl && toastEl.textContent.trim() !== '') {
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    });
+
+
+     document.addEventListener('DOMContentLoaded', function () {
+        var toastEl = document.getElementById('liveToast');
+        if (toastEl && toastEl.textContent.trim() !== '') {
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+     });
+</script>

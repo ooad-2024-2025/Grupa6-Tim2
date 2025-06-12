@@ -62,6 +62,12 @@
                 <span asp-validation-for="Kolicina" class="text-danger"></span>
             </div>
 
+            <div class="mb-3">
+                <label asp-for="GrupaId" class="control-label">Grupa ID</label>
+                <input asp-for="GrupaId" class="form-control" placeholder="npr. BK za bijelu košulju" />
+                <span asp-validation-for="GrupaId" class="text-danger"></span>
+            </div>
+
             <div class="mb-4">
                 <label class="form-label">Slika (jpg/png)</label>
                 <input type="file" name="Slika" class="form-control" />
