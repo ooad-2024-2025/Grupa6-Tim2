@@ -24,7 +24,7 @@ namespace DressCode.Controllers
         // GET: QRKod
         // Controllers/QRKodController.cs
 
-        public async Task<IActionResult> Index(string show = "promotions")
+        public async Task<IActionResult> Index(string show = "articles")
         {
             var vm = new QRKodIndexViewModel
             {
@@ -109,13 +109,24 @@ namespace DressCode.Controllers
 
             var qRKod = await _context.QRKodovi
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (qRKod == null)
             {
                 return NotFound();
             }
 
-            return View(qRKod);
+            var artikal = await _context.Artikli
+                .FirstOrDefaultAsync(a => a.Id == qRKod.ArtikalId);
+
+            var viewModel = new QRKodDetailsViewModel
+            {
+                QRKod = qRKod,
+                Artikal = artikal
+            };
+
+            return View(viewModel);
         }
+
 
         // GET: QRKod/Create
         public IActionResult Create()

@@ -1,54 +1,188 @@
-﻿@model DressCode.Models.QRKod
+﻿@model DressCode.Models.QRKodDetailsViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji QR Koda";
 }
 
-<h1>Details</h1>
+<div class="container py-4">
+    <div class="row g-4">
+        <!-- Lijevo: QR Kartica -->
+        <div class="col-md-6 d-flex flex-column align-items-center">
+            <div id="label-card-container" class="label-card mb-3">
+                <div class="label-hanger"></div>
+                <div class="label-hole"></div>
 
-<div>
-    <h4>QRKod</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ArtikalId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ArtikalId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TipKoda)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TipKoda)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DatumKreiranja)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DatumKreiranja)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DatumIsteka)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DatumIsteka)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsAktivan)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsAktivan)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataPayload)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataPayload)
-        </dd>
-    </dl>
+                <div class="label-body">
+                    <div class="label-logo">
+                        <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="DressCode Logo" />
+                    </div>
+                    <div class="label-size">VELIČINA: @Model.Artikal.Velicina</div>
+                    <div class="label-price">@Model.Artikal.Cijena.ToString("0.00") KM</div>
+
+                    <div class="label-qr">
+                        <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" alt="Dekorativni okvir" />
+                        <img class="qr-code" src="@Model.QRKod.DataPayload" alt="QR kod" />
+                    </div>
+
+                    <div class="label-url">www.dresscode.com</div>
+                </div>
+            </div>
+
+            <!-- Dugme za preuzimanje ispod kartice -->
+            <button onclick="downloadCardAsImage()" class="btn btn-primary">
+                Preuzmi karticu kao sliku
+            </button>
+        </div>
+
+        <!-- Desno: Slika artikla + ID + Opis -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header" style="background-color: #f5f0e6; color: #5b4636;">
+                    <h5 class="mb-0">Informacije o artiklu</h5>
+                </div>
+                <div class="card-body" style="color: #6f5846;">
+                    <!-- Slika artikla -->
+                    <div class="text-center mb-3">
+                        @if (!string.IsNullOrEmpty(Model.Artikal.SlikaUrl))
+                        {
+                            <img src="@Url.Content(Model.Artikal.SlikaUrl)" alt="Slika artikla" class="img-fluid rounded" style="max-height: 240px; object-fit: contain; box-shadow: 0 0 8px rgba(91, 70, 54, 0.1);" />
+                        }
+                        else
+                        {
+                            <img src="~/images/ArtikalDefault.png" alt="Nema slike" class="img-fluid rounded" style="max-height: 240px; object-fit: contain; box-shadow: 0 0 8px rgba(91, 70, 54, 0.1);" />
+                        }
+                    </div>
+
+                    <p><strong>ID artikla:</strong> @Model.Artikal.Id</p>
+
+                    @if (!string.IsNullOrEmpty(Model.Artikal.Opis))
+                    {
+                        <p><strong>Opis:</strong> @Model.Artikal.Opis</p>
+                    }
+                    else
+                    {
+                        <p class="fst-italic" style="color: #a1887f;">Nema opisa za ovaj artikal.</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 text-center">
+        <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+@section Scripts {
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        const artikalId = '@Model.Artikal.Id';
+        const velicina = '@Model.Artikal.Velicina';
+
+        function downloadCardAsImage() {
+            const card = document.getElementById('label-card-container');
+            html2canvas(card).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `QRKartica_${artikalId}_${velicina}.png`;
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .label-card {
+            position: relative;
+            width: 240px;
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .label-hanger {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            width: 4px;
+            height: 24px;
+            background: #bbb;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .label-hole {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: #f4f4f4;
+            border: 2px solid #bbb;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .label-body {
+            padding: 36px 16px 16px;
+            text-align: center;
+        }
+
+        .label-logo img {
+            max-height: 100px;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+        }
+
+        .label-size {
+            font-size: 12px;
+            color: #666;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .label-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .label-qr {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 12px;
+        }
+
+            .label-qr img.qr-frame {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 120px;
+                height: 120px;
+                z-index: 1;
+            }
+
+            .label-qr img.qr-code {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80px;
+                height: 80px;
+                z-index: 2;
+            }
+
+        .label-url {
+            font-size: 10px;
+            color: #999;
+            letter-spacing: 0.5px;
+        }
+    </style>
+}

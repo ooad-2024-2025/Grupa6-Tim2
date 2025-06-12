@@ -359,6 +359,11 @@ namespace DressCode.Controllers
             var artikal = await _context.Artikli.FindAsync(id);
             if (artikal != null)
             {
+                var qrKod = await _context.QRKodovi.FirstOrDefaultAsync(q => q.ArtikalId == id);
+                if (qrKod != null)
+                {
+                    _context.QRKodovi.Remove(qrKod);
+                }
                 _context.Artikli.Remove(artikal);
             }
 
