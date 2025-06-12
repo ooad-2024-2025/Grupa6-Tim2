@@ -1,148 +1,407 @@
 ﻿@model DressCode.Models.KorpaViewModel
 @{
-    ViewData["Title"] = "Korpa - Index";
+    ViewData["Title"] = "Vaša korpa";
 }
 
-<h1>Vaša Korpa</h1>
-
-<!-- Display success/error messages -->
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        @TempData["SuccessMessage"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="cart-container">
+    <div class="cart-header">
+        <h2>Vaša korpa</h2>
+        <p class="cart-subtitle">Pregled artikala u vašoj korpi</p>
     </div>
-}
 
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        @TempData["ErrorMessage"]
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-}
+    <!-- Display success/error messages -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
 
-@if (Model.Stavke.Any())
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Artikal</th>
-                <th>Količina</th>
-                <th>Cijena po komadu</th>
-                <th>Ukupno</th>
-                <th>Akcije</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var stavka in Model.Stavke)
-            {
-                <tr>
-                    <td>@stavka.ArtikalNaziv</td>
-                    <td>@stavka.Kolicina</td>
-                    <td>@stavka.CijenaPoKomadu.ToString("F2")</td>
-                    <td>@stavka.Ukupno.ToString("F2")</td>
-                    <td>
-                        <form asp-action="IzbaciElement" method="post" style="display:inline;">
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (Model.Stavke.Any())
+    {
+        <div class="cart-items">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th>Artikal</th>
+                        <th>Količina</th>
+                        <th>Cijena</th>
+                        <th>Ukupno</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var stavka in Model.Stavke)
+                    {
+                        <tr>
+                            <td>@stavka.ArtikalNaziv</td>
+                            <td>@stavka.Kolicina</td>
+                            <td>@stavka.CijenaPoKomadu.ToString("F2") KM</td>
+                            <td>@stavka.Ukupno.ToString("F2") KM</td>
+                            <td class="text-end">
+                                <form asp-action="IzbaciElement" method="post" class="d-inline">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="stavkaKorpeId" value="@stavka.StavkaKorpeId" />
+                                    <button type="submit" class="btn-remove"
+                                            onclick="return confirm('Da li ste sigurni da želite ukloniti ovaj artikal?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="discount-section">
+                <h5><i class="fas fa-tag"></i> Kod popusta</h5>
+                @if (string.IsNullOrEmpty(Model.KodPopusta))
+                {
+                    <form asp-action="PrimijeniPopust" method="post" class="discount-form">
+                        @Html.AntiForgeryToken()
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="kodPopusta" placeholder="Unesite kod popusta" />
+                            <button type="submit" class="btn-apply">
+                                <i class="fas fa-check"></i> Primijeni
+                            </button>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <div class="applied-discount">
+                        <span class="badge">
+                            <i class="fas fa-tag"></i> @Model.KodPopusta (@Model.VrijednostPopusta% popust)
+                        </span>
+                        <form asp-action="UkloniPopust" method="post" class="d-inline">
                             @Html.AntiForgeryToken()
-                            <input type="hidden" name="stavkaKorpeId" value="@stavka.StavkaKorpeId" />
-                            <button type="submit" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Da li ste sigurni da želite ukloniti ovaj artikal?')">
-                                Ukloni
+                            <button type="submit" class="btn-remove-discount">
+                                <i class="fas fa-times"></i> Ukloni
                             </button>
                         </form>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                    </div>
+                }
+            </div>
 
-    <!-- Popust sekcija -->
-    <div class="card mt-3">
-        <div class="card-header">
-            <h5>Kod popusta</h5>
-        </div>
-        <div class="card-body">
-            @if (string.IsNullOrEmpty(Model.KodPopusta))
-            {
-                <form asp-action="PrimijeniPopust" method="post" class="row g-3">
-                    @Html.AntiForgeryToken()
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" name="kodPopusta" placeholder="Unesite kod popusta (npr. POPUST20)" />
-                    </div>
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-tags"></i> Primijeni popust
-                        </button>
-                    </div>
-                </form>
-            }
-            else
-            {
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="badge bg-success">Kod popusta: @Model.KodPopusta</span>
-                        <span class="text-success">(@Model.VrijednostPopusta% popust)</span>
-                    </div>
-                    <form asp-action="UkloniPopust" method="post" style="display:inline;">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-sm btn-outline-danger">
-                            <i class="fas fa-times"></i> Ukloni popust
-                        </button>
-                    </form>
+            <div class="summary-section">
+                <div class="summary-row">
+                    <span>Cijena artikala:</span>
+                    <span>@Model.UkupnaCijena.ToString("F2") KM</span>
                 </div>
-            }
-        </div>
-    </div>
-
-    <!-- Ukupna cijena sekcija -->
-    <div class="card mt-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6 offset-md-6">
-                    <table class="table table-sm">
-                        <tr>
-                            <td><strong>Cijena artikala:</strong></td>
-                            <td class="text-end"><strong>@Model.UkupnaCijena.ToString("F2") BAM</strong></td>
-                        </tr>
-                        @if (Model.IznosPopusta.HasValue)
-                        {
-                            <tr class="table-success">
-                                <td>Popust (@Model.VrijednostPopusta%):</td>
-                                <td class="text-end">-@Model.IznosPopusta.Value.ToString("F2") BAM</td>
-                            </tr>
-                        }
-                        <tr class="table-primary">
-                            <td><strong>UKUPNO ZA NAPLATU:</strong></td>
-                            <td class="text-end"><strong>@Model.FinalnaUkupnaCijena.ToString("F2") BAM</strong></td>
-                        </tr>
-                    </table>
+                @if (Model.IznosPopusta.HasValue)
+                {
+                    <div class="summary-row discount">
+                        <span>Popust (@Model.VrijednostPopusta%):</span>
+                        <span>-@Model.IznosPopusta.Value.ToString("F2") KM</span>
+                    </div>
+                }
+                <div class="summary-row total">
+                    <span>UKUPNO ZA NAPLATU:</span>
+                    <span>@Model.FinalnaUkupnaCijena.ToString("F2") KM</span>
                 </div>
             </div>
+
+            <div class="cart-actions">
+                <form asp-action="Naruci" method="post" class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn-checkout">
+                        <i class="fas fa-shopping-cart"></i> Naruči (@Model.FinalnaUkupnaCijena.ToString("F2") KM)
+                    </button>
+                </form>
+                @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.KorpaId" class="btn-edit">
+                        <i class="fas fa-edit"></i> Uredi korpu
+                    </a>
+                }
+                <a asp-controller="Artikals" asp-action="Index" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Nastavite kupovinu
+                </a>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="empty-cart">
+            <div class="empty-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+            <h4>Vaša korpa je prazna</h4>
+            <p>Dodajte artikle u korpu da biste mogli napraviti narudžbu.</p>
+            <a asp-controller="Home" asp-action="Index" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Povratak na početnu
+            </a>
+        </div>
+    }
+</div>
 
-    <div class="mt-3">
-        <form asp-action="Naruci" method="post" style="display: inline;">
-            @Html.AntiForgeryToken()
-            <button type="submit" class="btn btn-success btn-lg">
-                <i class="fas fa-shopping-cart"></i> Naruči (@Model.FinalnaUkupnaCijena.ToString("F2") BAM)
-            </button>
-        </form>
-        @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
-        {
-            <a asp-action="Edit" asp-route-id="@Model.KorpaId" class="btn btn-secondary">Uredi korpu</a>
+<style>
+    .cart-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .cart-header {
+        background: linear-gradient(135deg, #6f42c1, #8e44ad);
+        color: white;
+        padding: 25px 30px;
+    }
+
+    .cart-subtitle {
+        opacity: 0.9;
+        margin-top: 5px;
+        font-size: 0.95rem;
+    }
+
+    .cart-items {
+        padding: 30px;
+    }
+
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 30px;
+    }
+
+        .cart-table th {
+            text-align: left;
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            font-weight: 600;
+            color: #495057;
         }
-    </div>
-}
-else
-{
-    <div class="alert alert-info">
-        <h4>Vaša korpa je prazna</h4>
-        <p>Dodajte artikle u korpu da biste mogli napraviti narudžbu.</p>
-    </div>
-}
 
-<p class="mt-3">
-    <a asp-controller="Home" asp-action="Index">Nazad na početnu</a>
-</p>
+        .cart-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: middle;
+        }
+
+        .cart-table tr:last-child td {
+            border-bottom: none;
+        }
+
+    .btn-remove {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 1rem;
+        padding: 5px 8px;
+        transition: all 0.3s;
+    }
+
+        .btn-remove:hover {
+            color: #a71d2a;
+            transform: scale(1.1);
+        }
+
+    .discount-section {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+        .discount-section h5 {
+            margin-bottom: 15px;
+            color: #6f42c1;
+            font-weight: 600;
+        }
+
+    .discount-form .input-group {
+        display: flex;
+    }
+
+        .discount-form .input-group .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+        }
+
+    .btn-apply {
+        background: linear-gradient(135deg, #6f42c1, #8e44ad);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-apply:hover {
+            opacity: 0.9;
+        }
+
+    .applied-discount {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .badge {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
+
+    .btn-remove-discount {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.3s;
+    }
+
+        .btn-remove-discount:hover {
+            color: #a71d2a;
+        }
+
+    .summary-section {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .summary-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: 1rem;
+    }
+
+        .summary-row.discount {
+            color: #28a745;
+            font-weight: 500;
+        }
+
+        .summary-row.total {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #6f42c1;
+            border-top: 1px solid #e9ecef;
+            padding-top: 15px;
+            margin-top: 10px;
+        }
+
+    .cart-actions {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+
+    .btn-checkout {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-checkout:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+    .btn-edit {
+        background: linear-gradient(135deg, #6f42c1, #8e44ad);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+
+        .btn-edit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+            color: white;
+        }
+
+    .btn-back {
+        color: #6f42c1;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        transition: all 0.3s;
+        border: 1px solid #6f42c1;
+    }
+
+        .btn-back:hover {
+            background: #f8f9fa;
+            text-decoration: none;
+        }
+
+    .empty-cart {
+        text-align: center;
+        padding: 50px 30px;
+    }
+
+    .empty-icon {
+        font-size: 3rem;
+        color: #adb5bd;
+        margin-bottom: 20px;
+    }
+
+    .empty-cart h4 {
+        color: #495057;
+        margin-bottom: 10px;
+    }
+
+    .empty-cart p {
+        color: #6c757d;
+        margin-bottom: 25px;
+    }
+
+    .alert {
+        margin: 20px 30px 0;
+        border-radius: 8px;
+    }
+
+    @@media (max-width: 768px) {
+        .cart-table {
+            display: block;
+            overflow-x: auto;
+        }
+
+        .cart-actions {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+            .cart-actions a,
+            .cart-actions button {
+                width: 100%;
+                text-align: center;
+            }
+    }
+</style>

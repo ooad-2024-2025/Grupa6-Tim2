@@ -9,6 +9,7 @@ using DressCode.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using static DressCode.Areas.Identity.Pages.Account.RegisterModel;
 
 namespace DressCode.Areas.Identity.Pages.Account.Manage
 {
@@ -39,12 +40,14 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
             [Display(Name = "Broj telefona")]
             public string PhoneNumber { get; set; }
 
-            [DataType(DataType.Date)]
-            [Display(Name = "Datum rođenja")]
-            public DateTime? DatumRodjenja { get; set; }
-
+            [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG mora imati tačno 13 brojeva.")]
             [Display(Name = "JMBG")]
             public string JMBG { get; set; }
+
+            [DataType(DataType.Date)]
+            [Display(Name = "Datum rođenja")]
+            [CustomValidation(typeof(DateValidation), "ValidateDateNotInFuture")]
+            public DateTime DatumRodjenja { get; set; }
 
             [Display(Name = "Želim i dalje biti član Loyalty kluba")]
             public bool IsLoyal { get; set; }
@@ -60,7 +63,7 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
             Input = new InputModel
             {
                 PhoneNumber = phoneNumber,
-                DatumRodjenja = user.DatumRodjenja,
+                DatumRodjenja = user.DatumRodjenja ?? DateTime.MinValue,
                 JMBG = user.JMBG,
                 IsLoyal = user.IsLoyal
             };

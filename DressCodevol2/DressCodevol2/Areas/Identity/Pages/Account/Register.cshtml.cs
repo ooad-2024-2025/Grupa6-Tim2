@@ -78,20 +78,23 @@ namespace DressCode.Areas.Identity.Pages.Account
             /// 
             [Required(ErrorMessage = "Polje za ime je obavezno.")]
             [MinLength(3, ErrorMessage = "Ime mora imati najmanje 3 znaka.")]
+            [RegularExpression(@"^[a-zA-ZšđčćžŠĐČĆŽ\s]+$", ErrorMessage = "Ime može sadržavati samo slova.")]
             [Display(Name = "Ime")]
             public string Ime { get; set; }
 
             [Required(ErrorMessage = "Polje za prezime je obavezno.")]
             [MinLength(3, ErrorMessage = "Prezime mora imati najmanje 3 znaka.")]
+            [RegularExpression(@"^[a-zA-ZšđčćžŠĐČĆŽ\s]+$", ErrorMessage = "Prezime može sadržavati samo slova.")]
             [Display(Name = "Prezime")]
             public string Prezime { get; set; }
 
-
-            [Display(Name ="JMBG")]
-            public string JMBG {  get; set; }
+            [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG mora imati tačno 13 brojeva.")]
+            [Display(Name = "JMBG")]
+            public string JMBG { get; set; }
 
             [DataType(DataType.Date)]
-            [Display(Name ="Datum rođenja")]
+            [Display(Name = "Datum rođenja")]
+            [CustomValidation(typeof(DateValidation), "ValidateDateNotInFuture")]
             public DateTime DatumRodjenja { get; set; }
 
 
@@ -216,5 +219,18 @@ namespace DressCode.Areas.Identity.Pages.Account
             }
             return (IUserEmailStore<Korisnik>)_userStore;
         }
+
+        public static class DateValidation
+        {
+            public static ValidationResult ValidateDateNotInFuture(DateTime datum, ValidationContext context)
+            {
+                if (datum > DateTime.Today)
+                {
+                    return new ValidationResult("Datum rođenja ne može biti u budućnosti.");
+                }
+                return ValidationResult.Success;
+            }
+        }
+
     }
 }
