@@ -32,8 +32,8 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Korpa" asp-action="Index">Korpa</a>
                         </li>
-                        
-                        @if (User.IsInRole("Administrator"))
+                        @* Provjeravamo da User nije null i da je autentificiran *@
+                        @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Administrator"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Email" asp-action="Send">Pošalji Email</a>

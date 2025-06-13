@@ -3,6 +3,54 @@
   "WorkspaceRootPath": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\qrkod\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\qrkod\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\popust\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\popust\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\controllers\\qrkodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\controllers\\qrkodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\qrkoddetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\qrkoddetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\qrkodartikaldetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\qrkodartikaldetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\qrkod\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\qrkod\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\popustqrviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\popustqrviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\qrkodpopustdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\qrkodpopustdetailsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\qrkodindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\qrkodindexviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\artikalqrviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\artikalqrviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\popust.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\popust.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +59,12 @@
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\popust\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\controllers\\popustcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\controllers\\popustcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\qrkod\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\qrkod\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\qrkod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\qrkod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\popust\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\popust\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\controllers\\popustcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\controllers\\popustcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\korpa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -41,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\models\\artikal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\models\\artikal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\korisnik\\desktop\\ooad\\grupa6-tim2\\dresscodevol2\\dresscodevol2\\views\\artikals\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -118,19 +150,189 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "QRKodController.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Controllers\\QRKodController.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\QRKodController.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Controllers\\QRKodController.cs",
+              "RelativeToolTip": "DressCodevol2\\Controllers\\QRKodController.cs",
+              "ViewState": "AgIAALYAAAAAAAAAAAAIwKUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:51:58.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvyMAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-12T13:46:07.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Popust\\Details.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Popust\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Popust\\Details.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Popust\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T01:13:50.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Details.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\QRKod\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Details.cshtml*",
+              "RelativeToolTip": "DressCodevol2\\Views\\QRKod\\Details.cshtml*",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAF8AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T01:11:17.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "QRKodDetailsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\QRKodDetailsViewModel.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodDetailsViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\QRKodDetailsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T01:13:19.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAALEAAAAAAAAAAAAAAKEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-12T13:45:47.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "QRKodArtikalDetailsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodArtikalDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\QRKodArtikalDetailsViewModel.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodArtikalDetailsViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\QRKodArtikalDetailsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:48:12.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAEAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T00:12:52.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PopustQrViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\PopustQrViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\PopustQrViewModel.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\PopustQrViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\PopustQrViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:44:48.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "QRKodIndexViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodIndexViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\QRKodIndexViewModel.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodIndexViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\QRKodIndexViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:44:38.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "QRKodPopustDetailsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodPopustDetailsViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\QRKodPopustDetailsViewModel.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKodPopustDetailsViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\QRKodPopustDetailsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:51:28.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ArtikalQrViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\ArtikalQrViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\ArtikalQrViewModel.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\ArtikalQrViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\ArtikalQrViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:46:27.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Popust.cs",
+              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Popust.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\Popust.cs",
+              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Popust.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\Popust.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T00:03:52.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Popust\\Create.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Popust\\Create.cshtml",
               "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Popust\\Create.cshtml",
               "RelativeToolTip": "DressCodevol2\\Views\\Popust\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T00:13:54.45Z"
+              "WhenOpened": "2025-06-13T00:13:54.45Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 15,
               "Title": "PopustController.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Controllers\\PopustController.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\PopustController.cs",
@@ -142,32 +344,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T00:12:52.335Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Popust.cs",
-              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Popust.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Models\\Popust.cs",
-              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Popust.cs",
-              "RelativeToolTip": "DressCodevol2\\Models\\Popust.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:03:52.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 14,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Popust\\Index.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Popust\\Index.cshtml",
@@ -175,47 +352,12 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Popust\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T00:07:27.14Z"
+              "WhenOpened": "2025-06-13T00:07:27.14Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "QRKod.cs",
-              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKod.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Models\\QRKod.cs",
-              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\QRKod.cs",
-              "RelativeToolTip": "DressCodevol2\\Models\\QRKod.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:04:17.567Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAB0AAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-12T13:46:07.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKEAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-12T13:45:47.478Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 16,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Index.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Korpa\\Index.cshtml",
@@ -227,7 +369,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 18,
               "Title": "Artikal.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Artikal.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Models\\Artikal.cs",
@@ -239,7 +381,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 17,
               "Title": "Register.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
@@ -251,7 +393,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 21,
               "Title": "ArtikalsController.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Controllers\\ArtikalsController.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\ArtikalsController.cs",
@@ -263,7 +405,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 25,
               "Title": "Velicina.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Velicina.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Models\\Velicina.cs",
@@ -275,7 +417,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Artikals\\Edit.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Artikals\\Edit.cshtml",
@@ -287,7 +429,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "ChangePassword.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml.cs",
@@ -299,7 +441,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 19,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Artikals\\Create.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Artikals\\Create.cshtml",
@@ -311,7 +453,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "ChangePassword.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
@@ -323,7 +465,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Edit.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Korpa\\Edit.cshtml",
@@ -335,7 +477,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 26,
               "Title": "Narudzba.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\Narudzba.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Models\\Narudzba.cs",
@@ -347,7 +489,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 28,
               "Title": "PlacanjeController.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Controllers\\PlacanjeController.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\PlacanjeController.cs",
@@ -359,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 30,
               "Title": "KorpaController.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Controllers\\KorpaController.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\KorpaController.cs",
@@ -371,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 27,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Artikals\\Details.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Artikals\\Details.cshtml",
@@ -383,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 29,
               "Title": "KorpaStavkaKorpe.cs",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Models\\KorpaStavkaKorpe.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Models\\KorpaStavkaKorpe.cs",
@@ -395,7 +537,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 31,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Korisnik\\Desktop\\OOAD\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Artikals\\Index.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Artikals\\Index.cshtml",

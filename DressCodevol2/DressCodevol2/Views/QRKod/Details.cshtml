@@ -4,6 +4,7 @@
     ViewData["Title"] = "Detalji QR Koda";
 }
 
+@if (Model.QRKod.TipKoda == QRKodTip.OPISARTIKLA && Model.Artikal != null){
 <div class="container py-4">
     <div class="row g-4">
         <!-- Lijevo: QR Kartica -->
@@ -74,24 +75,98 @@
     <div class="mt-4 text-center">
         <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
     </div>
-</div>
+    </div>
+} else if (Model.QRKod.TipKoda == QRKodTip.POPUST && Model.Popust != null)
+{
+    <div class="container py-4">
+        <div class="row g-4">
+            <!-- Lijevo: QR Kartica -->
+            <div id="label-card-container" class="label-card mb-3">
+
+
+            <div class="label-card">
+                <!-- kopirano iz postojećeg label-card HTML-a -->
+                <div class="label-hanger"></div>
+                <div class="label-hole"></div>
+                <div class="label-body">
+                    <div class="label-logo">
+                        <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="Logo" />
+                    </div>
+                    <div class="label-size">Vrijednost popusta: @Model.Popust.VrijednostPopusta%</div>
+                    <div class="label-size">Pristupni kod: @Model.Popust.PristupniKod</div>
+                    <div class="label-price">Uživajte!</div>
+                    <div class="label-qr">
+                        <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" />
+                        <img class="qr-code" src="@Model.QRKod.DataPayload" />
+                    </div>
+                    <div class="label-url">www.dresscode.com</div>
+                </div>
+            </div>
+            </div>
+
+                <!-- Dugme za preuzimanje ispod kartice -->
+                <button onclick="downloadCardAsImage()" class="btn btn-primary">
+                    Preuzmi karticu kao sliku
+                </button>
+            </div>
+
+            <!-- Desno: Slika artikla + ID + Opis -->
+            <div class="col-md-6">
+                <div class="card shadow-sm border-0">
+                    <div class="card-header" style="background-color: #f5f0e6; color: #5b4636;">
+                        <h5 class="mb-0">Informacije o artiklu</h5>
+                    </div>
+                    <div class="card-body" style="color: #6f5846;">
+                        <!-- Slika artikla -->
+                        <p><strong>ID popusta:</strong> @Model.Popust.Id</p>
+                        <p><strong>Kod popusta:</strong> @Model.Popust.KodPopust</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4 text-center">
+            <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
+        </div>
+}
 
 @section Scripts {
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <script>
-        const artikalId = '@Model.Artikal.GrupaId';
-        const velicina = '@Model.Artikal.Velicina';
+    @if (Model.QRKod.TipKoda == QRKodTip.OPISARTIKLA && Model.Artikal != null)
+    {
+        <script>
+            const artikalId = '@Model.Artikal.GrupaId';
+            const velicina  = '@Model.Artikal.Velicina';
 
-        function downloadCardAsImage() {
-            const card = document.getElementById('label-card-container');
-            html2canvas(card).then(canvas => {
-                const link = document.createElement('a');
-                link.download = `QRKartica_${artikalId}_${velicina}.png`;
-                link.href = canvas.toDataURL();
-                link.click();
-            });
-        }
-    </script>
+            function downloadCardAsImage() {
+              html2canvas(document.getElementById('label-card-container'))
+                .then(canvas => {
+                  const link = document.createElement('a');
+                  link.download = `QRKartica_${artikalId}_${velicina}.png`;
+                  link.href = canvas.toDataURL();
+                  link.click();
+                });
+            }
+        </script>
+    } else if (Model.QRKod.TipKoda == QRKodTip.POPUST && Model.Popust != null)
+    {
+        <script>
+            const popustId = '@Model.Popust.Id';
+            const kodPopusta = '@Model.Popust.KodPopust'
+
+            function downloadCardAsImage() {
+              html2canvas(document.getElementById('label-card-container'))
+                .then(canvas => {
+                  const link = document.createElement('a');
+                  link.download = `QRKartica_${popustId}_${kodPopusta}.png`;
+                  link.href = canvas.toDataURL();
+                  link.click();
+                });
+            }
+        </script>
+    }
 }
 
 @section Styles {

@@ -51,21 +51,29 @@
 }}
 else
 {
-    <p style="text-align:center;">
-        <a class="btn" asp-action="Create">Nova promocija</a>
-    </p>
     <div class="cards">
         @foreach (var promo in Model.Promocije)
         {
-            <div class="card">
-                <div class="title">@promo.ArtikalNaziv</div>
-                <img class="qr" src="@promo.QrImageData" alt="Promo QR kod" />
-                <div class="meta">Ističe: @promo.DatumIsteka:yyyy-MM-dd</div>
-                <div>
-                    <a class="btn" asp-action="Edit" asp-route-id="@promo.Id">Izmijeni</a>
-                    <a class="btn" asp-action="Delete" asp-route-id="@promo.Id">Obriši</a>
+            <a asp-action="Details" asp-route-id="@promo.Id" class="label-card-link">
+            <div class="label-card">
+                <!-- kopirano iz postojećeg label-card HTML-a -->
+                <div class="label-hanger"></div>
+                <div class="label-hole"></div>
+                <div class="label-body">
+                    <div class="label-logo">
+                        <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="Logo" />
+                    </div>
+                    <div class="label-size">Vrijednost popusta: @promo.VrijednostPopusta%</div>
+                    <div class="label-size">Pristupni kod: @promo.PristupniKod</div>
+                    <div class="label-price">Uživajte!</div>
+                    <div class="label-qr">
+                        <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" />
+                        <img class="qr-code" src="@promo.QrImageData" />
+                    </div>
+                    <div class="label-url">www.dresscode.com</div>
                 </div>
             </div>
+            </a>
         }
     </div>
 }

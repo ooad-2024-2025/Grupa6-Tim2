@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
+using System.Diagnostics;
 
 namespace DressCode.Controllers
 {
@@ -15,12 +16,13 @@ namespace DressCode.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IQRCodeService _qrService;
         private static readonly string[] SizeOrder = { "XS", "S", "M", "L", "XL", "XXL", "XXXL" };
+        private readonly ILogger<QRKodController> _logger;
 
-
-        public QRKodController(ApplicationDbContext context, IQRCodeService qrService)
+        public QRKodController(ApplicationDbContext context, IQRCodeService qrService, ILogger<QRKodController> logger)
         {
             _context = context;
             _qrService = qrService;
+            _logger = logger;
         }
 
         // GET: QRKod
@@ -90,25 +92,47 @@ namespace DressCode.Controllers
             }
             else
             {
-                // 1) Dohvati samo POPUST promocije
-                var promo = await _context.QRKodovi
-                    .Where(q => q.TipKoda == QRKodTip.POPUST)
-                    .ToListAsync();
+                var popusti = await _context.Popusti.ToListAsync();
+                var bonovi = new List<PopustQrViewModel>();
 
-                // 2) Mapiraj u VM
-                foreach (var q in promo)
+                foreach (var popust in popusti)
                 {
-                    var artikal = await _context.Artikli.FindAsync(q.ArtikalId);
-                    vm.Promocije.Add(new QRKodCardViewModel
+                    var qr = await _context.QRKodovi
+                       .FirstOrDefaultAsync(q => q.PromocijaId == popust.Id
+                                              && q.TipKoda == QRKodTip.POPUST);
+
+
+                    if (qr == null)
                     {
-                        Id = q.Id,
-                        ArtikalId = (int)q.ArtikalId,
-                        ArtikalNaziv = artikal?.Opis ?? "(bez artikla)",
-                        DatumIsteka = q.DatumIsteka,
-                        IsAktivan = q.IsAktivan,
-                        QrImageData = q.DataPayload,
+                        var url = Url.Action("Access", "Popust", new { id = popust.Id }, Request.Scheme);
+                        qr = new QRKod
+                        {
+                            ArtikalId = null,
+                            TipKoda = QRKodTip.POPUST,
+                            DatumKreiranja = DateTime.UtcNow,
+                            DatumIsteka = DateTime.UtcNow.AddMonths(6),
+                            IsAktivan = true,
+                            DataPayload = _qrService.GenerateQrCodeBase64(url),
+                            PromocijaId = popust.Id
+                        };
+                        _context.QRKodovi.Add(qr);
+                        await _context.SaveChangesAsync();
+                    }
+
+                    bonovi.Add(new PopustQrViewModel
+                    {
+                        Id = qr.Id,
+                        PopustId = popust.Id,
+                        VrijednostPopusta = popust.VrijednostPopusta,
+                        DatumIsteka = qr.DatumIsteka,
+                        IsAktivan = qr.IsAktivan,
+                        KodPopust = popust.KodPopust,
+                        PristupniKod = popust.PristupniKod,
+                        QrImageData = qr.DataPayload
                     });
+
                 }
+                vm.Promocije = bonovi;
             }
 
             return View(vm);
@@ -119,29 +143,38 @@ namespace DressCode.Controllers
         // GET: QRKod/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            Debug.WriteLine("Details called with id=" + id);
+
             if (id == null)
             {
+                Debug.WriteLine("Details: id was null");
                 return NotFound();
             }
 
-            var qRKod = await _context.QRKodovi
+            var qrKod = await _context.QRKodovi
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            if (qRKod == null)
+            if (qrKod == null)
             {
+                Debug.WriteLine("Details: QRKod with id=" + id + " not found");
                 return NotFound();
             }
 
-            var artikal = await _context.Artikli
-                .FirstOrDefaultAsync(a => a.Id == qRKod.ArtikalId);
+            Debug.WriteLine("Details: found QRKod Id=" + id + ", Tip=" + qrKod.TipKoda);
 
-            var viewModel = new QRKodDetailsViewModel
+            var vm = new QRKodDetailsViewModel { QRKod = qrKod };
+
+            if (qrKod.TipKoda == QRKodTip.OPISARTIKLA)
             {
-                QRKod = qRKod,
-                Artikal = artikal
-            };
+                if (qrKod.ArtikalId.HasValue)
+                    vm.Artikal = await _context.Artikli.FindAsync(qrKod.ArtikalId.Value); 
+            } else if (qrKod.TipKoda == QRKodTip.POPUST)
+            {
+                if (qrKod.PromocijaId.HasValue)
+                    vm.Popust = await _context.Popusti.FindAsync(qrKod.PromocijaId.Value);
+            }
 
-            return View(viewModel);
+            return View(vm);
         }
 
 
