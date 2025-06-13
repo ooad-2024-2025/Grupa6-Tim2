@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
+using Stripe.Treasury;
 
 namespace DressCode.Controllers
 {
     public class PopustController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IQRCodeService _qrService;
 
-        public PopustController(ApplicationDbContext context)
+        public PopustController(ApplicationDbContext context, IQRCodeService qrService)
         {
             _context = context;
+            _qrService = qrService;
         }
 
         // GET: Popust
@@ -54,13 +57,46 @@ namespace DressCode.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,KodId,VrijednostPopusta")] Popust popust)
+        public async Task<IActionResult> Create([Bind("VrijednostPopusta,KodPopust")] Popust popust)
         {
             if (ModelState.IsValid)
             {
+                var rand = new Random();
+                popust.PristupniKod = rand.Next(100000, 999999).ToString();
+
                 _context.Add(popust);
                 await _context.SaveChangesAsync();
+                var qr = new QRKod
+                {
+                    ArtikalId = null,
+                    TipKoda = QRKodTip.POPUST,
+                    DatumKreiranja = DateTime.UtcNow,
+                    DatumIsteka = DateTime.UtcNow.AddMonths(6),
+                    IsAktivan = true,
+                    PromocijaId = popust.Id,
+                    DataPayload = ""
+                };
+
+                _context.QRKodovi.Add(qr);
+                await _context.SaveChangesAsync();
+
+                popust.KodId = qr.Id;
+                var accessUrl = Url.Action(
+                    action: "Access",
+                    controller: "Popust",
+                    values: new { id = popust.Id },
+                    protocol: Request.Scheme
+                 );
+
+                qr.DataPayload = _qrService.GenerateQrCodeBase64(accessUrl);
+                _context.QRKodovi.Update(qr);
+                _context.Popusti.Update(popust);
+
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
+
+
             }
             return View(popust);
         }
