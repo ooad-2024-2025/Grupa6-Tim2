@@ -141,8 +141,9 @@
     <div class="d-flex flex-wrap gap-3">
         @foreach (var item in Model)
         {
-            <div style="width: 190px; background-color: white; border-radius: 8px; overflow: hidden;">
+            <div class="product-card" style="width: 190px; background-color: white; border-radius: 8px; overflow: hidden;">
                 <a asp-action="Details" asp-route-grupaId="@item.GrupaId" class="card2 text-decoration-none text-dark">
+                   
                     <div class="card2-image d-flex align-items-center justify-content-center">
                         @if (item.SlikaUrl != null)
                         {
@@ -192,7 +193,7 @@ else
 
 <style>
     body {
-        background: #979b8d;
+        background: #f7f3f0;
     }
 
     .bg-pink {
@@ -298,4 +299,15 @@ else
     .name:hover {
         cursor: pointer;
     }
+
+    .product-card {
+        border: 2px solid #7A5C3F; /* Tamno smeđi border */
+        transition: all 0.3s ease;
+    }
+
+        .product-card:hover {
+            border-color: #6B4226; /* Još tamniji na hover */
+            box-shadow: 0 4px 12px rgba(122, 92, 63, 0.2);
+            transform: translateY(-2px);
+        }
 </style>

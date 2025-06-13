@@ -174,12 +174,17 @@ namespace DressCode.Controllers
 
             var glavniArtikal = artikli.First();
 
-            ViewBag.DostupneVelicine = artikli.Select(a => a.Velicina).Distinct().ToList();
+            ViewBag.DostupneVelicine = artikli
+            .Select(a => a.Velicina)
+            .Distinct()
+            .OrderBy(v => v) // Ovo će sortirati po redoslijedu u enumu
+            .ToList();
             ViewBag.SviArtikli = artikli; 
 
             return View(glavniArtikal);
         }
 
+        /*
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina, GrupaId")] Artikal artikal, IFormFile? Slika)
@@ -209,9 +214,11 @@ namespace DressCode.Controllers
                 }
                 
                 _context.Add(artikal);
-                await _context.SaveChangesAsync();          
+                await _context.SaveChangesAsync();
 
-                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
+                //var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
+                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, "https");
+
                 string dataUri = _qrService.GenerateQrCodeBase64(url);
                 var q = new QRKod
                 {
@@ -233,6 +240,86 @@ namespace DressCode.Controllers
             //ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
+            return View(artikal);
+        }
+        */
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina,GrupaId")] Artikal artikal, IFormFile? Slika)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // Postavljanje kategorije
+                    artikal.Kategorija = await _context.TipoviOdjece.FirstOrDefaultAsync(t => t.Id == artikal.KategorijaId);
+
+                    // Postavljanje default slike
+                    artikal.SlikaUrl = "/images/ArtikalDefault.png";
+
+                    // Upload slike
+                    if (Slika != null && Slika.Length > 0)
+                    {
+                        var uploads = Path.Combine(_env.WebRootPath, "images", "artikli");
+                        Directory.CreateDirectory(uploads);
+                        var filename = $"{Guid.NewGuid()}{Path.GetExtension(Slika.FileName)}";
+                        var filepath = Path.Combine(uploads, filename);
+
+                        using var stream = new FileStream(filepath, FileMode.Create);
+                        await Slika.CopyToAsync(stream);
+                        artikal.SlikaUrl = $"/images/artikli/{filename}";
+                    }
+
+                    // Spremanje artikla
+                    _context.Add(artikal);
+                    await _context.SaveChangesAsync();
+
+                    // Generiranje QR koda
+                    try
+                    {
+                        var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, "https");
+                        string dataUri = _qrService.GenerateQrCodeBase64(url);
+
+                        var qrKod = new QRKod
+                        {
+                            ArtikalId = artikal.Id,
+                            TipKoda = QRKodTip.OPISARTIKLA,
+                            DatumKreiranja = DateTime.UtcNow,
+                            DatumIsteka = DateTime.UtcNow.AddYears(1),
+                            IsAktivan = true,
+                            DataPayload = dataUri
+                        };
+
+                        _context.QRKodovi.Add(qrKod);
+                        await _context.SaveChangesAsync();
+                    }
+                    catch (Exception qrEx)
+                    {
+                        Console.WriteLine($"QR Code generation failed: {qrEx.Message}");
+                        // QR kod nije kritičan, možete nastaviti bez njega
+                    }
+
+                    return RedirectToAction(nameof(Index));
+                }
+
+                // Ako ModelState nije valjan, prikažite greške
+                foreach (var modelError in ModelState)
+                {
+                    Console.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"General error in Create: {ex.Message}");
+                ModelState.AddModelError("", "Došlo je do greške prilikom kreiranja artikla.");
+            }
+
+            // Ponovno učitavanje ViewData za dropdown liste
+            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
+            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
+            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
+
             return View(artikal);
         }
 
