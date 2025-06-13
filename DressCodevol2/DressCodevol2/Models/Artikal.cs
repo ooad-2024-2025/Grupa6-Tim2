@@ -9,7 +9,7 @@ namespace DressCode.Models
         [Required(ErrorMessage = "Polje za kategoriju je obavezno.")]
         public int KategorijaId { get; set; }
 
-        [Required(ErrorMessage = "Polje za kategoriju je obavezno.")]
+//        [Required(ErrorMessage = "Polje za kategoriju je obavezno.")]
         public TipOdjece? Kategorija { get; set; }
 
         [Required(ErrorMessage = "Polje za cijenu je obavezno.")]

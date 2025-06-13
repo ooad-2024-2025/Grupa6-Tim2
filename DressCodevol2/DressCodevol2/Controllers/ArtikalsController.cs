@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -184,7 +185,7 @@ namespace DressCode.Controllers
             return View(glavniArtikal);
         }
 
-        /*
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina, GrupaId")] Artikal artikal, IFormFile? Slika)
@@ -192,7 +193,7 @@ namespace DressCode.Controllers
 
             foreach (var modelError in ModelState)
             {
-                Console.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
+                Debug.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
             }
 
             if (ModelState.IsValid)
@@ -217,7 +218,7 @@ namespace DressCode.Controllers
                 await _context.SaveChangesAsync();
 
                 //var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
-                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, "https");
+                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
 
                 string dataUri = _qrService.GenerateQrCodeBase64(url);
                 var q = new QRKod
@@ -233,18 +234,18 @@ namespace DressCode.Controllers
                 _context.QRKodovi.Add(q);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+               // return RedirectToAction(nameof(Index));
             }
 
             ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
             //ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return View(artikal);
+            return RedirectToAction(nameof(Index));
         }
-        */
+        
 
-        [HttpPost]
+       /* [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina,GrupaId")] Artikal artikal, IFormFile? Slika)
         {
@@ -321,7 +322,7 @@ namespace DressCode.Controllers
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
 
             return View(artikal);
-        }
+        }*/
 
         // GET: Artikals/Edit/5
         public async Task<IActionResult> Edit(int? id)
