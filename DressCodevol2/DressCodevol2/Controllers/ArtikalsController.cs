@@ -464,5 +464,205 @@ namespace DressCode.Controllers
             TempData["Dodano"] = "Artikal je dodan u korpu!";
             return RedirectToAction("Details", new { grupaId = grupaId }); //RedirectToAction(nameof(Index));
     }
+
+        // GET: Artikals/EditGroup/BK123
+
+        [HttpGet]
+        public async Task<IActionResult> EditGroup(string grupaId)
+        {
+            if (string.IsNullOrEmpty(grupaId)) return NotFound();
+
+            var artikli = await _context.Artikli
+                .Where(a => a.GrupaId == grupaId)
+                .ToListAsync();
+
+            if(!artikli.Any()) return NotFound();
+
+            var vm = new EditGroupViewModel
+            {
+                GrupaId = grupaId,
+                ZajednickaCijena = artikli.First().Cijena,
+                ZajednickiMaterijal = artikli.First().Materijal,
+                ZajednickiOpis = artikli.First().Opis,
+                Artikli = artikli
+            };
+
+            ViewData["Kategorije"] = new SelectList(_context.TipoviOdjece, "Id", "Naziv", artikli.First().KategorijaId);
+            return View(vm);
+        }
+
+        // POST: Artikals/EditGroup
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditGroup(EditGroupViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewData["Kategorije"] = new SelectList(_context.TipoviOdjece, "Id", "Naziv", vm.KategorijaId);
+                return View(vm);
+            }
+
+            // Dohvati sve iz grupe
+            var artikli = await _context.Artikli
+                .Where(a => a.GrupaId == vm.GrupaId)
+                .ToListAsync();
+
+            foreach (var a in artikli)
+            {
+                a.Cijena = (double)vm.ZajednickaCijena;
+                a.Materijal = vm.ZajednickiMaterijal;
+                a.Opis = vm.ZajednickiOpis;
+                a.KategorijaId = vm.KategorijaId;
+                // ne diraj Velicinu i Spol, oni su po-artiklu
+            }
+
+            _context.UpdateRange(artikli);
+            await _context.SaveChangesAsync();
+
+            var artikalIds = artikli.Select(a => a.Id).ToList();
+            var stavke = await _context.StavkeKorpe
+                .Where(s => artikalIds.Contains(s.ArtikalId))
+                .ToListAsync();
+
+            foreach (var s in stavke)
+            {
+                var art = artikli.First(a => a.Id == s.ArtikalId);
+                s.CijenaPoKomadu = art.Cijena;
+
+            }
+
+            _context.UpdateRange(stavke);
+            await _context.SaveChangesAsync();
+
+            var stavkaIds = stavke.Select(s => s.Id).ToList();
+            var links = await _context.KorpaStavkeKorpe
+                .Where(link => stavkaIds.Contains(link.StavkaKorpeId))
+                .ToListAsync();
+
+            // 5) Grupiraj po KorpaId i za svaku košaricu izračunaj novi total
+            var linksByCart = links.GroupBy(l => l.KorpaId);
+            foreach (var group in linksByCart)
+            {
+                // Dohvati košaricu
+                var korpa = await _context.Korpe.FindAsync(group.Key);
+                if (korpa == null) continue;
+
+                // Zbroji sve stavke: CijenaPoKomadu * Kolicina
+                double noviTotal = 0;
+                foreach (var link in group)
+                {
+                    var stavka = stavke.First(s => s.Id == link.StavkaKorpeId);
+                    noviTotal += stavka.CijenaPoKomadu * stavka.Kolicina;
+                }
+
+                korpa.UkupnaCijena = noviTotal;
+            }
+
+            // 6) Snimi promjene u Korpa entitetima
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteGroup(string? grupaId)
+        {
+            if (string.IsNullOrEmpty(grupaId))
+                return BadRequest();
+
+            // Provjeri da li grupa postoji
+            bool ima = await _context.Artikli.AnyAsync(a => a.GrupaId == grupaId);
+            if (!ima)
+                return NotFound();
+
+            // Prikaži view s potvrdom
+            return View(model: grupaId);
+        }
+
+        // POST: Artikals/DeleteGroup
+        [HttpPost, ActionName("DeleteGroup")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteGroupConfirmed(string grupaId)
+        {
+            if (string.IsNullOrEmpty(grupaId))
+                return BadRequest();
+
+            // 1) Dohvati sve artikle iz grupe
+            var artikli = await _context.Artikli
+                .Where(a => a.GrupaId == grupaId)
+                .ToListAsync();
+
+            if (!artikli.Any())
+                return NotFound();
+
+            // 2) Prikupi njihove ID-jeve
+            var artikalIds = artikli.Select(a => a.Id).ToList();
+
+            // 3) Obriši sve QR kodove za te artikle
+            var qrcodes = await _context.QRKodovi
+                .Where(q => q.ArtikalId != null && artikalIds.Contains(q.ArtikalId.Value))
+                .ToListAsync();
+            _context.QRKodovi.RemoveRange(qrcodes);
+
+            // 4) Pronađi sve stavke i linkove koje brišemo
+            var stavkeZaBrisanje = await _context.StavkeKorpe
+                .Where(s => artikalIds.Contains(s.ArtikalId))
+                .ToListAsync();
+
+            var stavkaIds = stavkeZaBrisanje.Select(s => s.Id).ToList();
+
+            var linkoviZaBrisanje = await _context.KorpaStavkeKorpe
+                .Where(link => stavkaIds.Contains(link.StavkaKorpeId))
+                .ToListAsync();
+
+            // 5) Skupi sve pogođene KorpaId
+            var pogodeneKorpe = linkoviZaBrisanje
+                .Select(l => l.KorpaId)
+                .Distinct()
+                .ToList();
+
+            // 6) Obriši veze i stavke
+            _context.KorpaStavkeKorpe.RemoveRange(linkoviZaBrisanje);
+            _context.StavkeKorpe.RemoveRange(stavkeZaBrisanje);
+
+            // 7) Obriši artikle
+            _context.Artikli.RemoveRange(artikli);
+
+            // 8) Preračunaj UkupnaCijena za svaku pogođenu košaricu
+            foreach (var korpaId in pogodeneKorpe)
+            {
+                // Dohvati preostale linkove iz košarice
+                var preostaliLinkovi = await _context.KorpaStavkeKorpe
+                    .Where(link => link.KorpaId == korpaId)
+                    .ToListAsync();
+
+                // Sumiraj njihovu trenutnu vrijednost
+                double noviTotal = 0;
+                if (preostaliLinkovi.Any())
+                {
+                    var preostaleStavke = await _context.StavkeKorpe
+                        .Where(s => preostaliLinkovi.Select(l => l.StavkaKorpeId).Contains(s.Id))
+                        .ToListAsync();
+
+                    noviTotal = preostaleStavke.Sum(s => s.CijenaPoKomadu * s.Kolicina);
+                }
+
+                var korpa = await _context.Korpe.FindAsync(korpaId);
+                if (korpa != null)
+                {
+                    korpa.UkupnaCijena = noviTotal;
+                }
+            }
+
+            // 9) Snimi sve promjene
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
     }
 }

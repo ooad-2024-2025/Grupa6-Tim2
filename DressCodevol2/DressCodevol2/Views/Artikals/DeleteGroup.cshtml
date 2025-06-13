@@ -1,0 +1,16 @@
+﻿@model string // grupaId
+@{
+    ViewData["Title"] = "Obriši grupu artikala";
+}
+<h2>@ViewData["Title"] - @Model</h2>
+<div class="alert alert-warning">
+    <p>
+        Jeste li sigurni da želite obrisati sve artikle u grupi <strong>@Model</strong>?<br />
+        Ovaj postupak je nereverzibilan.
+    </p>
+</div>
+<form asp-action="DeleteGroup" method="post">
+    <input type="hidden" name="grupaId" value="@Model" />
+    <button type="submit" class="btn btn-danger">Da, obriši grupu</button>
+    <a asp-action="Index" class="btn btn-secondary">Ne, odustani</a>
+</form>

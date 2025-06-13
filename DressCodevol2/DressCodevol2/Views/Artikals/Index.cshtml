@@ -170,19 +170,14 @@
                 <div class="px-2 pb-2">
                     @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
                     {
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-warning btn-sm w-100 mb-1">
+                        <a asp-action="EditGroup" asp-route-grupaId="@item.GrupaId" class="btn btn-outline-warning btn-sm w-100 mb-1">
                             <i class="fas fa-edit"></i> Uredi
                         </a>
-                        <a asp-action="Delete" asp-route-id="@item." class="btn btn-outline-danger btn-sm w-100 mb-1">
+                        <a asp-action="DeleteGroup" asp-route-grupaId="@item.GrupaId" class="btn btn-outline-danger btn-sm w-100 mb-1">
                             <i class="fas fa-trash"></i> Obriši
                         </a>
                     }
-                    <form asp-action="DodajUKorpu" asp-route-id="@item.Id" method="post" class="mt-1">
-                        @Html.AntiForgeryToken()
-                        <button type="submit" class="btn btn-outline-brown btn-sm w-100">
-                            <i class="fas fa-shopping-cart"></i> Dodaj u korpu
-                        </button>
-                    </form>
+                   
                 </div>
             </div>
         }

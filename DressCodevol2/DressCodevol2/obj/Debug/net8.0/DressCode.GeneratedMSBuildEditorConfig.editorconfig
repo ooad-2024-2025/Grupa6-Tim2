@@ -212,12 +212,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/DeleteGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRGVsZXRlR3JvdXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/EditGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWthbHNcRWRpdEdyb3VwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Artikals/Index.cshtml]
