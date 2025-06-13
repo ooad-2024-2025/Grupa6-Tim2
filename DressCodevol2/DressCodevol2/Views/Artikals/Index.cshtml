@@ -128,10 +128,17 @@
     <div class="col-md-6">
         <p class="text-muted">Pronađeno: <strong>@Model.Count()</strong> artikala</p>
     </div>
-    <div class="col-md-6 text-end">
+    <div class="col-md-6 text-end d-flex justify-content-end align-items-center gap-2">
         @if (hasActiveFilters)
         {
-            <span class="badge bg-info">Filtri aktivni</span>
+            <span class="badge bg-info">Filteri aktivni</span>
+        }
+
+        @if (User.IsInRole("Radnik") || User.IsInRole("Administrator"))
+        {
+            <a asp-controller="QRKod" asp-action="Index" asp-route-show="articles" class="btn btn-outline-primary">
+                <i class="fas fa-tags"></i> Idi na etikete
+            </a>
         }
     </div>
 </div>

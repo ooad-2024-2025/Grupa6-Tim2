@@ -31,7 +31,7 @@
             </div>
 
             <!-- Dugme za preuzimanje ispod kartice -->
-            <button onclick="downloadCardAsImage()" class="btn btn-primary">
+                <button onclick="downloadCardAsImage()" class="btn btn-outline-brown me-2">
                 Preuzmi karticu kao sliku
             </button>
         </div>
@@ -73,63 +73,68 @@
     </div>
 
     <div class="mt-4 text-center">
-        <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
+            <a asp-action="Index" class="btn btn-outline-brown me-2">Nazad na listu</a>
     </div>
     </div>
-} else if (Model.QRKod.TipKoda == QRKodTip.POPUST && Model.Popust != null)
+}
+else if (Model.QRKod.TipKoda == QRKodTip.POPUST && Model.Popust != null)
 {
-    <div class="container py-4">
-        <div class="row g-4">
-            <!-- Lijevo: QR Kartica -->
-            <div id="label-card-container" class="label-card mb-3">
-
-
-            <div class="label-card">
-                <!-- kopirano iz postojećeg label-card HTML-a -->
-                <div class="label-hanger"></div>
-                <div class="label-hole"></div>
-                <div class="label-body">
-                    <div class="label-logo">
+<div class="container py-4">
+    <div class="row gy-4">
+        <!-- Lijevi stupac: horizontalna kartica -->
+        <div class="col-md-8">
+            <div class="promo-horizontal-card mb-3" id="promo-card">
+                <div class="promo-left">
+                    <div class="promo-logo mb-3">
                         <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="Logo" />
                     </div>
-                    <div class="label-size">Vrijednost popusta: @Model.Popust.VrijednostPopusta%</div>
-                    <div class="label-size">Pristupni kod: @Model.Popust.PristupniKod</div>
-                    <div class="label-price">Uživajte!</div>
-                    <div class="label-qr">
-                        <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" />
-                        <img class="qr-code" src="@Model.QRKod.DataPayload" />
+                    <div class="promo-info">
+                        <p class="info-value">Poklon Bon</p>
+                        <p>
+                            <span class="info-label">Vrijednost popusta:</span>
+                            <span class="info-value">@Model.Popust.VrijednostPopusta&nbsp;%</span>
+                        </p>
+                        <p>
+                            <span class="info-label">Pristupni kod:</span>
+                            <span class="info-value">@Model.Popust.PristupniKod</span>
+                        </p>
                     </div>
-                    <div class="label-url">www.dresscode.com</div>
+                </div>
+                <div class="promo-right">
+                    <div class="promo-qr">
+                        <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" alt="Okvir" />
+                        <img class="qr-code" src="@Model.QRKod.DataPayload" alt="QR kod" />
+                    </div>
                 </div>
             </div>
-            </div>
-
-                <!-- Dugme za preuzimanje ispod kartice -->
-                <button onclick="downloadCardAsImage()" class="btn btn-primary">
+            <!-- Dugme za download ispod kartice -->
+            <div class="text-center">
+                    <button onclick="downloadCardAsImage()" class="btn btn-outline-brown me-2">
                     Preuzmi karticu kao sliku
                 </button>
             </div>
+        </div>
 
-            <!-- Desno: Slika artikla + ID + Opis -->
-            <div class="col-md-6">
+        <!-- Desni stupac: dodatne informacije -->
+        <div class="col-md-4">
                 <div class="card shadow-sm border-0">
                     <div class="card-header" style="background-color: #f5f0e6; color: #5b4636;">
-                        <h5 class="mb-0">Informacije o artiklu</h5>
-                    </div>
-                    <div class="card-body" style="color: #6f5846;">
-                        <!-- Slika artikla -->
-                        <p><strong>ID popusta:</strong> @Model.Popust.Id</p>
-                        <p><strong>Kod popusta:</strong> @Model.Popust.KodPopust</p>
-
-                    </div>
+                    <h5 class="mb-0">Detalji popusta</h5>
+                </div>
+                    <div class="card-body" style="color: #6f5846;"+>
+                    <p><strong>ID popusta:</strong> @Model.Popust.Id</p>
+                    <p><strong>Kod popusta:</strong> @Model.Popust.KodPopust</p>
                 </div>
             </div>
         </div>
-
-        <div class="mt-4 text-center">
-            <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
-        </div>
+    </div>
+    <!-- Back button -->
+    <div class="mt-4 text-center">
+            <a asp-action="Index" class="btn btn-outline-brown me-2">Nazad na listu</a>
+    </div>
+</div>
 }
+
 
 @section Scripts {
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
@@ -156,7 +161,7 @@
             const kodPopusta = '@Model.Popust.KodPopust'
 
             function downloadCardAsImage() {
-              html2canvas(document.getElementById('label-card-container'))
+              html2canvas(document.getElementById('promo-card'))
                 .then(canvas => {
                   const link = document.createElement('a');
                   link.download = `QRKartica_${popustId}_${kodPopusta}.png`;
@@ -170,6 +175,10 @@
 
 @section Styles {
     <style>
+        body{
+            background: #f7f3f0;
+        }
+
         .label-card {
             position: relative;
             width: 240px;
@@ -261,5 +270,102 @@
             color: #999;
             letter-spacing: 0.5px;
         }
+
+
+        .promo-horizontal-card {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f0f0f0, #ffffff);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        .promo-left {
+            flex: 1 1 50%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .promo-logo img {
+            max-width: 120px;
+            margin-bottom: 16px;
+        }
+
+        .promo-info {
+            font-family: 'Segoe UI', sans-serif;
+            color: #5b4636;
+        }
+
+            .promo-info .info-label {
+                margin: 4px 0 0;
+                font-size: 0.9rem;
+                font-weight: 600;
+            }
+
+            .promo-info .info-value {
+                margin: 2px 0 12px;
+                font-size: 1.1rem;
+                font-weight: 700;
+            }
+
+        .promo-right {
+            flex: 0 0 200px;
+            position: relative;
+            padding: 0 20px 0 0;
+        }
+
+        .promo-qr {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto;
+        }
+
+            .promo-qr .qr-frame {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 160px;
+                height: 160px;
+                z-index: 1;
+            }
+
+            .promo-qr .qr-code {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 120px;
+                height: 120px;
+                z-index: 2;
+            }
+
+        .btn-outline-brown {
+            color: #7a5c40;
+            border-color: #7a5c40;
+        }
+
+            .btn-outline-brown:hover {
+                background-color: #7a5c40;
+                color: #f5f0e6;
+                border-color: #7a5c40;
+            }
+
+        .btn-brown {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border: none;
+        }
+
+            .btn-brown:hover {
+                background-color: #5b4636;
+                color: #f5f0e6;
+            }
+
+
     </style>
 }

@@ -8,8 +8,6 @@ namespace DressCode.Models
 
         [Required(ErrorMessage = "Polje za kategoriju je obavezno.")]
         public int KategorijaId { get; set; }
-
-//        [Required(ErrorMessage = "Polje za kategoriju je obavezno.")]
         public TipOdjece? Kategorija { get; set; }
 
         [Required(ErrorMessage = "Polje za cijenu je obavezno.")]
@@ -34,6 +32,7 @@ namespace DressCode.Models
         public string Opis { get; set; }
 
         [Required(ErrorMessage = "Polje za količinu je obavezno.")]
+        [Range(0, int.MaxValue, ErrorMessage = "Količina mora biti veća od 0")]
         public int Kolicina { get; set; }
 
         public string? SlikaUrl { get; set; }

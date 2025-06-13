@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
 namespace DressCode.Controllers
 {
@@ -28,12 +29,25 @@ namespace DressCode.Controllers
         // GET: QRKod
         // Controllers/QRKodController.cs
 
-        public async Task<IActionResult> Index(string show = "articles")
+        public async Task<IActionResult> Index(string show = "articles", string filter = null)
         {
             var vm = new QRKodIndexViewModel
             {
                 Show = (show ?? "promotions").ToLower()
             };
+
+            var isAdmin = User.IsInRole("Administrator");
+            var isRadnik = User.IsInRole("Radnik");
+
+            if (vm.Show == "promotions" && !isAdmin)
+            {
+                return Forbid();
+            }
+
+            if (vm.Show == "articles" && !isAdmin && !isRadnik)
+            {
+                return Forbid();
+            }
 
             if (vm.Show == "articles")
             {
@@ -89,9 +103,17 @@ namespace DressCode.Controllers
                         })
            .            ToList();
                 }
+
+                if (!string.IsNullOrWhiteSpace(filter))
+                {
+                    vm.Grupe = vm.Grupe
+                        .Where(g => g.GrupaId.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
             }
-            else
+            else 
             {
+
                 var popusti = await _context.Popusti.ToListAsync();
                 var bonovi = new List<PopustQrViewModel>();
 
@@ -132,9 +154,17 @@ namespace DressCode.Controllers
                     });
 
                 }
+
+                if (!string.IsNullOrWhiteSpace(filter))
+                {
+                    bonovi = bonovi
+                        .Where (b => b.KodPopust.Contains(filter, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
+
                 vm.Promocije = bonovi;
             }
-
+            ViewData["Filter"] = filter;
             return View(vm);
         }
 

@@ -9,6 +9,11 @@ namespace DressCode.Controllers
         [HttpGet]
         public IActionResult Send()
         {
+            var isAdmin = User.IsInRole("Administrator");
+            if (!isAdmin)
+            {
+                return Forbid();
+            }
             if (TempData["Success"] != null)
                 ViewBag.Success = TempData["Success"];
             return View(new SendEmailViewModel());
@@ -17,6 +22,11 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Send(SendEmailViewModel vm)
         {
+            var isAdmin = User.IsInRole("Administrator");
+            if (!isAdmin)
+            {
+                return Forbid();
+            }
             // Uklanjamo ModelState greške za Email ako je SendToAll true
             if (vm.SendToAll)
             {
