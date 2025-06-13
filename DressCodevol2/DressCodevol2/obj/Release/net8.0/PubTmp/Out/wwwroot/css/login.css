@@ -1,0 +1,150 @@
+﻿/* ----------------------------------- */
+/* 1. Reset i full‐screen pozadina      */
+/* ----------------------------------- */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+.v10_144 {
+    /* Pozicija i dimenzije */
+    width: 100%;
+    height: 100vh; /* Cijeli viewport po visini */
+    display: flex; /* Flexbox za centriranje */
+    justify-content: center; /* centriraj horizontalno */
+    align-items: center; /* centriraj vertikalno */
+    /* Background slika */
+    background-image: url('../images/login.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover; /* Slika pokriva cijeli element */
+    background-color: rgb(52, 58, 64);
+}
+
+/* ----------------------------------- */
+/* 2. “Card” u kojem se nalazi forma    */
+/* ----------------------------------- */
+.v10_145 {
+    width: 100%;
+    max-width: 400px; /* maksimalna širina forme */
+    padding: 32px; /* unutarnji razmak */
+    background-color: rgba(73, 80, 87, 0.8); /* blago prozirna bijela podloga */
+    border-radius: 8px; /* zaobljeni rubovi */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2); /* lagani shadow */
+    box-sizing: border-box; /* uključi padding u ukupnu širinu */
+}
+
+/* ----------------------------------- */
+/* 3. Stilovi za labelu i input polja  */
+/* ----------------------------------- */
+.v10_154, .v10_158 {
+    margin-bottom: 16px; /* razmak između polja */
+}
+
+    .v10_154 label, .v10_158 label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 500;
+        color: rgb(233, 236, 239);
+        font-size: 16px;
+    }
+
+    .v10_154 input[type="email"],
+    .v10_158 input[type="password"] {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+        .v10_154 input[type="email"]:focus,
+        .v10_158 input[type="password"]:focus {
+            border-color: #888;
+        }
+
+/* ----------------------------------- */
+/* 4. Stilovi za gumb                   */
+/* ----------------------------------- */
+.v10_162 {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+    .v10_162 button {
+        width: 100%; /* gumb puni širinu “card‐a” */
+        padding: 12px 0;
+        background-color: #000; /* crna boja pozadine */
+        color: #fff; /* bijeli tekst */
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-out;
+    }
+
+        .v10_162 button:hover {
+            background-color: #333;
+        }
+
+/* ----------------------------------- */
+/* 5. Stilovi za naslov “Prijava”       */
+/* ----------------------------------- */
+.v10_165 {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+    .v10_165 .v10_166 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #fff; /* ili boja po želji */
+        text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
+/* ----------------------------------- */
+/* 6. Stil za link registracije        */
+/* ----------------------------------- */
+.v42_335 {
+    margin-top: 24px;
+    text-align: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+    .v42_335 a {
+        display: inline-block;
+        margin-left: 6px;
+        background-color: #000;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background-color 0.2s ease-out;
+    }
+
+        .v42_335 a:hover {
+            background-color: #333;
+        }
+
+/* ----------------------------------- */
+/* 7. Skripta za validacijske error‐ove */
+/* ----------------------------------- */
+.text-danger {
+    color: #dc3545; /* ili neka druga crvena boja */
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
+}

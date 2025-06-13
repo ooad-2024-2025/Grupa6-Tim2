@@ -9,7 +9,7 @@ namespace DressCode.Models
         public double VrijednostPopusta { get; set; }
         public string KodPopust { get; set; }
 
-        [StringLength(10)]
+        [StringLength(6)]
         public string? PristupniKod { get; set; }
     }
 }

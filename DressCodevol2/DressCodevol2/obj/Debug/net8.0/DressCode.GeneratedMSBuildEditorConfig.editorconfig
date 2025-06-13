@@ -332,7 +332,15 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxhY2FuamVcU3VjY2Vzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< HEAD
 [C:/Users/DT User/Documents/GitHub/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Create.cshtml]
+=======
+[C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Access.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XEFjY2Vzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Korisnik/Desktop/OOAD/Grupa6-Tim2/DressCodevol2/DressCodevol2/Views/Popust/Create.cshtml]
+>>>>>>> 8a309e8bbdba3a03533e73205a7eafd18d09a310
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9wdXN0XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 

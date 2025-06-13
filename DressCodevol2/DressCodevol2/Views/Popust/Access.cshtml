@@ -1,0 +1,20 @@
+﻿@model DressCode.Models.EnterCodeViewModel
+@{
+    ViewData["Title"] = "Unesite pristupni kod";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Access" method="post" class="mt-4">
+    <input type="hidden" asp-for="PopustId" />
+    <div class="mb-3">
+        <label asp-for="PristupniKod" class="form-label"></label>
+        <input asp-for="PristupniKod" class="form-control" maxlength="6" />
+        <span asp-validation-for="PristupniKod" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Potvrdi</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
