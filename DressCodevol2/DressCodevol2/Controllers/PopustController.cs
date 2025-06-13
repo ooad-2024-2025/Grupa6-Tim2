@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DressCode.Data;
 using DressCode.Models;
 using Stripe.Treasury;
+using Microsoft.VisualBasic;
 
 namespace DressCode.Controllers
 {
@@ -122,35 +123,40 @@ namespace DressCode.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,KodId,VrijednostPopusta")] Popust popust)
+        public async Task<IActionResult> Edit(int id,
+    [Bind("VrijednostPopusta,KodPopust")] Popust input)
         {
-            if (id != popust.Id)
-            {
+            // Nikad ne koristi input.Id jer on nije bindan
+            // Provjera postojanja
+            var popust = await _context.Popusti.FindAsync(id);
+            if (popust == null)
                 return NotFound();
+
+            if (!ModelState.IsValid)
+            {
+                // Vrati input i id u ViewData za formu
+                ViewData["PopustId"] = id;
+                return View(input);
             }
 
-            if (ModelState.IsValid)
+            // Ažuriraj samo ono što smije
+            popust.VrijednostPopusta = input.VrijednostPopusta;
+            popust.KodPopust = input.KodPopust;
+
+            try
             {
-                try
-                {
-                    _context.Update(popust);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PopustExists(popust.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            return View(popust);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PopustExists(id))
+                    return NotFound();
+                throw;
+            }
+
+            return RedirectToAction(nameof(Index));
         }
+
 
         // GET: Popust/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -178,6 +184,11 @@ namespace DressCode.Controllers
             var popust = await _context.Popusti.FindAsync(id);
             if (popust != null)
             {
+                var qrKod = await _context.QRKodovi
+                    .Where(q => q.PromocijaId == popust.Id)
+                    .ToListAsync();
+
+                _context.QRKodovi.RemoveRange(qrKod);
                 _context.Popusti.Remove(popust);
             }
 
@@ -189,5 +200,40 @@ namespace DressCode.Controllers
         {
             return _context.Popusti.Any(e => e.Id == id);
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Access(int id)
+        {
+            var pop = await _context.Popusti.FindAsync(id);
+            if (pop == null) return NotFound();
+
+            var vm = new EnterCodeViewModel { PopustId = id };
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Access(EnterCodeViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
+            var pop = await _context.Popusti.FindAsync(vm.PopustId);
+            if (pop == null) return NotFound();
+
+            if (pop.PristupniKod != vm.PristupniKod)
+            {
+                ModelState.AddModelError(nameof(vm.PristupniKod), "Neispravan pristupni kod.");
+                return View(vm);
+            }
+
+            return RedirectToAction(nameof(Details), new { id = vm.PopustId });
+        }
+
+
     }
 }

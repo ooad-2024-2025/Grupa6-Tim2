@@ -1,30 +1,12 @@
 ﻿@model DressCode.Models.Popust
-
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalji popusta";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>Popust</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.KodId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.KodId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VrijednostPopusta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VrijednostPopusta)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<h2>@ViewData["Title"]</h2>
+<div class="card p-4 mt-3">
+    <p><strong>Vrijednost popusta:</strong> @Model.VrijednostPopusta %</p>
+    <p><strong>Kod za popust:</strong> @Model.KodPopust</p>
+    <p><strong>Pristupni kod:</strong> @Model.PristupniKod</p>
+    <p class="text-muted">Ukucajte ovaj kod na blagajni.</p>
 </div>
