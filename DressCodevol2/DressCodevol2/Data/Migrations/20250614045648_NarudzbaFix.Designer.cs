@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DressCode.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250613233341_JedinstvenaKorpa")]
-    partial class JedinstvenaKorpa
+    [Migration("20250614045648_NarudzbaFix")]
+    partial class NarudzbaFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -248,7 +248,7 @@ namespace DressCode.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("KorisnikID")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PopustId")
                         .HasColumnType("int");
@@ -259,10 +259,6 @@ namespace DressCode.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PopustId");
-
-                    b.HasIndex("KorisnikID", "IsAktivna")
-                        .IsUnique()
-                        .HasFilter("[IsAktivna] = 1");
 
                     b.ToTable("Korpe");
                 });
@@ -303,6 +299,9 @@ namespace DressCode.Data.Migrations
                     b.Property<string>("KorisnikId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("KorpaId")
+                        .HasColumnType("int");
 
                     b.Property<int>("NacinPlacanja")
                         .HasColumnType("int");
@@ -349,7 +348,8 @@ namespace DressCode.Data.Migrations
 
                     b.Property<string>("KodPopust")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PristupniKod")
                         .HasMaxLength(6)

@@ -433,7 +433,8 @@ namespace DressCode.Controllers
                 UkupnaCijena = finalnaCijena, // Koristi finalnu cijenu
                 DatumKreiranja = DateTime.Now,
                 NacinPlacanja = NacinPlacanja.KARTICNO,
-                Adresa = adresa
+                Adresa = adresa,
+                KorpaId = korpa.Id
             };
 
             _context.Narudzbe.Add(narudzba);

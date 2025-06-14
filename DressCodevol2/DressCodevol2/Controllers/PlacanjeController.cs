@@ -112,13 +112,12 @@ namespace DressCode.Controllers
 
                 // ovo je bio pokusaj al ne moze ovako
 
-              /*  var narudzba2 = await _context.Narudzbe.FindAsync(narudzbaId);
+               var narudzba2 = await _context.Narudzbe.FindAsync(narudzbaId);
                 var korpa = await _context.Korpe
-                    .FirstOrDefaultAsync(k => k.KorisnikID == narudzba2.KorisnikId && k.IsAktivna && k.UkupnaCijena == narudzba2.UkupnaCijena);
+                    .FirstOrDefaultAsync(k => k.Id == narudzba2.KorpaId);
 
                 if (korpa != null)
                 {
-                    Debug.WriteLine("Korpa nije null");
                     var korpaStavke = await _context.KorpaStavkeKorpe
                         .Where(ksk => ksk.KorpaId == korpa.Id)
                         .ToListAsync();
@@ -152,7 +151,7 @@ namespace DressCode.Controllers
                     korpa.IsAktivna = false;
                     _context.Korpe.Update(korpa);
                     await _context.SaveChangesAsync();  // Dodaj SaveChangesAsync da promjene budu sačuvane
-                }*/
+                }
 
                 ViewBag.Amount = amount;
                 ViewBag.SuccessMessage = "Plaćanje je uspešno izvršeno!";

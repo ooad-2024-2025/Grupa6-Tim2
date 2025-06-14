@@ -8,6 +8,7 @@
         public double UkupnaCijena { get; set; }
         public DateTime DatumKreiranja  { get; set; }
         public Adresa Adresa { get; set; }
+        public int? KorpaId { get; set; }
         
     }
 }
