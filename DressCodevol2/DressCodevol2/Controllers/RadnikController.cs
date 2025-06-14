@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace DressCode.Controllers
 {
@@ -149,6 +150,8 @@ namespace DressCode.Controllers
             user.JMBG = vm.JMBG;
             user.IsLoyal = (bool)(vm.IsLoyal == null ? false : vm.IsLoyal);
             user.KarticaId = vm.KarticaId;
+            user.Email = $"{vm.Ime}_{vm.Prezime}@dresscode.com";
+            user.UserName = $"{vm.Ime}_{vm.Prezime}@dresscode.com";
 
             if (vm.Slika != null && vm.Slika.Length > 0)
             {

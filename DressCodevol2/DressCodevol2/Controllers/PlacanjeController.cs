@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DressCode.Data;
+using DressCode.Data.Migrations;
+using DressCode.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using DressCode.Data;
-using DressCode.Models;
 using Stripe;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DressCode.Controllers
 {
@@ -60,12 +62,12 @@ namespace DressCode.Controllers
     
             return View();
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> ProcessPayment(string stripeToken, decimal amount)
         {
             StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
-    
+
             var options = new ChargeCreateOptions
             {
                 Amount = (long)(amount * 100),
@@ -92,7 +94,7 @@ namespace DressCode.Controllers
                     NarudzbaId = narudzbaId,
                     Cijena = (double)amount
                 };
-        
+
                 _context.Add(placanje);
                 await _context.SaveChangesAsync();
 
@@ -108,11 +110,55 @@ namespace DressCode.Controllers
                     }
                 }
 
+                // ovo je bio pokusaj al ne moze ovako
+
+              /*  var narudzba2 = await _context.Narudzbe.FindAsync(narudzbaId);
+                var korpa = await _context.Korpe
+                    .FirstOrDefaultAsync(k => k.KorisnikID == narudzba2.KorisnikId && k.IsAktivna && k.UkupnaCijena == narudzba2.UkupnaCijena);
+
+                if (korpa != null)
+                {
+                    Debug.WriteLine("Korpa nije null");
+                    var korpaStavke = await _context.KorpaStavkeKorpe
+                        .Where(ksk => ksk.KorpaId == korpa.Id)
+                        .ToListAsync();
+
+                    foreach (var korpaStavka in korpaStavke)
+                    {
+                        var stavka = await _context.StavkeKorpe.FindAsync(korpaStavka.StavkaKorpeId);
+                        if (stavka != null)
+                        {
+                            var artikal = await _context.Artikli.FindAsync(stavka.ArtikalId);
+                            if (artikal != null)
+                            {
+                                Debug.WriteLine("Smanjujem kolicinu artikla " + artikal.Id);
+                                artikal.Kolicina -= stavka.Kolicina;
+
+                                if (artikal.Kolicina <= 0)
+                                {
+                                    _context.Artikli.Remove(artikal);
+                                }
+                                else
+                                {
+                                    _context.Artikli.Update(artikal);
+                                }
+                            }
+                            _context.StavkeKorpe.Remove(stavka);
+                        }
+
+                        _context.KorpaStavkeKorpe.Remove(korpaStavka);
+                    }
+
+                    korpa.IsAktivna = false;
+                    _context.Korpe.Update(korpa);
+                    await _context.SaveChangesAsync();  // Dodaj SaveChangesAsync da promjene budu sačuvane
+                }*/
+
                 ViewBag.Amount = amount;
                 ViewBag.SuccessMessage = "Plaćanje je uspešno izvršeno!";
                 ViewBag.NarudzbaId = narudzbaId;
-        
-                return View("Success", charge);
+
+                return View("Success", charge);  // Ovo je glavni return za sve uspješne puteve
             }
             catch (StripeException ex)
             {
@@ -122,7 +168,8 @@ namespace DressCode.Controllers
                 return View("Error", ex);
             }
         }
-        
+
+
         private string GetCustomErrorMessage(string errorCode)
         {
             return errorCode switch

@@ -2,6 +2,46 @@
     ViewData["Title"] = "Radnik obrisan";
 }
 
-<h2>Radnik je uspješno obrisan.</h2>
+<h2 class="custom-title">Radnik je uspješno obrisan.</h2>
 
-<a asp-action="Index" class="btn btn-primary">Nazad na listu radnika</a>
+<a asp-action="Index" class="btn btn-outline-brown me-2">Nazad na listu radnika</a>
+
+
+<style>
+    body {
+        background: #f7f3f0;
+    }
+
+    .btn-outline-brown {
+        color: #7a5c40;
+        border-color: #7a5c40;
+    }
+
+        .btn-outline-brown:hover {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border-color: #7a5c40;
+        }
+
+    .btn-brown {
+        background-color: #7a5c40;
+        color: #f5f0e6;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #5b4636;
+            color: #f5f0e6;
+        }
+
+    .custom-title {
+        color: #8b6b43; /* promijenjena boja naslova */
+        text-align: left;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+</style>

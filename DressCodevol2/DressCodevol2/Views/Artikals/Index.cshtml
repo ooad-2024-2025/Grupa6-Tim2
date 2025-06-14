@@ -136,7 +136,7 @@
 
         @if (User.IsInRole("Radnik") || User.IsInRole("Administrator"))
         {
-            <a asp-controller="QRKod" asp-action="Index" asp-route-show="articles" class="btn btn-outline-primary">
+            <a asp-controller="QRKod" asp-action="Index" asp-route-show="articles" class="btn btn-outline-brown me-2">
                 <i class="fas fa-tags"></i> Idi na etikete
             </a>
         }
@@ -197,6 +197,7 @@ else
     body {
         background: #f7f3f0;
     }
+
 
     .bg-pink {
         background-color: #e83e8c !important;
@@ -312,4 +313,39 @@ else
             box-shadow: 0 4px 12px rgba(122, 92, 63, 0.2);
             transform: translateY(-2px);
         }
+
+
+    .btn-outline-brown {
+        color: #7a5c40;
+        border-color: #7a5c40;
+    }
+
+        .btn-outline-brown:hover {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border-color: #7a5c40;
+        }
+
+        .btn-outline-brown.active:hover {
+            background-color: #7a5c40 !important; /* Malo tamnije na hover */
+            border-color: #7a5c40;
+        }
+
+    .btn-brown {
+        background-color: #7a5c40;
+        color: #f5f0e6;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #5b4636;
+            color: #f5f0e6;
+        }
+
+        .btn-brown.active:hover {
+            background-color: #7a5c40 !important; /* Malo tamnije na hover */
+            border-color: #7a5c40;
+        }
+
+
 </style>

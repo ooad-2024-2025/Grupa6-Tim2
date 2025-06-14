@@ -182,14 +182,24 @@
                 {
                     @if (sviArtikli != null && sviArtikli.Any())
                     {
-                        <a asp-action="Edit" asp-route-id="@sviArtikli.First().Id" class="btn btn-outline-brown me-2">
+                        @*<a asp-action="Edit" asp-route-id="@sviArtikli.First().Id" class="btn btn-outline-brown me-2">*@
+                        <a asp-action="EditGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
                             <i class="fas fa-edit"></i> Uredi
+                        </a>
+
+                        <a asp-action="DeleteGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
+                           <i class="fa-solid fa-trash"></i> Obrisi
                         </a>
                     }
                     else
                     {
-                        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">
+                        @*<a asp-action="EditGroup" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">*@
+                        <a asp-action="EditGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
                             <i class="fas fa-edit"></i> Uredi
+                        </a>
+
+                        <a asp-action="DeleteGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
+                           <i class="fa-solid fa-trash"></i> Obrisi
                         </a>
                     }
                 }

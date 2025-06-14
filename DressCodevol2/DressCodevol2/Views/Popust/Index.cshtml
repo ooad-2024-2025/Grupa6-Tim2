@@ -1,41 +1,63 @@
 ﻿@model IEnumerable<DressCode.Models.Popust>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Popusti";
 }
 
-<h1>Index</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>@ViewData["Title"]</h1>
+    <div>
+        <a asp-action="Create" class="btn btn-primary me-2">Dodaj novi popust</a>
+        <a asp-controller="QRKod" asp-action="Index" asp-route-show="promotions" class="btn btn-outline-secondary">Idi na bonove</a>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.KodId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VrijednostPopusta)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.KodId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VrijednostPopusta)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card shadow-sm border-0" style="background-color: #f8f5f0;">
+                <div class="card-body">
+                    <h5 class="card-title text-brown">Kod za popust: <strong>@item.KodPopust</strong></h5>
+                    <p class="card-text mb-1">Vrijednost popusta: <strong>@item.VrijednostPopusta %</strong></p>
+                    <p class="card-text text-muted mb-3">Pristupni kod: <strong>@item.PristupniKod</strong></p>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-secondary btn-sm">Uredi</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger btn-sm">Obriši</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .text-brown {
+        color: #5a3e2b;
+    }
+
+    .btn-primary {
+        background-color: #7c5c43;
+        border-color: #7c5c43;
+    }
+
+        .btn-primary:hover {
+            background-color: #5a3e2b;
+            border-color: #5a3e2b;
+        }
+
+    .btn-outline-secondary {
+        color: #5a3e2b;
+        border-color: #5a3e2b;
+    }
+
+        .btn-outline-secondary:hover {
+            background-color: #5a3e2b;
+            color: #fff;
+        }
+
+    body {
+        background-color: #f5f3ee;
+    }
+</style>

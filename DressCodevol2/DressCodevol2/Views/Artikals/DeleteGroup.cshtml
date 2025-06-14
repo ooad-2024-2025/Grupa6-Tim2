@@ -6,7 +6,7 @@
 <div class="alert alert-warning">
     <p>
         Jeste li sigurni da želite obrisati sve artikle u grupi <strong>@Model</strong>?<br />
-        Ovaj postupak je nereverzibilan.
+        Ovaj postupak ne možete ponišiti.
     </p>
 </div>
 <form asp-action="DeleteGroup" method="post">
@@ -14,3 +14,9 @@
     <button type="submit" class="btn btn-danger">Da, obriši grupu</button>
     <a asp-action="Index" class="btn btn-secondary">Ne, odustani</a>
 </form>
+
+<style>
+    body {
+        background: #f7f3f0;
+    }
+</style>

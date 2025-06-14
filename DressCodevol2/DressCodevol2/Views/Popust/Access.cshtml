@@ -3,17 +3,113 @@
     ViewData["Title"] = "Unesite pristupni kod";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h2 class="custom-title">@ViewData["Title"]</h2>
 
-<form asp-action="Access" method="post" class="mt-4">
+<style>
+    body {
+        background: #f7f3f0;
+    }
+    /* Stilovi samo za ovu formu, izolirano */
+    form.access-form {
+        max-width: 400px;
+        margin: 2rem auto;
+        background: #fdf7ec; /* svijetli krem */
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(122, 92, 64, 0.15);
+        border: 1px solid #d1bfa7;
+        color: #5a4632; /* tamniji smeđi */
+    }
+
+    .custom-title {
+        color: #8b6b43; /* promijenjena boja naslova */
+        text-align: center;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    form.access-form label.form-label {
+        font-weight: 600;
+        color: #8b6b43;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
+        display: block;
+    }
+
+    form.access-form input.form-control {
+        border: 1.5px solid #c3a77f;
+        border-radius: 8px;
+        padding: 0.55rem 0.9rem;
+        font-size: 1.1rem;
+        color: #5a4632;
+        background-color: #fcf6e3;
+        transition: border-color 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        form.access-form input.form-control:focus {
+            outline: none;
+            border-color: #7a5c40;
+            box-shadow: 0 0 6px #7a5c40aa;
+            background-color: #fff8dc;
+        }
+
+    form.access-form .text-danger {
+        font-size: 0.9rem;
+        color: #a04a2a;
+        margin-top: 0.3rem;
+        display: block;
+    }
+
+    form.access-form button.btn-submit {
+        background-color: #8b6b43;
+        border: none;
+        padding: 0.6rem 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff9f0;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+        form.access-form button.btn-submit:hover {
+            background-color: #7a5c40;
+        }
+
+    form.access-form .mb-3 {
+        margin-bottom: 1.3rem;
+    }
+
+    .info-text {
+        max-width: 400px;
+        margin: 1rem auto 3rem;
+        color: #7a5c40;
+        font-size: 1rem;
+        text-align: center;
+        font-style: italic;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+<form asp-action="Access" method="post" class="access-form">
     <input type="hidden" asp-for="PopustId" />
     <div class="mb-3">
         <label asp-for="PristupniKod" class="form-label"></label>
-        <input asp-for="PristupniKod" class="form-control" maxlength="6" />
+        <input asp-for="PristupniKod" class="form-control" maxlength="6" autocomplete="off" />
         <span asp-validation-for="PristupniKod" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Potvrdi</button>
+    <button type="submit" class="btn-submit">Potvrdi</button>
 </form>
+
+<div class="info-text">
+    Pristupni kod se nalazi na poklon bonu.
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

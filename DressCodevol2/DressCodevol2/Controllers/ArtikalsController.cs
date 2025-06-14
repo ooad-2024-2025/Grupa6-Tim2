@@ -478,12 +478,14 @@ namespace DressCode.Controllers
 
             if(!artikli.Any()) return NotFound();
 
+           
             var vm = new EditGroupViewModel
             {
                 GrupaId = grupaId,
                 ZajednickaCijena = artikli.First().Cijena,
                 ZajednickiMaterijal = artikli.First().Materijal,
                 ZajednickiOpis = artikli.First().Opis,
+                KategorijaId = artikli.First().KategorijaId,
                 Artikli = artikli
             };
 
@@ -628,6 +630,7 @@ namespace DressCode.Controllers
 
             // 7) Obriši artikle
             _context.Artikli.RemoveRange(artikli);
+            await _context.SaveChangesAsync();
 
             // 8) Preračunaj UkupnaCijena za svaku pogođenu košaricu
             foreach (var korpaId in pogodeneKorpe)
@@ -652,6 +655,7 @@ namespace DressCode.Controllers
                 if (korpa != null)
                 {
                     korpa.UkupnaCijena = noviTotal;
+                    _context.Korpe.Update(korpa);
                 }
             }
 

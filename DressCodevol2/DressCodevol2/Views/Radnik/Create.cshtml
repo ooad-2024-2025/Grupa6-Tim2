@@ -3,40 +3,152 @@
     ViewData["Title"] = "Kreiraj Radnika";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="custom-title">@ViewData["Title"]</h1>
 
-<form asp-action="@ViewContext.RouteData.Values["action"]" method="post" enctype="multipart/form-data">
-        <div asp-validation-summary="All" class="text-danger mb-3"></div>
-    <div class="form-group mb-2">
+<style>
+    body {
+        background: #f7f3f0;
+        color: #5a4632;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .custom-title {
+        color: #8b6b43;
+        font-weight: 700;
+        text-align: center;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+    }
+
+    form.radnik-form {
+        max-width: 500px;
+        margin: 0 auto 3rem;
+        background: #fdf7ec; /* svijetli krem */
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(122, 92, 64, 0.15);
+        border: 1px solid #d1bfa7;
+        color: #5a4632;
+    }
+
+        form.radnik-form .form-group {
+            margin-bottom: 1.4rem;
+        }
+
+        form.radnik-form label {
+            display: block;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #8b6b43;
+            margin-bottom: 0.5rem;
+        }
+
+        form.radnik-form input.form-control,
+        form.radnik-form input[type="file"] {
+            width: 100%;
+            padding: 0.55rem 0.9rem;
+            font-size: 1.1rem;
+            border: 1.5px solid #c3a77f;
+            border-radius: 8px;
+            background-color: #fcf6e3;
+            color: #5a4632;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+            form.radnik-form input.form-control:focus,
+            form.radnik-form input[type="file"]:focus {
+                outline: none;
+                border-color: #7a5c40;
+                box-shadow: 0 0 6px #7a5c40aa;
+                background-color: #fff8dc;
+            }
+
+        form.radnik-form span.text-danger {
+            color: #a04a2a;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+            display: block;
+        }
+
+        form.radnik-form img {
+            height: 100px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #d1bfa7;
+            object-fit: cover;
+        }
+
+        form.radnik-form button.btn-submit {
+            background-color: #8b6b43;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff9f0;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+            form.radnik-form button.btn-submit:hover {
+                background-color: #7a5c40;
+            }
+
+        form.radnik-form a.btn-cancel {
+            display: inline-block;
+            margin-top: 1rem;
+            text-align: center;
+            width: 100%;
+            padding: 0.6rem 0;
+            background-color: #c3a77f;
+            color: #5a4632;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+            form.radnik-form a.btn-cancel:hover {
+                background-color: #b39a6d;
+                color: #3e2f1f;
+            }
+</style>
+
+<form asp-action="@ViewContext.RouteData.Values["action"]" method="post" enctype="multipart/form-data" class="radnik-form">
+    <div asp-validation-summary="All" class="text-danger mb-3"></div>
+    <div class="form-group">
         <label asp-for="Ime"></label>
-        <input asp-for="Ime" class="form-control" />
+        <input asp-for="Ime" class="form-control" autocomplete="off" />
         <span asp-validation-for="Ime" class="text-danger"></span>
     </div>
-    <div class="form-group mb-2">
+    <div class="form-group">
         <label asp-for="Prezime"></label>
-        <input asp-for="Prezime" class="form-control" />
+        <input asp-for="Prezime" class="form-control" autocomplete="off" />
         <span asp-validation-for="Prezime" class="text-danger"></span>
     </div>
-    <div class="form-group mb-2">
+    <div class="form-group">
         <label asp-for="DatumRodjenja"></label>
         <input asp-for="DatumRodjenja" class="form-control" type="date" />
+        <span asp-validation-for="DatumRodjenja" class="text-danger"></span>
     </div>
-    <div class="form-group mb-2">
+    <div class="form-group">
         <label asp-for="JMBG"></label>
-        <input asp-for="JMBG" class="form-control" />
+        <input asp-for="JMBG" class="form-control" autocomplete="off" />
+        <span asp-validation-for="JMBG" class="text-danger"></span>
     </div>
-    <div class="form-group mb-3">
+    <div class="form-group">
         <label asp-for="Slika">Slika (jpg/png):</label>
         <input asp-for="Slika" type="file" class="form-control" />
-            <img src="~/images/UserImageDefault.jpg" style="height:100px; margin-top:10px;"/>
-        
+        <img src="~/images/UserImageDefault.jpg" alt="Profilna slika" />
     </div>
-    <button type="submit" class="btn btn-success">
-        @(ViewContext.RouteData.Values["action"].ToString() == "Create"
-                ? "Kreiraj"
-                : "Spasi")
+    <button type="submit" class="btn-submit">
+        @(ViewContext.RouteData.Values["action"].ToString() == "Create" ? "Kreiraj" : "Spasi")
     </button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    <a asp-action="Index" class="btn-cancel">Cancel</a>
 </form>
 
 @section Scripts {

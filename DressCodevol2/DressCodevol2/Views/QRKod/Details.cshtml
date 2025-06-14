@@ -73,7 +73,7 @@
     </div>
 
     <div class="mt-4 text-center">
-            <a asp-action="Index" class="btn btn-outline-brown me-2">Nazad na listu</a>
+            <a asp-action="Index" asp-route-show="articles" class="btn btn-outline-brown me-2">Nazad na listu</a>
     </div>
     </div>
 }
@@ -128,10 +128,10 @@ else if (Model.QRKod.TipKoda == QRKodTip.POPUST && Model.Popust != null)
             </div>
         </div>
     </div>
-    <!-- Back button -->
-    <div class="mt-4 text-center">
-            <a asp-action="Index" class="btn btn-outline-brown me-2">Nazad na listu</a>
-    </div>
+        <!-- Back button -->
+        <div class="mt-4 text-center">
+            <a asp-action="Index" asp-route-show="promotions" class="btn btn-outline-brown me-2">Nazad na listu</a>
+        </div>
 </div>
 }
 

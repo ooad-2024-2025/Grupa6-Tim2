@@ -3,6 +3,9 @@
 	ViewData["Title"] = "Detalji Radnika";
 }
 
+<h2 class="custom-title">@ViewData["Title"]</h2>
+
+
 <div class="row">
     <div class="col-md-4">
         <img src="@(
@@ -21,13 +24,48 @@
             <dd class="col-sm-9">@Model.DatumRodjenja?.ToString("dd.MM.yyyy")</dd>
             <dt class="col-sm-3">JMBG</dt>
             <dd class="col-sm-9">@Model.JMBG</dd>
-            <dt class="col-sm-3">Loyal</dt>
-            <dd class="col-sm-9">@Model.IsLoyal</dd>
-            <dt class="col-sm-3">Kartica ID</dt>
-            <dd class="col-sm-9">@Model.KarticaId</dd>
         </dl>
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
-        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
-        <a asp-action="Index" class="btn btn-secondary">Back</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-brown me-2">Uredi</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-outline-brown me-2">Obriši</a>
+        <a asp-action="Index"class="btn btn-outline-brown me-2">Nazad na listu radnika</a>
     </div>
 </div>
+
+<style>
+    body {
+        background: #f7f3f0;
+    }
+
+    .btn-outline-brown {
+        color: #7a5c40;
+        border-color: #7a5c40;
+    }
+
+        .btn-outline-brown:hover {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border-color: #7a5c40;
+        }
+
+    .btn-brown {
+        background-color: #7a5c40;
+        color: #f5f0e6;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #5b4636;
+            color: #f5f0e6;
+        }
+
+    .custom-title {
+        color: #8b6b43; /* promijenjena boja naslova */
+        text-align: left;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+</style>
