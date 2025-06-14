@@ -63,11 +63,13 @@ namespace DressCode.Controllers
             return View();
         }
 
+        // POST: Payments
+        // POST: Payments
         [HttpPost]
         public async Task<IActionResult> ProcessPayment(string stripeToken, decimal amount)
         {
+            // Stripe charge
             StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
-
             var options = new ChargeCreateOptions
             {
                 Amount = (long)(amount * 100),
@@ -75,98 +77,99 @@ namespace DressCode.Controllers
                 Description = "DressCode Payment",
                 Source = stripeToken
             };
-
             var service = new ChargeService();
+            Charge charge;
             try
             {
-                var charge = await service.CreateAsync(options);
-
-                // Get the order ID from TempData
-                int narudzbaId = 0;
-                if (TempData["NarudzbaId"] != null)
-                {
-                    narudzbaId = Convert.ToInt32(TempData["NarudzbaId"]);
-                }
-
-                // Save payment to database
-                var placanje = new Placanje
-                {
-                    NarudzbaId = narudzbaId,
-                    Cijena = (double)amount
-                };
-
-                _context.Add(placanje);
-                await _context.SaveChangesAsync();
-
-                // Update order payment method if needed
-                if (narudzbaId > 0)
-                {
-                    var narudzba = await _context.Narudzbe.FindAsync(narudzbaId);
-                    if (narudzba != null)
-                    {
-                        narudzba.NacinPlacanja = NacinPlacanja.KARTICNO;
-                        _context.Update(narudzba);
-                        await _context.SaveChangesAsync();
-                    }
-                }
-
-                // ovo je bio pokusaj al ne moze ovako
-
-               var narudzba2 = await _context.Narudzbe.FindAsync(narudzbaId);
-                var korpa = await _context.Korpe
-                    .FirstOrDefaultAsync(k => k.Id == narudzba2.KorpaId);
-
-                if (korpa != null)
-                {
-                    var korpaStavke = await _context.KorpaStavkeKorpe
-                        .Where(ksk => ksk.KorpaId == korpa.Id)
-                        .ToListAsync();
-
-                    foreach (var korpaStavka in korpaStavke)
-                    {
-                        var stavka = await _context.StavkeKorpe.FindAsync(korpaStavka.StavkaKorpeId);
-                        if (stavka != null)
-                        {
-                            var artikal = await _context.Artikli.FindAsync(stavka.ArtikalId);
-                            if (artikal != null)
-                            {
-                                Debug.WriteLine("Smanjujem kolicinu artikla " + artikal.Id);
-                                artikal.Kolicina -= stavka.Kolicina;
-
-                                if (artikal.Kolicina <= 0)
-                                {
-                                    _context.Artikli.Remove(artikal);
-                                }
-                                else
-                                {
-                                    _context.Artikli.Update(artikal);
-                                }
-                            }
-                            _context.StavkeKorpe.Remove(stavka);
-                        }
-
-                        _context.KorpaStavkeKorpe.Remove(korpaStavka);
-                    }
-
-                    korpa.IsAktivna = false;
-                    _context.Korpe.Update(korpa);
-                    await _context.SaveChangesAsync();  // Dodaj SaveChangesAsync da promjene budu sačuvane
-                }
-
-                ViewBag.Amount = amount;
-                ViewBag.SuccessMessage = "Plaćanje je uspešno izvršeno!";
-                ViewBag.NarudzbaId = narudzbaId;
-
-                return View("Success", charge);  // Ovo je glavni return za sve uspješne puteve
+                charge = await service.CreateAsync(options);
             }
             catch (StripeException ex)
             {
-                string customErrorMessage = GetCustomErrorMessage(ex.StripeError?.Code);
-                ViewBag.ErrorMessage = customErrorMessage;
-                ViewBag.OriginalError = ex.Message;
-                return View("Error", ex);
+                ModelState.AddModelError("", "Plaćanje nije uspjelo: " + ex.Message);
+                return View("Error");
             }
+
+            // Retrieve order and cart
+            int narudzbaId = TempData["NarudzbaId"] as int? ?? 0;
+            var narudzba = await _context.Narudzbe.FindAsync(narudzbaId);
+            if (narudzba == null) return View("Error");
+
+            var korpa = await _context.Korpe
+                .FirstOrDefaultAsync(k => k.Id == narudzba.KorpaId);
+            if (korpa == null) return View("Error");
+
+            // Save payment record
+            var placanje = new Placanje { NarudzbaId = narudzbaId, Cijena = (double)amount };
+            _context.Placanja.Add(placanje);
+            narudzba.NacinPlacanja = NacinPlacanja.KARTICNO;
+            _context.Narudzbe.Update(narudzba);
+
+            // Fetch all linking rows for this cart from KorpaStavkeKorpe
+            var cartLinks = await _context.KorpaStavkeKorpe
+                .Where(link => link.KorpaId == korpa.Id)
+                .ToListAsync();
+
+            foreach (var link in cartLinks)
+            {
+                // Fetch stavka by its ID
+                var stavka = await _context.StavkeKorpe.FindAsync(link.StavkaKorpeId);
+                if (stavka == null) continue;
+
+                // Fetch artikal and decrease stock
+                var artikal = await _context.Artikli.FindAsync(stavka.ArtikalId);
+                if (artikal == null) continue;
+
+                artikal.Kolicina -= stavka.Kolicina;
+                if (artikal.Kolicina <= 0)
+                {
+                    // Remove all StavkeKorpe for this article
+                    var sviStavke = await _context.StavkeKorpe
+                        .Where(s => s.ArtikalId == artikal.Id)
+                        .ToListAsync();
+                    // Remove all links for those stavke
+                    var sviLinkovi = await _context.KorpaStavkeKorpe
+                        .Where(l => sviStavke.Select(s => s.Id).Contains(l.StavkaKorpeId))
+                        .ToListAsync();
+
+                    _context.KorpaStavkeKorpe.RemoveRange(sviLinkovi);
+                    _context.StavkeKorpe.RemoveRange(sviStavke);
+                    _context.Artikli.Remove(artikal);
+                }
+                else
+                {
+                    _context.Artikli.Update(artikal);
+                    // Remove only this cart's link and stavka
+                    _context.KorpaStavkeKorpe.Remove(link);
+                    _context.StavkeKorpe.Remove(stavka);
+                }
+            }
+
+            // Deactivate cart
+            korpa.IsAktivna = false;
+
+            // Recalculate UkupnaCijena from remaining links
+            var remainingLinks = await _context.KorpaStavkeKorpe
+                .Where(l => l.KorpaId == korpa.Id)
+                .ToListAsync();
+            double newTotal = 0;
+            foreach (var link in remainingLinks)
+            {
+                var s = await _context.StavkeKorpe.FindAsync(link.StavkaKorpeId);
+                if (s != null)
+                    newTotal += s.CijenaPoKomadu * s.Kolicina;
+            }
+            korpa.UkupnaCijena = newTotal;
+            _context.Korpe.Update(korpa);
+
+            // Save all changes
+            await _context.SaveChangesAsync();
+
+            ViewBag.Amount = amount;
+            ViewBag.SuccessMessage = "Plaćanje je uspešno izvršeno!";
+            ViewBag.NarudzbaId = narudzbaId;
+            return View("Success", charge);
         }
+
 
 
         private string GetCustomErrorMessage(string errorCode)
