@@ -1,53 +1,35 @@
-﻿@model IEnumerable<DressCode.Models.Narudzba>
+﻿@model IEnumerable<DressCode.Models.NarudzbaIndexViewModel>
 
-@{
-    ViewData["Title"] = "Index";
-}
+<h1>Popis narudžbi</h1>
 
-<h1>Index</h1>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    @foreach (var o in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@o.ImePrezime</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@o.DatumKreiranja</h6>
+                    <p class="card-text">
+                        <strong>Adresa:</strong> @o.Adresa<br />
+                        <strong>Artikli:</strong><br />
+                        @foreach (var art in o.Artikli)
+                        {
+                            <span class="badge bg-secondary me-1">@art</span>
+                        }
+                    </p>
+                </div>
+                <div class="card-footer d-flex align-items-center">
+                    <small class="text-success">@o.Status</small>
+                    <a asp-action="Delete"
+                       asp-route-id="@o.NarudzbaId"
+                       class="btn btn-sm btn-outline-danger ms-auto"
+                       title="Označi kao isporučeno">
+                        Označi kao isporučeno
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.KorisnikId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NacinPlacanja)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UkupnaCijena)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DatumKreiranja)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.KorisnikId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NacinPlacanja)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UkupnaCijena)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatumKreiranja)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>

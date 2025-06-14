@@ -34,6 +34,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Korpa" asp-action="Index">Korpa</a>
                         </li>
+                        @if(User.IsInRole("Administrator") || User.IsInRole("Radnik"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Narudzba" asp-action="Index">Narudžbe</a>
+                            </li>
+                        }
                         @* Provjeravamo da User nije null i da je autentificiran *@
                         @if (User?.Identity?.IsAuthenticated == true && User.IsInRole("Administrator"))
                         {

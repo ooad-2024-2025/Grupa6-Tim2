@@ -137,7 +137,7 @@
                                 <form asp-action="DodajUKorpu" method="post">
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="grupaId" value="@Model.GrupaId" />
-                                    
+                                    <input type="hidden" name="GrupaId" value="@Model.GrupaId"></input>
                                     <div class="mb-3">
                                         <label for="velicina" class="form-label fw-semibold" style="color: #5b4636;">Odaberi veličinu:</label>
 

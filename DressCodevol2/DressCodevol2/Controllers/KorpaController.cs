@@ -433,7 +433,7 @@ namespace DressCode.Controllers
                 UkupnaCijena = finalnaCijena, // Koristi finalnu cijenu
                 DatumKreiranja = DateTime.Now,
                 NacinPlacanja = NacinPlacanja.KARTICNO,
-                Adresa = adresa,
+                AdresaId = adresa.Id,
                 KorpaId = korpa.Id
             };
 
@@ -443,6 +443,28 @@ namespace DressCode.Controllers
             // Store order ID in TempData to pass to payment
             TempData["NarudzbaId"] = narudzba.Id;
             TempData["Amount"] = narudzba.UkupnaCijena.ToString();
+
+            var links = await _context.KorpaStavkeKorpe
+                .Where(link => link.KorpaId == korpa.Id)
+                .ToListAsync();
+
+            foreach (var link in links)
+            {
+                var stavka = await _context.StavkeKorpe
+                    .FirstOrDefaultAsync(s => s.Id == link.StavkaKorpeId);
+
+                var narudzbaStavka = new NarudzbaStavka
+                {
+                    NarudzbaId = narudzba.Id,
+                    GrupaId = stavka.GrupaId,
+                    Velicina = stavka.Velicina,
+                    Kolicina = stavka.Kolicina,
+                    CijenaPoKomadu = (decimal)stavka.CijenaPoKomadu
+                };
+
+                _context.NarudzbaStavka.Add(narudzbaStavka);
+                await _context.SaveChangesAsync();
+            }
 
             // Deactivate the cart
             korpa.IsAktivna = false;

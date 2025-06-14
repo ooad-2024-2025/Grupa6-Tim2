@@ -447,7 +447,8 @@ namespace DressCode.Controllers
                 ArtikalId = artikal.Id,
                 Velicina = artikal.Velicina,
                 Kolicina = 1,
-                CijenaPoKomadu = artikal.Cijena
+                CijenaPoKomadu = artikal.Cijena,
+                GrupaId = artikal.GrupaId
             };
             _context.StavkeKorpe.Add(stavka);
             await _context.SaveChangesAsync();

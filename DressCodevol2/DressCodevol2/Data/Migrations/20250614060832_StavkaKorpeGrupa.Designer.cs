@@ -4,6 +4,7 @@ using DressCode.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DressCode.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250614060832_StavkaKorpeGrupa")]
+    partial class StavkaKorpeGrupa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -308,36 +311,9 @@ namespace DressCode.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AdresaId");
+
                     b.ToTable("Narudzba", (string)null);
-                });
-
-            modelBuilder.Entity("DressCode.Models.NarudzbaStavka", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("CijenaPoKomadu")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("GrupaId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Kolicina")
-                        .HasColumnType("int");
-
-                    b.Property<int>("NarudzbaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Velicina")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NarudzbaStavka", (string)null);
                 });
 
             modelBuilder.Entity("DressCode.Models.Placanje", b =>
@@ -642,6 +618,17 @@ namespace DressCode.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Popust");
+                });
+
+            modelBuilder.Entity("DressCode.Models.Narudzba", b =>
+                {
+                    b.HasOne("DressCode.Models.Adresa", "Adresa")
+                        .WithMany()
+                        .HasForeignKey("AdresaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Adresa");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

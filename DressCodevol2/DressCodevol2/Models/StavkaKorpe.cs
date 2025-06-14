@@ -7,6 +7,6 @@
         public Velicina Velicina { get; set; }
         public int Kolicina {  get; set; }
         public double CijenaPoKomadu { get; set; }
-
+        public string? GrupaId { get; set; }
     }
 }

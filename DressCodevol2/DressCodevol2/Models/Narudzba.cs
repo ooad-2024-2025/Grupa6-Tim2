@@ -7,7 +7,7 @@
         public NacinPlacanja NacinPlacanja { get; set; }
         public double UkupnaCijena { get; set; }
         public DateTime DatumKreiranja  { get; set; }
-        public Adresa Adresa { get; set; }
+        public int AdresaId { get; set; }
         public int? KorpaId { get; set; }
         
     }
