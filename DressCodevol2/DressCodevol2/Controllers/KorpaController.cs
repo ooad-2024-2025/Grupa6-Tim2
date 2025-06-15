@@ -21,25 +21,119 @@ namespace DressCode.Controllers
             _context = context;
         }
 
-        private async Task<Korpa?> GetOrCreateKorpaAsync()
+        private const string GuestSessionKey = "GuestUserId";
+
+        private string? PeekGuestId() =>
+            HttpContext.Session.GetString(GuestSessionKey);
+
+        private string GetOrCreateGuestId()
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var gid = PeekGuestId();
+            if (!string.IsNullOrEmpty(gid))
+                return gid;
 
-            var korpa = await _context.Korpe
-                .FirstOrDefaultAsync(c => c.KorisnikID == userId && c.IsAktivna);
+            gid = Guid.NewGuid().ToString();
+            HttpContext.Session.SetString(GuestSessionKey, gid);
+            return gid;
+        }
 
-            if (korpa == null)
+        private async Task<Korpa> GetOrCreateKorpaAsync()
+        {
+            bool isAuth = User.Identity?.IsAuthenticated == true;
+
+            if (isAuth)
             {
-                korpa = new Korpa
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+
+                // 1) Pokušaj dohvatiti aktivnu korisničku korpu
+                var userKorpa = await _context.Korpe
+                    .FirstOrDefaultAsync(k => k.KorisnikID == userId && k.IsAktivna);
+
+                // 2) Ako korisnička korpa postoji i ima bar jednu stavku, odmah je vraćamo
+                if (userKorpa != null)
                 {
-                    KorisnikID = userId,
+                    var itemCount = await _context.KorpaStavkeKorpe
+                        .CountAsync(l => l.KorpaId == userKorpa.Id);
+                    if (itemCount > 0)
+                        return userKorpa;
+                }
+
+                // 3) Inače (korpa ne postoji ili je prazna) pokušaj merge s guest korpom
+                var guestId = PeekGuestId();
+                if (!string.IsNullOrEmpty(guestId))
+                {
+                    var guestKorpa = await _context.Korpe
+                        .FirstOrDefaultAsync(k => k.KorisnikID == guestId && k.IsAktivna);
+
+                    if (guestKorpa != null)
+                    {
+                        // 3a) Ako userKorpa ne postoji, samo preimenuj guestKorpu
+                        if (userKorpa == null)
+                        {
+                            guestKorpa.KorisnikID = userId;
+                            _context.Korpe.Update(guestKorpa);
+                            await _context.SaveChangesAsync();
+                            HttpContext.Session.Remove(GuestSessionKey);
+                            return guestKorpa;
+                        }
+                        // 3b) Ako userKorpa postoji ali je prazna, prebaci stavke iz guestKorpe
+                        var guestLinks = await _context.KorpaStavkeKorpe
+                            .Where(l => l.KorpaId == guestKorpa.Id)
+                            .ToListAsync();
+
+                        // prespoji svaki link
+                        foreach (var link in guestLinks)
+                            link.KorpaId = userKorpa.Id;
+
+                        // ažuriraj cijenu userKorpe
+                        var stavke = await _context.StavkeKorpe
+                            .Where(s => guestLinks.Select(l => l.StavkaKorpeId).Contains(s.Id))
+                            .ToListAsync();
+                        userKorpa.UkupnaCijena += stavke.Sum(s => s.Kolicina * s.CijenaPoKomadu);
+
+                        // izbriši guestKorpu
+                        _context.Korpe.Remove(guestKorpa);
+                        _context.Korpe.Update(userKorpa);
+                        await _context.SaveChangesAsync();
+                        HttpContext.Session.Remove(GuestSessionKey);
+                        return userKorpa;
+                    }
+                }
+
+                // 4) Ako ni jedna od njih nije postojala ili je prazna, osiguraj da imamo userKorpu
+                if (userKorpa == null)
+                {
+                    userKorpa = new Korpa
+                    {
+                        KorisnikID = userId,
+                        IsAktivna = true,
+                        UkupnaCijena = 0
+                    };
+                    _context.Korpe.Add(userKorpa);
+                    await _context.SaveChangesAsync();
+                }
+                return userKorpa;
+            }
+            else
+            {
+                // GOST – standardni flow po session GUID
+                var guestKey = GetOrCreateGuestId();
+                var guestKorpa = await _context.Korpe
+                    .FirstOrDefaultAsync(k => k.KorisnikID == guestKey && k.IsAktivna);
+
+                if (guestKorpa != null)
+                    return guestKorpa;
+
+                var newGuestKorpa = new Korpa
+                {
+                    KorisnikID = guestKey,
                     IsAktivna = true,
                     UkupnaCijena = 0
                 };
-                _context.Korpe.Add(korpa);
+                _context.Korpe.Add(newGuestKorpa);
                 await _context.SaveChangesAsync();
+                return newGuestKorpa;
             }
-            return korpa;
         }
 
 
@@ -447,11 +541,14 @@ namespace DressCode.Controllers
             var links = await _context.KorpaStavkeKorpe
                 .Where(link => link.KorpaId == korpa.Id)
                 .ToListAsync();
+            
+
 
             foreach (var link in links)
             {
                 var stavka = await _context.StavkeKorpe
                     .FirstOrDefaultAsync(s => s.Id == link.StavkaKorpeId);
+
 
                 var narudzbaStavka = new NarudzbaStavka
                 {
@@ -466,8 +563,7 @@ namespace DressCode.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            // Deactivate the cart
-            korpa.IsAktivna = false;
+           
             _context.Update(korpa);
             await _context.SaveChangesAsync();
 
