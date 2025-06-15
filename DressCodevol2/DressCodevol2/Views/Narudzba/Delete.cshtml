@@ -1,10 +1,78 @@
 ﻿@model DressCode.Models.Narudzba
 
-<h1>Obriši narudžbu</h1>
-<p>U slučaju da je narudžba isporučena, ovim ćete je obrisati iz sistema.</p>
+@{
+    ViewData["Title"] = "Obriši narudžbu";
+}
 
-<form asp-action="Delete" method="post">
-	<input type="hidden" asp-for="Id" />
-	<button type="submit" class="btn btn-danger">Potvrdi brisanje</button>
-	<a asp-action="Index" class="btn btn-secondary">Poništi</a>
-</form>
+<style>
+    body {
+        background-color: #fdf6f0;
+        color: #4b3621;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .delete-page-wrapper {
+        max-width: 400px;
+        margin: 3rem auto;
+        background-color: #fff9f3;
+        border: 1px solid #e3d2c3;
+        border-radius: 8px;
+        padding: 2rem;
+    }
+
+        .delete-page-wrapper h1,
+        .delete-page-wrapper p {
+            text-align: center;
+        }
+
+    .delete-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-top: 1.5rem;
+    }
+
+    .delete-btn {
+        padding: 0.5rem 1.5rem;
+        border-radius: 6px;
+        border: none;
+        text-decoration: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        display: inline-block;
+    }
+
+    .delete-btn-danger {
+        background-color: #a37551;
+        color: #fff;
+    }
+
+        .delete-btn-danger:hover {
+            background-color: #8b6344;
+        }
+
+    .delete-btn-secondary {
+        background-color: #d9c3af;
+        color: #4b3621;
+    }
+
+        .delete-btn-secondary:hover {
+            background-color: #c7ae98;
+            color: #fff;
+        }
+</style>
+
+<div class="delete-page-wrapper">
+    <h1>Obriši narudžbu</h1>
+    <p>U slučaju da je narudžba isporučena, ovim ćete je obrisati iz sistema.</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="delete-buttons">
+            <button type="submit" class="delete-btn delete-btn-danger">Potvrdi brisanje</button>
+            <a asp-action="Index" class="delete-btn delete-btn-secondary">Poništi</a>
+        </div>
+    </form>
+</div>

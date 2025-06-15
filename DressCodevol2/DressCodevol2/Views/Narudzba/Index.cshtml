@@ -1,6 +1,65 @@
 ﻿@model IEnumerable<DressCode.Models.NarudzbaIndexViewModel>
 
-<h1>Popis narudžbi</h1>
+@{
+    ViewData["Title"] = "Popis narudžbi";
+}
+
+<style>
+    body {
+        background-color: #fdf6f0;
+        color: #4b3621;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        background-color: #fff9f3;
+        border: 1px solid #e3d2c3;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .card-title {
+        color: #4b3621;
+        font-weight: 600;
+    }
+
+    .card-subtitle {
+        color: #8b6f5a;
+        font-size: 0.9rem;
+    }
+
+    .card-text {
+        color: #5a4432;
+    }
+
+    .card-footer {
+        background-color: #f4e7dd;
+        border-top: 1px solid #d4b8a3;
+    }
+
+    .badge {
+        background-color: #b99579;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    .text-success {
+        color: #6b4c3b !important;
+        font-weight: 500;
+    }
+
+    .btn-outline-danger {
+        color: #a37551;
+        border-color: #a37551;
+    }
+
+        .btn-outline-danger:hover {
+            background-color: #a37551;
+            color: #fff;
+        }
+</style>
+
+<h1 class="mb-4">@ViewData["Title"]</h1>
 
 <div class="row row-cols-1 row-cols-md-2 g-4">
     @foreach (var o in Model)
@@ -9,13 +68,13 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">@o.ImePrezime</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@o.DatumKreiranja</h6>
+                    <h6 class="card-subtitle mb-2">@o.DatumKreiranja</h6>
                     <p class="card-text">
                         <strong>Adresa:</strong> @o.Adresa<br />
                         <strong>Artikli:</strong><br />
                         @foreach (var art in o.Artikli)
                         {
-                            <span class="badge bg-secondary me-1">@art</span>
+                            <span class="badge me-1">@art</span>
                         }
                     </p>
                 </div>
@@ -32,4 +91,3 @@
         </div>
     }
 </div>
-

@@ -4,12 +4,85 @@
     ViewData["Title"] = "Adresa za dostavu";
 }
 
+<style>
+    body {
+        background-color: #fdf6f0;
+        color: #4b3621;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+        background-color: #fff9f3;
+        border: 1px solid #e3d2c3;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+        background-color: #e8d9cd;
+        border-bottom: 1px solid #d4b8a3;
+        color: #6b4c3b;
+        text-align: center;
+        padding: 1rem;
+        font-weight: 600;
+        font-size: 1.3rem;
+    }
+
+    .form-control {
+        background-color: #fff9f3;
+        border: 1px solid #d9bfa3;
+        color: #4b3621;
+    }
+
+        .form-control::placeholder {
+            color: #b79d8d;
+        }
+
+    .form-label {
+        color: #6b4c3b;
+        font-weight: 500;
+    }
+
+    .alert-info {
+        background-color: #f4e7dd;
+        color: #4b3621;
+        border: 1px solid #d9bfa3;
+    }
+
+    .btn-success {
+        background-color: #a37551;
+        border-color: #a37551;
+        color: #fff;
+        font-weight: 500;
+        border-radius: 4px;
+    }
+
+        .btn-success:hover {
+            background-color: #8b5e3c;
+            border-color: #8b5e3c;
+        }
+
+    .btn-link {
+        color: #6b4c3b;
+        font-weight: 500;
+    }
+
+        .btn-link:hover {
+            color: #4b3621;
+            text-decoration: underline;
+        }
+
+    .text-danger {
+        color: #a94442 !important;
+    }
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card my-4">
                 <div class="card-header">
-                    <h3 class="text-center mb-0">Adresa za dostavu</h3>
+                    Adresa za dostavu
                 </div>
                 <div class="card-body">
                     <!-- Order Summary -->
@@ -28,7 +101,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label asp-for="Ulica" class="form-label"></label>
-                                <input asp-for="Ulica" class="form-control" placeholder="npr. Zmaja od Bosne 8" />
+                                <input asp-for="Ulica" class="form-control" placeholder="npr. Zmaja od Bosne 8" autocomplete="off"/>
                                 <span asp-validation-for="Ulica" class="text-danger"></span>
                             </div>
                         </div>
@@ -36,12 +109,12 @@
                         <div class="row">
                             <div class="col-md-8 mb-3">
                                 <label asp-for="Grad" class="form-label"></label>
-                                <input asp-for="Grad" class="form-control" placeholder="npr. Sarajevo" />
+                                <input asp-for="Grad" class="form-control" placeholder="npr. Sarajevo" autocomplete="off" />
                                 <span asp-validation-for="Grad" class="text-danger"></span>
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label asp-for="PostanskiBroj" class="form-label"></label>
-                                <input asp-for="PostanskiBroj" class="form-control" placeholder="npr. 71000" />
+                                <input asp-for="PostanskiBroj" class="form-control" placeholder="npr. 71000" autocomplete="off" />
                                 <span asp-validation-for="PostanskiBroj" class="text-danger"></span>
                             </div>
                         </div>
@@ -64,7 +137,7 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label asp-for="Napomene" class="form-label"></label>
-                                <textarea asp-for="Napomene" class="form-control" rows="3" 
+                                <textarea asp-for="Napomene" class="form-control" rows="3"
                                           placeholder="Dodatne napomene za dostavu (opciono)"></textarea>
                                 <span asp-validation-for="Napomene" class="text-danger"></span>
                             </div>
@@ -92,5 +165,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
