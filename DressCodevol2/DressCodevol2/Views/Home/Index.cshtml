@@ -5,6 +5,7 @@
     width: 100%;
     overflow-x: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f7f3f0;
     }
 
     .hero-section {
@@ -105,7 +106,7 @@
     }
 
     .btn-shop {
-    background-color: #6c757d;
+        background-color: #6b4c3b;
     color: white;
     padding: 12px 30px;
     border: none;
@@ -157,7 +158,7 @@
 <div class="hero-section">
     <div class="hero-content">
         <h1>DressCode</h1>
-        <p>Sve što Vam treba, na jednom mjestu</p>
+        <p>Budite svoji, ali u najboljem izdanju!</p>
         @if (!User.Identity.IsAuthenticated)
         {
             <a href="#" class="btn-register">Registracija</a>
@@ -170,7 +171,6 @@
     <div class="section-content">
         <div class="section-text">
             <h2>Muška moda</h2>
-            <p>Budite svoji, ali u najboljem izdanju!</p>
             <p>Pogledajte našu jedinstveno odabranu kolekciju muške odjeće, koja će Vas oduševiti!</p>
             <a class="btn-shop" asp-controller="Artikals" asp-action="Index" asp-route-spolFilter="MUSKO">Kupuj</a>
         </div>
@@ -188,8 +188,7 @@
         </div>
         <div class="section-text">
             <h2>Ženska moda</h2>
-            <p>Budite svoji, ali u najboljem izdanju!</p>
-            <p>Pogledajte našu jedinstveno odabranu kolekciju muške odjeće, koja će Vas oduševiti!</p>
+            <p>Pogledajte našu jedinstveno odabranu kolekciju ženske odjeće, koja će Vas oduševiti!</p>
             <a class="btn-shop" asp-controller="Artikals" asp-action="Index" asp-route-spolFilter="ZENSKO">Kupuj</a>
         </div>
     </div>
@@ -201,7 +200,6 @@
     <div class="section-content">
         <div class="section-text">
             <h2>Modni dodaci</h2>
-            <p>Budite svoji, ali u najboljem izdanju!</p>
             <p>Nova kolekcija modnih dodataka Vas čeka!</p>
         </div>
         <div class="section-image">
@@ -218,3 +216,4 @@
     </div>
 </div>
 
+            
