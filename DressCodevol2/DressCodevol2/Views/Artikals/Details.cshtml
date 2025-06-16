@@ -137,7 +137,7 @@
                                 <form asp-action="DodajUKorpu" method="post">
                                     @Html.AntiForgeryToken()
                                     <input type="hidden" name="grupaId" value="@Model.GrupaId" />
-                                    
+                                    <input type="hidden" name="GrupaId" value="@Model.GrupaId"></input>
                                     <div class="mb-3">
                                         <label for="velicina" class="form-label fw-semibold" style="color: #5b4636;">Odaberi veličinu:</label>
 
@@ -182,14 +182,24 @@
                 {
                     @if (sviArtikli != null && sviArtikli.Any())
                     {
-                        <a asp-action="Edit" asp-route-id="@sviArtikli.First().Id" class="btn btn-outline-brown me-2">
+                        @*<a asp-action="Edit" asp-route-id="@sviArtikli.First().Id" class="btn btn-outline-brown me-2">*@
+                        <a asp-action="EditGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
                             <i class="fas fa-edit"></i> Uredi
+                        </a>
+
+                        <a asp-action="DeleteGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
+                           <i class="fa-solid fa-trash"></i> Obrisi
                         </a>
                     }
                     else
                     {
-                        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">
+                        @*<a asp-action="EditGroup" asp-route-id="@Model?.Id" class="btn btn-outline-brown me-2">*@
+                        <a asp-action="EditGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
                             <i class="fas fa-edit"></i> Uredi
+                        </a>
+
+                        <a asp-action="DeleteGroup" asp-route-GrupaId="@Model?.GrupaId" class="btn btn-outline-brown me-2">
+                           <i class="fa-solid fa-trash"></i> Obrisi
                         </a>
                     }
                 }

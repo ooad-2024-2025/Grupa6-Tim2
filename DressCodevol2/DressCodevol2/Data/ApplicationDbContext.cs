@@ -24,6 +24,7 @@ namespace DressCode.Data
         public DbSet<StavkaKorpe> StavkeKorpe { get; set; }
         public DbSet<TipOdjece> TipoviOdjece { get; set; }
         public DbSet<Korisnik> Korisnik { get; set; }
+        public DbSet<NarudzbaStavka> NarudzbaStavka { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,7 +50,7 @@ namespace DressCode.Data
             modelBuilder.Entity<TipOdjece>().ToTable("TipOdjece");
             modelBuilder.Entity<ArtikalNarudzba>().ToTable("ArtikalNarudzba");
             modelBuilder.Entity<Korisnik>().ToTable("Korisnik");
-
+            modelBuilder.Entity<NarudzbaStavka>().ToTable("NarudzbaStavka");
             
         }
 

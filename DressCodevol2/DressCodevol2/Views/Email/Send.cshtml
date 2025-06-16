@@ -3,7 +3,7 @@
     ViewData["Title"] = "Pošalji Email";
 }
 
-<h2 class="mb-4">@ViewData["Title"]</h2>
+<h2 class="mb-4" style="color: #6b4c3b;">@ViewData["Title"]</h2>
 
 <!-- Poruke o rezultatu -->
 @if (ViewBag.Success != null)
@@ -41,49 +41,49 @@
 }
 
 <div id="email-form-container">
-<form asp-action="Send" method="post" id="emailForm" novalidate class="needs-validation">
-    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <form asp-action="Send" method="post" id="emailForm" novalidate class="needs-validation">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-    <div class="mb-3" id="email-group">
-        <label for="Email" class="form-label">Email adresa</label>
-        <input type="email"
-               name="Email"
-               id="Email"
-               class="form-control"
-               placeholder="Unesite email adresu"
-               value="@Model.Email" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
+        <div class="mb-3" id="email-group">
+            <label for="Email" class="form-label">Email adresa</label>
+            <input type="email"
+                   name="Email"
+                   id="Email"
+                   class="form-control"
+                   placeholder="Unesite email adresu"
+                   value="@Model.Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
 
-    <div class="form-check mb-4">
-        <input type="hidden" name="SendToAll" value="false" />
-        <input type="checkbox"
-               name="SendToAll"
-               id="SendToAll"
-               value="true"
-               class="form-check-input"
-        @(Model.SendToAll ? "checked" : "") />
-        <label for="SendToAll" class="form-check-label fw-bold">
-            Pošalji svim Loyalty korisnicima
-        </label>
-    </div>
+        <div class="form-check mb-4">
+            <input type="hidden" name="SendToAll" value="false" />
+            <input type="checkbox"
+                   name="SendToAll"
+                   id="SendToAll"
+                   value="true"
+                   class="form-check-input"
+                   @(Model.SendToAll ? "checked" : "") />
+            <label for="SendToAll" class="form-check-label fw-bold">
+                Pošalji svim Loyalty korisnicima
+            </label>
+        </div>
 
-    <div class="mb-3">
-        <label asp-for="Subject" class="form-label">Naslov poruke</label>
-        <input asp-for="Subject" class="form-control" placeholder="Unesite naslov" />
-        <span asp-validation-for="Subject" class="text-danger"></span>
-    </div>
+        <div class="mb-3">
+            <label asp-for="Subject" class="form-label">Naslov poruke</label>
+            <input asp-for="Subject" class="form-control" placeholder="Unesite naslov" />
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
 
-    <div class="mb-4">
-        <label asp-for="Message" class="form-label">Tekst poruke</label>
-        <textarea asp-for="Message" class="form-control" rows="5" placeholder="Unesite tekst poruke..."></textarea>
-        <span asp-validation-for="Message" class="text-danger"></span>
-    </div>
+        <div class="mb-4">
+            <label asp-for="Message" class="form-label">Tekst poruke</label>
+            <textarea asp-for="Message" class="form-control" rows="5" placeholder="Unesite tekst poruke..."></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
 
-    <button type="submit" class="btn btn-primary">
-        <i class="fas fa-paper-plane me-2"></i>Pošalji Email
-    </button>
-</form>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane me-2"></i>Pošalji Email
+        </button>
+    </form>
 </div>
 
 @section Scripts {
@@ -107,13 +107,16 @@
 }
 
 <style>
+    body{
+        background: #f7f3f0;
+    }
     /* Glavni stilovi za formu */
     #email-form-container {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
         #email-form-container h2 {
-            color: #2c3e50;
+            color: #6b4c3b; /* tamno smeđa */
             font-weight: 700;
             margin-bottom: 2rem;
             text-align: center;
@@ -126,7 +129,7 @@
                 display: block;
                 width: 60px;
                 height: 4px;
-                background: #3498db;
+                background: #b68b56; /* zemljani zlatni ton */
                 position: absolute;
                 bottom: 0;
                 left: 50%;
@@ -135,19 +138,19 @@
             }
 
         #email-form-container form {
-            background: #ffffff;
+            background: #fff8f0; /* blaga bež pozadina */
             padding: 2.5rem;
             border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 25px rgba(182, 139, 86, 0.25);
             max-width: 700px;
             margin: auto;
-            border: 1px solid #e0e0e0;
+            border: 1px solid #e6d7c4;
         }
 
         /* Stilovi za input polja */
         #email-form-container .form-label {
             font-weight: 600;
-            color: #34495e;
+            color: #7a5c44; /* toplija smeđa */
             margin-bottom: 0.5rem;
         }
 
@@ -155,14 +158,14 @@
             border-radius: 8px;
             padding: 0.75rem 1rem;
             transition: all 0.3s ease;
-            border: 2px solid #ecf0f1;
-            background-color: #f9f9f9;
+            border: 2px solid #f0e6d2; /* svijetla bež */
+            background-color: #faf4ec;
         }
 
             #email-form-container .form-control:focus {
-                border-color: #3498db;
-                box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
-                background-color: #fff;
+                border-color: #b68b56;
+                box-shadow: 0 0 0 0.2rem rgba(182, 139, 86, 0.25);
+                background-color: #fff8f0;
             }
 
         /* Stil za checkbox */
@@ -174,13 +177,13 @@
 
         #email-form-container .form-check-label {
             font-weight: 600;
-            color: #34495e;
+            color: #7a5c44;
             margin-left: 0.5rem;
         }
 
         /* Stil za dugme */
         #email-form-container .btn-primary {
-            background-color: #3498db;
+            background-color: #b68b56; /* zemljani zlatni */
             border: none;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -189,12 +192,14 @@
             letter-spacing: 0.5px;
             width: 100%;
             margin-top: 1rem;
+            color: #4b3621;
         }
 
             #email-form-container .btn-primary:hover {
-                background-color: #2980b9;
+                background-color: #a37551; /* tamniji zemljani ton */
                 transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(41, 128, 185, 0.3);
+                box-shadow: 0 4px 12px rgba(163, 117, 81, 0.3);
+                color: #fff;
             }
 
         /* Stilovi za alert poruke */
@@ -207,18 +212,18 @@
         }
 
         #email-form-container .alert-success {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: #dbe7d1; /* svijetlo zelena sa toplim podtonom */
+            color: #3b5422;
         }
 
         #email-form-container .alert-warning {
-            background-color: #fff3cd;
-            color: #856404;
+            background-color: #f9f1d1; /* blaga žuta */
+            color: #8a6d1c;
         }
 
         #email-form-container .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
+            background-color: #f6d6d5; /* blaga ružičasta */
+            color: #7a3b3a;
         }
 
         #email-form-container .alert small {
@@ -235,12 +240,15 @@
 
     /* Responsive prilagodbe */
     @@media (max-width: 768px) {
-        #email-form-container form {
-            padding: 1.5rem;
-        }
+        #email-form-container form
 
-        #email-form-container h2 {
-            font-size: 1.5rem;
-        }
+    {
+        padding: 1.5rem;
+    }
+
+    #email-form-container h2 {
+        font-size: 1.5rem;
+    }
+
     }
 </style>

@@ -96,6 +96,10 @@
 }
 
 <style>
+    body{
+        background: #f7f3f0;
+    }
+
     .edit-container {
         max-width: 900px;
         margin: 30px auto;
@@ -107,7 +111,7 @@
     }
 
     .edit-header {
-        background: linear-gradient(135deg, #6f42c1, #8e44ad);
+        background: linear-gradient(135deg, #8b5e3c, #d6bfa5);
         color: white;
         padding: 25px 30px;
     }
@@ -155,8 +159,8 @@
     }
 
         .form-control:focus {
-            border-color: #6f42c1;
-            box-shadow: 0 0 0 3px rgba(111, 66, 193, 0.1);
+            border-color: #8b5e3c;
+            box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
             outline: none;
         }
 
@@ -197,7 +201,7 @@
 
         .file-upload-label:hover {
             background: #e9ecef;
-            border-color: #6f42c1;
+            border-color: #8b5e3c;
         }
 
     .form-control-file {
@@ -214,7 +218,7 @@
     }
 
     .btn-save {
-        background: linear-gradient(135deg, #6f42c1, #8e44ad);
+        background: linear-gradient(135deg, #8b5e3c, #d6bfa5);
         color: white;
         border: none;
         padding: 12px 25px;
@@ -226,11 +230,11 @@
 
         .btn-save:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+            box-shadow: 0 5px 15px rgba(139, 94, 60, 0.3);
         }
 
     .btn-back {
-        color: #6f42c1;
+        color: #8b5e3c;
         text-decoration: none;
         padding: 10px 15px;
         border-radius: 6px;
@@ -256,12 +260,15 @@
     }
 
     @@media (max-width: 768px) {
-        .form-grid {
-            grid-template-columns: 1fr;
-        }
+        .form-grid
 
-        .image-upload {
-            grid-column: span 1;
-        }
+    {
+        grid-template-columns: 1fr;
+    }
+
+    .image-upload {
+        grid-column: span 1;
+    }
+
     }
 </style>

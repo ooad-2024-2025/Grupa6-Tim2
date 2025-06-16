@@ -22,7 +22,42 @@ namespace DressCode.Controllers
         // GET: Narudzba
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Narudzbe.ToListAsync());
+           var narudzbe = await _context.Narudzbe.AsNoTracking().ToListAsync();
+
+            var model = new List<NarudzbaIndexViewModel>();
+
+            foreach (var n in narudzbe)
+            {
+                var korisnik = await _context.Korisnik
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(u => u.Id == n.KorisnikId);
+
+                var adresa = await _context.Adrese
+                    .FirstOrDefaultAsync(a => a.Id == n.AdresaId);
+
+                var narudzbaStavke = await _context.NarudzbaStavka
+                        .Where(os => os.NarudzbaId == n.Id)
+                        .ToListAsync();
+
+                var artikli = new List<string>();
+                foreach (var stavka in narudzbaStavke)
+                {
+                    artikli.Add($"{stavka.GrupaId}, Velicina: {stavka.Velicina} x {stavka.Kolicina}");
+                    
+                }
+
+                model.Add(new NarudzbaIndexViewModel
+                {
+                    NarudzbaId = n.Id,
+                    ImePrezime = $"{korisnik.Ime} {korisnik.Prezime}",
+                    DatumKreiranja = n.DatumKreiranja.ToString("dd-MM-yyyy"),
+                    Adresa = $"{adresa.Ulica}, {adresa.Grad} ({adresa.Drzava})",
+                    Artikli = artikli
+                });
+                
+            }
+
+            return View(model);
         }
 
         // GET: Narudzba/Details/5

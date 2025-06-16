@@ -1,33 +1,44 @@
 ﻿@model DressCode.Models.Popust
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Obriši popust";
 }
 
-<h1>Delete</h1>
+<h1 class="mb-4 text-danger">@ViewData["Title"]</h1>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Popust</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.KodId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.KodId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.VrijednostPopusta)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.VrijednostPopusta)
-        </dd>
+<div class="p-4 rounded shadow-sm" style="background-color: #f8f5f0;">
+    <h4 class="mb-3">Da li ste sigurni da želite obrisati ovaj popust?</h4>
+
+    <dl class="row mb-4">
+        <dt class="col-sm-4">Kod popusta:</dt>
+        <dd class="col-sm-8">@Model.KodPopust</dd>
+
+        <dt class="col-sm-4">Vrijednost popusta:</dt>
+        <dd class="col-sm-8">@Model.VrijednostPopusta %</dd>
+
+        <dt class="col-sm-4">Pristupni kod:</dt>
+        <dd class="col-sm-8">@Model.PristupniKod</dd>
     </dl>
-    
-    <form asp-action="Delete">
+
+    <form asp-action="Delete" method="post" class="d-flex gap-2">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <button type="submit" class="btn btn-danger">Obriši</button>
+        <a asp-action="Index" class="btn btn-secondary">Odustani</a>
     </form>
 </div>
+
+<style>
+    .btn-danger {
+        background-color: #8b3b3b;
+        border-color: #8b3b3b;
+    }
+
+        .btn-danger:hover {
+            background-color: #6b2b2b;
+            border-color: #6b2b2b;
+        }
+
+    body {
+        background-color: #f5f3ee;
+    }
+</style>

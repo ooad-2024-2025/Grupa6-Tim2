@@ -8,14 +8,41 @@
 <h1>@ViewData["Title"]</h1>
 
 <nav style="text-align:center; margin:20px 0;">
-    <a class="btn @(show == "articles" ? "active" : "")"
-       asp-action="Index" asp-route-show="articles">Artikli</a>
-    <a class="btn @(show == "promotions" ? "active" : "")"
-       asp-action="Index" asp-route-show="promotions">Promocije</a>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a class="btn btn-outline-brown me-2 @(show == "articles" ? "active" : "")"
+        asp-action="Index" asp-route-show="articles">Artikli</a>
+        <a class="btn btn-outline-brown me-2 @(show == "promotions" ? "active" : "")"
+        asp-action="Index" asp-route-show="promotions">Promocije</a>
+    }
 </nav>
 
 @if (show == "articles")
 {
+    <form method="get" class="input-group" style="max-width:300px; margin-bottom: 20px;">
+        <input type="hidden" name="show" value="@show" />
+
+        <input name="filter"
+               value="@(ViewData["Filter"] ?? "")"
+               placeholder="Filtriraj po GrupiID"
+               class="form-control me-2"
+               style="max-width: 250px;" />
+
+        <button class="btn btn-outline-brown me-2" type="submit">
+            <i class="bi bi-funnel"></i> Filtriraj
+        </button>
+
+        @if (ViewData["Filter"] != null)
+        {
+            <a class="btn btn-outline-secondary" asp-action="Index" asp-route-show="@show">
+                <i class="bi bi-x-circle"></i> Resetuj
+            </a>
+        }
+    </form>
+    @if (!Model.Grupe.Any())
+    {
+        <p class="text-center text-muted">Nema pronađenih artikala.</p>
+    } 
         @foreach (var grupa in Model.Grupe)
     {
         <section class="mb-5">
@@ -51,28 +78,57 @@
 }}
 else
 {
+    <form method="get" class="input-group" style="max-width:300px; margin-bottom: 20px;">
+        <input type="hidden" name="show" value="@show" />
+
+        <input name="filter"
+               value="@(ViewData["Filter"] ?? "")"
+               placeholder="Filtriraj po Kodu Popusta"
+               class="form-control me-2"
+               style="max-width: 250px;" />
+
+        <button class="btn btn-outline-brown me-2" type="submit">
+            <i class="bi bi-funnel"></i> Filtriraj
+        </button>
+        @if (ViewData["Filter"] != null)
+        {
+            <a class="btn btn-outline-secondary" asp-action="Index" asp-route-show="@show">
+                <i class="bi bi-x-circle"></i> Resetuj
+            </a>
+        }
+    </form>
     <div class="cards">
+        @if (!Model.Promocije.Any())
+        {
+            <p class="text-center text-muted">Nema pronađenih promocija.</p>
+        }
         @foreach (var promo in Model.Promocije)
         {
             <a asp-action="Details" asp-route-id="@promo.Id" class="label-card-link">
-            <div class="label-card">
-                <!-- kopirano iz postojećeg label-card HTML-a -->
-                <div class="label-hanger"></div>
-                <div class="label-hole"></div>
-                <div class="label-body">
-                    <div class="label-logo">
-                        <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="Logo" />
-                    </div>
-                    <div class="label-size">Vrijednost popusta: @promo.VrijednostPopusta%</div>
-                    <div class="label-size">Pristupni kod: @promo.PristupniKod</div>
-                    <div class="label-price">Uživajte!</div>
-                    <div class="label-qr">
-                        <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" />
-                        <img class="qr-code" src="@promo.QrImageData" />
-                    </div>
-                    <div class="label-url">www.dresscode.com</div>
+                <div class="group-title">
+                    <strong>@promo.KodPopust (@promo.PopustId)</strong>
                 </div>
-            </div>
+
+                <div class="promo-horizontal-card">
+                    <div class="promo-left">
+                        <div class="promo-logo">
+                            <img src="@Url.Content("~/images/DressCodeLogo.png")" alt="Logo" />
+                        </div>
+                        <div class="promo-info">
+                            <p class="info-value">Poklon Bon</p>
+                            <p class="info-label">Vrijednost popusta:</p>
+                            <p class="info-value">@promo.VrijednostPopusta %</p>
+                            <p class="info-label">Pristupni kod:</p>
+                            <p class="info-value">@promo.PristupniKod</p>
+                        </div>
+                    </div>
+                    <div class="promo-right">
+                        <div class="promo-qr">
+                            <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" alt="Okvir" />
+                            <img class="qr-code" src="@promo.QrImageData" alt="QR kod" />
+                        </div>
+                    </div>
+                </div>
             </a>
         }
     </div>
@@ -82,7 +138,7 @@ else
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
-            background: #f4f4f4;
+            background: #f7f3f0;
         }
 
         h1 {
@@ -100,8 +156,9 @@ else
         }
 
             nav .btn.active {
-                background: #4a90e2;
-                color: #fff;
+                background-color: #5C4033 !important; /* smeđa boja */
+                color: #f5f0e6 !important;
+                border-color: #5C4033 !important;
             }
 
         .group-title {
@@ -263,6 +320,110 @@ else
                 transition: 0.2s ease;
             }
 
+        .promo-horizontal-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.promo-horizontal-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f0f0f0, #ffffff);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 20px;
+}
+
+.promo-left {
+  flex: 1 1 50%;
+  padding: 20px;
+  text-align: center;
+}
+
+.promo-logo img {
+  max-width: 120px;
+  margin-bottom: 16px;
+}
+
+.promo-info {
+  font-family: 'Segoe UI', sans-serif;
+  color: #5b4636;
+}
+
+.promo-info .info-label {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.promo-info .info-value {
+  margin: 2px 0 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.promo-right {
+  flex: 0 0 200px;
+  position: relative;
+  padding: 0 20px 0 0;
+}
+
+.promo-qr {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto;
+}
+
+.promo-qr .qr-frame {
+  position: absolute;
+  top: 0; left: 0;
+  width: 160px; height: 160px;
+  z-index: 1;
+}
+
+.promo-qr .qr-code {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; height: 120px;
+  z-index: 2;
+}
+
+        .btn-outline-brown {
+            color: #7a5c40;
+            border-color: #7a5c40;
+        }
+
+            .btn-outline-brown:hover {
+                background-color: #7a5c40;
+                color: #f5f0e6;
+                border-color: #7a5c40;
+            }
+
+            .btn-outline-brown.active:hover {
+                background-color: #7a5c40 !important; /* Malo tamnije na hover */
+                border-color: #7a5c40;
+            }
+
+        .btn-brown {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border: none;
+        }
+
+            .btn-brown:hover {
+                background-color: #5b4636;
+                color: #f5f0e6;
+            }
+
+        .btn-brown.active:hover {
+            background-color: #7a5c40 !important; /* Malo tamnije na hover */
+            border-color: #7a5c40;
+        }
 
     </style>
 }

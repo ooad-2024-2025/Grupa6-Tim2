@@ -297,6 +297,9 @@ namespace DressCode.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("KorpaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("NacinPlacanja")
                         .HasColumnType("int");
 
@@ -305,9 +308,36 @@ namespace DressCode.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AdresaId");
-
                     b.ToTable("Narudzba", (string)null);
+                });
+
+            modelBuilder.Entity("DressCode.Models.NarudzbaStavka", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CijenaPoKomadu")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("GrupaId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Kolicina")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NarudzbaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Velicina")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NarudzbaStavka", (string)null);
                 });
 
             modelBuilder.Entity("DressCode.Models.Placanje", b =>
@@ -337,17 +367,17 @@ namespace DressCode.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("KodId")
+                    b.Property<int?>("KodId")
                         .HasColumnType("int");
 
                     b.Property<string>("KodPopust")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("PristupniKod")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
 
                     b.Property<double>("VrijednostPopusta")
                         .HasColumnType("float");
@@ -424,6 +454,9 @@ namespace DressCode.Data.Migrations
 
                     b.Property<double>("CijenaPoKomadu")
                         .HasColumnType("float");
+
+                    b.Property<string>("GrupaId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Kolicina")
                         .HasColumnType("int");
@@ -609,17 +642,6 @@ namespace DressCode.Data.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Popust");
-                });
-
-            modelBuilder.Entity("DressCode.Models.Narudzba", b =>
-                {
-                    b.HasOne("DressCode.Models.Adresa", "Adresa")
-                        .WithMany()
-                        .HasForeignKey("AdresaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Adresa");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -3,10 +3,54 @@
     ViewData["Title"] = "Detalji popusta";
 }
 
-<h2>@ViewData["Title"]</h2>
-<div class="card p-4 mt-3">
-    <p><strong>Vrijednost popusta:</strong> @Model.VrijednostPopusta %</p>
+<h2 class="custom-title">@ViewData["Title"]</h2>
+
+<style>
+    body {
+        background: #f7f3f0;
+        color: #5a4632;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .custom-title {
+        color: #8b6b43;
+        text-align: center;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+    }
+
+    .card {
+        max-width: 400px;
+        margin: 2rem auto 3rem;
+        background: #fdf7ec; /* svijetli krem */
+        padding: 2rem 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(122, 92, 64, 0.15);
+        border: 1px solid #d1bfa7;
+        color: #5a4632;
+    }
+
+        .card p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card strong {
+            color: #8b6b43;
+        }
+
+    .text-muted {
+        color: #7a5c40;
+        font-style: italic;
+        font-size: 0.95rem;
+        margin-top: 0.5rem;
+    }
+</style>
+
+<div class="card">
+    <p><strong>Vrijednost popusta:</strong> @Model.VrijednostPopusta%</p>
     <p><strong>Kod za popust:</strong> @Model.KodPopust</p>
-    <p><strong>Pristupni kod:</strong> @Model.PristupniKod</p>
     <p class="text-muted">Ukucajte ovaj kod na blagajni.</p>
 </div>

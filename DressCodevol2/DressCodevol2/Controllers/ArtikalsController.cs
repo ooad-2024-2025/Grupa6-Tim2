@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -30,38 +31,119 @@ namespace DressCode.Controllers
         // DUPLIRANJE KODA, TREBALO BI IZDVOJITI U ODVOJEN INTERFEJS KASNIJE
 
         // ******************************************
-        private async Task<Korpa?> GetOrCreateKorpaAsync()
+        private const string GuestSessionKey = "GuestUserId";
+
+        private string? PeekGuestId() =>
+            HttpContext.Session.GetString(GuestSessionKey);
+
+        private string GetOrCreateGuestId()
         {
-            string? userId;
-            if(User.Identity?.IsAuthenticated ?? false)
+            var gid = PeekGuestId();
+            if (!string.IsNullOrEmpty(gid))
+                return gid;
+
+            gid = Guid.NewGuid().ToString();
+            HttpContext.Session.SetString(GuestSessionKey, gid);
+            return gid;
+        }
+
+        private async Task<Korpa> GetOrCreateKorpaAsync()
+        {
+            bool isAuth = User.Identity?.IsAuthenticated == true;
+
+            if (isAuth)
             {
-                userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+
+                // 1) Pokušaj dohvatiti aktivnu korisničku korpu
+                var userKorpa = await _context.Korpe
+                    .FirstOrDefaultAsync(k => k.KorisnikID == userId && k.IsAktivna);
+
+                // 2) Ako korisnička korpa postoji i ima bar jednu stavku, odmah je vraćamo
+                if (userKorpa != null)
+                {
+                    var itemCount = await _context.KorpaStavkeKorpe
+                        .CountAsync(l => l.KorpaId == userKorpa.Id);
+                    if (itemCount > 0)
+                        return userKorpa;
+                }
+
+                // 3) Inače (korpa ne postoji ili je prazna) pokušaj merge s guest korpom
+                var guestId = PeekGuestId();
+                if (!string.IsNullOrEmpty(guestId))
+                {
+                    var guestKorpa = await _context.Korpe
+                        .FirstOrDefaultAsync(k => k.KorisnikID == guestId && k.IsAktivna);
+
+                    if (guestKorpa != null)
+                    {
+                        // 3a) Ako userKorpa ne postoji, samo preimenuj guestKorpu
+                        if (userKorpa == null)
+                        {
+                            guestKorpa.KorisnikID = userId;
+                            _context.Korpe.Update(guestKorpa);
+                            await _context.SaveChangesAsync();
+                            HttpContext.Session.Remove(GuestSessionKey);
+                            return guestKorpa;
+                        }
+                        // 3b) Ako userKorpa postoji ali je prazna, prebaci stavke iz guestKorpe
+                        var guestLinks = await _context.KorpaStavkeKorpe
+                            .Where(l => l.KorpaId == guestKorpa.Id)
+                            .ToListAsync();
+
+                        // prespoji svaki link
+                        foreach (var link in guestLinks)
+                            link.KorpaId = userKorpa.Id;
+
+                        // ažuriraj cijenu userKorpe
+                        var stavke = await _context.StavkeKorpe
+                            .Where(s => guestLinks.Select(l => l.StavkaKorpeId).Contains(s.Id))
+                            .ToListAsync();
+                        userKorpa.UkupnaCijena += stavke.Sum(s => s.Kolicina * s.CijenaPoKomadu);
+
+                        // izbriši guestKorpu
+                        _context.Korpe.Remove(guestKorpa);
+                        _context.Korpe.Update(userKorpa);
+                        await _context.SaveChangesAsync();
+                        HttpContext.Session.Remove(GuestSessionKey);
+                        return userKorpa;
+                    }
+                }
+
+                // 4) Ako ni jedna od njih nije postojala ili je prazna, osiguraj da imamo userKorpu
+                if (userKorpa == null)
+                {
+                    userKorpa = new Korpa
+                    {
+                        KorisnikID = userId,
+                        IsAktivna = true,
+                        UkupnaCijena = 0
+                    };
+                    _context.Korpe.Add(userKorpa);
+                    await _context.SaveChangesAsync();
+                }
+                return userKorpa;
             }
             else
             {
-                userId = HttpContext.Session.GetString("GuestUserId");
-                if(userId == null)
-                {
-                    userId = Guid.NewGuid().ToString();
-                    HttpContext.Session.SetString("GuestUserId", userId);
-                }
-            }
+                // GOST – standardni flow po session GUID
+                var guestKey = GetOrCreateGuestId();
+                var guestKorpa = await _context.Korpe
+                    .FirstOrDefaultAsync(k => k.KorisnikID == guestKey && k.IsAktivna);
 
-            var korpa = await _context.Korpe
-                .FirstOrDefaultAsync(c => c.KorisnikID == userId && c.IsAktivna);
+                if (guestKorpa != null)
+                    return guestKorpa;
 
-            if (korpa == null)
-            {
-                korpa = new Korpa
+                var newGuestKorpa = new Korpa
                 {
-                    KorisnikID = userId,
+                    KorisnikID = guestKey,
                     IsAktivna = true,
                     UkupnaCijena = 0
                 };
-                _context.Korpe.Add(korpa);
+                _context.Korpe.Add(newGuestKorpa);
                 await _context.SaveChangesAsync();
+                return newGuestKorpa;
             }
-            return korpa;
         }
 
         // GET: Artikals/Create
@@ -184,7 +266,7 @@ namespace DressCode.Controllers
             return View(glavniArtikal);
         }
 
-        /*
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina, GrupaId")] Artikal artikal, IFormFile? Slika)
@@ -192,7 +274,7 @@ namespace DressCode.Controllers
 
             foreach (var modelError in ModelState)
             {
-                Console.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
+                Debug.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
             }
 
             if (ModelState.IsValid)
@@ -217,7 +299,7 @@ namespace DressCode.Controllers
                 await _context.SaveChangesAsync();
 
                 //var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
-                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, "https");
+                var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, Request.Scheme);
 
                 string dataUri = _qrService.GenerateQrCodeBase64(url);
                 var q = new QRKod
@@ -233,18 +315,18 @@ namespace DressCode.Controllers
                 _context.QRKodovi.Add(q);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+               // return RedirectToAction(nameof(Index));
             }
 
             ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
             //ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return View(artikal);
+            return RedirectToAction(nameof(Index));
         }
-        */
+        
 
-        [HttpPost]
+       /* [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina,GrupaId")] Artikal artikal, IFormFile? Slika)
         {
@@ -321,7 +403,7 @@ namespace DressCode.Controllers
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
 
             return View(artikal);
-        }
+        }*/
 
         // GET: Artikals/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -446,7 +528,8 @@ namespace DressCode.Controllers
                 ArtikalId = artikal.Id,
                 Velicina = artikal.Velicina,
                 Kolicina = 1,
-                CijenaPoKomadu = artikal.Cijena
+                CijenaPoKomadu = artikal.Cijena,
+                GrupaId = artikal.GrupaId
             };
             _context.StavkeKorpe.Add(stavka);
             await _context.SaveChangesAsync();
@@ -463,5 +546,209 @@ namespace DressCode.Controllers
             TempData["Dodano"] = "Artikal je dodan u korpu!";
             return RedirectToAction("Details", new { grupaId = grupaId }); //RedirectToAction(nameof(Index));
     }
+
+        // GET: Artikals/EditGroup/BK123
+
+        [HttpGet]
+        public async Task<IActionResult> EditGroup(string grupaId)
+        {
+            if (string.IsNullOrEmpty(grupaId)) return NotFound();
+
+            var artikli = await _context.Artikli
+                .Where(a => a.GrupaId == grupaId)
+                .ToListAsync();
+
+            if(!artikli.Any()) return NotFound();
+
+           
+            var vm = new EditGroupViewModel
+            {
+                GrupaId = grupaId,
+                ZajednickaCijena = artikli.First().Cijena,
+                ZajednickiMaterijal = artikli.First().Materijal,
+                ZajednickiOpis = artikli.First().Opis,
+                KategorijaId = artikli.First().KategorijaId,
+                Artikli = artikli
+            };
+
+            ViewData["Kategorije"] = new SelectList(_context.TipoviOdjece, "Id", "Naziv", artikli.First().KategorijaId);
+            return View(vm);
+        }
+
+        // POST: Artikals/EditGroup
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditGroup(EditGroupViewModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewData["Kategorije"] = new SelectList(_context.TipoviOdjece, "Id", "Naziv", vm.KategorijaId);
+                return View(vm);
+            }
+
+            // Dohvati sve iz grupe
+            var artikli = await _context.Artikli
+                .Where(a => a.GrupaId == vm.GrupaId)
+                .ToListAsync();
+
+            foreach (var a in artikli)
+            {
+                a.Cijena = (double)vm.ZajednickaCijena;
+                a.Materijal = vm.ZajednickiMaterijal;
+                a.Opis = vm.ZajednickiOpis;
+                a.KategorijaId = vm.KategorijaId;
+                // ne diraj Velicinu i Spol, oni su po-artiklu
+            }
+
+            _context.UpdateRange(artikli);
+            await _context.SaveChangesAsync();
+
+            var artikalIds = artikli.Select(a => a.Id).ToList();
+            var stavke = await _context.StavkeKorpe
+                .Where(s => artikalIds.Contains(s.ArtikalId))
+                .ToListAsync();
+
+            foreach (var s in stavke)
+            {
+                var art = artikli.First(a => a.Id == s.ArtikalId);
+                s.CijenaPoKomadu = art.Cijena;
+
+            }
+
+            _context.UpdateRange(stavke);
+            await _context.SaveChangesAsync();
+
+            var stavkaIds = stavke.Select(s => s.Id).ToList();
+            var links = await _context.KorpaStavkeKorpe
+                .Where(link => stavkaIds.Contains(link.StavkaKorpeId))
+                .ToListAsync();
+
+            // 5) Grupiraj po KorpaId i za svaku košaricu izračunaj novi total
+            var linksByCart = links.GroupBy(l => l.KorpaId);
+            foreach (var group in linksByCart)
+            {
+                // Dohvati košaricu
+                var korpa = await _context.Korpe.FindAsync(group.Key);
+                if (korpa == null) continue;
+
+                // Zbroji sve stavke: CijenaPoKomadu * Kolicina
+                double noviTotal = 0;
+                foreach (var link in group)
+                {
+                    var stavka = stavke.First(s => s.Id == link.StavkaKorpeId);
+                    noviTotal += stavka.CijenaPoKomadu * stavka.Kolicina;
+                }
+
+                korpa.UkupnaCijena = noviTotal;
+            }
+
+            // 6) Snimi promjene u Korpa entitetima
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteGroup(string? grupaId)
+        {
+            if (string.IsNullOrEmpty(grupaId))
+                return BadRequest();
+
+            // Provjeri da li grupa postoji
+            bool ima = await _context.Artikli.AnyAsync(a => a.GrupaId == grupaId);
+            if (!ima)
+                return NotFound();
+
+            // Prikaži view s potvrdom
+            return View(model: grupaId);
+        }
+
+        // POST: Artikals/DeleteGroup
+        [HttpPost, ActionName("DeleteGroup")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteGroupConfirmed(string grupaId)
+        {
+            if (string.IsNullOrEmpty(grupaId))
+                return BadRequest();
+
+            // 1) Dohvati sve artikle iz grupe
+            var artikli = await _context.Artikli
+                .Where(a => a.GrupaId == grupaId)
+                .ToListAsync();
+
+            if (!artikli.Any())
+                return NotFound();
+
+            // 2) Prikupi njihove ID-jeve
+            var artikalIds = artikli.Select(a => a.Id).ToList();
+
+            // 3) Obriši sve QR kodove za te artikle
+            var qrcodes = await _context.QRKodovi
+                .Where(q => q.ArtikalId != null && artikalIds.Contains(q.ArtikalId.Value))
+                .ToListAsync();
+            _context.QRKodovi.RemoveRange(qrcodes);
+
+            // 4) Pronađi sve stavke i linkove koje brišemo
+            var stavkeZaBrisanje = await _context.StavkeKorpe
+                .Where(s => artikalIds.Contains(s.ArtikalId))
+                .ToListAsync();
+
+            var stavkaIds = stavkeZaBrisanje.Select(s => s.Id).ToList();
+
+            var linkoviZaBrisanje = await _context.KorpaStavkeKorpe
+                .Where(link => stavkaIds.Contains(link.StavkaKorpeId))
+                .ToListAsync();
+
+            // 5) Skupi sve pogođene KorpaId
+            var pogodeneKorpe = linkoviZaBrisanje
+                .Select(l => l.KorpaId)
+                .Distinct()
+                .ToList();
+
+            // 6) Obriši veze i stavke
+            _context.KorpaStavkeKorpe.RemoveRange(linkoviZaBrisanje);
+            _context.StavkeKorpe.RemoveRange(stavkeZaBrisanje);
+
+            // 7) Obriši artikle
+            _context.Artikli.RemoveRange(artikli);
+            await _context.SaveChangesAsync();
+
+            // 8) Preračunaj UkupnaCijena za svaku pogođenu košaricu
+            foreach (var korpaId in pogodeneKorpe)
+            {
+                // Dohvati preostale linkove iz košarice
+                var preostaliLinkovi = await _context.KorpaStavkeKorpe
+                    .Where(link => link.KorpaId == korpaId)
+                    .ToListAsync();
+
+                // Sumiraj njihovu trenutnu vrijednost
+                double noviTotal = 0;
+                if (preostaliLinkovi.Any())
+                {
+                    var preostaleStavke = await _context.StavkeKorpe
+                        .Where(s => preostaliLinkovi.Select(l => l.StavkaKorpeId).Contains(s.Id))
+                        .ToListAsync();
+
+                    noviTotal = preostaleStavke.Sum(s => s.CijenaPoKomadu * s.Kolicina);
+                }
+
+                var korpa = await _context.Korpe.FindAsync(korpaId);
+                if (korpa != null)
+                {
+                    korpa.UkupnaCijena = noviTotal;
+                    _context.Korpe.Update(korpa);
+                }
+            }
+
+            // 9) Snimi sve promjene
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
     }
 }

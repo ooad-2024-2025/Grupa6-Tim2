@@ -30,7 +30,7 @@ namespace DressCode.Controllers
         }
 
         // GET: Popust/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string pristupniKod)
         {
             if (id == null)
             {
@@ -44,12 +44,21 @@ namespace DressCode.Controllers
                 return NotFound();
             }
 
+            if(string.IsNullOrEmpty(pristupniKod) || popust.PristupniKod != pristupniKod)
+            {
+                return Forbid();
+            }
+
             return View(popust);
         }
 
         // GET: Popust/Create
         public IActionResult Create()
         {
+            if (!User.IsInRole("Administrator"))
+            {
+                return Forbid();
+            }
             return View();
         }
 
@@ -60,6 +69,10 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("VrijednostPopusta,KodPopust")] Popust popust)
         {
+            if (!User.IsInRole("Administrator")){
+                return Forbid();
+            }
+
             if (ModelState.IsValid)
             {
                 var rand = new Random();
@@ -105,6 +118,10 @@ namespace DressCode.Controllers
         // GET: Popust/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!User.IsInRole("Administrator")){
+                return Forbid();
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -126,6 +143,9 @@ namespace DressCode.Controllers
         public async Task<IActionResult> Edit(int id,
     [Bind("VrijednostPopusta,KodPopust")] Popust input)
         {
+            if (!User.IsInRole("Administrator")){
+                return Forbid();
+            }
             // Nikad ne koristi input.Id jer on nije bindan
             // Provjera postojanja
             var popust = await _context.Popusti.FindAsync(id);
@@ -161,6 +181,9 @@ namespace DressCode.Controllers
         // GET: Popust/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.IsInRole("Administrator")){
+                return Forbid();
+            }
             if (id == null)
             {
                 return NotFound();
@@ -181,6 +204,9 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Administrator")){
+                return Forbid();
+            }
             var popust = await _context.Popusti.FindAsync(id);
             if (popust != null)
             {
@@ -231,7 +257,7 @@ namespace DressCode.Controllers
                 return View(vm);
             }
 
-            return RedirectToAction(nameof(Details), new { id = vm.PopustId });
+            return RedirectToAction(nameof(Details), new { id = vm.PopustId, pristupniKod = vm.PristupniKod });
         }
 
 

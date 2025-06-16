@@ -1,38 +1,133 @@
 ﻿@model DressCode.Models.Popust
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Dodaj Popust";
 }
 
-<h1>Create</h1>
+<h1 class="custom-title">@ViewData["Title"]</h1>
 
-<h4>Popust</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="KodPopust" class="control-label"></label>
-                <input asp-for="KodPopust" class="form-control" />
-                <span asp-validation-for="KodPopust" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VrijednostPopusta" class="control-label"></label>
-                <input asp-for="VrijednostPopusta" class="form-control" />
-                <span asp-validation-for="VrijednostPopusta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<div class="card shadow-sm p-4 mb-4">
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+        <div class="mb-3">
+            <label asp-for="KodPopust" class="form-label">Kod popusta</label>
+            <input asp-for="KodPopust" class="form-control" placeholder="Unesite kod popusta" autocomplete="off"/>
+            <span asp-validation-for="KodPopust" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="VrijednostPopusta" class="form-label">Vrijednost popusta (%)</label>
+            <input asp-for="VrijednostPopusta" class="form-control" placeholder="Unesite vrijednost popusta"autocomplete="off" />
+            <span asp-validation-for="VrijednostPopusta" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <a asp-action="Index" class="btn btn-secondary">Nazad na listu</a>
+            <button type="submit" class="btn btn-outline-brown me-2">Dodaj popust</button>
+        </div>
+    </form>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <partial name="_ValidationScriptsPartial" />
 }
+
+<style>
+    body {
+        background: #f7f3f0;
+    }
+
+    .btn-outline-brown {
+        color: #7a5c40;
+        border-color: #7a5c40;
+    }
+
+        .btn-outline-brown:hover {
+            background-color: #7a5c40;
+            color: #f5f0e6;
+            border-color: #7a5c40;
+        }
+
+    .btn-brown {
+        background-color: #7a5c40;
+        color: #f5f0e6;
+        border: none;
+    }
+
+        .btn-brown:hover {
+            background-color: #5b4636;
+            color: #f5f0e6;
+        }
+
+    .custom-title {
+        color: #8b6b43; /* promijenjena boja naslova */
+        text-align: left;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        background-color: #fffaf5; /* svijetla bež, gotovo bijela */
+        border: 1px solid #d6cfc7;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h1, h2, h4 {
+        color: #4e4035; /* toplija tamno smeđa */
+    }
+
+    .form-label {
+        color: #5a4b3b;
+    }
+
+    .form-control {
+        background-color: #fdfaf7;
+        border: 1px solid #c2b6aa;
+        color: #3b2f2f;
+    }
+
+        .form-control:focus {
+            border-color: #a28b72;
+            box-shadow: 0 0 0 0.2rem rgba(162, 139, 114, 0.25);
+        }
+
+    .btn-success {
+        background-color: #8c7158;
+        border-color: #8c7158;
+    }
+
+        .btn-success:hover {
+            background-color: #7b624b;
+            border-color: #7b624b;
+        }
+
+    .btn-secondary {
+        background-color: #c5b7a5;
+        border-color: #c5b7a5;
+        color: #3b2f2f;
+    }
+
+        .btn-secondary:hover {
+            background-color: #b2a491;
+            border-color: #b2a491;
+            color: #292421;
+        }
+
+    .text-danger-moj {
+        color: #a94442;
+    }
+
+    a {
+        color: #6d5949;
+    }
+
+        a:hover {
+            color: #4e4035;
+        }
+
+</style>
