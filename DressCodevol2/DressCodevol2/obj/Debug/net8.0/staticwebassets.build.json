@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xZU5wxoTZRL95uAzg8zaj6nKbDh4xGtBmchzuJTHb14=",
+  "Hash": "W/ypc8L5PHTnOMRvzIMV/qz1PRuOMDWAP6ul6qJCeDA=",
   "Source": "DressCode",
   "BasePath": "_content/DressCode",
   "Mode": "Default",
@@ -1674,6 +1674,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\okvir.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\onama.jpg",
+      "SourceId": "DressCode",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\",
+      "BasePath": "_content/DressCode",
+      "RelativePath": "images/onama#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "47qetfhp1b",
+      "Integrity": "4FrtQU5oE0SKl0fk63d0IRgEeuKlswz9p5IJYWCXmMw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\onama.jpg"
     },
     {
       "Identity": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\radnici\\2fbb1c56-4867-4250-b62a-28e91b377b67.jpg",
@@ -6838,6 +6859,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-r07Pvg4m56x0d6fwOnk4SJnZL4Unx2zXRsoFulZFtIg="
+        }
+      ]
+    },
+    {
+      "Route": "images/onama.47qetfhp1b.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\onama.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4FrtQU5oE0SKl0fk63d0IRgEeuKlswz9p5IJYWCXmMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "47qetfhp1b"
+        },
+        {
+          "Name": "label",
+          "Value": "images/onama.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4FrtQU5oE0SKl0fk63d0IRgEeuKlswz9p5IJYWCXmMw="
+        }
+      ]
+    },
+    {
+      "Route": "images/onama.jpg",
+      "AssetFile": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\onama.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73366"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4FrtQU5oE0SKl0fk63d0IRgEeuKlswz9p5IJYWCXmMw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Sep 2024 08:50:49 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4FrtQU5oE0SKl0fk63d0IRgEeuKlswz9p5IJYWCXmMw="
         }
       ]
     },

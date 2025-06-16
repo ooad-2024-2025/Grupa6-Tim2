@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DressCode.Controllers
@@ -196,10 +197,11 @@ namespace DressCode.Controllers
                 artikli = artikli.Where(a => a.Velicina == velicinaFilter);
             }
 
-            if (!String.IsNullOrEmpty(materijal))
+            if (!string.IsNullOrEmpty(materijal) && !Regex.IsMatch(materijal, @"^[A-Za-zšđčćžŠĐČĆŽ\s]{3,}$"))
             {
-                artikli = artikli.Where(a => a.Materijal.Contains(materijal));
+                ModelState.AddModelError("Materijal", "Materijal mora imati najmanje 3 slova i sadržavati samo slova.");
             }
+
 
             var grupirani = await artikli
             .GroupBy(a => a.GrupaId)

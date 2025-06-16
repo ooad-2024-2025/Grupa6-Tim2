@@ -1,5 +1,5 @@
 ﻿@{
-    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout !=  null)
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
     {
         Layout = parentLayout.ToString();
     }
@@ -9,17 +9,22 @@
     }
 }
 
-<h1>Moj profil</h1>
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Moj profil</h1>
+        <p class="text-muted">Upravljajte vašim korisničkim postavkama</p>
+    </div>
 
-<div>
-    <h2>Promjena postavki profila</h2>
-    <hr />
     <div class="row">
-        <div class="col-md-3">
-            <partial name="_ManageNav" />
+        <div class="col-md-3 mb-4">
+            <div class="card shadow-sm rounded-4 p-3">
+                <partial name="_ManageNav" />
+            </div>
         </div>
         <div class="col-md-9">
-            @RenderBody()
+            <div class="card shadow-lg rounded-4 p-4">
+                @RenderBody()
+            </div>
         </div>
     </div>
 </div>
@@ -27,3 +32,34 @@
 @section Scripts {
     @RenderSection("Scripts", required: false)
 }
+
+<style>
+    .nav-pills-custom .nav-link {
+        border-radius: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        color: #6b4c3b;
+        font-weight: 500;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .nav-pills-custom .nav-link:hover {
+            background-color: #f4f1ee;
+            color: #4a362a;
+        }
+
+        .nav-pills-custom .nav-link.active {
+            background-color: #6b4c3b;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+    .nav-pills-custom i {
+        width: 20px;
+        text-align: center;
+    }
+
+    .card {
+        border: none;
+    }
+</style>

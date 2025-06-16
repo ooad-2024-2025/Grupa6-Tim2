@@ -76,17 +76,10 @@
         </select>
       </div>
 
-      <div class="col-12">
-        <label class="form-label">Veličina:</label>
-        <select name="velicinaFilter" class="form-select" asp-items="@((SelectList)ViewData["Velicine"])">
-          <option value="">Sve veličine</option>
-        </select>
-      </div>
-
-      <div class="col-12">
-        <label class="form-label">Materijal:</label>
-        <input type="text" name="materijal" class="form-control" value="@currentMaterijal" placeholder="Pretraži materijal" />
-      </div>
+        <div class="col-12">
+            <label class="form-label">Materijal:</label>
+            <input type="text" id="materijalInput" name="materijal" class="form-control" value="@currentMaterijal" placeholder="Pretraži materijal" />
+        </div>
 
       <div class="col-12">
         <label class="form-label">Sortiranje:</label>
@@ -95,21 +88,22 @@
                     @if (currentSort == "cijena_asc")
                     {
                         <option value="cijena_asc" selected>Cijena (rastuce)</option>
-                        <option value="cijena_desc">Cijena (opadajuce)</option>
+                        <option value="cijena_desc">Cijena (opadajuće)</option>
                     }
                     else if (currentSort == "cijena_desc")
                     {
-                        <option value="cijena_asc">Cijena (rastuce)</option>
+                        <option value="cijena_asc">Cijena (rastuće)</option>
                         <option value="cijena_desc" selected>Cijena (opadajuce)</option>
                     }
                     else
                     {
-                        <option value="cijena_asc">Cijena (rastuce)</option>
-                        <option value="cijena_desc">Cijena (opadajuce)</option>
+                        <option value="cijena_asc">Cijena (rastuće)</option>
+                        <option value="cijena_desc">Cijena (opadajuće)</option>
                     }
 
         </select>
       </div>
+
 
       <div class="col-12 d-flex justify-content-between mt-3">
         <button type="submit" class="btn btn-primary">
@@ -349,3 +343,24 @@ else
 
 
 </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("filterForm");
+      const materijalInput = document.getElementById("materijalInput");
+
+      form.addEventListener("submit", function (e) {
+        const materijal = materijalInput.value.trim();
+        const regex = /^[A-Za-zšđčćžŠĐČĆŽ\s]{3,}$/;
+
+        // Ako nije prazno i ne zadovoljava regex, spriječi submit
+        if (materijal !== "" && !regex.test(materijal)) {
+          e.preventDefault(); // blokira slanje forme
+          alert("Materijal mora sadržavati najmanje 3 slova i ne smije sadržavati brojeve ili znakove.");
+          materijalInput.focus();
+        }
+      });
+    });
+</script>
+
+

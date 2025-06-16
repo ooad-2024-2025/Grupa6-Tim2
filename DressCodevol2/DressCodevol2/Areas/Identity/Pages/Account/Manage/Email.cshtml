@@ -5,80 +5,79 @@
     ViewData["ActivePage"] = ManageNavPages.Email;
 }
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <h3 class="mb-4">@ViewData["Title"]</h3>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h2 class="fw-bold mb-4 text-center">@ViewData["Title"]</h2>
 
             <partial name="_StatusMessage" for="StatusMessage" />
 
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Postavke emaila</h5>
+            <div class="card shadow-lg rounded-4">
+                <div class="card-header bg-gradient-primary text-white rounded-top-4 py-3 px-4">
+                    <h5 class="mb-0"><i class="fas fa-envelope me-2"></i>Postavke emaila</h5>
                 </div>
-                <div class="card-body">
-                    <form id="email-form" method="post">
-                        <div asp-validation-summary="All" class="alert alert-danger" role="alert" style="display: none;"></div>
 
-                        <!-- Current Email Section -->
+                <div class="card-body p-4">
+                    <form id="email-form" method="post">
+                        <div asp-validation-summary="All" class="alert alert-danger rounded-3 d-none" role="alert"></div>
+
+                        <!-- Current Email -->
                         <div class="mb-4">
                             <h6 class="text-muted mb-3">Trenutna email adresa</h6>
                             @if (Model.IsEmailConfirmed)
                             {
-                                <div class="input-group mb-3">
-                                    <div class="form-floating">
-                                        <input asp-for="Email" class="form-control" placeholder="Trenutna email adresa" disabled />
-                                        <label asp-for="Email" class="form-label">Trenutni email</label>
+                                <div class="input-group mb-2">
+                                    <div class="form-floating flex-grow-1">
+                                        <input asp-for="Email" class="form-control" disabled placeholder="Trenutna email adresa" />
+                                        <label asp-for="Email">Trenutni email</label>
                                     </div>
-                                    <span class="input-group-text bg-success text-white">
-                                        <i class="fas fa-check" aria-hidden="true"></i>
-                                        <span class="visually-hidden">Verifikovana</span>
+                                    <span class="input-group-text bg-success text-white rounded-end-3">
+                                        <i class="fas fa-check"></i>
                                     </span>
                                 </div>
                                 <small class="text-success">
-                                    <i class="fas fa-shield-alt"></i> Vaša email adresa je verifikovana
+                                    <i class="fas fa-shield-alt me-1"></i> Email je verifikovan
                                 </small>
                             }
                             else
                             {
                                 <div class="form-floating mb-3">
-                                    <input asp-for="Email" class="form-control border-warning" placeholder="Trenutna email adresa" disabled />
-                                    <label asp-for="Email" class="form-label">Trenutni email</label>
+                                    <input asp-for="Email" class="form-control border-warning" disabled placeholder="Trenutna email adresa" />
+                                    <label asp-for="Email">Trenutni email</label>
                                 </div>
                                 <div class="alert alert-warning d-flex align-items-center" role="alert">
                                     <i class="fas fa-exclamation-triangle me-2"></i>
                                     <div>
-                                        Vaša email adresa nije verifikovana.
+                                        Email nije verifikovan.
                                         <button id="email-verification" type="submit" asp-page-handler="SendVerificationEmail"
-                                                class="btn btn-link p-0 align-baseline text-decoration-underline">
-                                            Pošalji email verifikacije
+                                                class="btn btn-link p-0 text-decoration-underline">
+                                            Pošalji verifikaciju
                                         </button>
                                     </div>
                                 </div>
                             }
                         </div>
 
-                        <hr class="my-4">
+                        <hr class="my-4" />
 
-                        <!-- New Email Section -->
+                        <!-- New Email -->
                         <div class="mb-4">
-                            <h6 class="text-muted mb-3">Promijeni email adresu</h6>
-                            <div class="form-floating mb-3">
+                            <h6 class="text-muted mb-3">Unesite novu email adresu</h6>
+                            <div class="form-floating">
                                 <input asp-for="Input.NewEmail" class="form-control"
                                        autocomplete="email"
                                        aria-required="true"
                                        placeholder="Unesite novu email adresu" />
-                                <label asp-for="Input.NewEmail" class="form-label">Nova email adresa</label>
-                                <span asp-validation-for="Input.NewEmail" class="text-danger"></span>
+                                <label asp-for="Input.NewEmail">Nova email adresa</label>
+                                <span asp-validation-for="Input.NewEmail" class="text-danger small mt-1"></span>
                             </div>
                         </div>
 
-                        <!-- Submit Button -->
-                        <div class="d-grid">
+                        <!-- Submit -->
+                        <div class="d-grid mt-4">
                             <button id="change-email-button" type="submit" asp-page-handler="ChangeEmail"
-                                    class="btn btn-primary btn-lg">
-                                <i class="fas fa-envelope me-2"></i>
-                                Promijeni
+                                    class="btn btn-primary btn-lg rounded-3 py-3 fw-bold">
+                                <i class="fas fa-save me-2"></i>Sačuvaj promjene
                             </button>
                         </div>
                     </form>
@@ -90,29 +89,26 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Show validation summary if there are errors
+        document.addEventListener('DOMContentLoaded', function () {
             const validationSummary = document.querySelector('[asp-validation-summary]');
             if (validationSummary && validationSummary.querySelector('li')) {
-                validationSummary.style.display = 'block';
+                validationSummary.classList.remove('d-none');
             }
 
-            // Add loading state to buttons
             const changeEmailButton = document.getElementById('change-email-button');
             const verificationButton = document.getElementById('email-verification');
 
             if (changeEmailButton) {
-                changeEmailButton.addEventListener('click', function() {
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+                changeEmailButton.addEventListener('click', function () {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Obrada...';
                     this.disabled = true;
                 });
             }
 
             if (verificationButton) {
-                verificationButton.addEventListener('click', function() {
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+                verificationButton.addEventListener('click', function () {
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Slanje...';
                     this.disabled = true;
                 });
             }
@@ -121,38 +117,25 @@
 }
 
 <style>
-    .card {
-        border: none;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    }
-
-    .card-header {
-        background-color: #f8f9fa;
-        border-bottom: 1px solid #dee2e6;
-    }
-
-    .input-group-text.bg-success {
-        border-color: #198754;
+    .bg-gradient-primary {
+        background: #6b4c3b;
     }
 
     .form-control:disabled {
         background-color: #e9ecef;
-        opacity: 1;
-    }
-
-    .btn-link.p-0 {
-        vertical-align: baseline;
-    }
-
-    .alert-info {
-        background-color: #d1ecf1;
-        border-color: #b6d4da;
-        color: #055160;
     }
 
     .alert-warning {
         background-color: #fff3cd;
         border-color: #ffecb5;
         color: #664d03;
+    }
+
+    .btn-link.p-0 {
+        vertical-align: baseline;
+    }
+
+    .form-floating > .form-control:disabled ~ label {
+        color: #6c757d;
     }
 </style>

@@ -15,6 +15,7 @@ wwwroot\images\DressCodeLogo.png
 wwwroot\images\login.png
 wwwroot\images\musko.jpg
 wwwroot\images\okvir.jpg
+wwwroot\images\onama.jpg
 wwwroot\images\radnici\2fbb1c56-4867-4250-b62a-28e91b377b67.jpg
 wwwroot\images\radnici\f519f830-8e3d-4eeb-a9a8-363fea4b2d00.jpg
 wwwroot\images\UserImageDefault.jpg
