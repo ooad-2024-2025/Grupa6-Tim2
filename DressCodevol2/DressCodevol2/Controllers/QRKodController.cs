@@ -208,79 +208,6 @@ namespace DressCode.Controllers
         }
 
 
-        // GET: QRKod/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: QRKod/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ArtikalId,TipKoda,DatumKreiranja,DatumIsteka,IsAktivan,DataPayload")] QRKod qRKod)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(qRKod);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(qRKod);
-        }
-
-        // GET: QRKod/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var qRKod = await _context.QRKodovi.FindAsync(id);
-            if (qRKod == null)
-            {
-                return NotFound();
-            }
-            return View(qRKod);
-        }
-
-        // POST: QRKod/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ArtikalId,TipKoda,DatumKreiranja,DatumIsteka,IsAktivan,DataPayload")] QRKod qRKod)
-        {
-            if (id != qRKod.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(qRKod);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!QRKodExists(qRKod.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(qRKod);
-        }
-
         // GET: QRKod/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -319,28 +246,6 @@ namespace DressCode.Controllers
             return _context.QRKodovi.Any(e => e.Id == id);
         }
 
-        // GET: QRKod/Preview/5
-       /* public async Task<IActionResult> Preview(int id)
-        {
-            var artikal = await _context.Artikli.FindAsync(id);
-            if (artikal == null) return NotFound();
-
-            var url = Url.Action(
-                    action: "Details",
-                    controller: "Artikals",
-                    values: new { id = id },
-                    protocol: Request.Scheme
-                );
-            string qrDataUri = _qrService.GenerateQrCodeBase64(url);
-            var vm = new ArtikalQrViewModel
-            {
-                Artikal = artikal,
-                Opis = artikal.Opis,
-                QrImageData = qrDataUri,
-                QrKodId = id
-            };
-
-            return View(vm);
-        }*/
+   
     }
 }

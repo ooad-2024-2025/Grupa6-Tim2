@@ -99,6 +99,7 @@
     var stripe = Stripe('@ViewBag.PublishableKey');
     var elements = stripe.elements();
     var cardElement = elements.create('card', {
+         hidePostalCode: true,
         style: {
             base: {
                 fontSize: '16px',
@@ -111,7 +112,7 @@
             },
             invalid: {
                 color: '#a94442'
-            }
+            },
         getCustomCardError}
     });
     cardElement.mount('#card-element');

@@ -39,7 +39,7 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
         {
             [Phone]
             [Display(Name = "Broj telefona")]
-            [RegularExpression(@"^[0-9+]+$", ErrorMessage = "Telefonski broj ne smije sadržavati negativne znakove.")]
+            [RegularExpression(@"^[0-9+]+$", ErrorMessage = "Telefonski broj mora sadržavati samo brojeve.")]
             public string PhoneNumber { get; set; }
 
             [ValidJmbg]

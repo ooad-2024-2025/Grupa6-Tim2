@@ -22,12 +22,16 @@ namespace DressCode.Controllers
         // GET: Adresa
         public async Task<IActionResult> Index()
         {
+            return Forbid();
+
             return View(await _context.Adrese.ToListAsync());
         }
 
         // GET: Adresa/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            return Forbid();
+
             if (id == null)
             {
                 return NotFound();
@@ -46,6 +50,8 @@ namespace DressCode.Controllers
         // GET: Adresa/Create
         public IActionResult Create()
         {
+            return Forbid();
+
             return View();
         }
 
@@ -56,6 +62,7 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Ulica,Broj,Grad,Drzava")] Adresa adresa)
         {
+            return Forbid();
             if (ModelState.IsValid)
             {
                 _context.Add(adresa);
@@ -68,6 +75,7 @@ namespace DressCode.Controllers
         // GET: Adresa/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            return Forbid();
             if (id == null)
             {
                 return NotFound();
@@ -88,6 +96,7 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Ulica,Broj,Grad,Drzava")] Adresa adresa)
         {
+            return Forbid();
             if (id != adresa.Id)
             {
                 return NotFound();
@@ -119,6 +128,7 @@ namespace DressCode.Controllers
         // GET: Adresa/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            return Forbid();
             if (id == null)
             {
                 return NotFound();
@@ -139,6 +149,8 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            return Forbid();
+
             var adresa = await _context.Adrese.FindAsync(id);
             if (adresa != null)
             {

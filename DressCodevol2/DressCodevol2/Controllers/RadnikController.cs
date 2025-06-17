@@ -56,7 +56,6 @@ namespace DressCode.Controllers
                 DatumRodjenja = u.DatumRodjenja,
                 JMBG = u.JMBG,
                 IsLoyal = u.IsLoyal,
-                KarticaId = u.KarticaId,
                 PostojeciSlikaUrl = string.IsNullOrEmpty(u.SlikaUrl)
                     ? "/images/UserImageDefault.jpg"
                     : u.SlikaUrl
@@ -82,7 +81,6 @@ namespace DressCode.Controllers
                 DatumRodjenja = vm.DatumRodjenja,
                 JMBG = vm.JMBG,
                 IsLoyal = false,
-                KarticaId = null
             };
 
             if (vm.Slika != null && vm.Slika.Length > 0)
@@ -127,7 +125,6 @@ namespace DressCode.Controllers
                 DatumRodjenja = u.DatumRodjenja,
                 JMBG = u.JMBG,
                 IsLoyal = u.IsLoyal,
-                KarticaId = u.KarticaId,
                 PostojeciSlikaUrl = string.IsNullOrEmpty(u.SlikaUrl)
                     ? "/images/UserImageDefault.jpg"
                     : u.SlikaUrl
@@ -149,7 +146,6 @@ namespace DressCode.Controllers
             user.DatumRodjenja = vm.DatumRodjenja;
             user.JMBG = vm.JMBG;
             user.IsLoyal = (bool)(vm.IsLoyal == null ? false : vm.IsLoyal);
-            user.KarticaId = vm.KarticaId;
             user.Email = $"{vm.Ime}_{vm.Prezime}@dresscode.com";
             user.UserName = $"{vm.Ime}_{vm.Prezime}@dresscode.com";
 
