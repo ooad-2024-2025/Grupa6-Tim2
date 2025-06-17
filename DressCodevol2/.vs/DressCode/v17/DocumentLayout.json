@@ -382,8 +382,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Placanje\\Error.cshtml",
               "ViewState": "AgIAABIAAAAAAAAAAAAAAB0AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T15:03:18.677Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T15:03:18.677Z"
             },
             {
               "$type": "Document",
@@ -395,8 +394,7 @@
               "RelativeToolTip": "DressCodevol2\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
               "ViewState": "AgIAAJMFAAAAAAAAAAAmwNkFAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-06-17T14:58:48.89Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:58:48.89Z"
             },
             {
               "$type": "Document",
@@ -408,8 +406,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Adresa.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T02:46:54.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T02:46:54.723Z"
             },
             {
               "$type": "Document",
@@ -421,8 +418,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\AdresaViewModel.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAYwBcAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T11:58:17.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T11:58:17.931Z"
             },
             {
               "$type": "Document",
@@ -434,8 +430,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Narudzba.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T08:49:01.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T08:49:01.684Z"
             },
             {
               "$type": "Document",
@@ -447,8 +442,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Korpa\\Adresa.cshtml",
               "ViewState": "AgIAAIcAAAAAAAAAAAAAAIYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-14T07:17:03.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T07:17:03.129Z"
             },
             {
               "$type": "Document",
@@ -456,9 +450,9 @@
               "Title": "StripePayment.cshtml",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAmwIAAAAAjAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml*",
+              "RelativeToolTip": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml*",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAmwGsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-06-15T20:42:09.987Z",
               "EditorCaption": ""
@@ -473,8 +467,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Placanje.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T00:30:55.089Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T00:30:55.089Z"
             },
             {
               "$type": "Document",
@@ -486,8 +479,7 @@
               "RelativeToolTip": "DressCodevol2\\Controllers\\PlacanjeController.cs",
               "ViewState": "AgIAADkAAAAAAAAAAAAswFYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T08:43:46.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T08:43:46.392Z"
             },
             {
               "$type": "Document",
@@ -499,8 +491,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Artikals\\Index.cshtml",
               "ViewState": "AgIAALUAAAAAAAAAAAAswMEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T12:01:23.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T12:01:23.032Z"
             },
             {
               "$type": "Document",
@@ -512,8 +503,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAA5wCkAAAB2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:48:56.165Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:48:56.165Z"
             },
             {
               "$type": "Document",
@@ -525,8 +515,7 @@
               "RelativeToolTip": "DressCodevol2\\Attributes\\ValidJmbgAttribute.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:50:11.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:50:11.209Z"
             },
             {
               "$type": "Document",
@@ -538,8 +527,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\RadnikEditViewModel.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:50:48.482Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:50:48.482Z"
             },
             {
               "$type": "Document",
@@ -551,8 +539,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "ViewState": "AgIAAFwAAAAAAAAAAAAwwFsAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T13:17:29.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T13:17:29.487Z"
             },
             {
               "$type": "Document",
@@ -564,8 +551,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Email\\Send.cshtml",
               "ViewState": "AgIAAHsAAAAAAAAAAAAAAIwAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T20:32:11.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T20:32:11.548Z"
             },
             {
               "$type": "Document",
@@ -577,8 +563,7 @@
               "RelativeToolTip": "DressCodevol2\\Controllers\\RadnikController.cs",
               "ViewState": "AgIAAIQAAAAAAAAAAAAswJkAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T02:15:06.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T02:15:06.044Z"
             },
             {
               "$type": "Document",
@@ -590,8 +575,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Korpa\\Index.cshtml",
               "ViewState": "AgIAAMkAAAAAAAAAAAAAAKcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T20:55:15.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T20:55:15.997Z"
             },
             {
               "$type": "Document",
@@ -603,8 +587,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\NacinPlacanja.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T04:55:07.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T04:55:07.949Z"
             },
             {
               "$type": "Document",
@@ -616,8 +599,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Korisnik.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-15T20:56:08.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-15T20:56:08.381Z"
             },
             {
               "$type": "Document",
@@ -629,8 +611,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T20:31:02.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T20:31:02.895Z"
             },
             {
               "$type": "Document",
@@ -642,8 +623,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T13:43:23.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T13:43:23.672Z"
             },
             {
               "$type": "Document",
@@ -667,8 +647,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T11:55:54.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T11:55:54.839Z"
             },
             {
               "$type": "Document",
