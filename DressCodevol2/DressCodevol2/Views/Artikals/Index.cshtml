@@ -12,16 +12,17 @@
                           ViewData["CurrentVelicina"] != null;
 }
 
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="m-0 style="color: #6b4c3b;">Lista artikala</h1>
-    <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas" title="Filteri i sortiranje">
-            <i class="fas fa-filter"></i>
-        </button>
-        <span class="fw-semibold mb-0 style="color: #6b4c3b;">Filtriranje i sortiranje</span>
+<div class="header-section">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="page-title" style="font-family: 'Playfair Display', serif;">Lista artikala</h1>
+        <div class="header-controls">
+            <button class="filter-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas" title="Filteri i sortiranje">
+                <i class="fas fa-sliders-h"></i>
+                <span>Filtriranje i sortiranje</span>
+            </button>
+        </div>
     </div>
 </div>
-
 
 @if (TempData["Dodano"] != null)
 {
@@ -49,41 +50,45 @@
 
 @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
 {
-    <p>
-        <a asp-action="Create" class="btn btn-success">Dodaj novi artikal</a>
-    </p>
+    <div class="mb-4">
+        <a asp-action="Create" class="add-article-btn">
+            <i class="fas fa-plus"></i>
+            Dodaj novi artikal
+        </a>
+    </div>
 }
 
 <!-- Offcanvas panel za filter i sortiranje -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
-  <div class="offcanvas-header">
-    <h5 id="filterOffcanvasLabel">Filtriranje i sortiranje</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Zatvori"></button>
-  </div>
-  <div class="offcanvas-body">
-    <form method="get" class="row g-3">
-      <div class="col-12">
-        <label class="form-label">Kategorija:</label>
-        <select name="kategorijaFilter" class="form-select" asp-items="@((SelectList)ViewData["Kategorije"])">
-          <option value="">Sve kategorije</option>
-        </select>
-      </div>
+<div class="offcanvas offcanvas-end modern-offcanvas" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+    <div class="offcanvas-header">
+        <h5 id="filterOffcanvasLabel">Filtriranje i sortiranje</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Zatvori"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form method="get" class="filter-form" id="filterForm">
+            <div class="form-group">
+                <label class="form-label">Kategorija:</label>
+                <select name="kategorijaFilter" class="form-select modern-select" asp-items="@((SelectList)ViewData["Kategorije"])">
+                    <option value="">Sve kategorije</option>
+                </select>
+            </div>
 
-      <div class="col-12">
-        <label class="form-label">Spol:</label>
-        <select name="spolFilter" class="form-select" asp-items="@((SelectList)ViewData["Spolovi"])">
-          <option value="">Svi spolovi</option>
-        </select>
-      </div>
+            <div class="form-group">
+                <label class="form-label">Spol:</label>
+                <select name="spolFilter" class="form-select modern-select" asp-items="@((SelectList)ViewData["Spolovi"])">
+                    <option value="">Svi spolovi</option>
+                </select>
+            </div>
 
-        <div class="col-12">
-            <label class="form-label">Materijal:</label>
-            <input type="text" id="materijalInput" name="materijal" class="form-control" value="@currentMaterijal" placeholder="Pretraži materijal" />
-        </div>
+            <div class="form-group">
+                <label class="form-label">Materijal:</label>
+                <input type="text" id="materijalInput" name="materijal" class="form-control modern-input" value="@currentMaterijal" placeholder="Pretraži materijal" />
+                <div id="materijalError" class="error-message" style="display: none;"></div>
+            </div>
 
-      <div class="col-12">
-        <label class="form-label">Sortiranje:</label>
-        <select name="sortOrder" class="form-select">
+            <div class="form-group">
+                <label class="form-label">Sortiranje:</label>
+                <select name="sortOrder" class="form-select modern-select">
                     <option value="">Zadano</option>
                     @if (currentSort == "cijena_asc")
                     {
@@ -100,267 +105,510 @@
                         <option value="cijena_asc">Cijena (rastuće)</option>
                         <option value="cijena_desc">Cijena (opadajuće)</option>
                     }
+                </select>
+            </div>
 
-        </select>
-      </div>
-
-
-      <div class="col-12 d-flex justify-content-between mt-3">
-        <button type="submit" class="btn btn-primary">
-          <i class="fas fa-search"></i> Filtriraj
-        </button>
-        <a asp-action="Index" class="btn btn-secondary">
-          <i class="fas fa-undo"></i> Resetuj
-        </a>
-      </div>
-    </form>
-  </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-primary-modern">
+                    <i class="fas fa-search"></i> Filtriraj
+                </button>
+                <a asp-action="Index" class="btn-secondary-modern">
+                    <i class="fas fa-undo"></i> Resetuj
+                </a>
+            </div>
+        </form>
+    </div>
 </div>
 
 <!-- Rezultati -->
-<div class="row mb-3">
-    <div class="col-md-6">
-        <p class="text-muted">Pronađeno: <strong>@Model.Count()</strong> artikala</p>
-    </div>
-    <div class="col-md-6 text-end d-flex justify-content-end align-items-center gap-2">
+<div class="results-header">
+    <div class="results-info">
+        <span class="results-count">Pronađeno: <strong>@Model.Count()</strong> artikala</span>
         @if (hasActiveFilters)
         {
-            <span class="badge bg-info">Filteri aktivni</span>
-        }
-
-        @if (User.IsInRole("Radnik") || User.IsInRole("Administrator"))
-        {
-            <a asp-controller="QRKod" asp-action="Index" asp-route-show="articles" class="btn btn-outline-brown me-2">
-                <i class="fas fa-tags"></i> Idi na etikete
-            </a>
+            <span class="active-filters-badge">Filteri aktivni</span>
         }
     </div>
+
+    @if (User.IsInRole("Radnik") || User.IsInRole("Administrator"))
+    {
+        <a asp-controller="QRKod" asp-action="Index" asp-route-show="articles" class="tags-btn">
+            <i class="fas fa-tags"></i> Idi na etikete
+        </a>
+    }
 </div>
 
 @if (Model.Any())
 {
-    <div class="d-flex flex-wrap gap-3">
+    <div class="articles-grid">
         @foreach (var item in Model)
         {
-            <div class="product-card" style="width: 190px; background-color: white; border-radius: 8px; overflow: hidden;">
-                <a asp-action="Details" asp-route-grupaId="@item.GrupaId" class="card2 text-decoration-none text-dark">
-                   
-                    <div class="card2-image d-flex align-items-center justify-content-center">
+            <div class="article-card">
+                <a asp-action="Details" asp-route-grupaId="@item.GrupaId" class="card-link">
+                    <div class="card-image">
                         @if (item.SlikaUrl != null)
                         {
-                            <img src="@item.SlikaUrl" alt="@item.Opis" style="max-width: 100%; max-height: 100%; border-radius: 6px 6px 0 0;" />
+                            <img src="@item.SlikaUrl" alt="@item.Opis" />
                         }
                         else
                         {
-                            <span class="text-muted">Bez slike</span>
+                            <div class="no-image">
+                                <i class="fas fa-image"></i>
+                                <span>Bez slike</span>
+                            </div>
                         }
                     </div>
-                    <div class="category">@(item.Kategorija?.Naziv ?? "N/A")</div>
-                    <div class="heading">
-                        @item.Opis
-                        <div class="author">@item.Cijena.ToString("0.00") KM</div>
+                    <div class="card-content">
+                        <div class="card-category">@(item.Kategorija?.Naziv ?? "N/A")</div>
+                        <h3 class="card-title">@item.Opis</h3>
+                        <div class="card-price">@item.Cijena.ToString("0.00") KM</div>
                     </div>
                 </a>
-                <div class="px-2 pb-2">
-                    @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
-                    {
-                        <a asp-action="EditGroup" asp-route-grupaId="@item.GrupaId" class="btn btn-outline-warning btn-sm w-100 mb-1">
-                            <i class="fas fa-edit"></i> Uredi
+
+                @if (User.IsInRole("Administrator") || User.IsInRole("Radnik"))
+                {
+                    <div class="card-actions">
+                        <a asp-action="EditGroup" asp-route-grupaId="@item.GrupaId" class="action-btn edit-btn">
+                            <i class="fas fa-edit"></i>
                         </a>
-                        <a asp-action="DeleteGroup" asp-route-grupaId="@item.GrupaId" class="btn btn-outline-danger btn-sm w-100 mb-1">
-                            <i class="fas fa-trash"></i> Obriši
+                        <a asp-action="DeleteGroup" asp-route-grupaId="@item.GrupaId" class="action-btn delete-btn">
+                            <i class="fas fa-trash"></i>
                         </a>
-                    }
-                   
-                </div>
+                    </div>
+                }
             </div>
         }
     </div>
 }
 else
 {
-    <div class="alert alert-info text-center">
-        <i class="fas fa-info-circle fa-2x mb-3"></i>
-        <h4>Nema artikala</h4>
+    <div class="empty-state">
+        <i class="fas fa-box-open"></i>
+        <h3>Nema artikala</h3>
         <p>Nema artikala koji odgovaraju zadatim kriterijumima.</p>
-        <a asp-action="Index" class="btn btn-primary">Prikaži sve artikle</a>
+        <a asp-action="Index" class="btn-primary-modern">Prikaži sve artikle</a>
     </div>
 }
 
 <style>
     body {
-        background: #f7f3f0;
+        background: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* Header Section */
+    .header-section {
+        margin-bottom: 2rem;
+    }
 
-    .bg-pink {
-        background-color: #e83e8c !important;
+    .page-title {
+        color: #2c3e50;
+        font-weight: 600;
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .filter-toggle-btn {
+        background: white;
+        border: 1px solid #e9ecef;
+        border-radius: 8px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #6c757d;
+        transition: all 0.2s ease;
+        text-decoration: none;
+    }
+
+        .filter-toggle-btn:hover {
+            border-color: #6b4c3b;
+            color: #6b4c3b;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+    /* Modern Buttons */
+    .add-article-btn {
+        background: #7A5C3F;
         color: white;
-    }
-
-    .table th a {
-        color: inherit;
-    }
-
-    .table th a:hover {
-        color: #ffc107;
-    }
-
-    .btn-group-vertical .btn {
-        margin-bottom: 2px;
-    }
-
-    .card-header {
-        background-color: #f4f3ee;
-        border-bottom: 1px solid #dee2e6;
-    }
-
-    .card2 {
-        width: 190px;
-        background-color: #ffffff !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,1);
-        padding: 0;
-        border-radius: 2px;
-        border: 2px;
-        overflow: hidden;
-    }
-
-    .card2:hover {
-        transform: scale(0.98);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .card2-image {
-        background-color: #ffffff !important;
-        width: 100%;
-        height: 130px;
-        border-radius: 0;
-    }
-
-    .card2-image:hover {
-        transform: scale(0.98);
-    }
-
-    .category {
-        text-transform: uppercase;
-        font-size: 0.7em;
-        font-weight: 600;
-        color: #352208;
-        padding: 10px 7px 0;
-        text-align: center;
-    }
-
-    .category:hover {
-        cursor: pointer;
-    }
-
-    .heading {
-        font-weight: 600;
-        color: #2c5530;
-        padding: 7px;
-        background-color: #d6c6b8 !important;
-        ;
-        text-align: center;
-    }
-
-    .heading:hover {
-        cursor: pointer;
-    }
-
-    .author {
-        color: #344e41;
-        font-weight: 800;
-        font-size: 20px;
-        padding-top: 10px;
-        text-align: center
-    }
-
-    .btn-outline-brown {
-        color: #6f4e37;
-        border-color: #6f4e37;
-    }
-
-    .btn-outline-brown:hover,
-    .btn-outline-brown:focus,
-    .btn-outline-brown:active {
-        color: white;
-        background-color: #6f4e37;
-        border-color: #6f4e37;
-        box-shadow: none;
-    }
-
-    .name {
-        font-weight: 600;
-    }
-
-    .name:hover {
-        cursor: pointer;
-    }
-
-    .product-card {
-        border: 2px solid #7A5C3F; /* Tamno smeđi border */
-        transition: all 0.3s ease;
-    }
-
-        .product-card:hover {
-            border-color: #6B4226; /* Još tamniji na hover */
-            box-shadow: 0 4px 12px rgba(122, 92, 63, 0.2);
-            transform: translateY(-2px);
-        }
-
-
-    .btn-outline-brown {
-        color: #7a5c40;
-        border-color: #7a5c40;
-    }
-
-        .btn-outline-brown:hover {
-            background-color: #7a5c40;
-            color: #f5f0e6;
-            border-color: #7a5c40;
-        }
-
-        .btn-outline-brown.active:hover {
-            background-color: #7a5c40 !important; /* Malo tamnije na hover */
-            border-color: #7a5c40;
-        }
-
-    .btn-brown {
-        background-color: #7a5c40;
-        color: #f5f0e6;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
         border: none;
     }
 
-        .btn-brown:hover {
-            background-color: #5b4636;
-            color: #f5f0e6;
+        .add-article-btn:hover {
+            background: #7A5C3F;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
         }
 
-        .btn-brown.active:hover {
-            background-color: #7a5c40 !important; /* Malo tamnije na hover */
-            border-color: #7a5c40;
+    /* Offcanvas Styling */
+    .modern-offcanvas {
+        border-left: 1px solid #e9ecef;
+    }
+
+    .filter-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .modern-select, .modern-input {
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
+        padding: 10px 12px;
+        transition: border-color 0.2s ease;
+    }
+
+        .modern-select:focus, .modern-input:focus {
+            border-color: #6b4c3b;
+            box-shadow: 0 0 0 0.2rem rgba(107, 76, 59, 0.25);
         }
 
+    .form-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 2rem;
+    }
 
+    .btn-primary-modern {
+        background: #6b4c3b;
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        flex: 1;
+        justify-content: center;
+    }
+
+        .btn-primary-modern:hover {
+            background: #5a3f32;
+            color: white;
+        }
+
+    .btn-secondary-modern {
+        background: #6c757d;
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        flex: 1;
+        justify-content: center;
+    }
+
+        .btn-secondary-modern:hover {
+            background: #5a6268;
+            color: white;
+        }
+
+    /* Results Header */
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .results-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .results-count {
+        color: #6c757d;
+        font-size: 0.95rem;
+    }
+
+    .active-filters-badge {
+        background: #17a2b8;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .tags-btn {
+        background: white;
+        color: #6b4c3b;
+        border: 1px solid #6b4c3b;
+        padding: 8px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+    }
+
+        .tags-btn:hover {
+            background: #6b4c3b;
+            color: white;
+        }
+
+    /* Articles Grid */
+    .articles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .article-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .card-image {
+        height: 140px;
+        background: #f8f9fa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .no-image {
+        text-align: center;
+        color: #6c757d;
+    }
+
+        .no-image i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+    .card-content {
+        padding: 1rem;
+    }
+
+    .card-category {
+        color: #6c757d;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.3;
+    }
+
+    .card-price {
+        color: #7A5C3F;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .card-actions {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        display: flex;
+        gap: 4px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .article-card:hover .card-actions {
+        opacity: 1;
+    }
+
+    .action-btn {
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        backdrop-filter: blur(4px);
+    }
+
+    .edit-btn {
+        color: #ffc107;
+    }
+
+        .edit-btn:hover {
+            background: #ffc107;
+            color: white;
+        }
+
+    .delete-btn {
+        color: #dc3545;
+    }
+
+        .delete-btn:hover {
+            background: #dc3545;
+            color: white;
+        }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #6c757d;
+    }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #dee2e6;
+        }
+
+        .empty-state h3 {
+            color: #495057;
+            margin-bottom: 0.5rem;
+        }
+
+    /* Error Message */
+    .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+    }
+
+    .is-invalid {
+        border-color: #dc3545 !important;
+    }
+
+    /* Responsive Design */
+    @@media (max-width: 768px) {
+        .page-title
+
+    {
+        font-size: 1.5rem;
+    }
+
+    .results-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .articles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    }
 </style>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const form = document.getElementById("filterForm");
-      const materijalInput = document.getElementById("materijalInput");
+        const form = document.getElementById("filterForm");
+        const materijalInput = document.getElementById("materijalInput");
+        const materijalError = document.getElementById("materijalError");
 
-      form.addEventListener("submit", function (e) {
-        const materijal = materijalInput.value.trim();
-        const regex = /^[A-Za-zšđčćžŠĐČĆŽ\s]{3,}$/;
-
-        // Ako nije prazno i ne zadovoljava regex, spriječi submit
-        if (materijal !== "" && !regex.test(materijal)) {
-          e.preventDefault(); // blokira slanje forme
-          alert("Materijal mora sadržavati najmanje 3 slova i ne smije sadržavati brojeve ili znakove.");
-          materijalInput.focus();
+        // Funkcija za prikaz/sakrivanje greške
+        function showError(message) {
+            materijalError.textContent = message;
+            materijalError.style.display = "block";
+            materijalInput.classList.add("is-invalid");
         }
-      });
+
+        function hideError() {
+            materijalError.style.display = "none";
+            materijalInput.classList.remove("is-invalid");
+        }
+
+        // Validacija prilikom tipkanja (opciono)
+        materijalInput.addEventListener("input", function () {
+            const materijal = this.value.trim();
+
+            if (materijal === "") {
+                hideError();
+                return;
+            }
+
+            const regex = /^[A-Za-zšđčćžŠĐČĆŽ\s]{3,}$/;
+
+            if (!regex.test(materijal)) {
+                showError("Materijal mora sadržavati najmanje 3 slova i ne smije sadržavati brojeve ili znakove.");
+            } else {
+                hideError();
+            }
+        });
+
+        // Validacija prilikom slanja forme
+        form.addEventListener("submit", function (e) {
+            const materijal = materijalInput.value.trim();
+
+            // Ako je polje prazno, dozvoliti slanje (nema filtera)
+            if (materijal === "") {
+                hideError();
+                return;
+            }
+
+            const regex = /^[A-Za-zšđčćžŠĐČĆŽ\s]{3,}$/;
+
+            if (!regex.test(materijal)) {
+                e.preventDefault(); // Blokira slanje forme
+                showError("Materijal mora sadržavati najmanje 3 slova i ne smije sadržavati brojeve ili znakove.");
+                materijalInput.focus();
+            } else {
+                hideError();
+            }
+        });
+
+        // Smooth scroll efekt za toast notifikacije
+        const toastElements = document.querySelectorAll('.toast');
+        toastElements.forEach(toast => {
+            toast.addEventListener('shown.bs.toast', function () {
+                this.style.transform = 'translateX(0)';
+            });
+        });
     });
 </script>
-
-

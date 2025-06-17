@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\images\\login.png"
     },
     {
+      "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\logocropped.png",
+      "PackagePath": "staticwebassets\\images\\logocropped.png"
+    },
+    {
       "Id": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCodevol2\\DressCodevol2\\wwwroot\\images\\musko.jpg",
       "PackagePath": "staticwebassets\\images\\musko.jpg"
     },

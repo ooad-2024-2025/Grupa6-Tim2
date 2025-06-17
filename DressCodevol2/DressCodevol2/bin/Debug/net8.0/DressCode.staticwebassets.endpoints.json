@@ -3617,6 +3617,88 @@
       ]
     },
     {
+      "Route": "images/logocropped.4356bhhag7.png",
+      "AssetFile": "images/logocropped.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25981"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QL7dw6wJ3k9nzoNjHWxbtfjG6V1RtzpOkk4dt9QGQ/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Jun 2025 12:20:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "4356bhhag7"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QL7dw6wJ3k9nzoNjHWxbtfjG6V1RtzpOkk4dt9QGQ/k="
+        },
+        {
+          "Name": "label",
+          "Value": "images/logocropped.png"
+        }
+      ]
+    },
+    {
+      "Route": "images/logocropped.png",
+      "AssetFile": "images/logocropped.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "25981"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QL7dw6wJ3k9nzoNjHWxbtfjG6V1RtzpOkk4dt9QGQ/k=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 17 Jun 2025 12:20:11 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QL7dw6wJ3k9nzoNjHWxbtfjG6V1RtzpOkk4dt9QGQ/k="
+        }
+      ]
+    },
+    {
       "Route": "images/musko.6j56kmqaj9.jpg",
       "AssetFile": "images/musko.jpg",
       "Selectors": [],

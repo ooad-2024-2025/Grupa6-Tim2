@@ -1,4 +1,6 @@
 @model DressCode.Models.AdresaViewModel
+@using System.Globalization
+
 
 @{
     ViewData["Title"] = "Adresa za dostavu";
@@ -88,15 +90,19 @@
                     <!-- Order Summary -->
                     <div class="alert alert-info mb-4">
                         <h5><i class="fas fa-shopping-cart"></i> Pregled narudžbe</h5>
-                        <p class="mb-1"><strong>Ukupna cijena:</strong> @Model.UkupnaCijena.ToString("C")</p>
+                        <p class="mb-1"><strong>Ukupna cijena:</strong> @Model.UkupnaCijena.ToString("C", new CultureInfo("bs-BA"))</p>
                         <p class="mb-0"><small class="text-muted">Molimo unesite adresu za dostavu da biste završili narudžbu.</small></p>
                     </div>
 
                     <!-- Address Form -->
                     <form asp-action="KreirajNarudzbu" method="post">
+                        
                         @Html.AntiForgeryToken()
                         @Html.HiddenFor(m => m.KorpaId)
                         @Html.HiddenFor(m => m.UkupnaCijena)
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
 
                         <div class="row">
                             <div class="col-md-12 mb-3">
