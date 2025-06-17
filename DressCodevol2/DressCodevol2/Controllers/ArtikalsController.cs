@@ -268,7 +268,7 @@ namespace DressCode.Controllers
             return View(glavniArtikal);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis, Kolicina, GrupaId")] Artikal artikal, IFormFile? Slika)
@@ -284,7 +284,7 @@ namespace DressCode.Controllers
                 artikal.Kategorija = await _context.TipoviOdjece.FirstOrDefaultAsync(t => t.Id == artikal.KategorijaId);
                 artikal.SlikaUrl = "/images/ArtikalDefault.png";
 
-                if(Slika != null && Slika.Length > 0)
+                if (Slika != null && Slika.Length > 0)
                 {
                     var uploads = Path.Combine(_env.WebRootPath, "images", "artikli");
                     Directory.CreateDirectory(uploads);
@@ -296,7 +296,7 @@ namespace DressCode.Controllers
 
                     artikal.SlikaUrl = $"/images/artikli/{filename}";
                 }
-                
+
                 _context.Add(artikal);
                 await _context.SaveChangesAsync();
 
@@ -317,197 +317,13 @@ namespace DressCode.Controllers
                 _context.QRKodovi.Add(q);
                 await _context.SaveChangesAsync();
 
-               // return RedirectToAction(nameof(Index));
+                // return RedirectToAction(nameof(Index));
             }
 
             ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
             //ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv");
             ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
             ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return RedirectToAction(nameof(Index));
-        }
-        
-
-       /* [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina,GrupaId")] Artikal artikal, IFormFile? Slika)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    // Postavljanje kategorije
-                    artikal.Kategorija = await _context.TipoviOdjece.FirstOrDefaultAsync(t => t.Id == artikal.KategorijaId);
-
-                    // Postavljanje default slike
-                    artikal.SlikaUrl = "/images/ArtikalDefault.png";
-
-                    // Upload slike
-                    if (Slika != null && Slika.Length > 0)
-                    {
-                        var uploads = Path.Combine(_env.WebRootPath, "images", "artikli");
-                        Directory.CreateDirectory(uploads);
-                        var filename = $"{Guid.NewGuid()}{Path.GetExtension(Slika.FileName)}";
-                        var filepath = Path.Combine(uploads, filename);
-
-                        using var stream = new FileStream(filepath, FileMode.Create);
-                        await Slika.CopyToAsync(stream);
-                        artikal.SlikaUrl = $"/images/artikli/{filename}";
-                    }
-
-                    // Spremanje artikla
-                    _context.Add(artikal);
-                    await _context.SaveChangesAsync();
-
-                    // Generiranje QR koda
-                    try
-                    {
-                        var url = Url.Action("Details", "Artikals", new { grupaId = artikal.GrupaId }, "https");
-                        string dataUri = _qrService.GenerateQrCodeBase64(url);
-
-                        var qrKod = new QRKod
-                        {
-                            ArtikalId = artikal.Id,
-                            TipKoda = QRKodTip.OPISARTIKLA,
-                            DatumKreiranja = DateTime.UtcNow,
-                            DatumIsteka = DateTime.UtcNow.AddYears(1),
-                            IsAktivan = true,
-                            DataPayload = dataUri
-                        };
-
-                        _context.QRKodovi.Add(qrKod);
-                        await _context.SaveChangesAsync();
-                    }
-                    catch (Exception qrEx)
-                    {
-                        Console.WriteLine($"QR Code generation failed: {qrEx.Message}");
-                        // QR kod nije kritičan, možete nastaviti bez njega
-                    }
-
-                    return RedirectToAction(nameof(Index));
-                }
-
-                // Ako ModelState nije valjan, prikažite greške
-                foreach (var modelError in ModelState)
-                {
-                    Console.WriteLine($"Key: {modelError.Key}, Errors: {string.Join(", ", modelError.Value.Errors.Select(e => e.ErrorMessage))}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"General error in Create: {ex.Message}");
-                ModelState.AddModelError("", "Došlo je do greške prilikom kreiranja artikla.");
-            }
-
-            // Ponovno učitavanje ViewData za dropdown liste
-            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
-            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
-            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-
-            return View(artikal);
-        }*/
-
-        // GET: Artikals/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var artikal = await _context.Artikli.FindAsync(id);
-            if (artikal == null)
-            {
-                return NotFound();
-            }
-            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
-            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
-            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return View(artikal);
-        }
-
-        // POST: Artikals/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,KategorijaId,Cijena,Materijal,Velicina,Spol,Opis,Kolicina, GrupaId")] Artikal artikal, int KategorijaId, IFormFile? Slika)
-        {
-            if (id != artikal.Id)
-                return NotFound();
-
-            if (ModelState.IsValid)
-            {
-                var existing = await _context.Artikli.FindAsync(id);
-                if (existing == null)
-                    return NotFound();
-
-                existing.KategorijaId = artikal.KategorijaId;
-                existing.Cijena = artikal.Cijena;
-                existing.Materijal = artikal.Materijal;
-                existing.Velicina = artikal.Velicina;
-                existing.Spol = artikal.Spol;
-                existing.Opis = artikal.Opis;
-                existing.Kolicina = artikal.Kolicina;
-                existing.GrupaId = artikal.GrupaId;
-
-                if (Slika != null && Slika.Length > 0)
-                {
-                    var uploads = Path.Combine(_env.WebRootPath, "images", "artikli");
-                    Directory.CreateDirectory(uploads);
-                    var fileName = $"{Guid.NewGuid()}{Path.GetExtension(Slika.FileName)}";
-                    var filePath = Path.Combine(uploads, fileName);
-
-                    using var stream = new FileStream(filePath, FileMode.Create);
-                    await Slika.CopyToAsync(stream);
-
-                    existing.SlikaUrl = $"/images/artikli/{fileName}";
-                }
-
-                _context.Update(existing);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-
-            ViewData["Kategorija"] = new SelectList(_context.TipoviOdjece.ToList(), "Id", "Naziv", artikal.KategorijaId);
-            ViewData["Velicine"] = new SelectList(Enum.GetValues(typeof(Velicina)).Cast<Velicina>(), artikal.Velicina);
-            ViewData["Spolovi"] = new SelectList(Enum.GetValues(typeof(Spol)).Cast<Spol>(), artikal.Spol);
-            return View(artikal);
-        }
-
-        // GET: Artikals/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var artikal = await _context.Artikli
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (artikal == null)
-            {
-                return NotFound();
-            }
-
-            return View(artikal);
-        }
-
-        // POST: Artikals/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var artikal = await _context.Artikli.FindAsync(id);
-            if (artikal != null)
-            {
-                var qrKod = await _context.QRKodovi.FirstOrDefaultAsync(q => q.ArtikalId == id);
-                if (qrKod != null)
-                {
-                    _context.QRKodovi.Remove(qrKod);
-                }
-                _context.Artikli.Remove(artikal);
-            }
-
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 

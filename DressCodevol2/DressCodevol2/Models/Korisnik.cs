@@ -12,7 +12,6 @@ namespace DressCode.Models
         public DateTime? DatumRodjenja { get; set; }
         public String? JMBG { get; set; }
         public Boolean IsLoyal {  get; set; }   
-        public int? KarticaId { get; set; }  
         public string? SlikaUrl { get; set; }
     }
 }

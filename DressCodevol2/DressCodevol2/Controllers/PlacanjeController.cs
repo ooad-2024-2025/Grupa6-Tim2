@@ -27,6 +27,10 @@ namespace DressCode.Controllers
         // GET: Placanje
         public async Task<IActionResult> Index()
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
+
             return View(await _context.Placanja.ToListAsync());
         }
         
@@ -186,6 +190,10 @@ namespace DressCode.Controllers
         // GET: Placanje/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
+
             if (id == null)
             {
                 return NotFound();
@@ -204,6 +212,9 @@ namespace DressCode.Controllers
         // GET: Placanje/Create
         public IActionResult Create()
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             return View();
         }
 
@@ -214,6 +225,9 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,NarudzbaId,Cijena")] Placanje placanje)
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             if (ModelState.IsValid)
             {
                 _context.Add(placanje);
@@ -226,6 +240,9 @@ namespace DressCode.Controllers
         // GET: Placanje/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             if (id == null)
             {
                 return NotFound();
@@ -246,6 +263,9 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,NarudzbaId,Cijena")] Placanje placanje)
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             if (id != placanje.Id)
             {
                 return NotFound();
@@ -277,6 +297,9 @@ namespace DressCode.Controllers
         // GET: Placanje/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             if (id == null)
             {
                 return NotFound();
@@ -297,6 +320,9 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             var placanje = await _context.Placanja.FindAsync(id);
             if (placanje != null)
             {

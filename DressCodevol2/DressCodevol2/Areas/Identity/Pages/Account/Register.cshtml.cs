@@ -89,11 +89,6 @@ namespace DressCode.Areas.Identity.Pages.Account
             [Display(Name = "Prezime")]
             public string Prezime { get; set; }
 
-            [ValidJmbg]
-            [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG mora imati tačno 13 brojeva.")]
-            [Display(Name = "JMBG")]
-            public string JMBG { get; set; }
-
             [DataType(DataType.Date)]
             [Display(Name = "Datum rođenja")]
             [CustomValidation(typeof(DateValidation), "ValidateDateNotInFuture")]
@@ -154,7 +149,6 @@ namespace DressCode.Areas.Identity.Pages.Account
                     JMBG = null,
                     DatumRodjenja = new DateTime(),
                     IsLoyal = Input.IsLoyal,
-                    KarticaId = null,
                     SlikaUrl = null
                 };
 
