@@ -112,7 +112,7 @@
             invalid: {
                 color: '#a94442'
             }
-        }
+        getCustomCardError}
     });
     cardElement.mount('#card-element');
 
@@ -123,6 +123,12 @@
         } else {
             displayError.textContent = '';
         }
+         elements.update({
+            // Postavi prazan postalCode
+            value: { postalCode: '' },
+            // Onemogući postalCode
+            disabled: true
+        });
     });
 
     function getCustomCardError(errorCode) {
