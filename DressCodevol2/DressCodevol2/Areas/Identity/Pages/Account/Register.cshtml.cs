@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
+using DressCode.Attributes;
 using DressCode.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
@@ -88,6 +89,7 @@ namespace DressCode.Areas.Identity.Pages.Account
             [Display(Name = "Prezime")]
             public string Prezime { get; set; }
 
+            [ValidJmbg]
             [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG mora imati tačno 13 brojeva.")]
             [Display(Name = "JMBG")]
             public string JMBG { get; set; }
@@ -189,7 +191,14 @@ namespace DressCode.Areas.Identity.Pages.Account
                 }
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    if (error.Code == "DuplicateUserName" || error.Code == "DuplicateEmail")
+                    {
+                        ModelState.AddModelError("Input.Email", "Email je već u upotrebi");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
             }
 

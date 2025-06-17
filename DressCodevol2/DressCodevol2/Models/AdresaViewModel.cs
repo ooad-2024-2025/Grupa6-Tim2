@@ -21,6 +21,7 @@ namespace DressCode.Models
         [Required(ErrorMessage = "Poštanski broj je obavezan.")]
         [Display(Name = "Poštanski broj")]
         [Range(1, int.MaxValue, ErrorMessage = "Broj mora biti veći od 0.")]
+        [RegularExpression(@"^\d{5}$", ErrorMessage = "Poštanski broj mora imati tačno 5 cifara.")]
         public string PostanskiBroj { get; set; } = string.Empty;
         
         [Required(ErrorMessage = "Država je obavezna.")]

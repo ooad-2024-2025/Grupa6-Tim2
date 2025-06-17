@@ -5,6 +5,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using DressCode.Attributes;
 using DressCode.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -38,8 +39,10 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
         {
             [Phone]
             [Display(Name = "Broj telefona")]
+            [RegularExpression(@"^[0-9+]+$", ErrorMessage = "Telefonski broj ne smije sadržavati negativne znakove.")]
             public string PhoneNumber { get; set; }
 
+            [ValidJmbg]
             [RegularExpression(@"^\d{13}$", ErrorMessage = "JMBG mora imati tačno 13 brojeva.")]
             [Display(Name = "JMBG")]
             public string JMBG { get; set; }
