@@ -21,11 +21,11 @@ Projekat kreiran da simulira online shopping odjeće i modnih dodataka, kao i ad
 | Korisnik   | korisnik@dresscode.ba  | Lasvegas123!  |
 
 
-Svaki novi radnik kojeg administrator doda u sistem preko pogleda Radnici također dobije svoj račun kojem se pristupa po formatu:
-Email: Ime_Prezime@dresscode.com
-Password: DressCodeRadnik123!
-
-Primjer: radnik Neki Radnik2 ima pristupne podatke
-Neki_Radnik2@dresscode.com
-DressCodeRadnik123!
+Svaki novi radnik kojeg administrator doda u sistem preko pogleda Radnici također dobije svoj račun kojem se pristupa po formatu:  
+Email: Ime_Prezime@dresscode.com  
+Password: DressCodeRadnik123!  
+  
+Primjer: radnik Neki Radnik2 ima pristupne podatke  
+Neki_Radnik2@dresscode.com  
+DressCodeRadnik123!  
 
