@@ -127,4 +127,16 @@ namespace DressCode.Areas.Identity.Pages.Account.Manage
             return RedirectToPage();
         }
     }
+
+    public static class DateValidation
+    {
+        public static ValidationResult ValidateDateNotInFuture(DateTime datum, ValidationContext context)
+        {
+            if (datum > DateTime.Today)
+            {
+                return new ValidationResult("Datum rođenja ne može biti u budućnosti.");
+            }
+            return ValidationResult.Success;
+        }
+    }
 }

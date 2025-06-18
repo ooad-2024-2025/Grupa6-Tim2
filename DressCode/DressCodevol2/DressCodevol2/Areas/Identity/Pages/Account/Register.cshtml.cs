@@ -98,6 +98,7 @@ namespace DressCode.Areas.Identity.Pages.Account
 
             [Required(ErrorMessage = "Polje za email je obavezno.")]
             [EmailAddress(ErrorMessage = "Email adresa nije validna.")]
+            [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Email mora biti u ispravnom formatu (npr. korisnik@example.com).")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 

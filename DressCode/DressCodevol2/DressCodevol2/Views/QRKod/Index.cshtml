@@ -1,4 +1,5 @@
 ﻿@model DressCode.Models.QRKodIndexViewModel
+@using System.Globalization
 
 @{
     ViewData["Title"] = "QR Kodovi";
@@ -62,7 +63,7 @@
                                 </div>
                                 <div class="label-size">ARTIKAL: @etiketa.GrupaId</div>
                                 <div class="label-size">VELIČINA: @etiketa.Velicina</div>
-                                <div class="label-price">@etiketa.Cijena.ToString("C")</div>
+                                <div class="label-price">@etiketa.Cijena.ToString("C", new CultureInfo("bs-BA"))</div>
                                 <div class="label-qr">
                                     <img class="qr-frame" src="@Url.Content("~/images/okvir.jpg")" />
                                     <img class="qr-code" src="@etiketa.QrImageData" />

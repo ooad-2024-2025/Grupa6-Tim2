@@ -7,11 +7,11 @@
     <UserSecretsId>aspnet-DressCodevol2-f07d74cd-d71a-4b71-9cf1-595e2ed2684d</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Views\Email\SendEmail.cshtml" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="Views\Email\SendEmail.cshtml" />
+	</ItemGroup>
 
-  <ItemGroup>
+	<ItemGroup>
     <PackageReference Include="MailKit" Version="4.12.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.14" />

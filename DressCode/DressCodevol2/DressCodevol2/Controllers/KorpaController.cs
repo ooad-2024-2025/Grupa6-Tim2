@@ -327,8 +327,9 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> IzbaciElement(int stavkaKorpeId)
         {
-            if (!User.Identity.IsAuthenticated)
+            if (!User.IsInRole("Administrator"))
                 return RedirectToAction("Login", "Account");
+            
 
             // Find the cart item to remove
             var stavkaKorpe = await _context.StavkeKorpe.FindAsync(stavkaKorpeId);
@@ -375,8 +376,10 @@ namespace DressCode.Controllers
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> Naruci()
             {
+            
             if (!User.Identity.IsAuthenticated)
                 return RedirectToAction("Login", "Account");
+            
 
             var korpa = await GetOrCreateKorpaAsync();
                 if (korpa == null || !korpa.IsAktivna)
@@ -413,12 +416,14 @@ namespace DressCode.Controllers
             }
 
    
-    [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PrimijeniPopust(string kodPopusta)
         {
-            if (!User.Identity.IsAuthenticated)
+            /*
+            if (!User.IsInRole("Administrator"))
                 return RedirectToAction("Login", "Account");
+            */
 
             if (string.IsNullOrWhiteSpace(kodPopusta))
             {
@@ -463,8 +468,10 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UkloniPopust()
         {
-            if (!User.Identity.IsAuthenticated)
+            /*
+            if (!User.IsInRole("Administrator"))
                 return RedirectToAction("Login", "Account");
+            */
 
             var korpa = await GetOrCreateKorpaAsync();
             if (korpa == null)
@@ -482,17 +489,20 @@ namespace DressCode.Controllers
         }
 
         // Modificirajte KreirajNarudzbu metodu da koristi finalnu cijenu
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> KreirajNarudzbu(AdresaViewModel model)
         {
+
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Account");
+
             if (!ModelState.IsValid)
             {
                 return View("Adresa", model);
             }
-
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Account");
+            
 
             var korpa = await _context.Korpe
                 .Include(k => k.Popust)
