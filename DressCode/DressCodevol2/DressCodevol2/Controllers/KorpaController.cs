@@ -141,8 +141,7 @@ namespace DressCode.Controllers
         public async Task<IActionResult> Index()
         {
             var korpa = await GetOrCreateKorpaAsync();
-            if (korpa == null)
-                return RedirectToAction("Login", "Account");
+            
 
             // Include popust u query
             korpa = await _context.Korpe
@@ -327,9 +326,12 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> IzbaciElement(int stavkaKorpeId)
         {
-            if (!User.IsInRole("Administrator"))
-                return RedirectToAction("Login", "Account");
-            
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Radnik") && !User.IsInRole("Korisnik"))
+                return RedirectToPage(
+        pageName: "/Account/Login",
+        routeValues: new { area = "Identity" }
+    );
+
 
             // Find the cart item to remove
             var stavkaKorpe = await _context.StavkeKorpe.FindAsync(stavkaKorpeId);
@@ -376,10 +378,13 @@ namespace DressCode.Controllers
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> Naruci()
             {
-            
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Account");
-            
+
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Radnik") && !User.IsInRole("Korisnik"))
+                return RedirectToPage(
+        pageName: "/Account/Login",
+        routeValues: new { area = "Identity" }
+    );
+
 
             var korpa = await GetOrCreateKorpaAsync();
                 if (korpa == null || !korpa.IsAktivna)
@@ -495,8 +500,11 @@ namespace DressCode.Controllers
         public async Task<IActionResult> KreirajNarudzbu(AdresaViewModel model)
         {
 
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Account");
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Radnik") && !User.IsInRole("Korisnik"))
+                return RedirectToPage(
+        pageName: "/Account/Login",
+        routeValues: new { area = "Identity" }
+    );
 
             if (!ModelState.IsValid)
             {
