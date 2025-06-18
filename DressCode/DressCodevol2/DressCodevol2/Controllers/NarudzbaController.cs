@@ -22,6 +22,9 @@ namespace DressCode.Controllers
         // GET: Narudzba
         public async Task<IActionResult> Index()
         {
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Radnik"))
+                return Forbid();
+
            var narudzbe = await _context.Narudzbe.AsNoTracking().ToListAsync();
 
             var model = new List<NarudzbaIndexViewModel>();
@@ -63,6 +66,9 @@ namespace DressCode.Controllers
         // GET: Narudzba/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Radnik"))
+                return Forbid();
+
             if (id == null)
             {
                 return NotFound();
@@ -83,6 +89,9 @@ namespace DressCode.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (!User.IsInRole("Administrator") && !User.IsInRole("Radnik"))
+                return Forbid();
+
             var narudzba = await _context.Narudzbe.FindAsync(id);
             if (narudzba != null)
             {
