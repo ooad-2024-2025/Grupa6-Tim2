@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\dt user\\documents\\github\\grupa6-tim2\\dresscode\\dresscodevol2\\dresscodevol2\\controllers\\narudzbacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\controllers\\narudzbacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\dt user\\documents\\github\\grupa6-tim2\\dresscode\\dresscodevol2\\dresscodevol2\\views\\korpa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\korpa\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -81,10 +85,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\dt user\\documents\\github\\grupa6-tim2\\dresscode\\dresscodevol2\\dresscodevol2\\views\\placanje\\stripepayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\views\\placanje\\stripepayment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\dt user\\documents\\github\\grupa6-tim2\\dresscode\\dresscodevol2\\dresscodevol2\\controllers\\narudzbacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|solutionrelative:dresscodevol2\\controllers\\narudzbacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BAE62AC8-C39C-401D-B693-DE7F34B22CDE}|DressCodevol2\\DressCode.csproj|c:\\users\\dt user\\documents\\github\\grupa6-tim2\\dresscode\\dresscodevol2\\dresscodevol2\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -414,7 +414,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -426,46 +426,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Create.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Korpa\\Create.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Create.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Korpa\\Create.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-18T10:17:40.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "DressCodevol2\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Properties\\launchSettings.json",
-              "RelativeToolTip": "DressCodevol2\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-18T09:10:40.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "KorpaController.cs",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\KorpaController.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\KorpaController.cs",
               "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\KorpaController.cs",
               "RelativeToolTip": "DressCodevol2\\Controllers\\KorpaController.cs",
-              "ViewState": "AgIAAI4BAAAAAAAAAADwv2wBAABOAAAAAAAAAA==",
+              "ViewState": "AgIAACgCAAAAAAAAAAAAAEECAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-12T08:43:23.154Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "RadnikEditViewModel.cs",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Models\\RadnikEditViewModel.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Models\\RadnikEditViewModel.cs",
@@ -473,12 +447,11 @@
               "RelativeToolTip": "DressCodevol2\\Models\\RadnikEditViewModel.cs",
               "ViewState": "AgIAADcAAAAAAAAAAIAwwEQAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:50:48.482Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:50:48.482Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Adresa.cshtml",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Adresa.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Korpa\\Adresa.cshtml",
@@ -486,12 +459,11 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Korpa\\Adresa.cshtml",
               "ViewState": "AgIAAIcAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-14T07:17:03.129Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T07:17:03.129Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Index.cshtml",
               "RelativeDocumentMoniker": "DressCodevol2\\Views\\Korpa\\Index.cshtml",
@@ -499,194 +471,11 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Korpa\\Index.cshtml",
               "ViewState": "AgIAAIABAAAAAAAAAADwv54BAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T20:55:15.997Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T20:55:15.997Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Program.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Program.cs",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Program.cs",
-              "RelativeToolTip": "DressCodevol2\\Program.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAE8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T18:20:10.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T00:12:52.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DressCode",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\DressCode.csproj",
-              "RelativeDocumentMoniker": "DressCodevol2\\DressCode.csproj",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\DressCode.csproj",
-              "RelativeToolTip": "DressCodevol2\\DressCode.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-18T08:07:23.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\appsettings.json",
-              "RelativeDocumentMoniker": "DressCodevol2\\appsettings.json",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\appsettings.json",
-              "RelativeToolTip": "DressCodevol2\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-17T18:34:24.028Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\.gitignore",
-              "RelativeDocumentMoniker": "DressCodevol2\\.gitignore",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\.gitignore",
-              "RelativeToolTip": "DressCodevol2\\.gitignore",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-06-17T18:42:18.875Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
-              "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
-              "ViewState": "AgIAAIUAAAAAAAAAAAAIwI4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:48:56.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAJoAAAAAAAAAAAAAAKYAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-12T13:45:47.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Logout.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-18T07:59:51.061Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "PlacanjeController.cs",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\PlacanjeController.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\PlacanjeController.cs",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\PlacanjeController.cs",
-              "RelativeToolTip": "DressCodevol2\\Controllers\\PlacanjeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMBAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T08:43:46.392Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "NarudzbaIndexViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
-              "RelativeToolTip": "DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAcAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T05:58:05.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Narudzba\\Index.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Narudzba\\Index.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Narudzba\\Index.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Narudzba\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-14T05:44:53.591Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ArtikalsController.cs",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\ArtikalsController.cs",
-              "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\ArtikalsController.cs",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\ArtikalsController.cs",
-              "RelativeToolTip": "DressCodevol2\\Controllers\\ArtikalsController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAmwDYAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T07:03:47.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAACsAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-12T13:46:07.571Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "StripePayment.cshtml",
-              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "RelativeToolTip": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
-              "ViewState": "AgIAAFcAAAAAAAAAAAD4v3MAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-15T20:42:09.987Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 2,
               "Title": "NarudzbaController.cs",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\NarudzbaController.cs",
               "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\NarudzbaController.cs",
@@ -699,6 +488,199 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Program.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Program.cs",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Program.cs",
+              "RelativeToolTip": "DressCodevol2\\Program.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAADwv0cAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T18:20:10.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "DressCodevol2\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Properties\\launchSettings.json",
+              "RelativeToolTip": "DressCodevol2\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-18T09:10:40.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Create.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Korpa\\Create.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Korpa\\Create.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Korpa\\Create.cshtml",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-18T10:17:40.988Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\QRKod\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T00:12:52.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DressCode.csproj",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\DressCode.csproj",
+              "RelativeDocumentMoniker": "DressCodevol2\\DressCode.csproj",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\DressCode.csproj",
+              "RelativeToolTip": "DressCodevol2\\DressCode.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-18T08:07:23.987Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\appsettings.json",
+              "RelativeDocumentMoniker": "DressCodevol2\\appsettings.json",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\appsettings.json",
+              "RelativeToolTip": "DressCodevol2\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-17T18:34:24.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\.gitignore",
+              "RelativeDocumentMoniker": "DressCodevol2\\.gitignore",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\.gitignore",
+              "RelativeToolTip": "DressCodevol2\\.gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-06-17T18:42:18.875Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
+              "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAIwI4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-17T14:48:56.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAAAKYAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-12T13:45:47.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Logout.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-18T07:59:51.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PlacanjeController.cs",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\PlacanjeController.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\PlacanjeController.cs",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\PlacanjeController.cs",
+              "RelativeToolTip": "DressCodevol2\\Controllers\\PlacanjeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMBAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T08:43:46.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "NarudzbaIndexViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
+              "RelativeToolTip": "DressCodevol2\\Models\\NarudzbaIndexViewModel.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAcAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-14T05:58:05.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Narudzba\\Index.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Narudzba\\Index.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Narudzba\\Index.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Narudzba\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-14T05:44:53.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ArtikalsController.cs",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\ArtikalsController.cs",
+              "RelativeDocumentMoniker": "DressCodevol2\\Controllers\\ArtikalsController.cs",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Controllers\\ArtikalsController.cs",
+              "RelativeToolTip": "DressCodevol2\\Controllers\\ArtikalsController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAmwDYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-12T07:03:47.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAACsAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-12T13:46:07.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "StripePayment.cshtml",
+              "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
+              "RelativeDocumentMoniker": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
+              "ToolTip": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
+              "RelativeToolTip": "DressCodevol2\\Views\\Placanje\\StripePayment.cshtml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAD4v3MAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-15T20:42:09.987Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 21,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\DT User\\Documents\\GitHub\\Grupa6-Tim2\\DressCode\\DressCodevol2\\DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
@@ -707,8 +689,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
               "ViewState": "AgIAACcAAAAAAAAAAAAAAGEAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T20:31:02.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T20:31:02.895Z"
             },
             {
               "$type": "Document",
@@ -720,8 +701,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T20:30:50.82Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T20:30:50.82Z"
             },
             {
               "$type": "Document",
@@ -733,8 +713,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-16T11:55:54.839Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-16T11:55:54.839Z"
             },
             {
               "$type": "Document",
@@ -746,8 +725,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAowCUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-18T07:42:56.116Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T07:42:56.116Z"
             },
             {
               "$type": "Document",
@@ -759,8 +737,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
               "ViewState": "AgIAAFAAAAAAAAAAAAAiwGAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T13:17:29.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T13:17:29.487Z"
             },
             {
               "$type": "Document",
@@ -772,8 +749,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-18T07:42:53.088Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T07:42:53.088Z"
             },
             {
               "$type": "Document",
@@ -785,8 +761,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\AdresaViewModel.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAzwBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T11:58:17.931Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T11:58:17.931Z"
             },
             {
               "$type": "Document",
@@ -798,8 +773,7 @@
               "RelativeToolTip": "DressCodevol2\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
               "ViewState": "AgIAACoAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T13:43:23.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T13:43:23.672Z"
             },
             {
               "$type": "Document",
@@ -811,8 +785,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\QRKod\\Preview.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-18T07:25:22.501Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-18T07:25:22.501Z"
             },
             {
               "$type": "Document",
@@ -836,8 +809,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Adresa.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T02:46:54.723Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T02:46:54.723Z"
             },
             {
               "$type": "Document",
@@ -885,8 +857,7 @@
               "RelativeToolTip": "DressCodevol2\\Controllers\\RadnikController.cs",
               "ViewState": "AgIAAIYAAAAAAAAAAAAQwJQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T02:15:06.044Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T02:15:06.044Z"
             },
             {
               "$type": "Document",
@@ -934,8 +905,7 @@
               "RelativeToolTip": "DressCodevol2\\Controllers\\QRKodController.cs",
               "ViewState": "AgIAAMUAAAAAAAAAAAAvwPgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:51:58.538Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:51:58.538Z"
             },
             {
               "$type": "Document",
@@ -947,8 +917,7 @@
               "RelativeToolTip": "DressCodevol2\\Controllers\\PopustController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAgwAoAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:14:04.715Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:14:04.715Z"
             },
             {
               "$type": "Document",
@@ -972,8 +941,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Narudzba.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T08:49:01.684Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T08:49:01.684Z"
             },
             {
               "$type": "Document",
@@ -997,8 +965,7 @@
               "RelativeToolTip": "DressCodevol2\\Controllers\\AdresaController.cs",
               "ViewState": "AgIAAIIAAAAAAAAAAADwv5cAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T15:40:35.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T15:40:35.281Z"
             },
             {
               "$type": "Document",
@@ -1046,8 +1013,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Artikals\\Index.cshtml",
               "ViewState": "AgIAALUAAAAAAAAAAAAswMEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T12:01:23.032Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T12:01:23.032Z"
             },
             {
               "$type": "Document",
@@ -1059,8 +1025,7 @@
               "RelativeToolTip": "DressCodevol2\\Attributes\\ValidJmbgAttribute.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T14:50:11.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-17T14:50:11.209Z"
             },
             {
               "$type": "Document",
@@ -1168,8 +1133,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Artikal.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T13:28:51.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-12T13:28:51.785Z"
             },
             {
               "$type": "Document",
@@ -1229,8 +1193,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\NarudzbaStavka.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T06:46:18.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T06:46:18.104Z"
             },
             {
               "$type": "Document",
@@ -1386,8 +1349,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\Popust.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:03:52.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:03:52.87Z"
             },
             {
               "$type": "Document",
@@ -1435,8 +1397,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Radnik\\Edit.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-14T02:11:54.117Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T02:11:54.117Z"
             },
             {
               "$type": "Document",
@@ -1448,8 +1409,7 @@
               "RelativeToolTip": "DressCodevol2\\Views\\Radnik\\Create.cshtml",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAIsAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-14T02:06:07.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-14T02:06:07.264Z"
             },
             {
               "$type": "Document",
@@ -1569,8 +1529,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\EditGroupViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T21:54:58.035Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T21:54:58.035Z"
             },
             {
               "$type": "Document",
@@ -1594,8 +1553,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\QRKodIndexViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:44:38.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:44:38.171Z"
             },
             {
               "$type": "Document",
@@ -1607,8 +1565,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\PopustQrViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:44:48.097Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:44:48.097Z"
             },
             {
               "$type": "Document",
@@ -1620,8 +1577,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\QRKodArtikalDetailsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:48:12.497Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:48:12.497Z"
             },
             {
               "$type": "Document",
@@ -1633,8 +1589,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\QRKodDetailsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T01:13:19.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T01:13:19.381Z"
             },
             {
               "$type": "Document",
@@ -1646,8 +1601,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\QRKodPopustDetailsViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:51:28.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:51:28.024Z"
             },
             {
               "$type": "Document",
@@ -1659,8 +1613,7 @@
               "RelativeToolTip": "DressCodevol2\\Models\\ArtikalQrViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T00:46:27.895Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T00:46:27.895Z"
             },
             {
               "$type": "Document",

@@ -4,6 +4,7 @@ using DressCode.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +67,8 @@ app.UseSession();
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+// Dodaj odmah nakon app.UseHttpsRedirection();
+app.UseRequestLocalization(app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
 
 app.UseRouting();
 app.UseAuthentication();   
