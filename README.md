@@ -16,8 +16,8 @@ Projekat kreiran da simulira online shopping odjeće i modnih dodataka, kao i ad
 
 | Rola | Username | Password |
 |----------|----------|----------|
-| Administrator    |  admin@dresscode.ba |  Lasvegas123! |
-| Radnik    |  Neki_Radnik@dresscode.com | Lasvegas123!  |
+| Administrator    |  admin@dresscode.com |  Lasvegas123! |
+| Radnik    |  Neki_Radnik@dresscode.com | DressCodeRadnik123!  |
 | Korisnik   | korisnik@dresscode.ba  | Lasvegas123!  |
 
 
