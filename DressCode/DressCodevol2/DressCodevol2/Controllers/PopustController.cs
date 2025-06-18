@@ -26,6 +26,9 @@ namespace DressCode.Controllers
         // GET: Popust
         public async Task<IActionResult> Index()
         {
+            if (!User.IsInRole("Administrator"))
+                return Forbid();
+
             return View(await _context.Popusti.ToListAsync());
         }
 
